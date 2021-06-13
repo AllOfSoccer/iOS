@@ -15,6 +15,7 @@
 		9D6B91E9266D08E000AF182B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91E7266D08E000AF182B /* Main.storyboard */; };
 		9D6B91EB266D08E100AF182B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91EA266D08E100AF182B /* Assets.xcassets */; };
 		9D6B91EE266D08E100AF182B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91EC266D08E100AF182B /* LaunchScreen.storyboard */; };
+		9DFD93B526764DA10049ADF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD93B426764DA10049ADF2 /* LoginViewController.swift */; };
 		9DFFB165266D0F3700B04D3D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFFB164266D0F3700B04D3D /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,8 @@
 		9D6B91EA266D08E100AF182B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D6B91ED266D08E100AF182B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D6B91EF266D08E100AF182B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DB0510926764B4500717F8C /* AllOfSoccer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AllOfSoccer.entitlements; sourceTree = "<group>"; };
+		9DFD93B426764DA10049ADF2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9DFFB164266D0F3700B04D3D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +66,8 @@
 		9D6B91E0266D08E000AF182B /* AllOfSoccer */ = {
 			isa = PBXGroup;
 			children = (
+				9DFD93B8267655E90049ADF2 /* Login */,
+				9DB0510926764B4500717F8C /* AllOfSoccer.entitlements */,
 				9D6B91E1266D08E000AF182B /* AppDelegate.swift */,
 				9D6B91E3266D08E000AF182B /* SceneDelegate.swift */,
 				9D6B91E5266D08E000AF182B /* ViewController.swift */,
@@ -72,6 +77,14 @@
 				9D6B91EF266D08E100AF182B /* Info.plist */,
 			);
 			path = AllOfSoccer;
+			sourceTree = "<group>";
+		};
+		9DFD93B8267655E90049ADF2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9DFD93B426764DA10049ADF2 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DFD93B526764DA10049ADF2 /* LoginViewController.swift in Sources */,
 				9D6B91E6266D08E000AF182B /* ViewController.swift in Sources */,
 				9D6B91E2266D08E000AF182B /* AppDelegate.swift in Sources */,
 				9D6B91E4266D08E000AF182B /* SceneDelegate.swift in Sources */,
@@ -323,6 +337,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AllOfSoccer/AllOfSoccer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AllOfSoccer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -341,6 +356,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AllOfSoccer/AllOfSoccer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AllOfSoccer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
