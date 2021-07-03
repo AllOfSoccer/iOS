@@ -8,9 +8,7 @@
 import UIKit
 import AuthenticationServices
 
-class LoginViewController: UIViewController {
-
-    @IBOutlet weak var appleSignInButton: UIStackView!
+class SignInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +19,7 @@ class LoginViewController: UIViewController {
     func setAppleSignInButton() {
         let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
             authorizationButton.addTarget(self, action: #selector(appleSignInButtonPress), for: .touchUpInside)
-            self.appleSignInButton.addArrangedSubview(authorizationButton)
+//            self.appleSignInButton.addArrangedSubview(authorizationButton)
     }
 
     @objc func appleSignInButtonPress() {
@@ -36,7 +34,7 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+extension SignInViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }

@@ -7,29 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D034CE826903A9E0051FA02 /* -----Global----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CE726903A9E0051FA02 /* -----Global----- */; };
+		9D034CEE26903B590051FA02 /* -----Primary View----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CED26903B590051FA02 /* -----Primary View----- */; };
 		9D3E375A266D11AF0058A4B7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E3759266D11AF0058A4B7 /* Alamofire */; };
 		9D3E375E266D11DF0058A4B7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E375D266D11DF0058A4B7 /* Kingfisher */; };
+		9D4EC53F26903C9500D1A27D /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4EC53E26903C9500D1A27D /* SignIn.storyboard */; };
 		9D6B91E2266D08E000AF182B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B91E1266D08E000AF182B /* AppDelegate.swift */; };
 		9D6B91E4266D08E000AF182B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B91E3266D08E000AF182B /* SceneDelegate.swift */; };
-		9D6B91E6266D08E000AF182B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B91E5266D08E000AF182B /* ViewController.swift */; };
+		9D6B91E6266D08E000AF182B /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B91E5266D08E000AF182B /* MainTabbarController.swift */; };
 		9D6B91E9266D08E000AF182B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91E7266D08E000AF182B /* Main.storyboard */; };
 		9D6B91EB266D08E100AF182B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91EA266D08E100AF182B /* Assets.xcassets */; };
 		9D6B91EE266D08E100AF182B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91EC266D08E100AF182B /* LaunchScreen.storyboard */; };
-		9DFD93B526764DA10049ADF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD93B426764DA10049ADF2 /* LoginViewController.swift */; };
+		9DD474B026903D78006F00F1 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474AF26903D78006F00F1 /* RoundView.swift */; };
+		9DD474B326903D8A006F00F1 /* TopRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474B226903D8A006F00F1 /* TopRoundView.swift */; };
+		9DD474B626903D97006F00F1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474B526903D97006F00F1 /* RoundButton.swift */; };
+		9DD474BA26903E95006F00F1 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 9DD474B926903E95006F00F1 /* NVActivityIndicatorView */; };
+		9DD474BC26903E95006F00F1 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 9DD474BB26903E95006F00F1 /* NVActivityIndicatorViewExtended */; };
+		9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */; };
+		9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */; };
+		9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD93B426764DA10049ADF2 /* SignInViewController.swift */; };
 		9DFFB165266D0F3700B04D3D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFFB164266D0F3700B04D3D /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D034CE726903A9E0051FA02 /* -----Global----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Global-----"; sourceTree = "<group>"; };
+		9D034CED26903B590051FA02 /* -----Primary View----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Primary View-----"; sourceTree = "<group>"; };
+		9D4EC53E26903C9500D1A27D /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		9D6B91DE266D08E000AF182B /* AllOfSoccer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllOfSoccer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D6B91E1266D08E000AF182B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D6B91E3266D08E000AF182B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9D6B91E5266D08E000AF182B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9D6B91E5266D08E000AF182B /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
 		9D6B91E8266D08E000AF182B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D6B91EA266D08E100AF182B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D6B91ED266D08E100AF182B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D6B91EF266D08E100AF182B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9DB0510926764B4500717F8C /* AllOfSoccer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AllOfSoccer.entitlements; sourceTree = "<group>"; };
-		9DFD93B426764DA10049ADF2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9DD474AF26903D78006F00F1 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
+		9DD474B226903D8A006F00F1 /* TopRoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRoundView.swift; sourceTree = "<group>"; };
+		9DD474B526903D97006F00F1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingActivityIndicator.swift; sourceTree = "<group>"; };
+		9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedCollectionView.swift; sourceTree = "<group>"; };
+		9DFD93B426764DA10049ADF2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9DFFB164266D0F3700B04D3D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,13 +56,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D3E375E266D11DF0058A4B7 /* Kingfisher in Frameworks */,
+				9DD474BC26903E95006F00F1 /* NVActivityIndicatorViewExtended in Frameworks */,
 				9D3E375A266D11AF0058A4B7 /* Alamofire in Frameworks */,
+				9DD474BA26903E95006F00F1 /* NVActivityIndicatorView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D034CEA26903AB40051FA02 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				9D6B91E1266D08E000AF182B /* AppDelegate.swift */,
+				9D6B91E3266D08E000AF182B /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		9D034CEB26903AD60051FA02 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9D034CEC26903AF00051FA02 /* SupporttingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				9D6B91EA266D08E100AF182B /* Assets.xcassets */,
+				9D6B91EC266D08E100AF182B /* LaunchScreen.storyboard */,
+				9D6B91EF266D08E100AF182B /* Info.plist */,
+			);
+			path = SupporttingFiles;
+			sourceTree = "<group>";
+		};
+		9D034CF126903B7B0051FA02 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9D6B91E7266D08E000AF182B /* Main.storyboard */,
+				9D6B91E5266D08E000AF182B /* MainTabbarController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		9D6B91D5266D08E000AF182B = {
 			isa = PBXGroup;
 			children = (
@@ -66,23 +120,35 @@
 		9D6B91E0266D08E000AF182B /* AllOfSoccer */ = {
 			isa = PBXGroup;
 			children = (
+				9D034CED26903B590051FA02 /* -----Primary View----- */,
 				9DFD93B8267655E90049ADF2 /* Login */,
-				9DB0510926764B4500717F8C /* AllOfSoccer.entitlements */,
-				9D6B91E1266D08E000AF182B /* AppDelegate.swift */,
-				9D6B91E3266D08E000AF182B /* SceneDelegate.swift */,
-				9D6B91E5266D08E000AF182B /* ViewController.swift */,
-				9D6B91E7266D08E000AF182B /* Main.storyboard */,
-				9D6B91EA266D08E100AF182B /* Assets.xcassets */,
-				9D6B91EC266D08E100AF182B /* LaunchScreen.storyboard */,
-				9D6B91EF266D08E100AF182B /* Info.plist */,
+				9D034CF126903B7B0051FA02 /* Main */,
+				9D034CE726903A9E0051FA02 /* -----Global----- */,
+				9DD474AE26903D31006F00F1 /* Components */,
+				9D034CEA26903AB40051FA02 /* Application */,
+				9D034CEB26903AD60051FA02 /* Network */,
+				9D034CEC26903AF00051FA02 /* SupporttingFiles */,
 			);
 			path = AllOfSoccer;
+			sourceTree = "<group>";
+		};
+		9DD474AE26903D31006F00F1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9DD474AF26903D78006F00F1 /* RoundView.swift */,
+				9DD474B226903D8A006F00F1 /* TopRoundView.swift */,
+				9DD474B526903D97006F00F1 /* RoundButton.swift */,
+				9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */,
+				9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		9DFD93B8267655E90049ADF2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				9DFD93B426764DA10049ADF2 /* LoginViewController.swift */,
+				9D4EC53E26903C9500D1A27D /* SignIn.storyboard */,
+				9DFD93B426764DA10049ADF2 /* SignInViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -107,6 +173,8 @@
 			packageProductDependencies = (
 				9D3E3759266D11AF0058A4B7 /* Alamofire */,
 				9D3E375D266D11DF0058A4B7 /* Kingfisher */,
+				9DD474B926903E95006F00F1 /* NVActivityIndicatorView */,
+				9DD474BB26903E95006F00F1 /* NVActivityIndicatorViewExtended */,
 			);
 			productName = AllOfSoccer;
 			productReference = 9D6B91DE266D08E000AF182B /* AllOfSoccer.app */;
@@ -138,6 +206,7 @@
 			packageReferences = (
 				9D3E3758266D11AF0058A4B7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9D3E375C266D11DF0058A4B7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				9DD474B826903E95006F00F1 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = 9D6B91DF266D08E000AF182B /* Products */;
 			projectDirPath = "";
@@ -156,7 +225,10 @@
 				9DFFB165266D0F3700B04D3D /* .swiftlint.yml in Resources */,
 				9D6B91EE266D08E100AF182B /* LaunchScreen.storyboard in Resources */,
 				9D6B91EB266D08E100AF182B /* Assets.xcassets in Resources */,
+				9D034CE826903A9E0051FA02 /* -----Global----- in Resources */,
 				9D6B91E9266D08E000AF182B /* Main.storyboard in Resources */,
+				9D4EC53F26903C9500D1A27D /* SignIn.storyboard in Resources */,
+				9D034CEE26903B590051FA02 /* -----Primary View----- in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,10 +259,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DFD93B526764DA10049ADF2 /* LoginViewController.swift in Sources */,
-				9D6B91E6266D08E000AF182B /* ViewController.swift in Sources */,
+				9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */,
+				9DD474B326903D8A006F00F1 /* TopRoundView.swift in Sources */,
+				9DD474B626903D97006F00F1 /* RoundButton.swift in Sources */,
+				9D6B91E6266D08E000AF182B /* MainTabbarController.swift in Sources */,
 				9D6B91E2266D08E000AF182B /* AppDelegate.swift in Sources */,
+				9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */,
+				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
 				9D6B91E4266D08E000AF182B /* SceneDelegate.swift in Sources */,
+				9DD474B026903D78006F00F1 /* RoundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +344,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -322,7 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -337,13 +414,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = AllOfSoccer/AllOfSoccer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = /Users/choiwonseok/Desktop/AllOfSoccer/AllOfSoccer/SupporttingFiles/AllOfSoccer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = AllOfSoccer/Info.plist;
+				DEVELOPMENT_TEAM = 8PBQD47VFZ;
+				INFOPLIST_FILE = /Users/choiwonseok/Desktop/AllOfSoccer/AllOfSoccer/SupporttingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = co.kr.CWS.AllOfSoccer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -356,17 +436,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = AllOfSoccer/AllOfSoccer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = /Users/choiwonseok/Desktop/AllOfSoccer/AllOfSoccer/SupporttingFiles/AllOfSoccer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = AllOfSoccer/Info.plist;
+				DEVELOPMENT_TEAM = 8PBQD47VFZ;
+				INFOPLIST_FILE = /Users/choiwonseok/Desktop/AllOfSoccer/AllOfSoccer/SupporttingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = co.kr.CWS.AllOfSoccer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -410,6 +494,14 @@
 				minimumVersion = 6.3.0;
 			};
 		};
+		9DD474B826903E95006F00F1 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -422,6 +514,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9D3E375C266D11DF0058A4B7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		9DD474B926903E95006F00F1 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9DD474B826903E95006F00F1 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		9DD474BB26903E95006F00F1 /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9DD474B826903E95006F00F1 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
