@@ -9,57 +9,78 @@ import UIKit
 import AuthenticationServices
 
 class SignInViewController: UIViewController {
+    @IBOutlet weak var signInView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setAppleSignInButton()
+        addButton()
     }
 
-    func setAppleSignInButton() {
-        let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
-            authorizationButton.addTarget(self, action: #selector(appleSignInButtonPress), for: .touchUpInside)
-//            self.appleSignInButton.addArrangedSubview(authorizationButton)
+    func addButton() {
+        let button = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
+        button.addTarget(self, action: #selector(handleAppleSignButton), for: .touchUpInside)
+        signInView.addSubview(button)
+
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.leadingAnchor.constraint(equalTo: signInView.leadingAnchor).isActive = true
+        button.trailingAnchor.constraint(equalTo: signInView.trailingAnchor).isActive = true
+        button.topAnchor.constraint(equalTo: signInView.topAnchor).isActive = true
+        button.bottomAnchor.constraint(equalTo: signInView.bottomAnchor).isActive = true
     }
 
-    @objc func appleSignInButtonPress() {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
+    @objc func handleAppleSignButton() {
+        let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
-
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self as? ASAuthorizationControllerDelegate
+        controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
+        controller.performRequests()
     }
 }
 
-extension SignInViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
-    }
-
+extension SignInViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
-        // Apple ID
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
-
-            // 계정 정보 가져오기
+            // Create an account in your system.
             let userIdentifier = appleIDCredential.user
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
 
-            print("User ID : \(userIdentifier)")
-            print("User Email : \(email ?? "")")
-            print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
+            if let authorizationCode = appleIDCredential.authorizationCode,
+               let identityToken = appleIDCredential.identityToken,
+               let authString = String(data: authorizationCode, encoding: .utf8),
+               let tokenString = String(data: identityToken, encoding: .utf8) {
+                print("authorizationCode: \(authorizationCode)")
+                print("identityToken: \(identityToken)")
+                print("authString: \(authString)")
+                print("tokenString: \(tokenString)")
+            }
 
+            print("useridentifier: \(userIdentifier)")
+            print("fullName: \(fullName)")
+            print("email: \(email)")
+
+//        case let passwordCredential as ASPasswordCredential:
+//            // Sign in using an existing iCloud Keychain credential.
+//            let username = passwordCredential.user
+//            let password = passwordCredential.password
+//
+//            print("username: \(username)")
+//            print("password: \(password)")
         default:
             break
         }
     }
 
-    // Apple ID 연동 실패 시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
+        print("로그인에 실패했습니다.")
+    }
+}
+
+extension SignInViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
     }
 }
