@@ -9,7 +9,7 @@ import UIKit
 import AuthenticationServices
 
 class SignInViewController: UIViewController {
-    @IBOutlet weak var signInView: UIView!
+    @IBOutlet weak var signInView: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +18,8 @@ class SignInViewController: UIViewController {
     }
 
     func addButton() {
+        guard let signInView = self.signInView else { return }
+
         let button = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
         button.addTarget(self, action: #selector(handleAppleSignButton), for: .touchUpInside)
         signInView.addSubview(button)
@@ -33,8 +35,8 @@ class SignInViewController: UIViewController {
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
         let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self as? ASAuthorizationControllerDelegate
-        controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
+        controller.delegate = self
+        controller.presentationContextProvider = self
         controller.performRequests()
     }
 }
@@ -81,6 +83,6 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
 
 extension SignInViewController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
+        return self.view.window ?? UIWindow()
     }
 }

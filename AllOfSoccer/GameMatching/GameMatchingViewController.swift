@@ -35,7 +35,6 @@ class GameMatchingViewController: UIViewController {
             self.selectedLineCenterConstraint.constant = 0
             self.view.layoutIfNeeded()
         }
-        selectedLineCenterConstraint.constant = 0
     }
 
     @IBAction private func manMatchButtonTouchUp(_ sender: Any) {
@@ -105,7 +104,6 @@ class GameMatchingViewController: UIViewController {
         let weekdayAdding = 3 - nowWeekday
 
         let beforeDay = cal.date(from: beforeComponents)
-
         // 이전달의 전체 요일을 담은 배열을 만들고 해당 배열의 끝에서 부족한 수만큼 땡겨와서 weekDays 배열에다가 값을 삽입해준다.
 
         self.weekDays.removeAll()
