@@ -10,16 +10,9 @@ import AuthenticationServices
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        // Override point for customization after application launch.
-//
-//
-//        return true
-//    }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
-        appleIDProvider.getCredentialState(forUserID: "no") { (credentialState, error) in
+        appleIDProvider.getCredentialState(forUserID: "") { (credentialState, error) in
             switch credentialState {
             case .authorized:
                 // The Apple ID credential is valid.
@@ -34,10 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 break
             }
         }
-//        NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil, queue: nil) { (Notification) in
-//            print("Revoked Notification")
-//            // 로그인 페이지로 이동
-//        }
+
+        NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil, queue: nil) { (notification) in
+            print("Revoked Notification")
+        }
         return true
     }
 
