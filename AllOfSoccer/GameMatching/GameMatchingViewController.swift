@@ -59,6 +59,7 @@ class GameMatchingViewController: UIViewController {
         flowlayout.minimumInteritemSpacing = 15
         flowlayout.minimumLineSpacing = 10
         flowlayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        flowlayout.scrollDirection = .horizontal
 
         let itemWidth = (UIScreen.main.bounds.width - 84) / 10
         //        let itemWidth = ((UIScreen.main.bounds.width - (10 * (rowItemCount - 1))) / rowItemCount)
@@ -68,15 +69,9 @@ class GameMatchingViewController: UIViewController {
         dateFormatter.dateFormat = "M월"
         components.year = cal.component(.year, from: now)
         components.month = cal.component(.month, from: now)
-        components.day = cal.component(.day, from: now)
-
-        beforeComponents.year = cal.component(.year, from: now)
-        beforeComponents.month = cal.component(.month, from: now) - 1
-        beforeComponents.day = 1
+        components.day = 1
 
         calculation()
-
-        makeWeeksDays()
     }
 
     private func calculation() {
@@ -97,30 +92,6 @@ class GameMatchingViewController: UIViewController {
             }
         }
     }
-
-    private func makeWeeksDays() {
-        let nowDayOfMonth = cal.date(from: components)
-        let nowWeekday = cal.component(.weekday, from: nowDayOfMonth!)
-        let weekdayAdding = 3 - nowWeekday
-
-        let beforeDay = cal.date(from: beforeComponents)
-        // 이전달의 전체 요일을 담은 배열을 만들고 해당 배열의 끝에서 부족한 수만큼 땡겨와서 weekDays 배열에다가 값을 삽입해준다.
-
-        self.weekDays.removeAll()
-
-        for day in weekdayAdding...7 {
-            print(day)
-            if day < 1 {
-                if (components.day ?? 0) - weekdayAdding >= 0 {
-                    self.weekDays.append(String((components.day ?? 0) + day - 1))
-                } else {
-                    self.weekDays.append("")
-                }
-            } else {
-                self.weekDays.append(String((components.day ?? 0) + day - 1))
-            }
-        }
-    }
 }
 
 extension GameMatchingViewController: UICollectionViewDelegate {
@@ -128,29 +99,26 @@ extension GameMatchingViewController: UICollectionViewDelegate {
 
 extension GameMatchingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return self.days.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCollectionViewCell", for: indexPath) as? CalendarCollectionViewCell else {
             return .init()
         }
-        cell.dayLabel.text = weeks[indexPath.item]
-        cell.dateLabel.text = weekDays[indexPath.item]
 
-        if indexPath.item % 7 == 6 {
-            // 일요일
-            cell.dayLabel.textColor = .red
-            cell.dateLabel.textColor = .red
-        } else if indexPath.item % 7 == 5 {
-            // 토요일
-            cell.dayLabel.textColor = .blue
-            cell.dateLabel.textColor = .blue
-        } else {
-            // 평일
-            cell.dayLabel.textColor = .black
-            cell.dayLabel.textColor = .black
-        }
+        cell.indexPath = indexPath
+
+        cell.dayLabel.text = weeks[indexPath.item % 7]
+        cell.dateLabel.text = days[indexPath.item]
+
+        cell.delegate = self
+
         return cell
+    }
+}
+
+extension GameMatchingViewController: ViewTappedDelegate {
+    func viewTapped(_ cell: CalendarCollectionViewCell) {
     }
 }
