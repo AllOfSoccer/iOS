@@ -68,10 +68,10 @@
                                         <rect key="frame" x="16" y="33" width="30" height="30"/>
                                         <state key="normal" title="1월"/>
                                     </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ujb-m5-sph">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ujb-m5-sph">
                                         <rect key="frame" x="58" y="0.0" width="339" height="96"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ri5-zk-cr4">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ri5-zk-cr4">
                                             <size key="itemSize" width="153" height="94"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -79,7 +79,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CalendarCollectionViewCell" id="ZPo-Fx-Qa2" customClass="CalendarCollectionViewCell" customModule="AllOfSoccer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="153" height="94"/>
+                                                <rect key="frame" x="0.0" y="1" width="153" height="94"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="l0B-tk-Gjp">
                                                     <rect key="frame" x="0.0" y="0.0" width="153" height="94"/>
@@ -112,6 +112,7 @@
                                                 </collectionViewCellContentView>
                                                 <size key="customSize" width="153" height="94"/>
                                                 <connections>
+                                                    <outlet property="calendarStacview" destination="HT0-3q-ff5" id="2o0-z1-1qx"/>
                                                     <outlet property="dateLabel" destination="XzL-ws-Wef" id="ad9-M7-3sh"/>
                                                     <outlet property="dayLabel" destination="W8W-tR-LTv" id="7q2-Ls-Isw"/>
                                                 </connections>
