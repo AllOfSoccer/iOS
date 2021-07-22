@@ -24,7 +24,6 @@
 		9DC128A326917E740021EDF5 /* GameMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC128A226917E740021EDF5 /* GameMatchingViewController.swift */; };
 		9DC128A626917E890021EDF5 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC128A526917E890021EDF5 /* MyPage.storyboard */; };
 		9DC128A926917EA70021EDF5 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC128A826917EA70021EDF5 /* MyPageViewController.swift */; };
-		9DC128AE26918E710021EDF5 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DC128AD26918E710021EDF5 /* FSCalendar */; };
 		9DD474B026903D78006F00F1 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474AF26903D78006F00F1 /* RoundView.swift */; };
 		9DD474B326903D8A006F00F1 /* TopRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474B226903D8A006F00F1 /* TopRoundView.swift */; };
 		9DD474B626903D97006F00F1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474B526903D97006F00F1 /* RoundButton.swift */; };
@@ -73,7 +72,6 @@
 				9D3E375E266D11DF0058A4B7 /* Kingfisher in Frameworks */,
 				9DD474BC26903E95006F00F1 /* NVActivityIndicatorViewExtended in Frameworks */,
 				9D3E375A266D11AF0058A4B7 /* Alamofire in Frameworks */,
-				9DC128AE26918E710021EDF5 /* FSCalendar in Frameworks */,
 				9DD474BA26903E95006F00F1 /* NVActivityIndicatorView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,7 +212,6 @@
 				9D3E375D266D11DF0058A4B7 /* Kingfisher */,
 				9DD474B926903E95006F00F1 /* NVActivityIndicatorView */,
 				9DD474BB26903E95006F00F1 /* NVActivityIndicatorViewExtended */,
-				9DC128AD26918E710021EDF5 /* FSCalendar */,
 			);
 			productName = AllOfSoccer;
 			productReference = 9D6B91DE266D08E000AF182B /* AllOfSoccer.app */;
@@ -247,7 +244,6 @@
 				9D3E3758266D11AF0058A4B7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9D3E375C266D11DF0058A4B7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				9DD474B826903E95006F00F1 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
-				9DC128AC26918E710021EDF5 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 9D6B91DF266D08E000AF182B /* Products */;
 			projectDirPath = "";
@@ -542,14 +538,6 @@
 				minimumVersion = 6.3.0;
 			};
 		};
-		9DC128AC26918E710021EDF5 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.8.2;
-			};
-		};
 		9DD474B826903E95006F00F1 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
@@ -570,11 +558,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9D3E375C266D11DF0058A4B7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		9DC128AD26918E710021EDF5 /* FSCalendar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9DC128AC26918E710021EDF5 /* XCRemoteSwiftPackageReference "FSCalendar" */;
-			productName = FSCalendar;
 		};
 		9DD474B926903E95006F00F1 /* NVActivityIndicatorView */ = {
 			isa = XCSwiftPackageProductDependency;

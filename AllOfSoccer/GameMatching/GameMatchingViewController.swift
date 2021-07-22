@@ -6,15 +6,9 @@
 //
 
 import UIKit
-import FSCalendar
 
 class GameMatchingViewController: UIViewController {
-    private var weeks: [String] = ["월","화","수","목","금","토","일"]
-    private var cal = Calendar.current
-    private var components = DateComponents()
-    private let now = Date()
-    private let dateFormatter = DateFormatter()
-    private var cellDataArray
+    private var arrayToMakeCellData
         : [CellData] = []
 
     @IBOutlet private weak var teamMatchButton: SelectTableButton!
@@ -59,35 +53,45 @@ class GameMatchingViewController: UIViewController {
         flowlayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         flowlayout.scrollDirection = .horizontal
 
-        let itemWidth = (UIScreen.main.bounds.width - 84) / 10
-        //        let itemWidth = ((UIScreen.main.bounds.width - (10 * (rowItemCount - 1))) / rowItemCount)
+        let itemWidth = (UIScreen.main.bounds.width - 84) / 9
         flowlayout.itemSize = CGSize(width: itemWidth, height: 96)
         calendarCollectionView.collectionViewLayout = flowlayout
 
-        dateFormatter.dateFormat = "M월"
-        components.year = cal.component(.year, from: now)
-        components.month = cal.component(.month, from: now)
-        components.day = 1
+        for plusValue in 0...1000 {
+            var cellData = CellData()
+            cellData.date = makeDate(plusValue)
+            cellData.dayOfTheWeek = makeDayOfTheWeek(plusValue)
+            cellData.stackviewTappedBool = false
+            arrayToMakeCellData.append(cellData)
+        }
 
-        calculation()
+        monthButton.setTitle(makeMonthButtonText(), for: .normal)
     }
 
-    private func calculation() {
-        let firstDayOfMonth = cal.date(from: components)
-        let firstWeekday = cal.component(.weekday, from: firstDayOfMonth!)
-        let daysCountInMonth = cal.range(of: .day, in: .month, for: firstDayOfMonth!)!.count
-        let weekdayAdding = 3 - firstWeekday
+    private func makeDate(_ plusValue: Int) -> String {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        guard let chagedDate = calendar.date(byAdding: .day, value: plusValue, to: currentDate) else { return "" }
+        dateFormatter.dateFormat = "M/d"
+        let dateString = dateFormatter.string(from: chagedDate)
+        return dateString
+    }
 
-        self.monthButton.setTitle(dateFormatter.string(from: firstDayOfMonth!), for: .normal)
+    private func makeDayOfTheWeek(_ plusValue: Int) -> Int {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        guard let chagedDate = calendar.date(byAdding: .day, value: plusValue, to: currentDate) else { return -1 }
+        let dayOfTheWeekint = calendar.component(.weekday, from: chagedDate)
+        return dayOfTheWeekint
+    }
 
-        for day in weekdayAdding...daysCountInMonth {
-            if day < 1 {
-                // 1보다 작을 경우는 비워줘야 하기 때문에 빈 값을 넣어준다.
-                self.cellDataArray.append(CellData(weeks: weeks, day: " ", stackviewTappedBool: false))
-            } else {
-                self.cellDataArray.append(CellData(weeks: weeks, day: String(day), stackviewTappedBool: false))
-            }
-        }
+    private func makeMonthButtonText() -> String {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M월"
+        let monthString = dateFormatter.string(from: currentDate)
+        return monthString
     }
 }
 
@@ -96,7 +100,7 @@ extension GameMatchingViewController: UICollectionViewDelegate {
 
 extension GameMatchingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.cellDataArray.count
+        return self.arrayToMakeCellData.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -104,8 +108,8 @@ extension GameMatchingViewController: UICollectionViewDataSource {
             return .init()
         }
 
-        cellDataArray[indexPath.item].indexPath = indexPath
-        cell.configure(self.cellDataArray[indexPath.item])
+        arrayToMakeCellData[indexPath.item].indexPath = indexPath
+        cell.configure(self.arrayToMakeCellData[indexPath.item])
         cell.delegate = self
 
         return cell
@@ -115,10 +119,10 @@ extension GameMatchingViewController: UICollectionViewDataSource {
 extension GameMatchingViewController: ViewTappedDelegate {
     func viewTapped(_ cell: CalendarCollectionViewCell) {
         guard let indexPath = calendarCollectionView.indexPath(for: cell) else { return }
-        if cellDataArray[indexPath.item].stackviewTappedBool == false {
-            cellDataArray[indexPath.item].stackviewTappedBool = true
+        if arrayToMakeCellData[indexPath.item].stackviewTappedBool == false {
+            arrayToMakeCellData[indexPath.item].stackviewTappedBool = true
         } else {
-            cellDataArray[indexPath.item].stackviewTappedBool = false
+            arrayToMakeCellData[indexPath.item].stackviewTappedBool = false
         }
         self.calendarCollectionView.reloadData()
     }
