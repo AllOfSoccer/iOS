@@ -7,68 +7,61 @@
 
 import UIKit
 
-protocol ViewTappedDelegate: class {
+protocol ViewTappedDelegate: AnyObject {
     func viewTapped(_ cell: CalendarCollectionViewCell)
 }
 
 class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
-//    var indexPath: IndexPath? {
-//        didSet {
-//            setUI()
-//        }
-//    }
-//    var stackviewTappedBool: Bool = false
-
     @IBOutlet private weak var dayLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
 
-    @IBOutlet private weak var calendarStacview: UIStackView!
+    @IBOutlet private weak var calendarStackView: UIStackView!
     weak var delegate: ViewTappedDelegate?
 
     override func awakeFromNib() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
         tapGesture.delegate = self
-        calendarStacview.isUserInteractionEnabled = true
-        calendarStacview.addGestureRecognizer(tapGesture)
+        self.calendarStackView.isUserInteractionEnabled = true
+        self.calendarStackView.addGestureRecognizer(tapGesture)
     }
 
     @objc func handleTap(recognizer:UITapGestureRecognizer) {
-        delegate?.viewTapped(self)
+        self.delegate?.viewTapped(self)
     }
 
     func configure(_ cellData: CellData) {
-        guard let indexPath = cellData.indexPath else { return }
-        dayLabel.text = cellData.weeks[indexPath.item % 7]
-        dateLabel.text = cellData.day
+        guard let dayOfTheWeek = cellData.dayOfTheWeek else { return }
+        self.dayLabel.text = cellData.weeks[dayOfTheWeek % 7]
+        self.dateLabel.text = cellData.date
 
-        if indexPath.item % 7 == NumberOfDays.sunday.rawValue {
+        if dayOfTheWeek % 7 == NumberOfDays.sunday.rawValue {
             // 일요일
-            dayLabel.textColor = .red
-            dateLabel.textColor = .red
-        } else if indexPath.item % 7 == NumberOfDays.saturday.rawValue {
+            self.dayLabel.textColor = .red
+            self.dateLabel.textColor = .red
+        } else if dayOfTheWeek % 7 == NumberOfDays.saturday.rawValue {
             // 토요일
-            dayLabel.textColor = .blue
-            dateLabel.textColor = .blue
+            self.dayLabel.textColor = .blue
+            self.dateLabel.textColor = .blue
         } else {
             // 평일
-            dayLabel.textColor = .black
-            dateLabel.textColor = .black
+            self.dayLabel.textColor = .black
+            self.dateLabel.textColor = .black
         }
 
         if  cellData.stackviewTappedBool == true {
-            calendarStacview.backgroundColor = .blue
+            self.calendarStackView.backgroundColor = .blue
         } else {
-            calendarStacview.backgroundColor = .clear
+            self.calendarStackView.backgroundColor = .clear
         }
     }
 }
 
 enum NumberOfDays: Int {
-    case monday = 0
-    case tuesday = 1
-    case webseday = 2
-    case thursday = 3
-    case friday = 4
-    case saturday = 5
-    case sunday = 6
+    case saturday = 0
+    case sunday = 1
+    case monday = 2
+    case tuesday = 3
+    case webseday = 4
+    case thursday = 5
+    case friday = 6
 }
