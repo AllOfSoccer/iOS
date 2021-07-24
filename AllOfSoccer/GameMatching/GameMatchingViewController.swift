@@ -7,8 +7,11 @@
 
 import UIKit
 import FSCalendar
+import SnapKit
 
 class GameMatchingViewController: UIViewController {
+    private var selectedDate: [String] = []
+
     private var weeks: [String] = ["월","화","수","목","금","토","일"]
     private var cal = Calendar.current
     private var components = DateComponents()
@@ -16,12 +19,49 @@ class GameMatchingViewController: UIViewController {
     private let dateFormatter = DateFormatter()
     private var cellDataArray
         : [CellData] = []
+    private var currentPage: Date?
+
+    private lazy var today: Date = {
+        return Date()
+    }()
+
+    private lazy var seletCalendarView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .yellow
+        return view
+    }()
+
+    private lazy var calendarButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .blue
+        return button
+    }()
+
+    private lazy var calendarView: FSCalendar = {
+        let view = FSCalendar()
+        return view
+    }()
+
+    private lazy var calendarPrevButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("이전", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
+
+    private lazy var calendarNextButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("다음", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
+
+
 
     @IBOutlet private weak var teamMatchButton: SelectTableButton!
     @IBOutlet private weak var manMatchButton: SelectTableButton!
     @IBOutlet private weak var selectedLineCenterConstraint: NSLayoutConstraint!
     @IBOutlet private weak var monthButton: UIButton!
-
     @IBOutlet private weak var
         calendarCollectionView: UICollectionView!
 
@@ -47,6 +87,10 @@ class GameMatchingViewController: UIViewController {
         }
     }
 
+    @IBAction func monthButtonTouchUp(_ sender: UIButton) {
+        self.seletCalendarView.isHidden = false
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -70,6 +114,104 @@ class GameMatchingViewController: UIViewController {
         components.day = 1
 
         calculation()
+
+        self.view.addSubview(seletCalendarView)
+        seletCalendarView.snp.makeConstraints { (make) in
+            make.width.equalTo(315)
+            make.height.equalTo(406)
+            make.center.equalTo(self.view)
+        }
+
+        self.seletCalendarView.addSubview(calendarButton)
+        calendarButton.snp.makeConstraints { (make) in
+            make.width.equalTo(seletCalendarView)
+            make.height.equalTo(63)
+            make.bottom.equalTo(seletCalendarView)
+        }
+
+        self.seletCalendarView.addSubview(calendarView)
+        calendarView.snp.makeConstraints { (make) in
+            make.top.equalTo(seletCalendarView)
+            make.bottom.equalTo(calendarButton.snp.top)
+            make.width.equalTo(seletCalendarView)
+        }
+
+        self.seletCalendarView.isHidden = true
+
+        self.calendarButton.addTarget(self, action: #selector(calendarButtonTouchUp), for: .touchUpInside)
+
+        self.calendarView.delegate = self
+        self.calendarView.dataSource = self
+
+        // 글자색 변경
+        self.calendarView.appearance.titleWeekendColor = UIColor.red
+        self.calendarView.appearance.selectionColor = UIColor.black
+        self.calendarView.appearance.todayColor = UIColor.blue
+
+        // 헤더 변경
+        self.calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
+        self.calendarView.appearance.headerDateFormat = "YYYY년 M월"
+        self.calendarView.appearance.headerTitleColor = .black
+
+        // Weekday name 언어 변경
+        self.calendarView.locale = Locale(identifier: "ko_KR")
+        self.calendarView.calendarWeekdayView.weekdayLabels[0].text = "일"
+        self.calendarView.calendarWeekdayView.weekdayLabels[0].text = "월"
+        self.calendarView.calendarWeekdayView.weekdayLabels[0].text = "화"
+        self.calendarView.calendarWeekdayView.weekdayLabels[0].text = "수"
+        self.calendarView.calendarWeekdayView.weekdayLabels[0].text = "목"
+        self.calendarView.calendarWeekdayView.weekdayLabels[0].text = "금"
+        self.calendarView.calendarWeekdayView.weekdayLabels[0].text = "토"
+
+        // 다중 선택기능
+        self.calendarView.allowsMultipleSelection = true
+
+        // 전, 다음 달 이동 버튼 만들기
+        self.calendarView.addSubview(calendarPrevButton)
+        calendarPrevButton.snp.makeConstraints { make in
+            make.top.equalTo(calendarView.snp.top)
+            make.left.equalTo(calendarView.snp.left)
+            make.width.equalTo(50)
+            make.height.equalTo(30)
+        }
+
+        self.calendarView.addSubview(calendarNextButton)
+        calendarNextButton.snp.makeConstraints { make in
+            make.top.equalTo(calendarView.snp.top)
+            make.right.equalTo(calendarView.snp.right)
+            make.width.equalTo(50)
+            make.height.equalTo(30)
+        }
+
+        self.calendarPrevButton.addTarget(self, action: #selector(monthBackButtonPressed), for: .touchUpInside)
+        self.calendarNextButton.addTarget(self, action: #selector(monthNextButtonPressed), for: .touchUpInside)
+
+        // 선택시 이벤트처리
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+
+    }
+
+    @objc private func calendarButtonTouchUp() {
+        self.seletCalendarView.isHidden = true
+    }
+
+    @objc private func monthBackButtonPressed() {
+        moveCurrentPage(moveUp: false)
+    }
+
+    @objc private func monthNextButtonPressed() {
+        moveCurrentPage(moveUp: true)
+    }
+
+    private func moveCurrentPage(moveUp: Bool) {
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.month = moveUp ? 1 : -1
+
+        self.currentPage = calendar.date(byAdding: dateComponents, to: self.currentPage ?? self.today)
+        guard let currentPage = self .currentPage else { return }
+        self.calendarView.setCurrentPage(currentPage, animated: true)
     }
 
     private func calculation() {
@@ -110,6 +252,29 @@ extension GameMatchingViewController: UICollectionViewDataSource {
 
         return cell
     }
+}
+
+extension GameMatchingViewController: FSCalendarDelegate {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let stringDate = dateFormatter.string(from: date)
+        self.selectedDate.append(stringDate)
+        let countOfSeletedDate = self.selectedDate.count
+        let buttonTitle = "선택 적용하기 (\(countOfSeletedDate))"
+        self.calendarButton.setTitle(buttonTitle, for: .normal)
+    }
+
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let stringDate = dateFormatter.string(from: date)
+        guard let indexOfStringDate = selectedDate.firstIndex(of: stringDate) else { return }
+        self.selectedDate.remove(at: indexOfStringDate)
+        let countOfSeletedDate = self.selectedDate.count
+        let buttonTitle = "선택 적용하기 (\(countOfSeletedDate))"
+        self.calendarButton.setTitle(buttonTitle, for: .normal)
+    }
+}
+
+extension GameMatchingViewController: FSCalendarDataSource {
+
 }
 
 extension GameMatchingViewController: ViewTappedDelegate {
