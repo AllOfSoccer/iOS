@@ -9,6 +9,11 @@ import UIKit
 import FSCalendar
 import SnapKit
 
+enum Mode {
+    case teamMatching
+    case manMatching
+}
+
 class GameMatchingViewController: UIViewController {
     private var selectedDate: [String] = []
 
@@ -133,12 +138,21 @@ class GameMatchingViewController: UIViewController {
             make.width.equalTo(seletCalendarView)
         }
 
-        self.seletCalendarView.isHidden = true
+        self.calendarView.addSubview(calendarPrevButton)
+        self.calendarPrevButton.snp.makeConstraints { make in
+            make.top.equalTo(calendarView.snp.top)
+            make.left.equalTo(calendarView.snp.left)
+            make.width.equalTo(50)
+            make.height.equalTo(30)
+        }
 
-        self.calendarButton.addTarget(self, action: #selector(calendarButtonTouchUp), for: .touchUpInside)
-
-        self.calendarView.delegate = self
-        self.calendarView.dataSource = self
+        self.calendarView.addSubview(calendarNextButton)
+        self.calendarNextButton.snp.makeConstraints { make in
+            make.top.equalTo(calendarView.snp.top)
+            make.right.equalTo(calendarView.snp.right)
+            make.width.equalTo(50)
+            make.height.equalTo(30)
+        }
 
         self.calendarView.appearance.titleWeekendColor = UIColor.red
         self.calendarView.appearance.selectionColor = UIColor.black
@@ -157,24 +171,14 @@ class GameMatchingViewController: UIViewController {
         self.calendarView.calendarWeekdayView.weekdayLabels[5].text = "금"
         self.calendarView.calendarWeekdayView.weekdayLabels[6].text = "토"
 
+        self.seletCalendarView.isHidden = true
+
+        self.calendarView.delegate = self
+        self.calendarView.dataSource = self
+
         self.calendarView.allowsMultipleSelection = true
 
-        self.calendarView.addSubview(calendarPrevButton)
-        self.calendarPrevButton.snp.makeConstraints { make in
-            make.top.equalTo(calendarView.snp.top)
-            make.left.equalTo(calendarView.snp.left)
-            make.width.equalTo(50)
-            make.height.equalTo(30)
-        }
-
-        self.calendarView.addSubview(calendarNextButton)
-        self.calendarNextButton.snp.makeConstraints { make in
-            make.top.equalTo(calendarView.snp.top)
-            make.right.equalTo(calendarView.snp.right)
-            make.width.equalTo(50)
-            make.height.equalTo(30)
-        }
-
+        self.calendarButton.addTarget(self, action: #selector(calendarButtonTouchUp), for: .touchUpInside)
         self.calendarPrevButton.addTarget(self, action: #selector(monthBackButtonPressed), for: .touchUpInside)
         self.calendarNextButton.addTarget(self, action: #selector(monthNextButtonPressed), for: .touchUpInside)
 
