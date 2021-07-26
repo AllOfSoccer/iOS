@@ -7,23 +7,16 @@
 
 import UIKit
 
-protocol ViewTappedDelegate: class {
+protocol CalendarCellTappedDelegate: class {
     func viewTapped(_ cell: CalendarCollectionViewCell)
 }
 
 class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
-//    var indexPath: IndexPath? {
-//        didSet {
-//            setUI()
-//        }
-//    }
-//    var stackviewTappedBool: Bool = false
-
     @IBOutlet private weak var dayLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
 
     @IBOutlet private weak var calendarStacview: UIStackView!
-    weak var delegate: ViewTappedDelegate?
+    weak var delegate: CalendarCellTappedDelegate?
 
     override func awakeFromNib() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
