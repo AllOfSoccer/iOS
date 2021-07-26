@@ -21,8 +21,8 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
     override func awakeFromNib() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
         tapGesture.delegate = self
-        self.calendarStackView.isUserInteractionEnabled = true
-        self.calendarStackView.addGestureRecognizer(tapGesture)
+        self.calendarStacview.isUserInteractionEnabled = true
+        self.calendarStacview.addGestureRecognizer(tapGesture)
     }
 
     @objc func handleTap(recognizer:UITapGestureRecognizer) {
@@ -49,9 +49,9 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
         }
 
         if  cellData.stackviewTappedBool == true {
-            self.calendarStackView.backgroundColor = .blue
+            self.calendarStacview.backgroundColor = .blue
         } else {
-            self.calendarStackView.backgroundColor = .clear
+            self.calendarStacview.backgroundColor = .clear
         }
     }
 }

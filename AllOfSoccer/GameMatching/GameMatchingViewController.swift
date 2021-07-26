@@ -15,6 +15,7 @@ enum Mode {
 }
 
 class GameMatchingViewController: UIViewController {
+
     private var selectedDate: [String] = []
 
     private var weeks: [String] = ["월","화","수","목","금","토","일"]
@@ -97,10 +98,44 @@ class GameMatchingViewController: UIViewController {
         super.viewDidLoad()
         calendarCollectionViewDefaultSetting()
         selectCalendarViewDefaultSetting()
+
+        let dateRange = 1000
+        for nextDay in 0...dateRange {
+            var cellData = CellData()
+            cellData.date = makeDate(nextDay)
+            cellData.dayOfTheWeek = makeDayOfTheWeek(nextDay)
+            cellData.stackviewTappedBool = false
+            self.cellDataArray.append(cellData)
+        }
+        self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
     }
 
-        self.calendarCollectionView.delegate = self
-        self.calendarCollectionView.dataSource = self
+    private func makeDate(_ plusValue: Int) -> String {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        guard let chagedDate = calendar.date(byAdding: .day, value: plusValue, to: currentDate) else { return "" }
+        dateFormatter.dateFormat = "M/d"
+        let dateString = dateFormatter.string(from: chagedDate)
+        return dateString
+    }
+
+    private func makeDayOfTheWeek(_ plusValue: Int) -> Int? {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        guard let chagedDate = calendar.date(byAdding: .day, value: plusValue, to: currentDate) else { return nil}
+        let dayOfTheWeekint = calendar.component(.weekday, from: chagedDate)
+        return dayOfTheWeekint
+    }
+
+    private func makeMonthButtonText() -> String {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M월"
+        let monthString = dateFormatter.string(from: currentDate)
+        return monthString
+    }
+
     private
     func calendarCollectionViewDefaultSetting() {
         self.calendarCollectionView.delegate = self
@@ -118,16 +153,6 @@ class GameMatchingViewController: UIViewController {
         calendarCollectionView.collectionViewLayout = flowlayout
     }
 
-        let dateRange = 1000
-        for nextDay in 0...dateRange {
-            var cellData = CellData()
-            cellData.date = makeDate(nextDay)
-            cellData.dayOfTheWeek = makeDayOfTheWeek(nextDay)
-            cellData.stackviewTappedBool = false
-            self.cellDataArray.append(cellData)
-        }
-        self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
-    }
     private func selectCalendarViewDefaultSetting() {
         self.view.addSubview(seletCalendarView)
         self.seletCalendarView.snp.makeConstraints { (make) in
@@ -136,15 +161,6 @@ class GameMatchingViewController: UIViewController {
             make.center.equalTo(self.view)
         }
 
-    private func makeDate(_ plusValue: Int) -> String {
-        let calendar = Calendar.current
-        let currentDate = Date()
-        let dateFormatter = DateFormatter()
-        guard let chagedDate = calendar.date(byAdding: .day, value: plusValue, to: currentDate) else { return "" }
-        dateFormatter.dateFormat = "M/d"
-        let dateString = dateFormatter.string(from: chagedDate)
-        return dateString
-    }
         self.seletCalendarView.addSubview(calendarButton)
         self.calendarButton.snp.makeConstraints { (make) in
             make.width.equalTo(seletCalendarView)
@@ -152,13 +168,6 @@ class GameMatchingViewController: UIViewController {
             make.bottom.equalTo(seletCalendarView)
         }
 
-    private func makeDayOfTheWeek(_ plusValue: Int) -> Int? {
-        let calendar = Calendar.current
-        let currentDate = Date()
-        guard let chagedDate = calendar.date(byAdding: .day, value: plusValue, to: currentDate) else { return nil}
-        let dayOfTheWeekint = calendar.component(.weekday, from: chagedDate)
-        return dayOfTheWeekint
-    }
         self.seletCalendarView.addSubview(calendarView)
         self.calendarView.snp.makeConstraints { (make) in
             make.top.equalTo(seletCalendarView)
@@ -166,12 +175,6 @@ class GameMatchingViewController: UIViewController {
             make.width.equalTo(seletCalendarView)
         }
 
-    private func makeMonthButtonText() -> String {
-        let currentDate = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M월"
-        let monthString = dateFormatter.string(from: currentDate)
-        return monthString
         self.calendarView.addSubview(calendarPrevButton)
         self.calendarPrevButton.snp.makeConstraints { make in
             make.top.equalTo(calendarView.snp.top)
@@ -243,9 +246,10 @@ class GameMatchingViewController: UIViewController {
 }
 
 extension GameMatchingViewController: UICollectionViewDelegate {
-}
 
+}
 extension GameMatchingViewController: UICollectionViewDataSource {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.cellDataArray.count
     }
@@ -262,12 +266,8 @@ extension GameMatchingViewController: UICollectionViewDataSource {
     }
 }
 
-extension GameMatchingViewController: ViewTappedDelegate {
-    func viewTapped(_ cell: CalendarCollectionViewCell) {
-        guard let indexPath = self.calendarCollectionView.indexPath(for: cell) else { return }
-        if self.cellDataArray[indexPath.item].stackviewTappedBool == false {
-            self.cellDataArray[indexPath.item].stackviewTappedBool = true
 extension GameMatchingViewController: FSCalendarDelegate {
+
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let stringDate = dateFormatter.string(from: date)
         self.selectedDate.append(stringDate)
@@ -287,6 +287,7 @@ extension GameMatchingViewController: FSCalendarDelegate {
 }
 
 extension GameMatchingViewController: FSCalendarDataSource {
+
 }
 
 extension GameMatchingViewController: CalendarCellTappedDelegate {
