@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CalendarCellTappedDelegate: class {
-    func viewTapped(_ cell: CalendarCollectionViewCell)
+    func cellTapped(_ cell: CalendarCollectionViewCell)
 }
 
 class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
@@ -26,7 +26,7 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
     }
 
     @objc func handleTap(recognizer:UITapGestureRecognizer) {
-        delegate?.viewTapped(self)
+        delegate?.cellTapped(self)
     }
 
     func configure(_ cellData: CellData) {

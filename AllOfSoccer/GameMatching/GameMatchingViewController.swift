@@ -109,7 +109,6 @@ class GameMatchingViewController: UIViewController {
         //        let itemWidth = ((UIScreen.main.bounds.width - (10 * (rowItemCount - 1))) / rowItemCount)
         flowlayout.itemSize = CGSize(width: itemWidth, height: 96)
         calendarCollectionView.collectionViewLayout = flowlayout
-
     }
 
     private func selectCalendarViewDefaultSetting() {
@@ -246,11 +245,10 @@ extension GameMatchingViewController: FSCalendarDelegate {
 }
 
 extension GameMatchingViewController: FSCalendarDataSource {
-
 }
 
 extension GameMatchingViewController: CalendarCellTappedDelegate {
-    func viewTapped(_ cell: CalendarCollectionViewCell) {
+    func cellTapped(_ cell: CalendarCollectionViewCell) {
         guard let indexPath = calendarCollectionView.indexPath(for: cell) else { return }
         if cellDataArray[indexPath.item].stackviewTappedBool == false {
             cellDataArray[indexPath.item].stackviewTappedBool = true
