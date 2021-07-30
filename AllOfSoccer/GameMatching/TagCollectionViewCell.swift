@@ -8,29 +8,41 @@
 import UIKit
 
 protocol TagCollectionViewCellTapped: AnyObject {
-    func cellButtonTapped(_ button: RoundButton)
+//    func cellButtonTapped(_ button: RoundButton)
+    func cellTapped(_ cell: TagCollectionViewCell)
 }
 
 class TagCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet private weak var tagButton: RoundButton!
+    @IBOutlet weak var tagButton: RoundButton!
     weak var delegate: TagCollectionViewCellTapped?
 
     @IBAction private func tagButtonTouchUp(_ sender: RoundButton) {
-        if self.tagButton.isSelected {
-            self.tagButton.isSelected = false
-            self.tagButton.backgroundColor = UIColor.init(named: "tagBackNoneTouchUpColor")
-            self.tagButton.setTitleColor(UIColor.init(named: "tagTitleNoneTouchUpColor"), for: .normal)
-        } else {
-            self.tagButton.isSelected = true
-            self.tagButton.backgroundColor = UIColor.init(named: "tagBackTouchUpColor")
-            self.tagButton.setTitleColor(.white, for: .selected)
-        }
-        self.delegate?.cellButtonTapped(self.tagButton)
+        self.delegate?.cellTapped(self)
     }
 
-    func configure(_ tagCellName: String, _ resetButtonIsSelected: Bool) {
-        self.tagButton.setTitle(tagCellName, for: .normal)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.tagButton.isSelected = false
+    }
+
+    func configure(_ tagCellData: TagCellData, _ resetButtonIsSelected: Bool) {
+        guard let tagCellTitle = tagCellData.tagCellTitle else { return }
+        guard let tagCellIsSelected = tagCellData.tagCellIsSelected else { return }
+
+        self.tagButton.setTitle(tagCellData.tagCellTitle, for: .normal)
+
+        self.tagButton.isSelected = tagCellIsSelected
+        if self.tagButton.isSelected {
+            self.tagButton.backgroundColor = UIColor.init(named: "tagBackTouchUpColor")
+            self.tagButton.setTitleColor(.white, for: .normal)
+            self.tagButton.isSelected = false
+        } else {
+            self.tagButton.backgroundColor = UIColor.init(named: "tagBackNoneTouchUpColor")
+            self.tagButton.setTitleColor(UIColor.init(named: "tagTitleNoneTouchUpColor"), for: .selected)
+            self.tagButton.isSelected = true
+        }
+
         if resetButtonIsSelected {
             self.tagButton.isSelected = false
             self.tagButton.backgroundColor = UIColor.init(named: "tagBackNoneTouchUpColor")

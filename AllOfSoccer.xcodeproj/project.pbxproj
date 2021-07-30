@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		9D034CE826903A9E0051FA02 /* -----Global----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CE726903A9E0051FA02 /* -----Global----- */; };
 		9D034CEE26903B590051FA02 /* -----Primary View----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CED26903B590051FA02 /* -----Primary View----- */; };
-		9D10855926A2887700F8263F /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D10855826A2887700F8263F /* CellData.swift */; };
+		9D10855926A2887700F8263F /* CalendarCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D10855826A2887700F8263F /* CalendarCellData.swift */; };
 		9D1F225026ADA317000726CB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D1F224F26ADA317000726CB /* Colors.xcassets */; };
+		9D24EF7C26B3C68400F55676 /* TagCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D24EF7B26B3C68400F55676 /* TagCellData.swift */; };
 		9D3E375A266D11AF0058A4B7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E3759266D11AF0058A4B7 /* Alamofire */; };
 		9D3E375E266D11DF0058A4B7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E375D266D11DF0058A4B7 /* Kingfisher */; };
 		9D4EC53F26903C9500D1A27D /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4EC53E26903C9500D1A27D /* SignIn.storyboard */; };
@@ -45,8 +46,9 @@
 /* Begin PBXFileReference section */
 		9D034CE726903A9E0051FA02 /* -----Global----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Global-----"; sourceTree = "<group>"; };
 		9D034CED26903B590051FA02 /* -----Primary View----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Primary View-----"; sourceTree = "<group>"; };
-		9D10855826A2887700F8263F /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
+		9D10855826A2887700F8263F /* CalendarCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCellData.swift; sourceTree = "<group>"; };
 		9D1F224F26ADA317000726CB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		9D24EF7B26B3C68400F55676 /* TagCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCellData.swift; sourceTree = "<group>"; };
 		9D4EC53E26903C9500D1A27D /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		9D56CF2926932D2200628608 /* SelectTableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableButton.swift; sourceTree = "<group>"; };
 		9D686C9D26AD663700440CBF /* RoundStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundStackView.swift; sourceTree = "<group>"; };
@@ -167,8 +169,9 @@
 				9DC1289F26917E400021EDF5 /* GameMatching.storyboard */,
 				9DC128A226917E740021EDF5 /* GameMatchingViewController.swift */,
 				9DECF34726A0468900C846DB /* CalendarCollectionViewCell.swift */,
-				9D10855826A2887700F8263F /* CellData.swift */,
+				9D10855826A2887700F8263F /* CalendarCellData.swift */,
 				9D686C9F26AD6EC400440CBF /* TagCollectionViewCell.swift */,
+				9D24EF7B26B3C68400F55676 /* TagCellData.swift */,
 			);
 			path = GameMatching;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */,
+				9D24EF7C26B3C68400F55676 /* TagCellData.swift in Sources */,
 				9DD474B326903D8A006F00F1 /* TopRoundView.swift in Sources */,
 				9DECF34826A0468900C846DB /* CalendarCollectionViewCell.swift in Sources */,
 				9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */,
@@ -331,7 +335,7 @@
 				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
 				9D686CA026AD6EC400440CBF /* TagCollectionViewCell.swift in Sources */,
 				9D6B91E4266D08E000AF182B /* SceneDelegate.swift in Sources */,
-				9D10855926A2887700F8263F /* CellData.swift in Sources */,
+				9D10855926A2887700F8263F /* CalendarCellData.swift in Sources */,
 				9D56CF2A26932D2200628608 /* SelectTableButton.swift in Sources */,
 				9DD474B026903D78006F00F1 /* RoundView.swift in Sources */,
 				9D686C9E26AD663700440CBF /* RoundStackView.swift in Sources */,
