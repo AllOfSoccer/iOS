@@ -7,26 +7,26 @@
 
 import UIKit
 
-protocol ViewTappedDelegate: AnyObject {
-    func viewTapped(_ cell: CalendarCollectionViewCell)
+protocol CalendarCellTappedDelegate: class {
+    func cellTapped(_ cell: CalendarCollectionViewCell)
 }
 
 class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     @IBOutlet private weak var dayLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
 
-    @IBOutlet private weak var calendarStackView: UIStackView!
-    weak var delegate: ViewTappedDelegate?
+    @IBOutlet private weak var calendarStacview: UIStackView!
+    weak var delegate: CalendarCellTappedDelegate?
 
     override func awakeFromNib() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
         tapGesture.delegate = self
-        self.calendarStackView.isUserInteractionEnabled = true
-        self.calendarStackView.addGestureRecognizer(tapGesture)
+        self.calendarStacview.isUserInteractionEnabled = true
+        self.calendarStacview.addGestureRecognizer(tapGesture)
     }
 
     @objc func handleTap(recognizer:UITapGestureRecognizer) {
-        self.delegate?.viewTapped(self)
+        delegate?.cellTapped(self)
     }
 
     func configure(_ cellData: CellData) {
@@ -49,9 +49,9 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
         }
 
         if  cellData.stackviewTappedBool == true {
-            self.calendarStackView.backgroundColor = .blue
+            self.calendarStacview.backgroundColor = .blue
         } else {
-            self.calendarStackView.backgroundColor = .clear
+            self.calendarStacview.backgroundColor = .clear
         }
     }
 }

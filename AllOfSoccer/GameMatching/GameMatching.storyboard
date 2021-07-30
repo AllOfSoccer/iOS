@@ -67,6 +67,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mil-d7-Lkb">
                                         <rect key="frame" x="16" y="33" width="30" height="30"/>
                                         <state key="normal" title="1월"/>
+                                        <connections>
+                                            <action selector="monthButtonTouchUp:" destination="V9G-Fe-OSJ" eventType="touchUpInside" id="vKK-ii-2tF"/>
+                                        </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ujb-m5-sph">
                                         <rect key="frame" x="58" y="0.0" width="339" height="96"/>
@@ -112,7 +115,7 @@
                                                 </collectionViewCellContentView>
                                                 <size key="customSize" width="153" height="94"/>
                                                 <connections>
-                                                    <outlet property="calendarStackView" destination="HT0-3q-ff5" id="2o0-z1-1qx"/>
+                                                    <outlet property="calendarStacview" destination="HT0-3q-ff5" id="NXS-FB-IQL"/>
                                                     <outlet property="dateLabel" destination="XzL-ws-Wef" id="ad9-M7-3sh"/>
                                                     <outlet property="dayLabel" destination="W8W-tR-LTv" id="7q2-Ls-Isw"/>
                                                 </connections>
