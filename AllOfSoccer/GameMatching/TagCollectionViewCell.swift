@@ -29,12 +29,6 @@ class TagCollectionViewCell: UICollectionViewCell {
         self.delegate?.cellButtonTapped(self.tagButton)
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-//        self.isSelected = false
-//        self.tagButton.backgroundColor = UIColor.init(named: "tagBackNoneTouchUpColor")
-    }
-
     func configure(_ tagCellName: String, _ resetButtonIsSelected: Bool) {
         self.tagButton.setTitle(tagCellName, for: .normal)
         if resetButtonIsSelected {

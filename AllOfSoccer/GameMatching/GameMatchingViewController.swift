@@ -24,7 +24,7 @@ class GameMatchingViewController: UIViewController {
     private let dateFormatter = DateFormatter()
     private var cellDataArray
         : [CellData] = []
-<<<<<<< Updated upstream
+
     private var currentPage: Date?
 
     private lazy var today: Date = {
@@ -61,11 +61,10 @@ class GameMatchingViewController: UIViewController {
         button.setTitleColor(.black, for: .normal)
         return button
     }()
-=======
+
     private var tagCellDataArray: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
     private var tappedTagCellData: [String] = []
     private var resetButtonIsSelected: Bool?
->>>>>>> Stashed changes
 
     @IBOutlet private weak var teamMatchButton: SelectTableButton!
     @IBOutlet private weak var manMatchButton: SelectTableButton!
@@ -100,94 +99,26 @@ class GameMatchingViewController: UIViewController {
         }
     }
 
-<<<<<<< Updated upstream
     @IBAction func monthButtonTouchUp(_ sender: UIButton) {
         self.seletCalendarView.isHidden = false
-=======
+    }
+
     @IBAction private func resetTagCollectionView(_ sender: UIButton) {
         self.tappedTagCellData.removeAll()
         self.resetButtonIsSelected = true
         self.tagCollectionView.reloadData()
 
         self.tagCollectionViewCellIsNotSelectedViewSetting()
->>>>>>> Stashed changes
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< Updated upstream
+
         calendarCollectionViewDefaultSetting()
         selectCalendarViewDefaultSetting()
-=======
-
-        // CalendarCollectionView Default Setting
-        self.calendarCollectionView.delegate = self
-        self.calendarCollectionView.dataSource = self
-
-        let flowlayout = UICollectionViewFlowLayout()
-        flowlayout.minimumInteritemSpacing = 15
-        flowlayout.minimumLineSpacing = 10
-        flowlayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        flowlayout.scrollDirection = .horizontal
-
-        let itemWidth = (UIScreen.main.bounds.width - 84) / 9
-        flowlayout.itemSize = CGSize(width: itemWidth, height: 96)
-        self.calendarCollectionView.collectionViewLayout = flowlayout
->>>>>>> Stashed changes
-
-        let dateRange = 1000
-        for nextDay in 0...dateRange {
-            var cellData = CellData()
-            cellData.date = makeDate(nextDay)
-            cellData.dayOfTheWeek = makeDayOfTheWeek(nextDay)
-            cellData.stackviewTappedBool = false
-            self.cellDataArray.append(cellData)
-        }
-        self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
-
-        // TagCollectionView Default Setting
-        self.tagCollectionView.delegate = self
-        self.tagCollectionView.dataSource = self
-
-        let tagCollectionViewLayout = UICollectionViewFlowLayout()
-        tagCollectionViewLayout.estimatedItemSize = CGSize(width: 500, height: 28)
-        tagCollectionViewLayout.minimumInteritemSpacing = 6
-        tagCollectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-        tagCollectionViewLayout.scrollDirection = .horizontal
-        self.tagCollectionView.collectionViewLayout = tagCollectionViewLayout
-
-        tagCollectionViewCellIsNotSelectedViewSetting()
-
-        self.resetButtonIsSelected = false
+        tagCOllectionViewDefaultSetting()
     }
 
-    private func makeDate(_ plusValue: Int) -> String {
-        let calendar = Calendar.current
-        let currentDate = Date()
-        let dateFormatter = DateFormatter()
-        guard let chagedDate = calendar.date(byAdding: .day, value: plusValue, to: currentDate) else { return "" }
-        dateFormatter.dateFormat = "M/d"
-        let dateString = dateFormatter.string(from: chagedDate)
-        return dateString
-    }
-
-    private func makeDayOfTheWeek(_ plusValue: Int) -> Int? {
-        let calendar = Calendar.current
-        let currentDate = Date()
-        guard let chagedDate = calendar.date(byAdding: .day, value: plusValue, to: currentDate) else { return nil}
-        let dayOfTheWeekint = calendar.component(.weekday, from: chagedDate)
-        return dayOfTheWeekint
-    }
-
-    private func makeMonthButtonText() -> String {
-        let currentDate = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M월"
-        let monthString = dateFormatter.string(from: currentDate)
-        return monthString
-    }
-
-<<<<<<< Updated upstream
     private
     func calendarCollectionViewDefaultSetting() {
         self.calendarCollectionView.delegate = self
@@ -203,6 +134,16 @@ class GameMatchingViewController: UIViewController {
         flowlayout.itemSize = CGSize(width: itemWidth, height: 96)
         self.calendarCollectionView.collectionViewLayout = flowlayout
         calendarCollectionView.collectionViewLayout = flowlayout
+
+        let dateRange = 1000
+        for nextDay in 0...dateRange {
+            var cellData = CellData()
+            cellData.date = makeDate(nextDay)
+            cellData.dayOfTheWeek = makeDayOfTheWeek(nextDay)
+            cellData.stackviewTappedBool = false
+            self.cellDataArray.append(cellData)
+        }
+        self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
     }
 
     private func selectCalendarViewDefaultSetting() {
@@ -274,6 +215,48 @@ class GameMatchingViewController: UIViewController {
         self.dateFormatter.dateFormat = "yyyy-MM-dd"
     }
 
+    private func tagCOllectionViewDefaultSetting() {
+        self.tagCollectionView.delegate = self
+        self.tagCollectionView.dataSource = self
+
+        let tagCollectionViewLayout = UICollectionViewFlowLayout()
+        tagCollectionViewLayout.estimatedItemSize = CGSize(width: 500, height: 28)
+        tagCollectionViewLayout.minimumInteritemSpacing = 6
+        tagCollectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+        tagCollectionViewLayout.scrollDirection = .horizontal
+        self.tagCollectionView.collectionViewLayout = tagCollectionViewLayout
+
+        tagCollectionViewCellIsNotSelectedViewSetting()
+
+        self.resetButtonIsSelected = false
+    }
+
+    private func makeDate(_ plusValue: Int) -> String {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        guard let chagedDate = calendar.date(byAdding: .day, value: plusValue, to: currentDate) else { return "" }
+        dateFormatter.dateFormat = "M/d"
+        let dateString = dateFormatter.string(from: chagedDate)
+        return dateString
+    }
+
+    private func makeDayOfTheWeek(_ plusValue: Int) -> Int? {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        guard let chagedDate = calendar.date(byAdding: .day, value: plusValue, to: currentDate) else { return nil}
+        let dayOfTheWeekint = calendar.component(.weekday, from: chagedDate)
+        return dayOfTheWeekint
+    }
+
+    private func makeMonthButtonText() -> String {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M월"
+        let monthString = dateFormatter.string(from: currentDate)
+        return monthString
+    }
+
     @objc private func calendarButtonTouchUp() {
         self.seletCalendarView.isHidden = true
     }
@@ -294,7 +277,8 @@ class GameMatchingViewController: UIViewController {
         self.currentPage = calendar.date(byAdding: dateComponents, to: self.currentPage ?? self.today)
         guard let currentPage = self .currentPage else { return }
         self.calendarView.setCurrentPage(currentPage, animated: true)
-=======
+    }
+
     private func tagCollectionViewCellIsNotSelectedViewSetting() {
         self.tagCollectionViewConstraint.constant = -(refreshButtonView.frame.width)
         self.refreshButtonView.isHidden = true
@@ -303,21 +287,15 @@ class GameMatchingViewController: UIViewController {
     private func tagCollectionViewCellIsSelectedViewSetting() {
         self.tagCollectionViewConstraint.constant = 0
         self.refreshButtonView.isHidden = false
->>>>>>> Stashed changes
     }
 }
 
 extension GameMatchingViewController: UICollectionViewDelegate {
-<<<<<<< Updated upstream
-=======
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }
->>>>>>> Stashed changes
 
-}
 extension GameMatchingViewController: UICollectionViewDataSource {
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.calendarCollectionView {
             return self.cellDataArray.count
@@ -349,7 +327,6 @@ extension GameMatchingViewController: UICollectionViewDataSource {
 }
 
 extension GameMatchingViewController: FSCalendarDelegate {
-
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let stringDate = dateFormatter.string(from: date)
         self.selectedDate.append(stringDate)
