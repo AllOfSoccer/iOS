@@ -10,10 +10,13 @@
 		9D034CE826903A9E0051FA02 /* -----Global----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CE726903A9E0051FA02 /* -----Global----- */; };
 		9D034CEE26903B590051FA02 /* -----Primary View----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CED26903B590051FA02 /* -----Primary View----- */; };
 		9D10855926A2887700F8263F /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D10855826A2887700F8263F /* CellData.swift */; };
+		9D1F225026ADA317000726CB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D1F224F26ADA317000726CB /* Colors.xcassets */; };
 		9D3E375A266D11AF0058A4B7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E3759266D11AF0058A4B7 /* Alamofire */; };
 		9D3E375E266D11DF0058A4B7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E375D266D11DF0058A4B7 /* Kingfisher */; };
 		9D4EC53F26903C9500D1A27D /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4EC53E26903C9500D1A27D /* SignIn.storyboard */; };
 		9D56CF2A26932D2200628608 /* SelectTableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D56CF2926932D2200628608 /* SelectTableButton.swift */; };
+		9D686C9E26AD663700440CBF /* RoundStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D686C9D26AD663700440CBF /* RoundStackView.swift */; };
+		9D686CA026AD6EC400440CBF /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D686C9F26AD6EC400440CBF /* TagCollectionViewCell.swift */; };
 		9D6B91E2266D08E000AF182B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B91E1266D08E000AF182B /* AppDelegate.swift */; };
 		9D6B91E4266D08E000AF182B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B91E3266D08E000AF182B /* SceneDelegate.swift */; };
 		9D6B91E9266D08E000AF182B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91E7266D08E000AF182B /* Main.storyboard */; };
@@ -43,8 +46,11 @@
 		9D034CE726903A9E0051FA02 /* -----Global----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Global-----"; sourceTree = "<group>"; };
 		9D034CED26903B590051FA02 /* -----Primary View----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Primary View-----"; sourceTree = "<group>"; };
 		9D10855826A2887700F8263F /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
+		9D1F224F26ADA317000726CB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9D4EC53E26903C9500D1A27D /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		9D56CF2926932D2200628608 /* SelectTableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableButton.swift; sourceTree = "<group>"; };
+		9D686C9D26AD663700440CBF /* RoundStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundStackView.swift; sourceTree = "<group>"; };
+		9D686C9F26AD6EC400440CBF /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D6B91DE266D08E000AF182B /* AllOfSoccer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllOfSoccer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D6B91E1266D08E000AF182B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D6B91E3266D08E000AF182B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				9D6B91EA266D08E100AF182B /* Assets.xcassets */,
+				9D1F224F26ADA317000726CB /* Colors.xcassets */,
 				9D6B91EC266D08E100AF182B /* LaunchScreen.storyboard */,
 				9D6B91EF266D08E100AF182B /* Info.plist */,
 			);
@@ -159,9 +166,9 @@
 			children = (
 				9DC1289F26917E400021EDF5 /* GameMatching.storyboard */,
 				9DC128A226917E740021EDF5 /* GameMatchingViewController.swift */,
-				9D56CF2926932D2200628608 /* SelectTableButton.swift */,
 				9DECF34726A0468900C846DB /* CalendarCollectionViewCell.swift */,
 				9D10855826A2887700F8263F /* CellData.swift */,
+				9D686C9F26AD6EC400440CBF /* TagCollectionViewCell.swift */,
 			);
 			path = GameMatching;
 			sourceTree = "<group>";
@@ -183,6 +190,8 @@
 				9DD474B526903D97006F00F1 /* RoundButton.swift */,
 				9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */,
 				9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */,
+				9D686C9D26AD663700440CBF /* RoundStackView.swift */,
+				9D56CF2926932D2200628608 /* SelectTableButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -275,6 +284,7 @@
 				9D6B91EB266D08E100AF182B /* Assets.xcassets in Resources */,
 				9DC128A026917E400021EDF5 /* GameMatching.storyboard in Resources */,
 				9DC128A626917E890021EDF5 /* MyPage.storyboard in Resources */,
+				9D1F225026ADA317000726CB /* Colors.xcassets in Resources */,
 				9D034CE826903A9E0051FA02 /* -----Global----- in Resources */,
 				9D6B91E9266D08E000AF182B /* Main.storyboard in Resources */,
 				9D4EC53F26903C9500D1A27D /* SignIn.storyboard in Resources */,
@@ -319,10 +329,12 @@
 				9DC128A926917EA70021EDF5 /* MyPageViewController.swift in Sources */,
 				9DC128A326917E740021EDF5 /* GameMatchingViewController.swift in Sources */,
 				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
+				9D686CA026AD6EC400440CBF /* TagCollectionViewCell.swift in Sources */,
 				9D6B91E4266D08E000AF182B /* SceneDelegate.swift in Sources */,
 				9D10855926A2887700F8263F /* CellData.swift in Sources */,
 				9D56CF2A26932D2200628608 /* SelectTableButton.swift in Sources */,
 				9DD474B026903D78006F00F1 /* RoundView.swift in Sources */,
+				9D686C9E26AD663700440CBF /* RoundStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

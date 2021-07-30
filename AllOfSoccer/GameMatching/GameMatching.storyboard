@@ -49,7 +49,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="tsM-Bo-QU0" firstAttribute="top" secondItem="U8t-kY-EHS" secondAttribute="bottom" constant="3" id="Ktt-Ub-1aZ"/>
                                     <constraint firstItem="DbN-Zz-RjJ" firstAttribute="leading" secondItem="U8t-kY-EHS" secondAttribute="trailing" constant="20" id="MzU-zm-hCs"/>
@@ -88,7 +88,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="153" height="94"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HT0-3q-ff5">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HT0-3q-ff5" customClass="RoundStackView" customModule="AllOfSoccer" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="153" height="94"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="월" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8W-tR-LTv">
@@ -104,6 +104,11 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="18"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
@@ -123,7 +128,7 @@
                                         </cells>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Mil-d7-Lkb" firstAttribute="leading" secondItem="Y4S-Qh-qsF" secondAttribute="leading" constant="16" id="0w9-LH-CCp"/>
                                     <constraint firstItem="ujb-m5-sph" firstAttribute="top" secondItem="Y4S-Qh-qsF" secondAttribute="top" id="A5G-BG-0tt"/>
@@ -134,14 +139,120 @@
                                     <constraint firstAttribute="trailing" secondItem="ujb-m5-sph" secondAttribute="trailing" constant="17" id="eTY-82-Qyp"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qcp-Nv-VMo">
+                                <rect key="frame" x="0.0" y="280" width="414" height="1"/>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.93725490196078431" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="U4P-gX-Glg"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtX-mI-ZLn">
+                                <rect key="frame" x="0.0" y="281" width="414" height="52"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t1a-0J-LlW">
+                                        <rect key="frame" x="54" y="0.0" width="360" height="52"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aZV-hI-JZM">
+                                            <size key="itemSize" width="204" height="45"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameMatchingTagCollectionViewCell" id="4Bn-Vh-sNl" customClass="TagCollectionViewCell" customModule="AllOfSoccer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="3.5" width="204" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CrS-SC-ec3">
+                                                    <rect key="frame" x="0.0" y="0.0" width="204" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpb-7o-DQl" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="204" height="45"/>
+                                                            <color key="backgroundColor" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
+                                                                    <color key="value" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
+                                                                    <color key="value" red="0.61568627450980395" green="0.62352941176470589" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="tagButtonTouchUp:" destination="4Bn-Vh-sNl" eventType="touchUpInside" id="z4m-FU-Jpg"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Wpb-7o-DQl" secondAttribute="bottom" id="MbJ-qQ-975"/>
+                                                        <constraint firstItem="Wpb-7o-DQl" firstAttribute="top" secondItem="CrS-SC-ec3" secondAttribute="top" id="jEQ-iW-VpB"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Wpb-7o-DQl" secondAttribute="trailing" id="jZN-Lz-n44"/>
+                                                        <constraint firstItem="Wpb-7o-DQl" firstAttribute="leading" secondItem="CrS-SC-ec3" secondAttribute="leading" id="nie-fz-Wva"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <size key="customSize" width="204" height="45"/>
+                                                <connections>
+                                                    <outlet property="tagButton" destination="Wpb-7o-DQl" id="VDo-WP-bTE"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NU8-Dp-hy1">
+                                        <rect key="frame" x="0.0" y="0.0" width="54" height="52"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5GI-9R-mHm">
+                                                <rect key="frame" x="16" y="15" width="22" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="kQ4-2T-2mb"/>
+                                                    <constraint firstAttribute="width" constant="22" id="kyP-NV-MQh"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="ArrowsClockwise"/>
+                                                <connections>
+                                                    <action selector="resetTagCollectionView:" destination="V9G-Fe-OSJ" eventType="touchUpInside" id="nQn-Ad-NjS"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="5GI-9R-mHm" firstAttribute="centerX" secondItem="NU8-Dp-hy1" secondAttribute="centerX" id="SbJ-fM-qBe"/>
+                                            <constraint firstAttribute="width" constant="54" id="elY-u3-qFD"/>
+                                            <constraint firstItem="5GI-9R-mHm" firstAttribute="centerY" secondItem="NU8-Dp-hy1" secondAttribute="centerY" id="nWP-qY-ILy"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="NU8-Dp-hy1" firstAttribute="leading" secondItem="OtX-mI-ZLn" secondAttribute="leading" id="3Q0-S3-97u"/>
+                                    <constraint firstItem="t1a-0J-LlW" firstAttribute="leading" secondItem="NU8-Dp-hy1" secondAttribute="trailing" id="7JU-Qq-8W7"/>
+                                    <constraint firstAttribute="height" constant="52" id="PSK-iZ-TxH"/>
+                                    <constraint firstItem="NU8-Dp-hy1" firstAttribute="centerY" secondItem="OtX-mI-ZLn" secondAttribute="centerY" id="SbY-UF-6Jq"/>
+                                    <constraint firstAttribute="trailing" secondItem="t1a-0J-LlW" secondAttribute="trailing" id="Ttk-yj-aqe"/>
+                                    <constraint firstItem="t1a-0J-LlW" firstAttribute="top" secondItem="OtX-mI-ZLn" secondAttribute="top" id="VlU-aj-8DP"/>
+                                    <constraint firstAttribute="bottom" secondItem="t1a-0J-LlW" secondAttribute="bottom" id="cRv-uK-Vy9"/>
+                                    <constraint firstItem="NU8-Dp-hy1" firstAttribute="top" secondItem="OtX-mI-ZLn" secondAttribute="top" id="uIr-SR-nCB"/>
+                                    <constraint firstAttribute="bottom" secondItem="NU8-Dp-hy1" secondAttribute="bottom" id="yIJ-18-XhV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="k3U-ZW-q40"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="k3U-ZW-q40" firstAttribute="trailing" secondItem="Y4S-Qh-qsF" secondAttribute="trailing" id="0BZ-Mc-wfZ"/>
+                            <constraint firstItem="Qcp-Nv-VMo" firstAttribute="top" secondItem="Y4S-Qh-qsF" secondAttribute="bottom" id="4Dg-ut-g8F"/>
+                            <constraint firstItem="OtX-mI-ZLn" firstAttribute="leading" secondItem="k3U-ZW-q40" secondAttribute="leading" id="CHz-I6-hpE"/>
                             <constraint firstItem="Wzg-lJ-8FP" firstAttribute="leading" secondItem="k3U-ZW-q40" secondAttribute="leading" id="LTc-hc-e6g"/>
+                            <constraint firstItem="k3U-ZW-q40" firstAttribute="trailing" secondItem="OtX-mI-ZLn" secondAttribute="trailing" id="SYy-CG-xvr"/>
                             <constraint firstItem="Y4S-Qh-qsF" firstAttribute="leading" secondItem="k3U-ZW-q40" secondAttribute="leading" id="TyA-3u-Ahn"/>
                             <constraint firstItem="Y4S-Qh-qsF" firstAttribute="top" secondItem="Wzg-lJ-8FP" secondAttribute="bottom" id="VpJ-kO-w5T"/>
+                            <constraint firstItem="Qcp-Nv-VMo" firstAttribute="leading" secondItem="k3U-ZW-q40" secondAttribute="leading" id="ZAW-DQ-aGS"/>
+                            <constraint firstItem="OtX-mI-ZLn" firstAttribute="top" secondItem="Qcp-Nv-VMo" secondAttribute="bottom" id="crl-uy-FgY"/>
+                            <constraint firstItem="k3U-ZW-q40" firstAttribute="trailing" secondItem="Qcp-Nv-VMo" secondAttribute="trailing" id="lxD-ov-YQk"/>
                             <constraint firstItem="Wzg-lJ-8FP" firstAttribute="top" secondItem="k3U-ZW-q40" secondAttribute="top" id="pbS-r2-RJ2"/>
                             <constraint firstItem="k3U-ZW-q40" firstAttribute="trailing" secondItem="Wzg-lJ-8FP" secondAttribute="trailing" id="zAh-Na-iDJ"/>
                         </constraints>
@@ -153,7 +264,10 @@
                         <outlet property="calendarCollectionView" destination="ujb-m5-sph" id="sTI-Uo-yQC"/>
                         <outlet property="manMatchButton" destination="DbN-Zz-RjJ" id="Clu-Rh-Rwh"/>
                         <outlet property="monthButton" destination="Mil-d7-Lkb" id="yTk-WS-r4Z"/>
+                        <outlet property="refreshButtonView" destination="NU8-Dp-hy1" id="nBF-0H-7TW"/>
                         <outlet property="selectedLineCenterConstraint" destination="mvr-4R-FTb" id="VaU-jO-oPi"/>
+                        <outlet property="tagCollectionView" destination="t1a-0J-LlW" id="hq2-G6-jJP"/>
+                        <outlet property="tagCollectionViewConstraint" destination="7JU-Qq-8W7" id="Dh5-X6-ECM"/>
                         <outlet property="teamMatchButton" destination="U8t-kY-EHS" id="555-Df-ej9"/>
                     </connections>
                 </viewController>
@@ -180,7 +294,13 @@
             <point key="canvasLocation" x="-253.62318840579712" y="-4.0178571428571423"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Wpb-7o-DQl">
+            <size key="intrinsicContentSize" width="63" height="29"/>
+        </designable>
+    </designables>
     <resources>
+        <image name="ArrowsClockwise" width="22" height="22"/>
         <image name="flag" catalog="system" width="128" height="121"/>
         <image name="flag.fill" catalog="system" width="128" height="121"/>
         <systemColor name="secondarySystemBackgroundColor">
@@ -189,14 +309,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

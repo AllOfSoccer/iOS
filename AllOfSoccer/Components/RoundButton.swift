@@ -66,5 +66,6 @@ final class RoundButton: UIButton {
         layer.borderColor = borderColor.cgColor
         layer.borderWidth = borderWidth
         contentEdgeInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
+//        self.sizeToFit()
     }
 }
