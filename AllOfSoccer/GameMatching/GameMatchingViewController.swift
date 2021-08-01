@@ -62,7 +62,15 @@ class GameMatchingViewController: UIViewController {
         return button
     }()
 
-    private var tagTitles: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
+//    private var tableViewFilterringView: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .yellow
+//        return view
+//    }()
+
+//    private var tab
+
+    private var tagCellDataArray: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
     private var tagCellData: [TagCellData] = []
     private var filteringTagCellData: [String] = []
     private var resetButtonIsSelected: Bool?
@@ -114,6 +122,10 @@ class GameMatchingViewController: UIViewController {
         }
         self.tagCollectionView.reloadData()
         self.tagCollectionViewCellIsNotSelectedViewSetting()
+    }
+
+    @IBAction func announcementTableViewButtonTouchUp(_ sender: UIButton) {
+        announcementViewDefaultSetting()
     }
 
     override func viewDidLoad() {
@@ -243,7 +255,20 @@ class GameMatchingViewController: UIViewController {
         }
     }
 
-    private func makeDate(_ plusValue: Int) -> String? {
+    private func announcementViewDefaultSetting() {
+        let tableViewFilterringView = TableViewFilterringView()
+        self.view.addSubview(tableViewFilterringView)
+        tableViewFilterringView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableViewFilterringView.widthAnchor.constraint(equalToConstant: 315),
+            tableViewFilterringView.heightAnchor.constraint(equalToConstant: 271),
+            tableViewFilterringView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            tableViewFilterringView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            tableViewFilterringView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+    }
+
+    private func makeDate(_ plusValue: Int) -> String {
         let calendar = Calendar.current
         let currentDate = Date()
         let dateFormatter = DateFormatter()
