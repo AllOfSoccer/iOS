@@ -62,7 +62,7 @@ class GameMatchingViewController: UIViewController {
         return button
     }()
 
-    private var tagCellDataArray: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
+    private var tagTitles: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
     private var tagCellData: [TagCellData] = []
     private var filteringTagCellData: [String] = []
     private var resetButtonIsSelected: Bool?
@@ -119,13 +119,13 @@ class GameMatchingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        calendarCollectionViewDefaultSetting()
-        selectCalendarViewDefaultSetting()
-        tagCOllectionViewDefaultSetting()
+        setupCalendarCollectionView()
+        setupSelectCalendarView()
+        setupTagCollectionView()
     }
 
     private
-    func calendarCollectionViewDefaultSetting() {
+    func setupCalendarCollectionView() {
         self.calendarCollectionView.delegate = self
         self.calendarCollectionView.dataSource = self
 
@@ -151,7 +151,7 @@ class GameMatchingViewController: UIViewController {
         self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
     }
 
-    private func selectCalendarViewDefaultSetting() {
+    private func setupSelectCalendarView() {
         self.view.addSubview(seletCalendarView)
         self.seletCalendarView.snp.makeConstraints { (make) in
             make.width.equalTo(315)
@@ -220,7 +220,7 @@ class GameMatchingViewController: UIViewController {
         self.dateFormatter.dateFormat = "yyyy-MM-dd"
     }
 
-    private func tagCOllectionViewDefaultSetting() {
+    private func setupTagCollectionView() {
         self.tagCollectionView.delegate = self
         self.tagCollectionView.dataSource = self
 
@@ -235,7 +235,7 @@ class GameMatchingViewController: UIViewController {
 
         self.resetButtonIsSelected = false
 
-        for tagCellTitle in self.tagCellDataArray {
+        for tagCellTitle in self.tagTitles {
             var tagCellData = TagCellData()
             tagCellData.tagCellTitle = tagCellTitle
             tagCellData.tagCellIsSelected = false
@@ -243,11 +243,11 @@ class GameMatchingViewController: UIViewController {
         }
     }
 
-    private func makeDate(_ plusValue: Int) -> String {
+    private func makeDate(_ plusValue: Int) -> String? {
         let calendar = Calendar.current
         let currentDate = Date()
         let dateFormatter = DateFormatter()
-        guard let chagedDate = calendar.date(byAdding: .day, value: plusValue, to: currentDate) else { return "" }
+        guard let chagedDate = calendar.date(byAdding: .day, value: plusValue, to: currentDate) else { return nil }
         dateFormatter.dateFormat = "M/d"
         let dateString = dateFormatter.string(from: chagedDate)
         return dateString
@@ -380,19 +380,17 @@ extension GameMatchingViewController: TagCollectionViewCellTapped {
         guard let indexPath = tagCollectionView.indexPath(for: cell) else { return }
         guard let buttonTitle = cell.tagButton.currentTitle else { return }
 
-        DispatchQueue.main.async {
-            if self.tagCellData[indexPath.item].tagCellIsSelected == false {
-                self.tagCellData[indexPath.item].tagCellIsSelected = true
-            } else {
-                self.tagCellData[indexPath.item].tagCellIsSelected = false
-            }
-            self.tagCollectionView.reloadData()
+        if self.tagCellData[indexPath.item].tagCellIsSelected == false {
+            self.tagCellData[indexPath.item].tagCellIsSelected = true
+        } else {
+            self.tagCellData[indexPath.item].tagCellIsSelected = false
+        }
+        self.tagCollectionView.reloadData()
 
-            if !self.filteringTagCellData.isEmpty {
-                self.tagCollectionViewCellIsSelectedViewSetting()
-            } else {
-                self.tagCollectionViewCellIsNotSelectedViewSetting()
-            }
+        if !self.filteringTagCellData.isEmpty {
+            self.tagCollectionViewCellIsSelectedViewSetting()
+        } else {
+            self.tagCollectionViewCellIsNotSelectedViewSetting()
         }
 
         if cell.tagButton.isSelected {
@@ -401,5 +399,11 @@ extension GameMatchingViewController: TagCollectionViewCellTapped {
             guard let buttonTitleIndex = self.filteringTagCellData.firstIndex(of: buttonTitle) else { return }
             self.filteringTagCellData.remove(at: buttonTitleIndex)
         }
+    }
+}
+
+extension Array {
+    subscript (safe index: Int) -> Element? {
+        return indices ~= index ? self[index] : nil
     }
 }
