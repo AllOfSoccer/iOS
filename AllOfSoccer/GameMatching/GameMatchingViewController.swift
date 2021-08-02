@@ -62,13 +62,13 @@ class GameMatchingViewController: UIViewController {
         return button
     }()
 
-//    private var tableViewFilterringView: UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .yellow
-//        return view
-//    }()
+    private lazy var backGroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        return view
+    }()
 
-//    private var tab
+    private lazy var tableViewFilterringView = TableViewFilterringView()
 
     private var tagCellDataArray: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
     private var tagCellData: [TagCellData] = []
@@ -125,15 +125,16 @@ class GameMatchingViewController: UIViewController {
     }
 
     @IBAction func announcementTableViewButtonTouchUp(_ sender: UIButton) {
-        announcementViewDefaultSetting()
+        self.backGroundView.isHidden = false
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupCalendarCollectionView()
-        setupSelectCalendarView()
-        setupTagCollectionView()
+        calendarCollectionViewDefaultSetting()
+        selectCalendarViewDefaultSetting()
+        tagCOllectionViewDefaultSetting()
+        announcementViewDefaultSetting()
     }
 
     private
@@ -256,16 +257,29 @@ class GameMatchingViewController: UIViewController {
     }
 
     private func announcementViewDefaultSetting() {
-        let tableViewFilterringView = TableViewFilterringView()
-        self.view.addSubview(tableViewFilterringView)
+
+        backGroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        self.view.addSubview(backGroundView)
+        backGroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            backGroundView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            backGroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            backGroundView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            backGroundView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
+
+        backGroundView.addSubview(tableViewFilterringView)
         tableViewFilterringView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableViewFilterringView.widthAnchor.constraint(equalToConstant: 315),
             tableViewFilterringView.heightAnchor.constraint(equalToConstant: 271),
-            tableViewFilterringView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            tableViewFilterringView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            tableViewFilterringView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            tableViewFilterringView.centerXAnchor.constraint(equalTo: backGroundView.centerXAnchor),
+            tableViewFilterringView.centerXAnchor.constraint(equalTo: backGroundView.centerXAnchor),
+            tableViewFilterringView.centerYAnchor.constraint(equalTo: backGroundView.centerYAnchor)
         ])
+
+        tableViewFilterringView.delegate = self
+        backGroundView.isHidden = true
     }
 
     private func makeDate(_ plusValue: Int) -> String {
@@ -424,6 +438,12 @@ extension GameMatchingViewController: TagCollectionViewCellTapped {
             guard let buttonTitleIndex = self.filteringTagCellData.firstIndex(of: buttonTitle) else { return }
             self.filteringTagCellData.remove(at: buttonTitleIndex)
         }
+    }
+}
+
+extension GameMatchingViewController: FilterringButtonTapped {
+    func filterringButtonTapped(button: UIButton, sortMode: SortMode) {
+        self.backGroundView.isHidden = true
     }
 }
 
