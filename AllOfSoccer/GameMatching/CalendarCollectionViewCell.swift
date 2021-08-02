@@ -29,7 +29,7 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
         delegate?.cellTapped(self)
     }
 
-    func configure(_ cellData: CellData) {
+    func configure(_ cellData: CalendarCellData) {
         guard let dayOfTheWeek = cellData.dayOfTheWeek else { return }
         self.dayLabel.text = cellData.weeks[dayOfTheWeek % 7]
         self.dateLabel.text = cellData.date
