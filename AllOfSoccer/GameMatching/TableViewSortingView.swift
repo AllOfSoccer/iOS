@@ -14,38 +14,38 @@ enum SortMode: Int {
 
     var sortModeTitle: String {
         switch self {
-        case .distance: return "   거리순"
-        case .registration: return "   최신 등록순"
-        case .dateAndTime: return "   경기 날짜/시간순"
+        case .distance: return "거리순"
+        case .registration: return "최신 등록순"
+        case .dateAndTime: return "경기 날짜/시간순"
         }
     }
 }
 
-protocol FilterringButtonTapped: AnyObject {
-    func filterringButtonTapped(button: UIButton, sortMode: SortMode)
+protocol TableViewSortingViewDelegate: AnyObject {
+    func sortingFinishButtonTapped(button: UIButton, sortMode: SortMode)
 }
 
-class TableViewFilterringView: UIView {
+class TableViewSortingView: UIView {
 
     private var sortMode: SortMode?
-    weak var delegate: FilterringButtonTapped?
+    weak var delegate: TableViewSortingViewDelegate?
 
     private var firstCheckButton = UIButton()
     private var secondCheckButton = UIButton()
     private var thirdCheckButton = UIButton()
 
-    private var tableViewFilterringCheckButton: UIButton = {
+    private var tableViewSortingFinishButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "tagBackTouchUpColor")
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         button.setTitleColor(.white, for: .normal)
         button.setTitle("선택하기", for: .normal)
 
-        button.addTarget(self, action: #selector(filterringCheckButtonTouchUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(sortingFinishButtonTouchUp), for: .touchUpInside)
         return button
     }()
 
-    private lazy var tableViewFilterringContentView: UIView = {
+    private lazy var tableViewSortingContentView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
 
@@ -93,6 +93,8 @@ class TableViewFilterringView: UIView {
         button.setTitle(sortMode.sortModeTitle, for: .normal)
         button.contentHorizontalAlignment = .left
         button.tag = sortMode.rawValue
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
 
         button.addTarget(self, action: #selector(checkButtonTouchUp), for: .touchUpInside)
 
@@ -109,29 +111,24 @@ class TableViewFilterringView: UIView {
         loadView()
     }
 
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
-
     private func loadView() {
-        let tableViewFilterringCheckButton = tableViewFilterringCheckButton
-        self.addSubview(tableViewFilterringCheckButton)
-        tableViewFilterringCheckButton.translatesAutoresizingMaskIntoConstraints = false
+        let tableViewSortingCheckButton = tableViewSortingFinishButton
+        self.addSubview(tableViewSortingCheckButton)
+        tableViewSortingCheckButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableViewFilterringCheckButton.widthAnchor.constraint(equalTo: self.widthAnchor),
-            tableViewFilterringCheckButton.heightAnchor.constraint(equalToConstant: 63),
-            tableViewFilterringCheckButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
+            tableViewSortingCheckButton.widthAnchor.constraint(equalTo: self.widthAnchor),
+            tableViewSortingCheckButton.heightAnchor.constraint(equalToConstant: 63),
+            tableViewSortingCheckButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
         ])
 
-        let tableViewFilterringContentView = tableViewFilterringContentView
-        tableViewFilterringContentView.backgroundColor = .white
-        self.addSubview(tableViewFilterringContentView)
-        tableViewFilterringContentView.translatesAutoresizingMaskIntoConstraints = false
+        let tableViewSortingContentView = tableViewSortingContentView
+        tableViewSortingContentView.backgroundColor = .white
+        self.addSubview(tableViewSortingContentView)
+        tableViewSortingContentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableViewFilterringContentView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            tableViewFilterringContentView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            tableViewFilterringContentView.bottomAnchor.constraint(equalTo: tableViewFilterringCheckButton.topAnchor, constant: 0)
+            tableViewSortingContentView.widthAnchor.constraint(equalTo: self.widthAnchor),
+            tableViewSortingContentView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            tableViewSortingContentView.bottomAnchor.constraint(equalTo: tableViewSortingCheckButton.topAnchor, constant: 0)
         ])
     }
 
@@ -141,21 +138,21 @@ class TableViewFilterringView: UIView {
             sender.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
             sender.isSelected = false
         } else {
-            if sender.tag == 0 {
+            if sender.tag == SortMode.distance.rawValue {
                 self.sortMode = .distance
                 self.secondCheckButton.isSelected = false
                 self.thirdCheckButton.isSelected = false
 
                 self.secondCheckButton.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
                 self.thirdCheckButton.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
-            } else if sender.tag == 1 {
+            } else if sender.tag == SortMode.registration.rawValue {
                 self.sortMode = .registration
                 self.firstCheckButton.isSelected = false
                 self.thirdCheckButton.isSelected = false
 
                 self.firstCheckButton.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
                 self.thirdCheckButton.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
-            } else {
+            } else if sender.tag == SortMode.dateAndTime.rawValue {
                 self.sortMode = .dateAndTime
                 self.firstCheckButton.isSelected = false
                 self.secondCheckButton.isSelected = false
@@ -169,8 +166,8 @@ class TableViewFilterringView: UIView {
         }
     }
 
-    @objc private func filterringCheckButtonTouchUp(sender: UIButton) {
+    @objc private func sortingFinishButtonTouchUp(sender: UIButton) {
         guard let sortMode = self.sortMode else { return }
-        self.delegate?.filterringButtonTapped(button: sender, sortMode: sortMode)
+        self.delegate?.sortingFinishButtonTapped(button: sender, sortMode: sortMode)
     }
 }

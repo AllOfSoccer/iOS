@@ -239,17 +239,19 @@
                                         <rect key="frame" x="0.0" y="245" width="414" height="480"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <view key="tableHeaderView" contentMode="scaleToFill" id="SHE-Ce-TZO">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBg-T2-uCl">
-                                                    <rect key="frame" x="16" y="16" width="37" height="57"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="거리순">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBg-T2-uCl">
+                                                    <rect key="frame" x="16" y="16" width="74.5" height="50"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="imageEdgeInsets" minX="-4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="거리순" image="arrow.up.arrow.down" catalog="system">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="announcementTableViewButtonTouchUp:" destination="V9G-Fe-OSJ" eventType="touchUpInside" id="HJv-pc-N2N"/>
+                                                        <action selector="tableViewSortingButtonTouchUp:" destination="V9G-Fe-OSJ" eventType="touchUpInside" id="HJv-pc-N2N"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -261,11 +263,11 @@
                                             </constraints>
                                         </view>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="163" id="x83-q5-DUZ">
-                                                <rect key="frame" x="0.0" y="114.5" width="414" height="163"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="107" id="x83-q5-DUZ">
+                                                <rect key="frame" x="0.0" y="107.5" width="414" height="107"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x83-q5-DUZ" id="MLl-ae-ZqP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="163"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="107"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -308,6 +310,7 @@
                         <outlet property="monthButton" destination="Mil-d7-Lkb" id="yTk-WS-r4Z"/>
                         <outlet property="refreshButtonView" destination="NU8-Dp-hy1" id="nBF-0H-7TW"/>
                         <outlet property="selectedLineCenterConstraint" destination="mvr-4R-FTb" id="VaU-jO-oPi"/>
+                        <outlet property="tableViewSortingButton" destination="jBg-T2-uCl" id="arU-uF-l9n"/>
                         <outlet property="tagCollectionView" destination="t1a-0J-LlW" id="hq2-G6-jJP"/>
                         <outlet property="tagCollectionViewConstraint" destination="7JU-Qq-8W7" id="Dh5-X6-ECM"/>
                         <outlet property="teamMatchButton" destination="U8t-kY-EHS" id="555-Df-ej9"/>
@@ -343,6 +346,7 @@
     </designables>
     <resources>
         <image name="ArrowsClockwise" width="22" height="22"/>
+        <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
         <image name="flag" catalog="system" width="128" height="121"/>
         <image name="flag.fill" catalog="system" width="128" height="121"/>
         <systemColor name="secondarySystemBackgroundColor">
