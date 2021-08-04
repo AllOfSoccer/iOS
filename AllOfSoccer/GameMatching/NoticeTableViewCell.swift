@@ -18,19 +18,9 @@ class NoticeTableViewCell: UITableViewCell {
     @IBOutlet private weak var checkbutton: UIButton!
     @IBOutlet private weak var recruitmentStatusLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-
     override func layoutSubviews() {
         super.layoutSubviews()
-        let padding = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
-        bounds = bounds.inset(by: padding)
+//        let padding = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+//        bounds = bounds.inset(by: padding)
     }
 }
