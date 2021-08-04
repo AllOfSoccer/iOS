@@ -1,0 +1,189 @@
+//
+//  filterDetailView.swift
+//  AllOfSoccer
+//
+//  Created by 최원석 on 2021/08/03.
+//
+
+import UIKit
+
+enum FilterType {
+    case location
+    case time
+
+    var filterList: [String] {
+        switch self {
+        case .location: return ["서울", "경기-북부", "경기-남부", "인천/부천", "기타지역"]
+        case .time: return ["10:00", "11:00", "12:00"]
+        }
+    }
+}
+
+protocol FilterDetailViewDelegate: AnyObject {
+    func finishButtonDidSelected(button: UIButton)
+    func cancelButtonDidSelected(button: UIButton)
+}
+
+class FilterDetailView: UIView {
+    var filterList: [String] = []
+
+    weak var delegate: FilterDetailViewDelegate?
+    private var filterType: FilterType = .location
+    private var tagCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+
+    private var finishButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "tagBackTouchUpColor")
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("선택하기", for: .normal)
+        return button
+    }()
+
+    private var contentView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 1, alpha: 1)
+        view.layer.cornerRadius = 20
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        return view
+    }()
+
+    private var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "장소"
+        label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        return label
+    }()
+
+    private var cancelButton: UIButton = {
+        let button = UIButton()
+        let cancelImage = UIImage(systemName: "xmark")
+        button.setImage(cancelImage, for: .normal)
+        button.frame.size = CGSize(width: 22, height: 22)
+        button.tintColor = UIColor(ciColor: .black)
+        return button
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        loadView()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        loadView()
+    }
+
+    func loadView() {
+        self.setupCollectionView()
+        self.setupConstraint()
+
+        self.finishButton.addTarget(self, action: #selector(finishButtonTouchUp), for: .touchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(cancelButtonTouchUp), for: .touchUpInside)
+    }
+
+    private func setupCollectionView() {
+        let flowlayout = UICollectionViewFlowLayout()
+//        flowlayout.minimumInteritemSpacing = 5
+//        flowlayout.minimumLineSpacing = 10
+        flowlayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        flowlayout.itemSize = CGSize(width: 107, height: 36)
+        flowlayout.scrollDirection = .vertical
+        self.tagCollectionView.collectionViewLayout = flowlayout
+
+        self.tagCollectionView.delegate = self
+        self.tagCollectionView.dataSource = self
+        self.tagCollectionView.allowsMultipleSelection = true
+        self.tagCollectionView.backgroundColor = .white
+
+        self.tagCollectionView.register(FilterDetailTagCollectionViewCell.self, forCellWithReuseIdentifier: "FilterDetailTagCollectionViewCell")
+    }
+
+    private func setupConstraint() {
+        self.frame.size = CGSize(width: 375, height: 244)
+
+        self.addSubview(self.contentView)
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.contentView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            self.contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            self.contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+            self.contentView.heightAnchor.constraint(equalToConstant: 182)
+        ])
+
+        self.addSubview(self.finishButton)
+        self.finishButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.finishButton.topAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0),
+            self.finishButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            self.finishButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+            self.finishButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+        ])
+
+        self.contentView.addSubview(self.titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
+            titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24)
+        ])
+
+        self.contentView.addSubview(self.cancelButton)
+        self.cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.cancelButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
+            self.cancelButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+        ])
+
+        self.contentView.addSubview(self.tagCollectionView)
+        self.tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.tagCollectionView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 27),
+            self.tagCollectionView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0),
+            self.tagCollectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0),
+            self.tagCollectionView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0)
+        ])
+    }
+
+    @objc private func finishButtonTouchUp(sender: UIButton) {
+        self.delegate?.finishButtonDidSelected(button: sender)
+    }
+
+    @objc private func cancelButtonTouchUp(sender: UIButton) {
+        self.delegate?.cancelButtonDidSelected(button: sender)
+    }
+}
+
+extension FilterDetailView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterDetailTagCollectionViewCell", for: indexPath) as? FilterDetailTagCollectionViewCell else { return }
+        let tagLabelTitle = self.filterType.filterList[indexPath.item]
+        self.filterList.append(tagLabelTitle)
+        let finishButtonTitle = self.filterList.isEmpty ? "선택해주세요." : "필터적용하기 (\(self.filterList.count)건)"
+        finishButton.setTitle(finishButtonTitle, for: .normal)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterDetailTagCollectionViewCell", for: indexPath) as? FilterDetailTagCollectionViewCell else { return }
+        let tagLabelTitle = self.filterType.filterList[indexPath.item]
+        guard let tagTitleIndex = self.filterList.firstIndex(of: tagLabelTitle) else { return }
+
+        self.filterList.remove(at: tagTitleIndex)
+        let finishButtonTitle = self.filterList.isEmpty ? "선택해주세요." : "필터적용하기 (\(self.filterList.count)건)"
+        finishButton.setTitle(finishButtonTitle, for: .normal)
+    }
+}
+
+extension FilterDetailView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.filterType.filterList.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterDetailTagCollectionViewCell", for: indexPath) as? FilterDetailTagCollectionViewCell else { return UICollectionViewCell() }
+
+        cell.configure(self.filterType.filterList[indexPath.item])
+        return cell
+    }
+}

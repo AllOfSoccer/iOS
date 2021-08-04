@@ -27,13 +27,12 @@ protocol TableViewSortingViewDelegate: AnyObject {
 
 class TableViewSortingView: UIView {
 
-    private var sortMode: SortMode?
     weak var delegate: TableViewSortingViewDelegate?
 
+    private var sortMode: SortMode?
     private var firstCheckButton = UIButton()
     private var secondCheckButton = UIButton()
     private var thirdCheckButton = UIButton()
-
     private var tableViewSortingFinishButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "tagBackTouchUpColor")

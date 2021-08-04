@@ -16,6 +16,10 @@ enum Mode {
 
 class GameMatchingViewController: UIViewController {
 
+    // MARK: - FilterDetailView
+    private let filterDetailView = FilterDetailView()
+    private var bottomConstraint: NSLayoutConstraint = NSLayoutConstraint()
+
     private var selectedDate: [String] = []
 
     private var weeks: [String] = ["월","화","수","목","금","토","일"]
@@ -95,9 +99,9 @@ class GameMatchingViewController: UIViewController {
         self.teamMatchButton.isSelected = true
         self.manMatchButton.isSelected = false
 
-        UIView.animate(withDuration: 0.1) {
-            self.selectedLineCenterConstraint.constant = 0
-            self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.selectedLineCenterConstraint.constant = 0
+            self?.view.layoutIfNeeded()
         }
     }
 
@@ -131,6 +135,8 @@ class GameMatchingViewController: UIViewController {
 
     @IBAction func tableViewSortingButtonTouchUp(_ sender: UIButton) {
         self.backGroundView.isHidden = false
+        self.tableViewFilterringView.isHidden = false
+
     }
 
     override func viewDidLoad() {
@@ -140,10 +146,31 @@ class GameMatchingViewController: UIViewController {
         setupSelectCalendarView()
         setupTagCollectionView()
         setupTableViewSortingView()
+        setupFilterDetailView()
     }
 
-    private
-    func setupCalendarCollectionView() {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let itemHeight = 244
+
+        guard let tabbar = self.tabBarController else { return }
+        if tabbar.view.subviews.contains(filterDetailView) == false {
+            tabbar.view.addSubview(filterDetailView)
+//            self.filterDetailView.isHidden = true
+        }
+
+        self.bottomConstraint = filterDetailView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: CGFloat(itemHeight))
+        self.filterDetailView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.filterDetailView.leadingAnchor.constraint(equalTo: tabbar.view.leadingAnchor, constant: 0),
+            self.filterDetailView.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: 0),
+            self.filterDetailView.heightAnchor.constraint(equalToConstant: CGFloat(itemHeight)),
+            self.bottomConstraint
+        ])
+    }
+
+    private func setupCalendarCollectionView() {
         self.calendarCollectionView.delegate = self
         self.calendarCollectionView.dataSource = self
 
@@ -280,12 +307,16 @@ class GameMatchingViewController: UIViewController {
             self.tableViewFilterringView.widthAnchor.constraint(equalToConstant: 315),
             self.tableViewFilterringView.heightAnchor.constraint(equalToConstant: 271),
             self.tableViewFilterringView.centerXAnchor.constraint(equalTo: self.backGroundView.centerXAnchor),
-            self.tableViewFilterringView.centerXAnchor.constraint(equalTo: self.backGroundView.centerXAnchor),
             self.tableViewFilterringView.centerYAnchor.constraint(equalTo: self.backGroundView.centerYAnchor)
         ])
 
         self.tableViewFilterringView.delegate = self
         self.backGroundView.isHidden = true
+        self.tableViewFilterringView.isHidden = true
+    }
+
+    private func setupFilterDetailView() {
+        filterDetailView.delegate = self
     }
 
     private func makeDate(_ plusValue: Int) -> String? {
@@ -444,6 +475,11 @@ extension GameMatchingViewController: TagCollectionViewCellTapped {
             guard let buttonTitleIndex = self.filteringTagCellData.firstIndex(of: buttonTitle) else { return }
             self.filteringTagCellData.remove(at: buttonTitleIndex)
         }
+
+        self.backGroundView.isHidden = false
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.bottomConstraint.constant = 0
+        }
     }
 }
 
@@ -452,6 +488,26 @@ extension GameMatchingViewController: TableViewSortingViewDelegate {
         self.backGroundView.isHidden = true
         self.sortMode = sortMode
         self.tableViewSortingButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
+    }
+}
+
+extension GameMatchingViewController: FilterDetailViewDelegate {
+    func finishButtonDidSelected(button: UIButton) {
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.bottomConstraint.constant = 244
+            self?.view.layoutIfNeeded()
+//            self?.filterDetailView.frame = CGRect(x: self?.filterDetailView.frame.minX ?? 0, y: 244, width: self?.filterDetailView.frame.width ?? 0, height: self?.filterDetailView.frame.height ?? 0)
+        }
+        self.backGroundView.isHidden = true
+    }
+
+    func cancelButtonDidSelected(button: UIButton) {
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.bottomConstraint.constant = 244
+            self?.view.layoutIfNeeded()
+//            self?.filterDetailView.frame = CGRect(x: self?.filterDetailView.frame.minX ?? 0, y: 244, width: self?.filterDetailView.frame.width ?? 0, height: self?.filterDetailView.frame.height ?? 0)
+        }
+        self.backGroundView.isHidden = true
     }
 }
 
