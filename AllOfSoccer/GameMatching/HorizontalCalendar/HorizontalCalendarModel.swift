@@ -7,10 +7,8 @@
 
 import Foundation
 
-struct CalendarCellData {
-    var indexPath: IndexPath?
+struct HorizontalCalendarModel {
     var weeks: [String] = ["토","일","월","화","수","목","금"]
     var dayOfTheWeek: Int?
     var date: String?
-    var stackviewTappedBool: Bool?
 }

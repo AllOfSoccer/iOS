@@ -87,14 +87,14 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CalendarCollectionViewCell" id="ZPo-Fx-Qa2" customClass="CalendarCollectionViewCell" customModule="AllOfSoccer" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CalendarCollectionViewCell" id="ZPo-Fx-Qa2" customClass="HorizontalCalendarCollectionViewCell" customModule="AllOfSoccer" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="1" width="153" height="94"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="l0B-tk-Gjp">
                                                             <rect key="frame" x="0.0" y="0.0" width="153" height="94"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HT0-3q-ff5" customClass="RoundStackView" customModule="AllOfSoccer" customModuleProvider="target">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HT0-3q-ff5">
                                                                     <rect key="frame" x="0.0" y="0.0" width="153" height="94"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="월" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8W-tR-LTv">
@@ -105,7 +105,7 @@
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7/1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzL-ws-Wef">
                                                                             <rect key="frame" x="0.0" y="47" width="153" height="47"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -126,9 +126,9 @@
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="153" height="94"/>
                                                         <connections>
-                                                            <outlet property="calendarStacview" destination="HT0-3q-ff5" id="NXS-FB-IQL"/>
                                                             <outlet property="dateLabel" destination="XzL-ws-Wef" id="ad9-M7-3sh"/>
                                                             <outlet property="dayLabel" destination="W8W-tR-LTv" id="7q2-Ls-Isw"/>
+                                                            <outlet property="stackView" destination="HT0-3q-ff5" id="NXS-FB-IQL"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -308,7 +308,7 @@
                     <navigationItem key="navigationItem" id="MUG-4k-kkH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="calendarCollectionView" destination="ujb-m5-sph" id="sTI-Uo-yQC"/>
+                        <outlet property="horizontalCalendarView" destination="ujb-m5-sph" id="sTI-Uo-yQC"/>
                         <outlet property="manMatchButton" destination="DbN-Zz-RjJ" id="Clu-Rh-Rwh"/>
                         <outlet property="monthButton" destination="Mil-d7-Lkb" id="yTk-WS-r4Z"/>
                         <outlet property="refreshButtonView" destination="NU8-Dp-hy1" id="nBF-0H-7TW"/>

@@ -8,8 +8,7 @@
 import UIKit
 
 protocol TagCollectionViewCellTapped: AnyObject {
-//    func cellButtonTapped(_ button: RoundButton)
-    func cellTapped(_ cell: TagCollectionViewCell)
+    func cellDidSelected(_ cell: TagCollectionViewCell)
 }
 
 class TagCollectionViewCell: UICollectionViewCell {
@@ -18,7 +17,7 @@ class TagCollectionViewCell: UICollectionViewCell {
     weak var delegate: TagCollectionViewCellTapped?
 
     @IBAction private func tagButtonTouchUp(_ sender: RoundButton) {
-        self.delegate?.cellTapped(self)
+        self.delegate?.cellDidSelected(self)
     }
 
     override func awakeFromNib() {
@@ -26,7 +25,7 @@ class TagCollectionViewCell: UICollectionViewCell {
         self.tagButton.isSelected = false
     }
 
-    func configure(_ tagCellData: TagCellData, _ resetButtonIsSelected: Bool) {
+    func configure(_ tagCellData: TagCellModel, _ resetButtonIsSelected: Bool) {
         guard let tagCellTitle = tagCellData.tagCellTitle else { return }
         guard let tagCellIsSelected = tagCellData.tagCellIsSelected else { return }
 
