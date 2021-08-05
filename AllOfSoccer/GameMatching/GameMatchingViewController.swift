@@ -26,7 +26,6 @@ class GameMatchingViewController: UIViewController {
     @IBOutlet private weak var manMatchButton: SelectTableButton!
     @IBOutlet private weak var selectedLineCenterConstraint: NSLayoutConstraint!
 
-
     // MARK: - HorizontalCalendar Variable
     private var selectedDate: [String] = []
     private var weeks: [String] = ["월","화","수","목","금","토","일"]
@@ -39,6 +38,10 @@ class GameMatchingViewController: UIViewController {
     private var tagTitles: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
     private var tagCellData: [FilterTagModel] = []
     private var filterTagCellData: [String] = []
+
+    @IBOutlet private weak var filterTagCollectionView: UICollectionView!
+    @IBOutlet private weak var resetButtonView: UIView!
+    @IBOutlet private weak var tagCollectionViewConstraint: NSLayoutConstraint!
 
     // MARK: - NormalCalendarView Variable
     private let dateFormatter = DateFormatter()
@@ -71,7 +74,7 @@ class GameMatchingViewController: UIViewController {
         button.tintColor = UIColor(red: 194.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0)
         return button
     }()
-    private lazy var calendarBackGroundView: UIView = {
+    private lazy var calendarBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         return view
@@ -82,15 +85,13 @@ class GameMatchingViewController: UIViewController {
     // MARK: - TableViewFilterView Variable
     private var tableViewFilterView = TableViewFilterView()
     private var sortMode = SortMode.distance
-    @IBOutlet private weak var filterTagCollectionView: UICollectionView!
-    @IBOutlet private weak var resetButtonView: UIView!
-    @IBOutlet private weak var tagCollectionViewConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var tableViewSortingButton: UIButton!
     private lazy var filterBackGroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         return view
     }()
+
+    @IBOutlet private weak var tableViewFilterButton: UIButton!
 
     // MARK: - MatchingModeButtonAction
     @IBAction private func teamMatchButtonTouchUp(_ sender: Any) {
@@ -117,7 +118,7 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - CalendarMonthButtonAction
     @IBAction func monthButtonTouchUp(_ sender: UIButton) {
-        self.calendarBackGroundView.isHidden = false
+        self.calendarBackgroundView.isHidden = false
         self.normalCalendarView.isHidden = false
     }
 
@@ -128,7 +129,8 @@ class GameMatchingViewController: UIViewController {
     }
 
     @IBAction func tableViewSortingButtonTouchUp(_ sender: UIButton) {
-        self.calendarBackGroundView.isHidden = false
+        self.filterBackGroundView.isHidden = false
+        self.tableViewFilterView.isHidden = false
     }
 
     // MARK: - ViewLifeCycle
@@ -192,7 +194,7 @@ class GameMatchingViewController: UIViewController {
         self.calendarView.delegate = self
         self.calendarView.dataSource = self
         self.calendarView.allowsMultipleSelection = true
-        self.calendarBackGroundView.isHidden = true
+        self.calendarBackgroundView.isHidden = true
         self.normalCalendarView.isHidden = true
 
         self.calendarButton.addTarget(self, action: #selector(calendarButtonTouchUp), for: .touchUpInside)
@@ -224,9 +226,9 @@ class GameMatchingViewController: UIViewController {
 
     private func setupTableViewFilterView() {
 
-        self.tableViewSortingButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
+        self.tableViewFilterButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
 
-        self.view.addSubview(filterBackGroundView)
+        self.view.addSubview(self.filterBackGroundView)
         self.filterBackGroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.filterBackGroundView.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -235,18 +237,19 @@ class GameMatchingViewController: UIViewController {
             self.filterBackGroundView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
 
-        self.filterBackGroundView.addSubview(tableViewFilterView)
+        self.filterBackGroundView.addSubview(self.tableViewFilterView)
         self.tableViewFilterView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.tableViewFilterView.widthAnchor.constraint(equalToConstant: 315),
             self.tableViewFilterView.heightAnchor.constraint(equalToConstant: 271),
-            self.tableViewFilterView.centerXAnchor.constraint(equalTo: self.calendarBackGroundView.centerXAnchor),
-            self.tableViewFilterView.centerXAnchor.constraint(equalTo: self.calendarBackGroundView.centerXAnchor),
-            self.tableViewFilterView.centerYAnchor.constraint(equalTo: self.calendarBackGroundView.centerYAnchor)
+            self.tableViewFilterView.centerXAnchor.constraint(equalTo: self.calendarBackgroundView.centerXAnchor),
+            self.tableViewFilterView.centerXAnchor.constraint(equalTo: self.calendarBackgroundView.centerXAnchor),
+            self.tableViewFilterView.centerYAnchor.constraint(equalTo: self.calendarBackgroundView.centerYAnchor)
         ])
 
         self.tableViewFilterView.delegate = self
         self.filterBackGroundView.isHidden = true
+        self.tableViewFilterView.isHidden = true
     }
 
     private func makeDate(_ nextDay: Int) -> String? {
@@ -281,7 +284,7 @@ class GameMatchingViewController: UIViewController {
     }
 
     @objc private func calendarButtonTouchUp() {
-        self.calendarBackGroundView.isHidden = true
+        self.calendarBackgroundView.isHidden = true
         self.normalCalendarView.isHidden = true
     }
 
@@ -329,16 +332,16 @@ class GameMatchingViewController: UIViewController {
         //        if tabBarController.view.subviews.contains(calendarBackGroundView) == false {
         //
         //        }
-        self.view.addSubview(calendarBackGroundView)
-        self.calendarBackGroundView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(calendarBackgroundView)
+        self.calendarBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.calendarBackGroundView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
-            self.calendarBackGroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
-            self.calendarBackGroundView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
-            self.calendarBackGroundView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0)
+            self.calendarBackgroundView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
+            self.calendarBackgroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+            self.calendarBackgroundView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
+            self.calendarBackgroundView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0)
         ])
 
-        self.calendarBackGroundView.addSubview(self.normalCalendarView)
+        self.calendarBackgroundView.addSubview(self.normalCalendarView)
         self.normalCalendarView.snp.makeConstraints { (make) in
             make.width.equalTo(315)
             make.height.equalTo(406)
@@ -473,12 +476,13 @@ extension GameMatchingViewController: FSCalendarDataSource {
 
 }
 
-
-extension GameMatchingViewController: TableViewSortingViewDelegate {
-    func sortingFinishButtonTapped(button: UIButton, sortMode: SortMode) {
-        self.calendarBackGroundView.isHidden = true
+// MARK: -
+extension GameMatchingViewController: TableViewFilterViewDelegate {
+    func finishButtonDidSelected(button: UIButton, sortMode: SortMode) {
+        self.filterBackGroundView.isHidden = true
+        self.tableViewFilterView.isHidden = true
         self.sortMode = sortMode
-        self.tableViewSortingButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
+        self.tableViewFilterButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
     }
 }
 

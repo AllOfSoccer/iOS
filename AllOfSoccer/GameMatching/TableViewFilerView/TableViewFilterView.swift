@@ -21,14 +21,14 @@ enum SortMode: Int {
     }
 }
 
-protocol TableViewSortingViewDelegate: AnyObject {
-    func sortingFinishButtonTapped(button: UIButton, sortMode: SortMode)
+protocol TableViewFilterViewDelegate: AnyObject {
+    func finishButtonDidSelected(button: UIButton, sortMode: SortMode)
 }
 
 class TableViewFilterView: UIView {
 
     private var sortMode: SortMode?
-    weak var delegate: TableViewSortingViewDelegate?
+    weak var delegate: TableViewFilterViewDelegate?
 
     private var firstCheckButton = UIButton()
     private var secondCheckButton = UIButton()
@@ -168,6 +168,6 @@ class TableViewFilterView: UIView {
 
     @objc private func sortingFinishButtonTouchUp(sender: UIButton) {
         guard let sortMode = self.sortMode else { return }
-        self.delegate?.sortingFinishButtonTapped(button: sender, sortMode: sortMode)
+        self.delegate?.finishButtonDidSelected(button: sender, sortMode: sortMode)
     }
 }

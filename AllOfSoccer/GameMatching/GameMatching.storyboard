@@ -307,7 +307,7 @@
                         <outlet property="monthButton" destination="Mil-d7-Lkb" id="yTk-WS-r4Z"/>
                         <outlet property="resetButtonView" destination="NU8-Dp-hy1" id="nBF-0H-7TW"/>
                         <outlet property="selectedLineCenterConstraint" destination="mvr-4R-FTb" id="VaU-jO-oPi"/>
-                        <outlet property="tableViewSortingButton" destination="jBg-T2-uCl" id="arU-uF-l9n"/>
+                        <outlet property="tableViewFilterButton" destination="jBg-T2-uCl" id="arU-uF-l9n"/>
                         <outlet property="tagCollectionViewConstraint" destination="7JU-Qq-8W7" id="Dh5-X6-ECM"/>
                         <outlet property="teamMatchButton" destination="U8t-kY-EHS" id="555-Df-ej9"/>
                     </connections>
