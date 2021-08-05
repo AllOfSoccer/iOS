@@ -16,81 +16,87 @@ enum Mode {
 
 class GameMatchingViewController: UIViewController {
 
-    private var selectedDate: [String] = []
+    // MARK: - MatchingModeButton Variable
+    @IBOutlet private weak var teamMatchButton: SelectTableButton!
+    @IBOutlet private weak var manMatchButton: SelectTableButton!
+    @IBOutlet private weak var selectedLineCenterConstraint: NSLayoutConstraint!
 
+
+    // MARK: - HorizontalCalendar Variable
+    private var selectedDate: [String] = []
     private var weeks: [String] = ["월","화","수","목","금","토","일"]
     private var components = DateComponents()
     private let now = Date()
     private let dateFormatter = DateFormatter()
     private var calendarCellData
         : [CalendarCellData] = []
-
     private var currentPage: Date?
 
+    // MARK: - FilterTagCollectionView Variable
     private var tagTitles: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
     private var tagCellData: [TagCellData] = []
     private var filteringTagCellData: [String] = []
     private var resetButtonIsSelected: Bool?
-
     private var sortMode = SortMode.distance
-
     private lazy var today: Date = {
         return Date()
     }()
 
-    private lazy var seletCalendarView: UIView = {
+    // MARK: - NormalCalendarView Variable
+    private lazy var normalCalendarView: UIView = {
         let view = UIView()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
         return view
     }()
+
+    private lazy var calendarView = FSCalendar()
 
     private lazy var calendarButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .blue
+        button.backgroundColor = UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0)
+        button.setTitle("선택해주세요", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         return button
-    }()
-
-    private lazy var calendarView: FSCalendar = {
-        let view = FSCalendar()
-        return view
     }()
 
     private lazy var calendarPrevButton: UIButton = {
         let button = UIButton()
-        button.setTitle("이전", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        let buttonImage = UIImage(systemName: "arrowtriangle.left.fill")
+        button.setImage(buttonImage, for: .normal)
+        button.tintColor = UIColor(red: 194.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0)
         return button
     }()
 
     private lazy var calendarNextButton: UIButton = {
         let button = UIButton()
-        button.setTitle("다음", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        let buttonImage = UIImage(systemName: "arrowtriangle.right.fill")
+        button.setImage(buttonImage, for: .normal)
+        button.tintColor = UIColor(red: 194.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0)
         return button
     }()
 
-    private lazy var backGroundView: UIView = {
+    private lazy var calendarBackGroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         return view
     }()
 
-    private lazy var tableViewFilterringView = TableViewSortingView()
-
-    @IBOutlet private weak var teamMatchButton: SelectTableButton!
-    @IBOutlet private weak var manMatchButton: SelectTableButton!
-
-    @IBOutlet private weak var selectedLineCenterConstraint: NSLayoutConstraint!
+    // MARK: - TableViewFilterView Variable
+    private var tableViewFilterView = TableViewFilterView()
     @IBOutlet private weak var monthButton: UIButton!
-    @IBOutlet private weak var
-        calendarCollectionView: UICollectionView!
-
+    @IBOutlet private weak var calendarCollectionView: UICollectionView!
     @IBOutlet private weak var tagCollectionView: UICollectionView!
     @IBOutlet private weak var refreshButtonView: UIView!
     @IBOutlet private weak var tagCollectionViewConstraint: NSLayoutConstraint!
-
     @IBOutlet private weak var tableViewSortingButton: UIButton!
+    private lazy var filterBackGroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        return view
+    }()
 
+    // MARK: - MatchingModeButtonAction
     @IBAction private func teamMatchButtonTouchUp(_ sender: Any) {
         self.teamMatchButton.isSelected = true
         self.manMatchButton.isSelected = false
@@ -113,8 +119,10 @@ class GameMatchingViewController: UIViewController {
         }
     }
 
+    // MARK: - CalendarMonthButtonAction
     @IBAction func monthButtonTouchUp(_ sender: UIButton) {
-        self.seletCalendarView.isHidden = false
+        self.calendarBackGroundView.isHidden = false
+        self.normalCalendarView.isHidden = false
     }
 
     @IBAction private func resetTagCollectionView(_ sender: UIButton) {
@@ -130,20 +138,20 @@ class GameMatchingViewController: UIViewController {
     }
 
     @IBAction func tableViewSortingButtonTouchUp(_ sender: UIButton) {
-        self.backGroundView.isHidden = false
+        self.calendarBackGroundView.isHidden = false
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupCalendarCollectionView()
-        setupSelectCalendarView()
+        setupNormalCalendarView()
         setupTagCollectionView()
-        setupTableViewSortingView()
+        setupTableViewFilterView()
     }
 
-    private
-    func setupCalendarCollectionView() {
+    // MARK: - Setup View
+    private func setupCalendarCollectionView() {
         self.calendarCollectionView.delegate = self
         self.calendarCollectionView.dataSource = self
 
@@ -169,51 +177,19 @@ class GameMatchingViewController: UIViewController {
         self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
     }
 
-    private func setupSelectCalendarView() {
-        self.view.addSubview(seletCalendarView)
-        self.seletCalendarView.snp.makeConstraints { (make) in
-            make.width.equalTo(315)
-            make.height.equalTo(406)
-            make.center.equalTo(self.view)
-        }
+    private func setupNormalCalendarView() {
 
-        self.seletCalendarView.addSubview(calendarButton)
-        self.calendarButton.snp.makeConstraints { (make) in
-            make.width.equalTo(seletCalendarView)
-            make.height.equalTo(63)
-            make.bottom.equalTo(seletCalendarView)
-        }
-
-        self.seletCalendarView.addSubview(calendarView)
-        self.calendarView.snp.makeConstraints { (make) in
-            make.top.equalTo(seletCalendarView)
-            make.bottom.equalTo(calendarButton.snp.top)
-            make.width.equalTo(seletCalendarView)
-        }
-
-        self.calendarView.addSubview(calendarPrevButton)
-        self.calendarPrevButton.snp.makeConstraints { make in
-            make.top.equalTo(calendarView.snp.top)
-            make.left.equalTo(calendarView.snp.left)
-            make.width.equalTo(50)
-            make.height.equalTo(30)
-        }
-
-        self.calendarView.addSubview(calendarNextButton)
-        self.calendarNextButton.snp.makeConstraints { make in
-            make.top.equalTo(calendarView.snp.top)
-            make.right.equalTo(calendarView.snp.right)
-            make.width.equalTo(50)
-            make.height.equalTo(30)
-        }
+        normalCalendarViewConstraint()
 
         self.calendarView.appearance.titleWeekendColor = UIColor.red
         self.calendarView.appearance.selectionColor = UIColor.black
-        self.calendarView.appearance.todayColor = UIColor.blue
+        self.calendarView.appearance.todayColor = nil
+        self.calendarView.appearance.titleTodayColor = nil
 
         self.calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
-        self.calendarView.appearance.headerDateFormat = "YYYY년 M월"
+        self.calendarView.appearance.headerDateFormat = "M월"
         self.calendarView.appearance.headerTitleColor = .black
+        self.calendarView.appearance.headerTitleFont = UIFont.systemFont(ofSize: 20, weight: .bold)
 
         self.calendarView.locale = Locale(identifier: "ko_KR")
         self.calendarView.calendarWeekdayView.weekdayLabels[0].text = "일"
@@ -224,18 +200,15 @@ class GameMatchingViewController: UIViewController {
         self.calendarView.calendarWeekdayView.weekdayLabels[5].text = "금"
         self.calendarView.calendarWeekdayView.weekdayLabels[6].text = "토"
 
-        self.seletCalendarView.isHidden = true
-
         self.calendarView.delegate = self
         self.calendarView.dataSource = self
-
         self.calendarView.allowsMultipleSelection = true
+        self.calendarBackGroundView.isHidden = true
+        self.normalCalendarView.isHidden = true
 
         self.calendarButton.addTarget(self, action: #selector(calendarButtonTouchUp), for: .touchUpInside)
         self.calendarPrevButton.addTarget(self, action: #selector(monthBackButtonPressed), for: .touchUpInside)
         self.calendarNextButton.addTarget(self, action: #selector(monthNextButtonPressed), for: .touchUpInside)
-
-        self.dateFormatter.dateFormat = "yyyy-MM-dd"
     }
 
     private func setupTagCollectionView() {
@@ -261,31 +234,31 @@ class GameMatchingViewController: UIViewController {
         }
     }
 
-    private func setupTableViewSortingView() {
+    private func setupTableViewFilterView() {
+
         self.tableViewSortingButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
 
-        self.backGroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-        self.view.addSubview(backGroundView)
-        self.backGroundView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(filterBackGroundView)
+        self.filterBackGroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.backGroundView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.backGroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            self.backGroundView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.backGroundView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            self.filterBackGroundView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.filterBackGroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.filterBackGroundView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.filterBackGroundView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
 
-        self.backGroundView.addSubview(tableViewFilterringView)
-        self.tableViewFilterringView.translatesAutoresizingMaskIntoConstraints = false
+        self.filterBackGroundView.addSubview(tableViewFilterView)
+        self.tableViewFilterView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.tableViewFilterringView.widthAnchor.constraint(equalToConstant: 315),
-            self.tableViewFilterringView.heightAnchor.constraint(equalToConstant: 271),
-            self.tableViewFilterringView.centerXAnchor.constraint(equalTo: self.backGroundView.centerXAnchor),
-            self.tableViewFilterringView.centerXAnchor.constraint(equalTo: self.backGroundView.centerXAnchor),
-            self.tableViewFilterringView.centerYAnchor.constraint(equalTo: self.backGroundView.centerYAnchor)
+            self.tableViewFilterView.widthAnchor.constraint(equalToConstant: 315),
+            self.tableViewFilterView.heightAnchor.constraint(equalToConstant: 271),
+            self.tableViewFilterView.centerXAnchor.constraint(equalTo: self.calendarBackGroundView.centerXAnchor),
+            self.tableViewFilterView.centerXAnchor.constraint(equalTo: self.calendarBackGroundView.centerXAnchor),
+            self.tableViewFilterView.centerYAnchor.constraint(equalTo: self.calendarBackGroundView.centerYAnchor)
         ])
 
-        self.tableViewFilterringView.delegate = self
-        self.backGroundView.isHidden = true
+        self.tableViewFilterView.delegate = self
+        self.filterBackGroundView.isHidden = true
     }
 
     private func makeDate(_ plusValue: Int) -> String? {
@@ -315,7 +288,8 @@ class GameMatchingViewController: UIViewController {
     }
 
     @objc private func calendarButtonTouchUp() {
-        self.seletCalendarView.isHidden = true
+        self.calendarBackGroundView.isHidden = true
+        self.normalCalendarView.isHidden = true
     }
 
     @objc private func monthBackButtonPressed() {
@@ -344,6 +318,58 @@ class GameMatchingViewController: UIViewController {
     private func tagCollectionViewCellIsSelectedViewSetting() {
         self.tagCollectionViewConstraint.constant = 0
         self.refreshButtonView.isHidden = false
+    }
+
+    private func normalCalendarViewConstraint() {
+        //        guard let tabBarController = self.tabBarController else { return }
+        //        if tabBarController.view.subviews.contains(calendarBackGroundView) == false {
+        //
+        //        }
+        self.view.addSubview(calendarBackGroundView)
+        self.calendarBackGroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.calendarBackGroundView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
+            self.calendarBackGroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+            self.calendarBackGroundView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
+            self.calendarBackGroundView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0)
+        ])
+
+        self.calendarBackGroundView.addSubview(self.normalCalendarView)
+        self.normalCalendarView.snp.makeConstraints { (make) in
+            make.width.equalTo(315)
+            make.height.equalTo(406)
+            make.center.equalTo(self.view)
+        }
+
+        self.normalCalendarView.addSubview(calendarButton)
+        self.calendarButton.snp.makeConstraints { (make) in
+            make.width.equalTo(normalCalendarView)
+            make.height.equalTo(63)
+            make.bottom.equalTo(normalCalendarView)
+        }
+
+        self.normalCalendarView.addSubview(calendarView)
+        self.calendarView.snp.makeConstraints { (make) in
+            make.top.equalTo(normalCalendarView)
+            make.bottom.equalTo(calendarButton.snp.top)
+            make.width.equalTo(normalCalendarView)
+        }
+
+        self.calendarView.addSubview(calendarPrevButton)
+        self.calendarPrevButton.snp.makeConstraints { make in
+            make.top.equalTo(calendarView.snp.top).offset(25)
+            make.left.equalTo(calendarView.snp.left).offset(25)
+            make.width.equalTo(14)
+            make.height.equalTo(14)
+        }
+
+        self.calendarView.addSubview(calendarNextButton)
+        self.calendarNextButton.snp.makeConstraints { make in
+            make.top.equalTo(calendarView.snp.top).offset(25)
+            make.right.equalTo(calendarView.snp.right).offset(-25)
+            make.width.equalTo(14)
+            make.height.equalTo(14)
+        }
     }
 }
 
@@ -389,7 +415,7 @@ extension GameMatchingViewController: FSCalendarDelegate {
         let stringDate = dateFormatter.string(from: date)
         self.selectedDate.append(stringDate)
         let countOfSeletedDate = self.selectedDate.count
-        let buttonTitle = "선택 적용하기 (\(countOfSeletedDate))"
+        let buttonTitle = self.selectedDate.isEmpty ? "선택해주세요" : "선택 적용하기 (\(countOfSeletedDate))"
         self.calendarButton.setTitle(buttonTitle, for: .normal)
     }
 
@@ -398,8 +424,12 @@ extension GameMatchingViewController: FSCalendarDelegate {
         guard let indexOfStringDate = selectedDate.firstIndex(of: stringDate) else { return }
         self.selectedDate.remove(at: indexOfStringDate)
         let countOfSeletedDate = self.selectedDate.count
-        let buttonTitle = "선택 적용하기 (\(countOfSeletedDate))"
+        let buttonTitle = self.selectedDate.isEmpty ? "선택해주세요" : "선택 적용하기 (\(countOfSeletedDate))"
         self.calendarButton.setTitle(buttonTitle, for: .normal)
+    }
+
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        return Date()
     }
 }
 
@@ -449,7 +479,7 @@ extension GameMatchingViewController: TagCollectionViewCellTapped {
 
 extension GameMatchingViewController: TableViewSortingViewDelegate {
     func sortingFinishButtonTapped(button: UIButton, sortMode: SortMode) {
-        self.backGroundView.isHidden = true
+        self.calendarBackGroundView.isHidden = true
         self.sortMode = sortMode
         self.tableViewSortingButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
     }

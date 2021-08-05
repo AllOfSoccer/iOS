@@ -25,7 +25,7 @@ protocol TableViewSortingViewDelegate: AnyObject {
     func sortingFinishButtonTapped(button: UIButton, sortMode: SortMode)
 }
 
-class TableViewSortingView: UIView {
+class TableViewFilterView: UIView {
 
     private var sortMode: SortMode?
     weak var delegate: TableViewSortingViewDelegate?
