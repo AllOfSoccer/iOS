@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TagCellModel {
-    var tagCellTitle: String?
-    var tagCellIsSelected: Bool?
+struct FilterTagModel {
+    var title: String?
+//    var isSelected: Bool?
 }

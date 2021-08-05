@@ -30,34 +30,25 @@ class GameMatchingViewController: UIViewController {
     // MARK: - HorizontalCalendar Variable
     private var selectedDate: [String] = []
     private var weeks: [String] = ["월","화","수","목","금","토","일"]
-    private var components = DateComponents()
-    private let now = Date()
-    private let dateFormatter = DateFormatter()
     private var horizontalCalendarCellData
         : [HorizontalCalendarModel] = []
-    private var currentPage: Date?
 
     @IBOutlet private weak var horizontalCalendarView: UICollectionView!
 
     // MARK: - FilterTagCollectionView Variable
     private var tagTitles: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
-    private var tagCellData: [TagCellModel] = []
-    private var filteringTagCellData: [String] = []
-    private var resetButtonIsSelected: Bool?
-    private var sortMode = SortMode.distance
-    private lazy var today: Date = {
-        return Date()
-    }()
+    private var tagCellData: [FilterTagModel] = []
+    private var filterTagCellData: [String] = []
 
     // MARK: - NormalCalendarView Variable
+    private let dateFormatter = DateFormatter()
+    private var currentPage: Date?
     private lazy var normalCalendarView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         return view
     }()
-
-    private lazy var calendarView = FSCalendar()
-
+    private var calendarView = FSCalendar()
     private lazy var calendarButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0)
@@ -66,7 +57,6 @@ class GameMatchingViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         return button
     }()
-
     private lazy var calendarPrevButton: UIButton = {
         let button = UIButton()
         let buttonImage = UIImage(systemName: "arrowtriangle.left.fill")
@@ -74,7 +64,6 @@ class GameMatchingViewController: UIViewController {
         button.tintColor = UIColor(red: 194.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0)
         return button
     }()
-
     private lazy var calendarNextButton: UIButton = {
         let button = UIButton()
         let buttonImage = UIImage(systemName: "arrowtriangle.right.fill")
@@ -82,7 +71,6 @@ class GameMatchingViewController: UIViewController {
         button.tintColor = UIColor(red: 194.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0)
         return button
     }()
-
     private lazy var calendarBackGroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
@@ -93,8 +81,9 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - TableViewFilterView Variable
     private var tableViewFilterView = TableViewFilterView()
-    @IBOutlet private weak var tagCollectionView: UICollectionView!
-    @IBOutlet private weak var refreshButtonView: UIView!
+    private var sortMode = SortMode.distance
+    @IBOutlet private weak var filterTagCollectionView: UICollectionView!
+    @IBOutlet private weak var resetButtonView: UIView!
     @IBOutlet private weak var tagCollectionViewConstraint: NSLayoutConstraint!
     @IBOutlet private weak var tableViewSortingButton: UIButton!
     private lazy var filterBackGroundView: UIView = {
@@ -132,15 +121,9 @@ class GameMatchingViewController: UIViewController {
         self.normalCalendarView.isHidden = false
     }
 
-    @IBAction private func resetTagCollectionView(_ sender: UIButton) {
-        self.resetButtonIsSelected = true
-        self.filteringTagCellData.removeAll()
-        self.tagCellData = self.tagCellData.map { (cell) -> TagCellModel in
-            var cell = cell
-            cell.tagCellIsSelected = false
-            return cell
-        }
-        self.tagCollectionView.reloadData()
+    @IBAction private func resetTagButtonTouchUp(_ sender: UIButton) {
+        self.filterTagCellData.removeAll()
+        self.filterTagCollectionView.reloadData()
         self.tagCollectionViewCellIsNotSelectedViewSetting()
     }
 
@@ -148,12 +131,13 @@ class GameMatchingViewController: UIViewController {
         self.calendarBackGroundView.isHidden = false
     }
 
+    // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupHorizontalCalendarView()
         setupNormalCalendarView()
-        setupTagCollectionView()
+        setupFilterTagCollectionView()
         setupTableViewFilterView()
     }
 
@@ -216,25 +200,24 @@ class GameMatchingViewController: UIViewController {
         self.calendarNextButton.addTarget(self, action: #selector(monthNextButtonTouchUp), for: .touchUpInside)
     }
 
-    private func setupTagCollectionView() {
-        self.tagCollectionView.delegate = self
-        self.tagCollectionView.dataSource = self
+    private func setupFilterTagCollectionView() {
+        self.filterTagCollectionView.delegate = self
+        self.filterTagCollectionView.dataSource = self
+        self.filterTagCollectionView.allowsMultipleSelection = true
 
         let tagCollectionViewLayout = UICollectionViewFlowLayout()
         tagCollectionViewLayout.estimatedItemSize = CGSize(width: 500, height: 28)
         tagCollectionViewLayout.minimumInteritemSpacing = 6
-        tagCollectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+        tagCollectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         tagCollectionViewLayout.scrollDirection = .horizontal
-        self.tagCollectionView.collectionViewLayout = tagCollectionViewLayout
+        self.filterTagCollectionView.collectionViewLayout = tagCollectionViewLayout
 
-        tagCollectionViewCellIsNotSelectedViewSetting()
-
-        self.resetButtonIsSelected = false
+        self.tagCollectionViewConstraint.constant = -(self.resetButtonView.frame.width)
+        self.resetButtonView.isHidden = true
 
         for tagCellTitle in self.tagTitles {
-            var tagCellData = TagCellModel()
-            tagCellData.tagCellTitle = tagCellTitle
-            tagCellData.tagCellIsSelected = false
+            var tagCellData = FilterTagModel()
+            tagCellData.title = tagCellTitle
             self.tagCellData.append(tagCellData)
         }
     }
@@ -315,19 +298,30 @@ class GameMatchingViewController: UIViewController {
         var dateComponents = DateComponents()
         dateComponents.month = moveUp ? 1 : -1
 
-        self.currentPage = calendar.date(byAdding: dateComponents, to: self.currentPage ?? self.today)
+        self.currentPage = calendar.date(byAdding: dateComponents, to: self.currentPage ?? Date())
         guard let currentPage = self .currentPage else { return }
         self.calendarView.setCurrentPage(currentPage, animated: true)
     }
 
     private func tagCollectionViewCellIsNotSelectedViewSetting() {
-        self.tagCollectionViewConstraint.constant = -(refreshButtonView.frame.width)
-        self.refreshButtonView.isHidden = true
+//        self.tagCollectionViewConstraint.constant = -(self.resetButtonView.frame.width)
+//        self.resetButtonView.isHidden = true
+        let resetButtonViewWidth = self.resetButtonView.frame.width
+        UIView.animate(withDuration: 0.05) { [weak self] in
+            self?.tagCollectionViewConstraint.constant = -(resetButtonViewWidth)
+            self?.resetButtonView.isHidden = true
+            self?.view.layoutIfNeeded()
+        }
     }
 
     private func tagCollectionViewCellIsSelectedViewSetting() {
-        self.tagCollectionViewConstraint.constant = 0
-        self.refreshButtonView.isHidden = false
+//        self.tagCollectionViewConstraint.constant = 0
+//        self.resetButtonView.isHidden = false
+        UIView.animate(withDuration: 0.05) { [weak self] in
+            self?.tagCollectionViewConstraint.constant = 0
+            self?.resetButtonView.isHidden = false
+            self?.view.layoutIfNeeded()
+        }
     }
 
     private func normalCalendarViewConstraint() {
@@ -383,20 +377,37 @@ class GameMatchingViewController: UIViewController {
     }
 }
 
+// MARK: - CollectionViewDelegate
 extension GameMatchingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.horizontalCalendarView {
             // 데이터 처리
+        } else if collectionView == self.filterTagCollectionView {
+            // 데이터 처리
+            guard let tagLabelTitle = self.tagCellData[indexPath.item].title else { return }
+            self.filterTagCellData.append(tagLabelTitle)
+            if !self.filterTagCellData.isEmpty {
+                self.tagCollectionViewCellIsSelectedViewSetting()
+            }
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView == self.horizontalCalendarView {
             // 데이터 처리
+        } else if collectionView == self.filterTagCollectionView {
+            // 데이터 처리
+            guard let tagLabelTitle = self.tagCellData[indexPath.item].title else { return }
+            guard let indexTagLabelTitle = filterTagCellData.firstIndex(of: tagLabelTitle) else { return }
+            self.filterTagCellData.remove(at: indexTagLabelTitle)
+            if self.filterTagCellData.isEmpty {
+                self.tagCollectionViewCellIsNotSelectedViewSetting()
+            }
         }
     }
 }
 
+// MARK: - CollectionViewDataSource
 extension GameMatchingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.horizontalCalendarView {
@@ -415,21 +426,28 @@ extension GameMatchingViewController: UICollectionViewDataSource {
 
             return cell
         } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameMatchingTagCollectionViewCell", for: indexPath) as? TagCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameMatchingTagCollectionViewCell", for: indexPath) as? FilterTagCollectionViewCell else {
                 return .init()
             }
 
-            cell.configure(self.tagCellData[indexPath.item], self.resetButtonIsSelected ?? false)
-            cell.delegate = self
+            cell.configure(self.tagCellData[indexPath.item])
 
             return cell
         }
     }
 }
 
+// MARK: - CollectionViewFlowLayout
+extension GameMatchingViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 6
+    }
+}
+
+// MARK: - FSCollectionViewDelegate
 extension GameMatchingViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let stringDate = dateFormatter.string(from: date)
+        let stringDate = self.dateFormatter.string(from: date)
         self.selectedDate.append(stringDate)
         let countOfSeletedDate = self.selectedDate.count
         let buttonTitle = self.selectedDate.isEmpty ? "선택해주세요" : "선택 적용하기 (\(countOfSeletedDate))"
@@ -437,7 +455,7 @@ extension GameMatchingViewController: FSCalendarDelegate {
     }
 
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let stringDate = dateFormatter.string(from: date)
+        let stringDate = self.dateFormatter.string(from: date)
         guard let indexOfStringDate = selectedDate.firstIndex(of: stringDate) else { return }
         self.selectedDate.remove(at: indexOfStringDate)
         let countOfSeletedDate = self.selectedDate.count
@@ -450,37 +468,11 @@ extension GameMatchingViewController: FSCalendarDelegate {
     }
 }
 
+// MARK: - FSCollectionViewDataSource
 extension GameMatchingViewController: FSCalendarDataSource {
 
 }
 
-extension GameMatchingViewController: TagCollectionViewCellTapped {
-    func cellDidSelected(_ cell: TagCollectionViewCell) {
-        self.resetButtonIsSelected = false
-        guard let indexPath = tagCollectionView.indexPath(for: cell) else { return }
-        guard let buttonTitle = cell.tagButton.currentTitle else { return }
-
-        if self.tagCellData[indexPath.item].tagCellIsSelected == false {
-            self.tagCellData[indexPath.item].tagCellIsSelected = true
-        } else {
-            self.tagCellData[indexPath.item].tagCellIsSelected = false
-        }
-        self.tagCollectionView.reloadData()
-
-        if !self.filteringTagCellData.isEmpty {
-            self.tagCollectionViewCellIsSelectedViewSetting()
-        } else {
-            self.tagCollectionViewCellIsNotSelectedViewSetting()
-        }
-
-        if cell.tagButton.isSelected {
-            self.filteringTagCellData.append(buttonTitle)
-        } else {
-            guard let buttonTitleIndex = self.filteringTagCellData.firstIndex(of: buttonTitle) else { return }
-            self.filteringTagCellData.remove(at: buttonTitleIndex)
-        }
-    }
-}
 
 extension GameMatchingViewController: TableViewSortingViewDelegate {
     func sortingFinishButtonTapped(button: UIButton, sortMode: SortMode) {
