@@ -22,7 +22,7 @@ enum SortMode: Int {
 }
 
 protocol TableViewFilterViewDelegate: AnyObject {
-    func finishButtonDidSelected(button: UIButton, sortMode: SortMode)
+    func finishButtonDidSelected(_ tableViewFilterView: TableViewFilterView, sortMode: SortMode)
 }
 
 class TableViewFilterView: UIView {
@@ -168,6 +168,6 @@ class TableViewFilterView: UIView {
 
     @objc private func sortingFinishButtonTouchUp(sender: UIButton) {
         guard let sortMode = self.sortMode else { return }
-        self.delegate?.finishButtonDidSelected(button: sender, sortMode: sortMode)
+        self.delegate?.finishButtonDidSelected(self, sortMode: sortMode)
     }
 }

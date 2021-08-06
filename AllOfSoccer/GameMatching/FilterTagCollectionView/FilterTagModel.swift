@@ -9,5 +9,4 @@ import Foundation
 
 struct FilterTagModel {
     var title: String?
-//    var isSelected: Bool?
 }

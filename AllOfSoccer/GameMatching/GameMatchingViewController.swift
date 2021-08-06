@@ -14,7 +14,7 @@ enum MatchingMode {
     case manMatching
 }
 
-enum CollecionviewType {
+enum CollecionviewType: String {
     case HorizontalCalendarView
     case FilterTagCollectionView
 }
@@ -307,8 +307,6 @@ class GameMatchingViewController: UIViewController {
     }
 
     private func tagCollectionViewCellIsNotSelectedViewSetting() {
-//        self.tagCollectionViewConstraint.constant = -(self.resetButtonView.frame.width)
-//        self.resetButtonView.isHidden = true
         let resetButtonViewWidth = self.resetButtonView.frame.width
         UIView.animate(withDuration: 0.05) { [weak self] in
             self?.tagCollectionViewConstraint.constant = -(resetButtonViewWidth)
@@ -318,8 +316,6 @@ class GameMatchingViewController: UIViewController {
     }
 
     private func tagCollectionViewCellIsSelectedViewSetting() {
-//        self.tagCollectionViewConstraint.constant = 0
-//        self.resetButtonView.isHidden = false
         UIView.animate(withDuration: 0.05) { [weak self] in
             self?.tagCollectionViewConstraint.constant = 0
             self?.resetButtonView.isHidden = false
@@ -328,6 +324,7 @@ class GameMatchingViewController: UIViewController {
     }
 
     private func normalCalendarViewConstraint() {
+        // 향후 사용할 예정
         //        guard let tabBarController = self.tabBarController else { return }
         //        if tabBarController.view.subviews.contains(calendarBackGroundView) == false {
         //
@@ -383,6 +380,7 @@ class GameMatchingViewController: UIViewController {
 // MARK: - CollectionViewDelegate
 extension GameMatchingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
         if collectionView == self.horizontalCalendarView {
             // 데이터 처리
         } else if collectionView == self.filterTagCollectionView {
@@ -422,17 +420,16 @@ extension GameMatchingViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.horizontalCalendarView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCollectionViewCell", for: indexPath) as? HorizontalCalendarCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCalendarCollectionViewCell", for: indexPath) as? HorizontalCalendarCollectionViewCell else {
                 return .init()
             }
             cell.configure(self.horizontalCalendarCellData[indexPath.item])
 
             return cell
         } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameMatchingTagCollectionViewCell", for: indexPath) as? FilterTagCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterTagCollectionViewCell", for: indexPath) as? FilterTagCollectionViewCell else {
                 return .init()
             }
-
             cell.configure(self.tagCellData[indexPath.item])
 
             return cell
@@ -478,7 +475,7 @@ extension GameMatchingViewController: FSCalendarDataSource {
 
 // MARK: -
 extension GameMatchingViewController: TableViewFilterViewDelegate {
-    func finishButtonDidSelected(button: UIButton, sortMode: SortMode) {
+    func finishButtonDidSelected(_ tableViewFilterView: TableViewFilterView, sortMode: SortMode) {
         self.filterBackGroundView.isHidden = true
         self.tableViewFilterView.isHidden = true
         self.sortMode = sortMode
