@@ -37,6 +37,11 @@ class GameMatchingViewController: UIViewController {
     // MARK: - FilterDetailView
     private let filterDetailView = FilterDetailView()
     private var bottomConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    private lazy var filterDetailBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        return view
+    }()
 
     // MARK: - NoticeTableView Variable
     @IBOutlet private weak var noticeTableView: UITableView!
@@ -149,35 +154,34 @@ class GameMatchingViewController: UIViewController {
         setupFilterTagCollectionView()
         setupTableViewFilterView()
         setupFilterDetailView()
+        setupNoticeTableView()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        let itemHeight = 244
-
         guard let tabbar = self.tabBarController else { return }
-        if tabbar.view.subviews.contains(filterDetailView) == false {
-            tabbar.view.addSubview(filterDetailView)
+        if tabbar.view.subviews.contains(self.filterDetailView) == false {
+            tabbar.view.addSubview(self.filterDetailView)
 //            self.filterDetailView.isHidden = true
         }
 
-        self.bottomConstraint = filterDetailView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: CGFloat(itemHeight))
+        let itemHeight = 244
+
         self.filterDetailView.translatesAutoresizingMaskIntoConstraints = false
+//        self.bottomConstraint = self.filterDetailView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: CGFloat(0))
         NSLayoutConstraint.activate([
             self.filterDetailView.leadingAnchor.constraint(equalTo: tabbar.view.leadingAnchor, constant: 0),
             self.filterDetailView.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: 0),
             self.filterDetailView.heightAnchor.constraint(equalToConstant: CGFloat(itemHeight)),
-            self.bottomConstraint
+            self.filterDetailView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: CGFloat(0))
         ])
-        setupNoticeTableView()
     }
 
     // MARK: - Setup View
     private func setupHorizontalCalendarView() {
         self.horizontalCalendarView.delegate = self
         self.horizontalCalendarView.dataSource = self
-    }
 
         let flowlayout = UICollectionViewFlowLayout()
         flowlayout.minimumInteritemSpacing = 15
@@ -283,7 +287,7 @@ class GameMatchingViewController: UIViewController {
     }
 
     private func setupFilterDetailView() {
-        filterDetailView.delegate = self
+        self.filterDetailView.delegate = self
     }
 
     private func setupNoticeTableView() {
@@ -483,6 +487,21 @@ extension GameMatchingViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension GameMatchingViewController: UITableViewDelegate {
+
+}
+
+extension GameMatchingViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoticeTableViewCell", for: indexPath) as? NoticeTableViewCell else { return UITableViewCell() }
+        return cell
+    }
+}
+
 // MARK: - FSCollectionViewDelegate
 extension GameMatchingViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -524,19 +543,21 @@ extension GameMatchingViewController: TableViewFilterViewDelegate {
 
 extension GameMatchingViewController: FilterDetailViewDelegate {
     func finishButtonDidSelected(_ detailView: FilterDetailView) {
-        UIView.animate(withDuration: 0.1) { [weak self] in
-            self?.bottomConstraint.constant = 244
-            self?.view.layoutIfNeeded()
+
+        UIView.animate(withDuration: 2) { [weak self] in
+            guard let self = self else { return }
+            self.filterDetailView.frame = CGRect(x: 0, y: 1000, width: self.filterDetailView.frame.width, height: self.filterDetailView.frame.height)
+            self.tabBarController?.view.layoutIfNeeded()
         }
-        self.backGroundView.isHidden = true
     }
 
     func cancelButtonDidSelected(_ detailView: FilterDetailView) {
-        UIView.animate(withDuration: 0.1) { [weak self] in
-            self?.bottomConstraint.constant = 244
-            self?.view.layoutIfNeeded()
+
+        UIView.animate(withDuration: 2) { [weak self] in
+            guard let self = self else { return }
+            self.filterDetailView.frame = CGRect(x: 0, y: 1000, width: self.filterDetailView.frame.width, height: self.filterDetailView.frame.height)
+            self.tabBarController?.view.layoutIfNeeded()
         }
-        self.backGroundView.isHidden = true
     }
 }
 

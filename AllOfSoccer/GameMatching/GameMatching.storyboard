@@ -397,8 +397,8 @@
                         <outlet property="horizontalCalendarView" destination="ujb-m5-sph" id="sTI-Uo-yQC"/>
                         <outlet property="manMatchButton" destination="DbN-Zz-RjJ" id="Clu-Rh-Rwh"/>
                         <outlet property="monthButton" destination="Mil-d7-Lkb" id="yTk-WS-r4Z"/>
-                        <outlet property="resetButtonView" destination="NU8-Dp-hy1" id="nBF-0H-7TW"/>
                         <outlet property="noticeTableView" destination="Axh-HT-bKL" id="heB-4U-YXs"/>
+                        <outlet property="resetButtonView" destination="NU8-Dp-hy1" id="nBF-0H-7TW"/>
                         <outlet property="selectedLineCenterConstraint" destination="mvr-4R-FTb" id="VaU-jO-oPi"/>
                         <outlet property="tableViewFilterButton" destination="jBg-T2-uCl" id="arU-uF-l9n"/>
                         <outlet property="tagCollectionViewConstraint" destination="7JU-Qq-8W7" id="Dh5-X6-ECM"/>
@@ -432,6 +432,7 @@
         <image name="ArrowsClockwise" width="22" height="22"/>
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <image name="circle" width="210" height="156"/>
         <image name="flag" catalog="system" width="128" height="121"/>
         <image name="flag.fill" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
