@@ -42,6 +42,7 @@
 		9DE4F2A426AF070000F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DC128AD26918E710021EDF5 /* FSCalendar */; };
 		9DE4F2A726AF076600F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE4F2A626AF076600F8974A /* FSCalendar */; };
 		9DECF34826A0468900C846DB /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DECF34726A0468900C846DB /* CalendarCollectionViewCell.swift */; };
+		9DFB9C2F26B8DCBB00618D66 /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */; };
 		9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD93B426764DA10049ADF2 /* SignInViewController.swift */; };
 		9DFFB165266D0F3700B04D3D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFFB164266D0F3700B04D3D /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingActivityIndicator.swift; sourceTree = "<group>"; };
 		9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedCollectionView.swift; sourceTree = "<group>"; };
 		9DECF34726A0468900C846DB /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
 		9DFD93B426764DA10049ADF2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9DFFB164266D0F3700B04D3D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +181,7 @@
 				9D686C9F26AD6EC400440CBF /* TagCollectionViewCell.swift */,
 				9D24EF7B26B3C68400F55676 /* TagCellData.swift */,
 				9D338C2B26B6A603008A2EDA /* TableViewSortingView.swift */,
+				9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */,
 				9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */,
 				9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */,
 			);
@@ -339,6 +342,7 @@
 				9DECF34826A0468900C846DB /* CalendarCollectionViewCell.swift in Sources */,
 				9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */,
 				9DD474B626903D97006F00F1 /* RoundButton.swift in Sources */,
+				9DFB9C2F26B8DCBB00618D66 /* NoticeTableViewCell.swift in Sources */,
 				9D6B91E2266D08E000AF182B /* AppDelegate.swift in Sources */,
 				9D8A32EF26B8FB0000A8F65B /* FilterDetailView.swift in Sources */,
 				9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */,

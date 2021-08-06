@@ -20,6 +20,10 @@ class GameMatchingViewController: UIViewController {
     private let filterDetailView = FilterDetailView()
     private var bottomConstraint: NSLayoutConstraint = NSLayoutConstraint()
 
+    // MARK: - NoticeTableView Variable
+    @IBOutlet private weak var noticeTableView: UITableView!
+
+
     private var selectedDate: [String] = []
 
     private var weeks: [String] = ["월","화","수","목","금","토","일"]
@@ -139,6 +143,8 @@ class GameMatchingViewController: UIViewController {
 
     }
 
+
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -168,6 +174,7 @@ class GameMatchingViewController: UIViewController {
             self.filterDetailView.heightAnchor.constraint(equalToConstant: CGFloat(itemHeight)),
             self.bottomConstraint
         ])
+        setupNoticeTableView()
     }
 
     private func setupCalendarCollectionView() {
@@ -319,6 +326,11 @@ class GameMatchingViewController: UIViewController {
         filterDetailView.delegate = self
     }
 
+    private func setupNoticeTableView() {
+        self.noticeTableView.delegate = self
+        self.noticeTableView.dataSource = self
+    }
+
     private func makeDate(_ plusValue: Int) -> String? {
         let calendar = Calendar.current
         let currentDate = Date()
@@ -438,6 +450,24 @@ extension GameMatchingViewController: FSCalendarDataSource {
 
 }
 
+extension GameMatchingViewController: UITableViewDelegate {
+    
+}
+
+extension GameMatchingViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoticeTableViewCell", for: indexPath) as? NoticeTableViewCell else {
+            return UITableViewCell()
+        }
+
+        return cell
+    }
+}
+
 extension GameMatchingViewController: CalendarCellTappedDelegate {
     func cellTapped(_ cell: CalendarCollectionViewCell) {
         guard let indexPath = calendarCollectionView.indexPath(for: cell) else { return }
@@ -513,4 +543,18 @@ extension Array {
     subscript (safe index: Int) -> Element? {
         return indices ~= index ? self[index] : nil
     }
+
+    subscript(safe bounds: Range<Int>) -> ArraySlice<Element>? {
+            guard self.indices.lowerBound <= bounds.lowerBound && self.indices.upperBound >= bounds.upperBound else {
+                return nil
+            }
+            return self[bounds]
+        }
+
+        subscript(safe bounds: ClosedRange<Int>) -> ArraySlice<Element>? {
+            guard self.indices.lowerBound <= bounds.lowerBound && self.indices.upperBound >= bounds.upperBound else {
+                return nil
+            }
+            return self[bounds]
+        }
 }
