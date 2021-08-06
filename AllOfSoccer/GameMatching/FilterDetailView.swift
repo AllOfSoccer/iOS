@@ -20,12 +20,12 @@ enum FilterType {
 }
 
 protocol FilterDetailViewDelegate: AnyObject {
-    func finishButtonDidSelected(button: UIButton)
-    func cancelButtonDidSelected(button: UIButton)
+    func finishButtonDidSelected(_ detailView: FilterDetailView)
+    func cancelButtonDidSelected(_ detailView: FilterDetailView)
 }
 
 class FilterDetailView: UIView {
-    var filterList: [String] = []
+    var didSelectedFilterList = Set<String>()
 
     weak var delegate: FilterDetailViewDelegate?
     private var filterType: FilterType = .location
@@ -85,8 +85,6 @@ class FilterDetailView: UIView {
 
     private func setupCollectionView() {
         let flowlayout = UICollectionViewFlowLayout()
-//        flowlayout.minimumInteritemSpacing = 5
-//        flowlayout.minimumLineSpacing = 10
         flowlayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         flowlayout.itemSize = CGSize(width: 107, height: 36)
         flowlayout.scrollDirection = .vertical
@@ -97,7 +95,7 @@ class FilterDetailView: UIView {
         self.tagCollectionView.allowsMultipleSelection = true
         self.tagCollectionView.backgroundColor = .white
 
-        self.tagCollectionView.register(FilterDetailTagCollectionViewCell.self, forCellWithReuseIdentifier: "FilterDetailTagCollectionViewCell")
+        self.tagCollectionView.register(FilterDetailTagCollectionViewCell.self, forCellWithReuseIdentifier: FilterDetailTagCollectionViewCell.reuseId)
     }
 
     private func setupConstraint() {
@@ -147,30 +145,30 @@ class FilterDetailView: UIView {
     }
 
     @objc private func finishButtonTouchUp(sender: UIButton) {
-        self.delegate?.finishButtonDidSelected(button: sender)
+        self.delegate?.finishButtonDidSelected(self)
     }
 
     @objc private func cancelButtonTouchUp(sender: UIButton) {
-        self.delegate?.cancelButtonDidSelected(button: sender)
+        self.delegate?.cancelButtonDidSelected(self)
     }
 }
 
 extension FilterDetailView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterDetailTagCollectionViewCell", for: indexPath) as? FilterDetailTagCollectionViewCell else { return }
-        let tagLabelTitle = self.filterType.filterList[indexPath.item]
-        self.filterList.append(tagLabelTitle)
-        let finishButtonTitle = self.filterList.isEmpty ? "선택해주세요." : "필터적용하기 (\(self.filterList.count)건)"
+        guard let tagLabelTitle = self.filterType.filterList[safe: indexPath.item] else { return }
+        self.didSelectedFilterList.insert(tagLabelTitle)
+        let finishButtonTitle = self.didSelectedFilterList.isEmpty ? "선택해주세요." : "필터적용하기 (\(self.didSelectedFilterList.count)건)"
         finishButton.setTitle(finishButtonTitle, for: .normal)
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterDetailTagCollectionViewCell", for: indexPath) as? FilterDetailTagCollectionViewCell else { return }
         let tagLabelTitle = self.filterType.filterList[indexPath.item]
-        guard let tagTitleIndex = self.filterList.firstIndex(of: tagLabelTitle) else { return }
+        guard let tagTitleIndex = self.didSelectedFilterList.firstIndex(of: tagLabelTitle) else { return }
 
-        self.filterList.remove(at: tagTitleIndex)
-        let finishButtonTitle = self.filterList.isEmpty ? "선택해주세요." : "필터적용하기 (\(self.filterList.count)건)"
+        self.didSelectedFilterList.remove(at: tagTitleIndex)
+        let finishButtonTitle = self.didSelectedFilterList.isEmpty ? "선택해주세요." : "필터적용하기 (\(self.didSelectedFilterList.count)건)"
         finishButton.setTitle(finishButtonTitle, for: .normal)
     }
 }
@@ -185,5 +183,12 @@ extension FilterDetailView: UICollectionViewDataSource {
 
         cell.configure(self.filterType.filterList[indexPath.item])
         return cell
+    }
+}
+
+extension UICollectionViewCell {
+
+    static var reuseId: String {
+        return String(describing: self)
     }
 }

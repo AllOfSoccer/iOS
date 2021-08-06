@@ -492,20 +492,18 @@ extension GameMatchingViewController: TableViewSortingViewDelegate {
 }
 
 extension GameMatchingViewController: FilterDetailViewDelegate {
-    func finishButtonDidSelected(button: UIButton) {
+    func finishButtonDidSelected(_ detailView: FilterDetailView) {
         UIView.animate(withDuration: 0.1) { [weak self] in
             self?.bottomConstraint.constant = 244
             self?.view.layoutIfNeeded()
-//            self?.filterDetailView.frame = CGRect(x: self?.filterDetailView.frame.minX ?? 0, y: 244, width: self?.filterDetailView.frame.width ?? 0, height: self?.filterDetailView.frame.height ?? 0)
         }
         self.backGroundView.isHidden = true
     }
 
-    func cancelButtonDidSelected(button: UIButton) {
+    func cancelButtonDidSelected(_ detailView: FilterDetailView) {
         UIView.animate(withDuration: 0.1) { [weak self] in
             self?.bottomConstraint.constant = 244
             self?.view.layoutIfNeeded()
-//            self?.filterDetailView.frame = CGRect(x: self?.filterDetailView.frame.minX ?? 0, y: 244, width: self?.filterDetailView.frame.width ?? 0, height: self?.filterDetailView.frame.height ?? 0)
         }
         self.backGroundView.isHidden = true
     }

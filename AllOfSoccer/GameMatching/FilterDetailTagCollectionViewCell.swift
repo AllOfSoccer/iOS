@@ -53,18 +53,6 @@ class FilterDetailTagCollectionViewCell: UICollectionViewCell {
         ])
     }
 
-//    func setupTagViewDidSelected() {
-//        self.tagLabel.backgroundColor = UIColor(red: 221.0/255.0, green: 222.0/255.0, blue: 225.0/255.0, alpha: 1.0)
-//        self.tagLabel.textColor = UIColor(red: 157.0/255.0, green: 159.0/255.0, blue: 160.0/255.0, alpha: 1.0)
-//        self.tagLabel.layer.borderColor = UIColor(red: 221.0/255.0, green: 222.0/255.0, blue: 225.0/255.0, alpha: 1.0).cgColor
-//    }
-//
-//    func setupTagViewDidDeselected() {
-//        self.tagLabel.backgroundColor = UIColor(red: 221.0/255.0, green: 222.0/255.0, blue: 225.0/255.0, alpha: 1.0)
-//        self.tagLabel.textColor = UIColor(red: 157.0/255.0, green: 159.0/255.0, blue: 160.0/255.0, alpha: 1.0)
-//        self.tagLabel.layer.borderColor = UIColor(red: 221.0/255.0, green: 222.0/255.0, blue: 225.0/255.0, alpha: 1.0).cgColor
-//    }
-
     func configure(_ model: String) {
         self.tagLabel.text = model
     }
