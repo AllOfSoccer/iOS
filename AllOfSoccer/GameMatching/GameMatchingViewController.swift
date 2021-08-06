@@ -33,6 +33,13 @@ class GameMatchingViewController: UIViewController {
         : [HorizontalCalendarModel] = []
 
     @IBOutlet private weak var horizontalCalendarView: UICollectionView!
+    
+    // MARK: - FilterDetailView
+    private let filterDetailView = FilterDetailView()
+    private var bottomConstraint: NSLayoutConstraint = NSLayoutConstraint()
+
+    // MARK: - NoticeTableView Variable
+    @IBOutlet private weak var noticeTableView: UITableView!
 
     // MARK: - FilterTagCollectionView Variable
     private var tagTitles: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
@@ -98,9 +105,9 @@ class GameMatchingViewController: UIViewController {
         self.teamMatchButton.isSelected = true
         self.manMatchButton.isSelected = false
 
-        UIView.animate(withDuration: 0.1) {
-            self.selectedLineCenterConstraint.constant = 0
-            self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.selectedLineCenterConstraint.constant = 0
+            self?.view.layoutIfNeeded()
         }
     }
 
@@ -141,12 +148,36 @@ class GameMatchingViewController: UIViewController {
         setupNormalCalendarView()
         setupFilterTagCollectionView()
         setupTableViewFilterView()
+        setupFilterDetailView()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let itemHeight = 244
+
+        guard let tabbar = self.tabBarController else { return }
+        if tabbar.view.subviews.contains(filterDetailView) == false {
+            tabbar.view.addSubview(filterDetailView)
+//            self.filterDetailView.isHidden = true
+        }
+
+        self.bottomConstraint = filterDetailView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: CGFloat(itemHeight))
+        self.filterDetailView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.filterDetailView.leadingAnchor.constraint(equalTo: tabbar.view.leadingAnchor, constant: 0),
+            self.filterDetailView.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: 0),
+            self.filterDetailView.heightAnchor.constraint(equalToConstant: CGFloat(itemHeight)),
+            self.bottomConstraint
+        ])
+        setupNoticeTableView()
     }
 
     // MARK: - Setup View
     private func setupHorizontalCalendarView() {
         self.horizontalCalendarView.delegate = self
         self.horizontalCalendarView.dataSource = self
+    }
 
         let flowlayout = UICollectionViewFlowLayout()
         flowlayout.minimumInteritemSpacing = 15
@@ -243,13 +274,21 @@ class GameMatchingViewController: UIViewController {
             self.tableViewFilterView.widthAnchor.constraint(equalToConstant: 315),
             self.tableViewFilterView.heightAnchor.constraint(equalToConstant: 271),
             self.tableViewFilterView.centerXAnchor.constraint(equalTo: self.calendarBackgroundView.centerXAnchor),
-            self.tableViewFilterView.centerXAnchor.constraint(equalTo: self.calendarBackgroundView.centerXAnchor),
             self.tableViewFilterView.centerYAnchor.constraint(equalTo: self.calendarBackgroundView.centerYAnchor)
         ])
 
         self.tableViewFilterView.delegate = self
         self.filterBackGroundView.isHidden = true
         self.tableViewFilterView.isHidden = true
+    }
+
+    private func setupFilterDetailView() {
+        filterDetailView.delegate = self
+    }
+
+    private func setupNoticeTableView() {
+        self.noticeTableView.delegate = self
+        self.noticeTableView.dataSource = self
     }
 
     private func makeDate(_ nextDay: Int) -> String? {
@@ -483,8 +522,40 @@ extension GameMatchingViewController: TableViewFilterViewDelegate {
     }
 }
 
+extension GameMatchingViewController: FilterDetailViewDelegate {
+    func finishButtonDidSelected(_ detailView: FilterDetailView) {
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.bottomConstraint.constant = 244
+            self?.view.layoutIfNeeded()
+        }
+        self.backGroundView.isHidden = true
+    }
+
+    func cancelButtonDidSelected(_ detailView: FilterDetailView) {
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.bottomConstraint.constant = 244
+            self?.view.layoutIfNeeded()
+        }
+        self.backGroundView.isHidden = true
+    }
+}
+
 extension Array {
     subscript (safe index: Int) -> Element? {
         return indices ~= index ? self[index] : nil
     }
+
+    subscript(safe bounds: Range<Int>) -> ArraySlice<Element>? {
+            guard self.indices.lowerBound <= bounds.lowerBound && self.indices.upperBound >= bounds.upperBound else {
+                return nil
+            }
+            return self[bounds]
+        }
+
+        subscript(safe bounds: ClosedRange<Int>) -> ArraySlice<Element>? {
+            guard self.indices.lowerBound <= bounds.lowerBound && self.indices.upperBound >= bounds.upperBound else {
+                return nil
+            }
+            return self[bounds]
+        }
 }
