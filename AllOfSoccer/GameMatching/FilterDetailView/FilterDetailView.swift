@@ -7,25 +7,13 @@
 
 import UIKit
 
-enum FilterType {
-    case location
-    case time
-
-    var filterList: [String] {
-        switch self {
-        case .location: return ["서울", "경기-북부", "경기-남부", "인천/부천", "기타지역"]
-        case .time: return ["10:00", "11:00", "12:00"]
-        }
-    }
-}
-
 protocol FilterDetailViewDelegate: AnyObject {
     func finishButtonDidSelected(_ detailView: FilterDetailView)
     func cancelButtonDidSelected(_ detailView: FilterDetailView)
 }
 
 class FilterDetailView: UIView {
-    var didSelectedFilterList = Set<String>()
+    var didSelectedFilterList: Set<String> = []
 
     weak var delegate: FilterDetailViewDelegate?
     private var filterType: FilterType = .location

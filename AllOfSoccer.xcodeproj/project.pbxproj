@@ -178,10 +178,9 @@
 				9DC128A226917E740021EDF5 /* GameMatchingViewController.swift */,
 				9DC3C6DB26BBAE4500AD6B7D /* HorizontalCalendar */,
 				9DC3C6DC26BBAE6300AD6B7D /* FilterTagCollectionView */,
+				9DD48F9326BD8A1D00FE54FE /* FilterDetailView */,
 				9DC3C6DD26BBAE8F00AD6B7D /* TableViewFilerView */,
-				9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */,
-				9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */,
-				9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */,
+				9DD48F9226BD89EF00FE54FE /* NoticeTablview */,
 			);
 			path = GameMatching;
 			sourceTree = "<group>";
@@ -233,6 +232,23 @@
 				9D56CF2926932D2200628608 /* SelectTableButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		9DD48F9226BD89EF00FE54FE /* NoticeTablview */ = {
+			isa = PBXGroup;
+			children = (
+				9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */,
+			);
+			path = NoticeTablview;
+			sourceTree = "<group>";
+		};
+		9DD48F9326BD8A1D00FE54FE /* FilterDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */,
+				9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */,
+			);
+			path = FilterDetailView;
 			sourceTree = "<group>";
 		};
 		9DFD93B8267655E90049ADF2 /* Login */ = {

@@ -25,18 +25,23 @@ class FilterTagCollectionViewCell: UICollectionViewCell {
 
     override var isSelected: Bool {
         didSet {
-            let didSelectedBackgroundColor = UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0)
-            let didDeSelectedbackgroundColor = UIColor(red: 246.0/255.0, green: 247.0/255.0, blue: 250.0/255.0, alpha: 1.0)
-            let didSelectedTitleColor = UIColor.white
-            let didDeSelectedTitleColor = UIColor(red: 157.0/255.0, green: 159.0/255.0, blue: 160.0/255.0, alpha: 1)
-
-            self.contentView.backgroundColor = isSelected ? didSelectedBackgroundColor : didDeSelectedbackgroundColor
-            self.tagLabel.textColor = isSelected ? didSelectedTitleColor : didDeSelectedTitleColor
-            self.tagImageView.tintColor = isSelected ? didSelectedTitleColor : didDeSelectedTitleColor
+//            let didSelectedBackgroundColor = UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0)
+//            let didDeSelectedbackgroundColor = UIColor(red: 246.0/255.0, green: 247.0/255.0, blue: 250.0/255.0, alpha: 1.0)
+//            let didSelectedTitleColor = UIColor.white
+//            let didDeSelectedTitleColor = UIColor(red: 157.0/255.0, green: 159.0/255.0, blue: 160.0/255.0, alpha: 1)
+//
+//            self.contentView.backgroundColor = isSelected ? didSelectedBackgroundColor : didDeSelectedbackgroundColor
+//            self.tagLabel.textColor = isSelected ? didSelectedTitleColor : didDeSelectedTitleColor
+//            self.tagImageView.tintColor = isSelected ? didSelectedTitleColor : didDeSelectedTitleColor
         }
     }
 
-    func configure(_ model: FilterTagModel) {
+    func configure(_ model: FilterTagModel, _ filterTagCellData: Set<String>) {
         self.tagLabel.text = model.title
+
+        let tagTitleList: [String] = FilterType.allCases.map { $0.tagTitle }
+        for data in filterTagCellData {
+            
+        }
     }
 }
