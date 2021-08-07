@@ -8,6 +8,5 @@
 import Foundation
 
 struct FilterTagModel {
-    var title: String?
-    var filterType: FilterType?
+    var filterType: FilterType
 }

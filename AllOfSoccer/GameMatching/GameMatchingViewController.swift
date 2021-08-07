@@ -45,8 +45,6 @@ enum FilterType: CaseIterable {
         case .level: return ["상", "중", "하"]
         }
     }
-
-
 }
 
 class GameMatchingViewController: UIViewController {
@@ -77,7 +75,7 @@ class GameMatchingViewController: UIViewController {
     @IBOutlet private weak var noticeTableView: UITableView!
 
     // MARK: - FilterTagCollectionView Variable
-    private var tagTitles: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
+//    private var tagTitles: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
     private var tagCellModel: [FilterTagModel] = []
     private var filterTagCellData: Set<String> = []
 
@@ -255,11 +253,12 @@ class GameMatchingViewController: UIViewController {
         self.tagCollectionViewConstraint.constant = -(self.resetButtonView.frame.width)
         self.resetButtonView.isHidden = true
 
-        for tagCellTitle in self.tagTitles {
-            var tagCellData = FilterTagModel()
-            tagCellData.title = tagCellTitle
+        for filterType in FilterType.allCases {
+            let tagCellData = FilterTagModel(filterType: filterType)
+//            tagCellData.title = tagCellTitle
             self.tagCellModel.append(tagCellData)
         }
+        print("ddd")
     }
 
     private func setupTableViewFilterView() {
@@ -450,6 +449,8 @@ extension GameMatchingViewController: UICollectionViewDelegate {
             // 데이터 처리
         } else if collectionView == self.filterTagCollectionView {
             // 데이터 처리
+
+            self.filterDetailView.filterType = self.tagCellModel[indexPath.item].filterType
             self.appearFilterDetailView()
         }
     }
@@ -582,7 +583,7 @@ extension GameMatchingViewController: FilterDetailViewDelegate {
         } completion: { _ in
             self.filterDetailBackgroundView.isHidden = true
             self.filterDetailView.isHidden = true
-            self.filterTagCellData = detailView.didSelectedFilterList
+//            self.filterTagCellData = detailView.didSelectedFilterList
             if self.filterTagCellData.isEmpty {
                 self.tagCollectionViewCellIsNotSelectedViewSetting()
             } else {

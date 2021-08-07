@@ -8,6 +8,7 @@
 import UIKit
 
 class FilterTagCollectionViewCell: UICollectionViewCell {
+    var model: FilterTagModel?
 
     @IBOutlet weak var tagLabel: UILabel!
     @IBOutlet weak var tagImageView: UIImageView!
@@ -37,11 +38,10 @@ class FilterTagCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(_ model: FilterTagModel, _ filterTagCellData: Set<String>) {
-        self.tagLabel.text = model.title
-
-        let tagTitleList: [String] = FilterType.allCases.map { $0.tagTitle }
-        for data in filterTagCellData {
-            
-        }
+        self.model = model
+        self.tagLabel.text = model.filterType.tagTitle
+//        let tagTitleList: [String] = FilterType.allCases.map { $0.tagTitle }
+//        for data in filterTagCellData {
+//        }
     }
 }
