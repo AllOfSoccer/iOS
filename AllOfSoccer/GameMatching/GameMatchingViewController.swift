@@ -41,7 +41,7 @@ enum FilterType: CaseIterable {
         case .location: return ["서울", "경기-북부", "경기-남부", "인천/부천", "기타지역"]
         case .time: return ["10:00", "11:00", "12:00"]
         case .game: return ["11"]
-        case .cost: return ["11"]
+        case .cost: return ["12312312312", "ㅁㄴㅇㅁㄴㅇㅁㅇㄴ"]
         case .level: return ["상", "중", "하"]
         }
     }
@@ -77,7 +77,7 @@ class GameMatchingViewController: UIViewController {
     // MARK: - FilterTagCollectionView Variable
 //    private var tagTitles: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
     private var tagCellModel: [FilterTagModel] = []
-    private var filterTagCellData: Set<String> = []
+    private var didSelectedFilterList: [String: FilterType] = [:]
 
     @IBOutlet private weak var filterTagCollectionView: UICollectionView!
     @IBOutlet private weak var resetButtonView: UIView!
@@ -162,7 +162,8 @@ class GameMatchingViewController: UIViewController {
     }
 
     @IBAction private func resetTagButtonTouchUp(_ sender: UIButton) {
-        self.filterTagCellData.removeAll()
+        self.didSelectedFilterList.removeAll()
+        self.filterDetailView.didSelectedFilterList.removeAll()
         self.filterTagCollectionView.reloadData()
         self.tagCollectionViewCellIsNotSelectedViewSetting()
     }
@@ -449,7 +450,6 @@ extension GameMatchingViewController: UICollectionViewDelegate {
             // 데이터 처리
         } else if collectionView == self.filterTagCollectionView {
             // 데이터 처리
-
             self.filterDetailView.filterType = self.tagCellModel[indexPath.item].filterType
             self.appearFilterDetailView()
         }
@@ -505,7 +505,7 @@ extension GameMatchingViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterTagCollectionViewCell", for: indexPath) as? FilterTagCollectionViewCell else {
                 return .init()
             }
-            cell.configure(self.tagCellModel[indexPath.item], self.filterTagCellData)
+            cell.configure(self.tagCellModel[indexPath.item], self.didSelectedFilterList)
 
             return cell
         }
@@ -583,12 +583,14 @@ extension GameMatchingViewController: FilterDetailViewDelegate {
         } completion: { _ in
             self.filterDetailBackgroundView.isHidden = true
             self.filterDetailView.isHidden = true
-//            self.filterTagCellData = detailView.didSelectedFilterList
-            if self.filterTagCellData.isEmpty {
+
+            self.didSelectedFilterList = detailView.didSelectedFilterList
+            if self.didSelectedFilterList.isEmpty {
                 self.tagCollectionViewCellIsNotSelectedViewSetting()
             } else {
                 self.tagCollectionViewCellIsSelectedViewSetting()
-//                self.filterTagCollectionView.reloadData()
+//                 tagCollectionViewcell 색깔이 변하도록 코드 구현.
+                self.filterTagCollectionView.reloadData()
             }
         }
     }

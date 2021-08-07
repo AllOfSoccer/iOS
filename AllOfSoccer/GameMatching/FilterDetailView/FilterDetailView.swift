@@ -14,8 +14,8 @@ protocol FilterDetailViewDelegate: AnyObject {
 
 class FilterDetailView: UIView {
 //    var didSelectedFilterList: Set<String> = []
-    var didSelectedFilterList: [FilterType: String] = [:]
-    var filterType: FilterType = .location {
+    var didSelectedFilterList: [String: FilterType] = [:]
+    var filterType: FilterType? {
         didSet {
             self.tagCollectionView.reloadData()
         }
@@ -147,34 +147,35 @@ class FilterDetailView: UIView {
 
 extension FilterDetailView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterDetailTagCollectionViewCell", for: indexPath) as? FilterDetailTagCollectionViewCell else { return }
-        guard let tagLabelTitle = self.filterType.filterList[safe: indexPath.item] else { return }
-//        self.didSelectedFilterList.insert(tagLabelTitle)
 
-        let finishButtonTitle = self.didSelectedFilterList.isEmpty ? "선택해주세요." : "필터적용하기 (\(self.didSelectedFilterList.count)건)"
-        finishButton.setTitle(finishButtonTitle, for: .normal)
+        guard let filterType = self.filterType else { return }
+        guard let tagLabelTitle = filterType.filterList[safe: indexPath.item] else { return }
+        self.didSelectedFilterList[tagLabelTitle] = filterType
+        let finishButtonTitle = self.didSelectedFilterList.isEmpty ? "선택해주세요." : "필터적용하기 (데이터 필요)"
+        self.finishButton.setTitle(finishButtonTitle, for: .normal)
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterDetailTagCollectionViewCell", for: indexPath) as? FilterDetailTagCollectionViewCell else { return }
-        let tagLabelTitle = self.filterType.filterList[indexPath.item]
-//        guard let tagTitleIndex = self.didSelectedFilterList.firstIndex(of: tagLabelTitle) else { return }
 
-//        self.didSelectedFilterList.remove(at: tagTitleIndex)
-        let finishButtonTitle = self.didSelectedFilterList.isEmpty ? "선택해주세요." : "필터적용하기 (\(self.didSelectedFilterList.count)건)"
-        finishButton.setTitle(finishButtonTitle, for: .normal)
+        guard let filterType = self.filterType else { return }
+        guard let tagLabelTitle = filterType.filterList[safe: indexPath.item] else { return }
+        self.didSelectedFilterList[tagLabelTitle] = nil
+        let finishButtonTitle = self.didSelectedFilterList.isEmpty ? "선택해주세요." : "필터적용하기 (데이터필요))"
+        self.finishButton.setTitle(finishButtonTitle, for: .normal)
     }
 }
 
 extension FilterDetailView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.filterType.filterList.count
+        return self.filterType?.filterList.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterDetailTagCollectionViewCell", for: indexPath) as? FilterDetailTagCollectionViewCell else { return UICollectionViewCell() }
 
-        cell.configure(self.filterType.filterList[safe: indexPath.item] ?? "??")
+        guard let filterType = self.filterType else { return UICollectionViewCell() }
+        let model = FilterDetailTagModel(title: self.filterType?.filterList[indexPath.item] ?? "", filterType: filterType)
+        cell.configure(model, self.didSelectedFilterList)
         return cell
     }
 }

@@ -35,13 +35,13 @@ class FilterDetailTagCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override var isSelected: Bool {
-        didSet {
-            self.tagLabel.textColor = isSelected ? .white : UIColor(red: 157.0/255.0, green: 159.0/255.0, blue: 160.0/255.0, alpha: 1.0)
-            self.tagLabel.backgroundColor = isSelected ? UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0) : UIColor(red: 221.0/255.0, green: 222.0/255.0, blue: 225.0/255.0, alpha: 1.0)
-            self.tagLabel.layer.borderColor = isSelected ? UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0).cgColor : UIColor(red: 221.0/255.0, green: 222.0/255.0, blue: 225.0/255.0, alpha: 1.0).cgColor
-        }
-    }
+//    override var isSelected: Bool {
+//        didSet {
+//            self.tagLabel.textColor = isSelected ? .white : UIColor(red: 157.0/255.0, green: 159.0/255.0, blue: 160.0/255.0, alpha: 1.0)
+//            self.tagLabel.backgroundColor = isSelected ? UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0) : UIColor(red: 221.0/255.0, green: 222.0/255.0, blue: 225.0/255.0, alpha: 1.0)
+//            self.tagLabel.layer.borderColor = isSelected ? UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0).cgColor : UIColor(red: 221.0/255.0, green: 222.0/255.0, blue: 225.0/255.0, alpha: 1.0).cgColor
+//        }
+//    }
 
     private func setupConstraint() {
         tagLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -53,7 +53,17 @@ class FilterDetailTagCollectionViewCell: UICollectionViewCell {
         ])
     }
 
-    func configure(_ model: String) {
-        self.tagLabel.text = model
+    func configure(_ model: FilterDetailTagModel, _ didSelectedFilterList: [String: FilterType]) {
+        self.tagLabel.text = model.title
+
+//        for data in didSelectedFilterList {
+//            if model.title == data.key {
+//                self.isSelected = true
+////                self.tagLabel.backgroundColor = .blue
+//            } else {
+////                self.isSelected = false
+//            }
+//        }
+        // 디테일태그컬렉션뷰에 didSelectedFilterList 값을 전달하고 이 값을 기준으로 isSelected를 세팅해준다.
     }
 }
