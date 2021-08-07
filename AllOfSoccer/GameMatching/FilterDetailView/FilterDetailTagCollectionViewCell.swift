@@ -26,7 +26,7 @@ class FilterDetailTagCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        contentView.addSubview(tagLabel)
+        self.contentView.addSubview(tagLabel)
 
         setupConstraint()
     }
@@ -53,7 +53,7 @@ class FilterDetailTagCollectionViewCell: UICollectionViewCell {
         ])
     }
 
-    func configure(_ model: String) {
-        self.tagLabel.text = model
+    func configure(_ model: FilterDetailTagModel) {
+        self.tagLabel.text = model.title
     }
 }

@@ -67,15 +67,18 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4S-Qh-qsF">
                                         <rect key="frame" x="0.0" y="96" width="414" height="96"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mil-d7-Lkb">
-                                                <rect key="frame" x="16" y="33" width="30" height="30"/>
-                                                <state key="normal" title="1월"/>
+                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mil-d7-Lkb">
+                                                <rect key="frame" x="16" y="37" width="42.5" height="22"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="1월" image="chevron.down" catalog="system">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="monthButtonTouchUp:" destination="V9G-Fe-OSJ" eventType="touchUpInside" id="vKK-ii-2tF"/>
                                                 </connections>
                                             </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ujb-m5-sph">
-                                                <rect key="frame" x="58" y="0.0" width="339" height="96"/>
+                                                <rect key="frame" x="70.5" y="0.0" width="326.5" height="96"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ri5-zk-cr4">
                                                     <size key="itemSize" width="153" height="94"/>
@@ -84,14 +87,14 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CalendarCollectionViewCell" id="ZPo-Fx-Qa2" customClass="CalendarCollectionViewCell" customModule="AllOfSoccer" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HorizontalCalendarCollectionViewCell" id="ZPo-Fx-Qa2" customClass="HorizontalCalendarCollectionViewCell" customModule="AllOfSoccer" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="1" width="153" height="94"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="l0B-tk-Gjp">
                                                             <rect key="frame" x="0.0" y="0.0" width="153" height="94"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HT0-3q-ff5" customClass="RoundStackView" customModule="AllOfSoccer" customModuleProvider="target">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HT0-3q-ff5">
                                                                     <rect key="frame" x="0.0" y="0.0" width="153" height="94"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="월" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8W-tR-LTv">
@@ -102,7 +105,7 @@
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7/1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzL-ws-Wef">
                                                                             <rect key="frame" x="0.0" y="47" width="153" height="47"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -123,9 +126,9 @@
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="153" height="94"/>
                                                         <connections>
-                                                            <outlet property="calendarStacview" destination="HT0-3q-ff5" id="NXS-FB-IQL"/>
                                                             <outlet property="dateLabel" destination="XzL-ws-Wef" id="ad9-M7-3sh"/>
                                                             <outlet property="dayLabel" destination="W8W-tR-LTv" id="7q2-Ls-Isw"/>
+                                                            <outlet property="stackView" destination="HT0-3q-ff5" id="NXS-FB-IQL"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -146,7 +149,7 @@
                                         <rect key="frame" x="0.0" y="193" width="414" height="52"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t1a-0J-LlW">
-                                                <rect key="frame" x="54" y="0.0" width="360" height="52"/>
+                                                <rect key="frame" x="38" y="0.0" width="376" height="52"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aZV-hI-JZM">
                                                     <size key="itemSize" width="204" height="45"/>
@@ -155,52 +158,45 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameMatchingTagCollectionViewCell" id="4Bn-Vh-sNl" customClass="TagCollectionViewCell" customModule="AllOfSoccer" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterTagCollectionViewCell" id="4Bn-Vh-sNl" customClass="FilterTagCollectionViewCell" customModule="AllOfSoccer" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="3.5" width="204" height="45"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CrS-SC-ec3">
                                                             <rect key="frame" x="0.0" y="0.0" width="204" height="45"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpb-7o-DQl" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="204" height="45"/>
-                                                                    <color key="backgroundColor" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uFG-0p-2sy">
+                                                                    <rect key="frame" x="185.5" y="12" width="18.5" height="21.5"/>
+                                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTh-sQ-zef">
+                                                                    <rect key="frame" x="-25" y="7" width="163" height="31"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <state key="normal" title="Button"/>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                            <real key="value" value="10"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
-                                                                            <color key="value" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
-                                                                            <color key="value" red="0.61568627450980395" green="0.62352941176470589" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                    <connections>
-                                                                        <action selector="tagButtonTouchUp:" destination="4Bn-Vh-sNl" eventType="touchUpInside" id="z4m-FU-Jpg"/>
-                                                                    </connections>
-                                                                </button>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="Wpb-7o-DQl" secondAttribute="bottom" id="MbJ-qQ-975"/>
-                                                                <constraint firstItem="Wpb-7o-DQl" firstAttribute="top" secondItem="CrS-SC-ec3" secondAttribute="top" id="jEQ-iW-VpB"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Wpb-7o-DQl" secondAttribute="trailing" id="jZN-Lz-n44"/>
-                                                                <constraint firstItem="Wpb-7o-DQl" firstAttribute="leading" secondItem="CrS-SC-ec3" secondAttribute="leading" id="nie-fz-Wva"/>
+                                                                <constraint firstAttribute="trailing" secondItem="uFG-0p-2sy" secondAttribute="trailing" constant="16" id="03s-aZ-bB9"/>
+                                                                <constraint firstItem="oTh-sQ-zef" firstAttribute="top" secondItem="CrS-SC-ec3" secondAttribute="top" constant="7" id="9rc-jW-Zkn"/>
+                                                                <constraint firstItem="uFG-0p-2sy" firstAttribute="top" secondItem="oTh-sQ-zef" secondAttribute="top" id="ENF-m3-SmE"/>
+                                                                <constraint firstItem="uFG-0p-2sy" firstAttribute="leading" secondItem="oTh-sQ-zef" secondAttribute="trailing" id="Gvo-B9-E9O"/>
+                                                                <constraint firstItem="oTh-sQ-zef" firstAttribute="leading" secondItem="CrS-SC-ec3" secondAttribute="leading" constant="16" id="Jff-cI-6vs"/>
+                                                                <constraint firstAttribute="bottom" secondItem="oTh-sQ-zef" secondAttribute="bottom" constant="7" id="pKq-Qr-WA0"/>
+                                                                <constraint firstItem="uFG-0p-2sy" firstAttribute="bottom" secondItem="oTh-sQ-zef" secondAttribute="bottom" id="rj3-XZ-m83"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <size key="customSize" width="204" height="45"/>
                                                         <connections>
-                                                            <outlet property="tagButton" destination="Wpb-7o-DQl" id="VDo-WP-bTE"/>
+                                                            <outlet property="tagImageView" destination="uFG-0p-2sy" id="e6N-Ol-DQE"/>
+                                                            <outlet property="tagLabel" destination="oTh-sQ-zef" id="sxU-AP-1a8"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NU8-Dp-hy1">
-                                                <rect key="frame" x="0.0" y="0.0" width="54" height="52"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="38" height="52"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5GI-9R-mHm">
                                                         <rect key="frame" x="16" y="15" width="22" height="22"/>
@@ -210,14 +206,14 @@
                                                         </constraints>
                                                         <state key="normal" backgroundImage="ArrowsClockwise"/>
                                                         <connections>
-                                                            <action selector="resetTagCollectionView:" destination="V9G-Fe-OSJ" eventType="touchUpInside" id="nQn-Ad-NjS"/>
+                                                            <action selector="resetTagButtonTouchUp:" destination="V9G-Fe-OSJ" eventType="touchUpInside" id="nQn-Ad-NjS"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="5GI-9R-mHm" firstAttribute="centerX" secondItem="NU8-Dp-hy1" secondAttribute="centerX" id="SbJ-fM-qBe"/>
-                                                    <constraint firstAttribute="width" constant="54" id="elY-u3-qFD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5GI-9R-mHm" secondAttribute="trailing" id="YRQ-Ce-Zx5"/>
+                                                    <constraint firstAttribute="width" constant="38" id="elY-u3-qFD"/>
                                                     <constraint firstItem="5GI-9R-mHm" firstAttribute="centerY" secondItem="NU8-Dp-hy1" secondAttribute="centerY" id="nWP-qY-ILy"/>
                                                 </constraints>
                                             </view>
@@ -397,14 +393,14 @@
                     <navigationItem key="navigationItem" id="MUG-4k-kkH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="calendarCollectionView" destination="ujb-m5-sph" id="sTI-Uo-yQC"/>
+                        <outlet property="filterTagCollectionView" destination="t1a-0J-LlW" id="hq2-G6-jJP"/>
+                        <outlet property="horizontalCalendarView" destination="ujb-m5-sph" id="sTI-Uo-yQC"/>
                         <outlet property="manMatchButton" destination="DbN-Zz-RjJ" id="Clu-Rh-Rwh"/>
                         <outlet property="monthButton" destination="Mil-d7-Lkb" id="yTk-WS-r4Z"/>
                         <outlet property="noticeTableView" destination="Axh-HT-bKL" id="heB-4U-YXs"/>
-                        <outlet property="refreshButtonView" destination="NU8-Dp-hy1" id="nBF-0H-7TW"/>
+                        <outlet property="resetButtonView" destination="NU8-Dp-hy1" id="nBF-0H-7TW"/>
                         <outlet property="selectedLineCenterConstraint" destination="mvr-4R-FTb" id="VaU-jO-oPi"/>
-                        <outlet property="tableViewSortingButton" destination="jBg-T2-uCl" id="arU-uF-l9n"/>
-                        <outlet property="tagCollectionView" destination="t1a-0J-LlW" id="hq2-G6-jJP"/>
+                        <outlet property="tableViewFilterButton" destination="jBg-T2-uCl" id="arU-uF-l9n"/>
                         <outlet property="tagCollectionViewConstraint" destination="7JU-Qq-8W7" id="Dh5-X6-ECM"/>
                         <outlet property="teamMatchButton" destination="U8t-kY-EHS" id="555-Df-ej9"/>
                     </connections>
@@ -432,14 +428,10 @@
             <point key="canvasLocation" x="-253.62318840579712" y="-4.0178571428571423"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="Wpb-7o-DQl">
-            <size key="intrinsicContentSize" width="63" height="29"/>
-        </designable>
-    </designables>
     <resources>
         <image name="ArrowsClockwise" width="22" height="22"/>
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="circle" width="210" height="156"/>
         <image name="flag" catalog="system" width="128" height="121"/>
         <image name="flag.fill" catalog="system" width="128" height="121"/>
