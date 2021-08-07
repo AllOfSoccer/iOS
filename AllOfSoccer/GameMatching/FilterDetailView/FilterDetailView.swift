@@ -11,10 +11,8 @@ protocol FilterDetailViewDelegate: AnyObject {
     func finishButtonDidSelected(_ detailView: FilterDetailView)
     func cancelButtonDidSelected(_ detailView: FilterDetailView)
 }
-// reset버튼 눌렀을 때 데이터를 삭제 되는데 뷰에 남아있던 타이틀 변화가 없다. 이것을 수정해줘야한다.
 
 class FilterDetailView: UIView {
-//    var didSelectedFilterList: Set<String> = []
     var didSelectedFilterList: [String: FilterType] = [:]
     var filterType: FilterType? {
         didSet {
@@ -154,7 +152,7 @@ extension FilterDetailView: UICollectionViewDelegate {
         guard let filterType = self.filterType else { return }
         guard let tagLabelTitle = filterType.filterList[safe: indexPath.item] else { return }
         self.didSelectedFilterList[tagLabelTitle] = filterType
-        let finishButtonTitle = self.didSelectedFilterList.isEmpty ? "선택해주세요." : "필터적용하기 (데이터 필요)"
+        let finishButtonTitle = self.didSelectedFilterList.isEmpty ? "선택해주세요." : "필터적용하기 (데이터필요)"
         self.finishButton.setTitle(finishButtonTitle, for: .normal)
     }
 
@@ -178,7 +176,15 @@ extension FilterDetailView: UICollectionViewDataSource {
 
         guard let filterType = self.filterType else { return UICollectionViewCell() }
         let model = FilterDetailTagModel(title: self.filterType?.filterList[indexPath.item] ?? "", filterType: filterType)
-        cell.configure(model, self.didSelectedFilterList)
+
+        if !didSelectedFilterList.isEmpty {
+            let keyFiterList = Set(didSelectedFilterList.keys)
+            if keyFiterList.contains(model.title) {
+                cell.isSelected = true
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+            }
+        }
+        cell.configure(model)
         return cell
     }
 }

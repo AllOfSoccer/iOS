@@ -449,7 +449,6 @@ extension GameMatchingViewController: UICollectionViewDelegate {
             // 데이터 처리
         } else if collectionView == self.filterTagCollectionView {
             // 데이터 처리
-            // 1. filterType에 따라 tagCollectionView 그려준다.
             self.filterDetailView.filterType = self.tagCellModel[indexPath.item].filterType
             self.appearFilterDetailView()
         }
@@ -460,13 +459,6 @@ extension GameMatchingViewController: UICollectionViewDelegate {
             // 데이터 처리
         } else if collectionView == self.filterTagCollectionView {
             // 데이터 처리
-            //            guard let tagLabelTitle = self.tagCellData[indexPath.item].title else { return }
-            //            guard let indexTagLabelTitle = filterTagCellData.firstIndex(of: tagLabelTitle) else { return }
-            //            self.filterTagCellData.remove(at: indexTagLabelTitle)
-
-            //            if self.filterTagCellData.isEmpty {
-            //                self.tagCollectionViewCellIsNotSelectedViewSetting()
-            //            }
         }
     }
 
@@ -587,9 +579,9 @@ extension GameMatchingViewController: FilterDetailViewDelegate {
             self.didSelectedFilterList = detailView.didSelectedFilterList
             if self.didSelectedFilterList.isEmpty {
                 self.tagCollectionViewCellIsNotSelectedViewSetting()
+                self.filterTagCollectionView.reloadData()
             } else {
                 self.tagCollectionViewCellIsSelectedViewSetting()
-//                 tagCollectionViewcell 색깔이 변하도록 코드 구현.
                 self.filterTagCollectionView.reloadData()
             }
         }

@@ -23,11 +23,6 @@ class FilterDetailTagCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private let didSelectedBackgroundColor = UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0)
-    private let didDeSelectedbackgroundColor = UIColor(red: 246.0/255.0, green: 247.0/255.0, blue: 250.0/255.0, alpha: 1.0)
-    private let didSelectedTitleColor = UIColor.white
-    private let didDeSelectedTitleColor = UIColor(red: 157.0/255.0, green: 159.0/255.0, blue: 160.0/255.0, alpha: 1)
-
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -40,13 +35,13 @@ class FilterDetailTagCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-//    override var isSelected: Bool {
-//        didSet {
-//            self.tagLabel.textColor = isSelected ? .white : UIColor(red: 157.0/255.0, green: 159.0/255.0, blue: 160.0/255.0, alpha: 1.0)
-//            self.tagLabel.backgroundColor = isSelected ? UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0) : UIColor(red: 221.0/255.0, green: 222.0/255.0, blue: 225.0/255.0, alpha: 1.0)
-//            self.tagLabel.layer.borderColor = isSelected ? UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0).cgColor : UIColor(red: 221.0/255.0, green: 222.0/255.0, blue: 225.0/255.0, alpha: 1.0).cgColor
-//        }
-//    }
+    override var isSelected: Bool {
+        didSet {
+            self.tagLabel.textColor = isSelected ? .white : UIColor(red: 157.0/255.0, green: 159.0/255.0, blue: 160.0/255.0, alpha: 1.0)
+            self.tagLabel.backgroundColor = isSelected ? UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0) : UIColor(red: 221.0/255.0, green: 222.0/255.0, blue: 225.0/255.0, alpha: 1.0)
+            self.tagLabel.layer.borderColor = isSelected ? UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0).cgColor : UIColor(red: 221.0/255.0, green: 222.0/255.0, blue: 225.0/255.0, alpha: 1.0).cgColor
+        }
+    }
 
     private func setupConstraint() {
         tagLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -58,22 +53,7 @@ class FilterDetailTagCollectionViewCell: UICollectionViewCell {
         ])
     }
 
-    func configure(_ model: FilterDetailTagModel, _ didSelectedFilterList: [String: FilterType]) {
+    func configure(_ model: FilterDetailTagModel) {
         self.tagLabel.text = model.title
-
-//        if !didSelectedFilterList.isEmpty {
-//            let keyFiterList = Set(didSelectedFilterList.keys)
-//            if keyFiterList.contains(model.title) {
-//                self.tagLabel.backgroundColor = didSelectedBackgroundColor
-//                self.tagLabel.textColor = didSelectedTitleColor
-//            } else {
-//                self.tagLabel.backgroundColor = didDeSelectedbackgroundColor
-//                self.tagLabel.textColor = didDeSelectedTitleColor
-//            }
-//        } else {
-//            self.tagLabel.backgroundColor = didDeSelectedbackgroundColor
-//            self.tagLabel.textColor = didDeSelectedTitleColor
-//        }
-//    }
     }
 }
