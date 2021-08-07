@@ -23,10 +23,15 @@ class FilterDetailTagCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    private let didSelectedBackgroundColor = UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0)
+    private let didDeSelectedbackgroundColor = UIColor(red: 246.0/255.0, green: 247.0/255.0, blue: 250.0/255.0, alpha: 1.0)
+    private let didSelectedTitleColor = UIColor.white
+    private let didDeSelectedTitleColor = UIColor(red: 157.0/255.0, green: 159.0/255.0, blue: 160.0/255.0, alpha: 1)
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        contentView.addSubview(tagLabel)
+        self.contentView.addSubview(tagLabel)
 
         setupConstraint()
     }
@@ -56,14 +61,19 @@ class FilterDetailTagCollectionViewCell: UICollectionViewCell {
     func configure(_ model: FilterDetailTagModel, _ didSelectedFilterList: [String: FilterType]) {
         self.tagLabel.text = model.title
 
-//        for data in didSelectedFilterList {
-//            if model.title == data.key {
-//                self.isSelected = true
-////                self.tagLabel.backgroundColor = .blue
+//        if !didSelectedFilterList.isEmpty {
+//            let keyFiterList = Set(didSelectedFilterList.keys)
+//            if keyFiterList.contains(model.title) {
+//                self.tagLabel.backgroundColor = didSelectedBackgroundColor
+//                self.tagLabel.textColor = didSelectedTitleColor
 //            } else {
-////                self.isSelected = false
+//                self.tagLabel.backgroundColor = didDeSelectedbackgroundColor
+//                self.tagLabel.textColor = didDeSelectedTitleColor
 //            }
+//        } else {
+//            self.tagLabel.backgroundColor = didDeSelectedbackgroundColor
+//            self.tagLabel.textColor = didDeSelectedTitleColor
 //        }
-        // 디테일태그컬렉션뷰에 didSelectedFilterList 값을 전달하고 이 값을 기준으로 isSelected를 세팅해준다.
+//    }
     }
 }

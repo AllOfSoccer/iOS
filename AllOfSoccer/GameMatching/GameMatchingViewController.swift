@@ -75,7 +75,6 @@ class GameMatchingViewController: UIViewController {
     @IBOutlet private weak var noticeTableView: UITableView!
 
     // MARK: - FilterTagCollectionView Variable
-//    private var tagTitles: [String] = ["장소", "시간대", "경기", "참가비", "실력", "11111", "2222222", "333333"]
     private var tagCellModel: [FilterTagModel] = []
     private var didSelectedFilterList: [String: FilterType] = [:]
 
@@ -450,6 +449,7 @@ extension GameMatchingViewController: UICollectionViewDelegate {
             // 데이터 처리
         } else if collectionView == self.filterTagCollectionView {
             // 데이터 처리
+            // 1. filterType에 따라 tagCollectionView 그려준다.
             self.filterDetailView.filterType = self.tagCellModel[indexPath.item].filterType
             self.appearFilterDetailView()
         }
