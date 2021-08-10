@@ -26,11 +26,13 @@
 		9D6B91EE266D08E100AF182B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91EC266D08E100AF182B /* LaunchScreen.storyboard */; };
 		9D7D409D26BE792000E8329E /* FilterDetailTagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D409C26BE792000E8329E /* FilterDetailTagModel.swift */; };
 		9D8A32EF26B8FB0000A8F65B /* FilterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */; };
+		9D997ABD26BEC1FB00AD1AB7 /* DetailGameMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D997ABC26BEC1FB00AD1AB7 /* DetailGameMatchingViewController.swift */; };
+		9D997ABF26BEC28100AD1AB7 /* DetailGameMatching.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D997ABE26BEC28100AD1AB7 /* DetailGameMatching.storyboard */; };
 		9DB1AB1A26B955F8003E517A /* FilterDetailTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */; };
 		9DBC70E826A986D0005F6BFA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9DBC70E726A986D0005F6BFA /* SnapKit */; };
 		9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC1289A269178500021EDF5 /* MainTabBarController.swift */; };
-		9DC128A026917E400021EDF5 /* GameMatching.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC1289F26917E400021EDF5 /* GameMatching.storyboard */; };
-		9DC128A326917E740021EDF5 /* GameMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC128A226917E740021EDF5 /* GameMatchingViewController.swift */; };
+		9DC128A026917E400021EDF5 /* MainGameMatching.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC1289F26917E400021EDF5 /* MainGameMatching.storyboard */; };
+		9DC128A326917E740021EDF5 /* MainGameMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC128A226917E740021EDF5 /* MainGameMatchingViewController.swift */; };
 		9DC128A626917E890021EDF5 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC128A526917E890021EDF5 /* MyPage.storyboard */; };
 		9DC128A926917EA70021EDF5 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC128A826917EA70021EDF5 /* MyPageViewController.swift */; };
 		9DD474B026903D78006F00F1 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474AF26903D78006F00F1 /* RoundView.swift */; };
@@ -68,10 +70,12 @@
 		9D6B91EF266D08E100AF182B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D7D409C26BE792000E8329E /* FilterDetailTagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailTagModel.swift; sourceTree = "<group>"; };
 		9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailView.swift; sourceTree = "<group>"; };
+		9D997ABC26BEC1FB00AD1AB7 /* DetailGameMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGameMatchingViewController.swift; sourceTree = "<group>"; };
+		9D997ABE26BEC28100AD1AB7 /* DetailGameMatching.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailGameMatching.storyboard; sourceTree = "<group>"; };
 		9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DC1289A269178500021EDF5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		9DC1289F26917E400021EDF5 /* GameMatching.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameMatching.storyboard; sourceTree = "<group>"; };
-		9DC128A226917E740021EDF5 /* GameMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMatchingViewController.swift; sourceTree = "<group>"; };
+		9DC1289F26917E400021EDF5 /* MainGameMatching.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainGameMatching.storyboard; sourceTree = "<group>"; };
+		9DC128A226917E740021EDF5 /* MainGameMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameMatchingViewController.swift; sourceTree = "<group>"; };
 		9DC128A526917E890021EDF5 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		9DC128A826917EA70021EDF5 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		9DD474AF26903D78006F00F1 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
@@ -162,7 +166,8 @@
 				9D034CED26903B590051FA02 /* -----Primary View----- */,
 				9DFD93B8267655E90049ADF2 /* Login */,
 				9D034CF126903B7B0051FA02 /* Main */,
-				9DC1289D26917CA20021EDF5 /* GameMatching */,
+				9DC1289D26917CA20021EDF5 /* MainGameMatching */,
+				9D997ABB26BEC16900AD1AB7 /* DetailGameMatching */,
 				9DC1289E26917CE90021EDF5 /* MyPage */,
 				9D034CE726903A9E0051FA02 /* -----Global----- */,
 				9DD474AE26903D31006F00F1 /* Components */,
@@ -173,18 +178,27 @@
 			path = AllOfSoccer;
 			sourceTree = "<group>";
 		};
-		9DC1289D26917CA20021EDF5 /* GameMatching */ = {
+		9D997ABB26BEC16900AD1AB7 /* DetailGameMatching */ = {
 			isa = PBXGroup;
 			children = (
-				9DC1289F26917E400021EDF5 /* GameMatching.storyboard */,
-				9DC128A226917E740021EDF5 /* GameMatchingViewController.swift */,
+				9D997ABE26BEC28100AD1AB7 /* DetailGameMatching.storyboard */,
+				9D997ABC26BEC1FB00AD1AB7 /* DetailGameMatchingViewController.swift */,
+			);
+			path = DetailGameMatching;
+			sourceTree = "<group>";
+		};
+		9DC1289D26917CA20021EDF5 /* MainGameMatching */ = {
+			isa = PBXGroup;
+			children = (
+				9DC1289F26917E400021EDF5 /* MainGameMatching.storyboard */,
+				9DC128A226917E740021EDF5 /* MainGameMatchingViewController.swift */,
 				9DC3C6DB26BBAE4500AD6B7D /* HorizontalCalendar */,
 				9DC3C6DC26BBAE6300AD6B7D /* FilterTagCollectionView */,
 				9DD48F9326BD8A1D00FE54FE /* FilterDetailView */,
 				9DC3C6DD26BBAE8F00AD6B7D /* TableViewFilerView */,
 				9DD48F9226BD89EF00FE54FE /* NoticeTablview */,
 			);
-			path = GameMatching;
+			path = MainGameMatching;
 			sourceTree = "<group>";
 		};
 		9DC1289E26917CE90021EDF5 /* MyPage */ = {
@@ -340,7 +354,8 @@
 				9DFFB165266D0F3700B04D3D /* .swiftlint.yml in Resources */,
 				9D6B91EE266D08E100AF182B /* LaunchScreen.storyboard in Resources */,
 				9D6B91EB266D08E100AF182B /* Assets.xcassets in Resources */,
-				9DC128A026917E400021EDF5 /* GameMatching.storyboard in Resources */,
+				9D997ABF26BEC28100AD1AB7 /* DetailGameMatching.storyboard in Resources */,
+				9DC128A026917E400021EDF5 /* MainGameMatching.storyboard in Resources */,
 				9DC128A626917E890021EDF5 /* MyPage.storyboard in Resources */,
 				9D1F225026ADA317000726CB /* Colors.xcassets in Resources */,
 				9D034CE826903A9E0051FA02 /* -----Global----- in Resources */,
@@ -391,11 +406,12 @@
 				9D8A32EF26B8FB0000A8F65B /* FilterDetailView.swift in Sources */,
 				9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */,
 				9DC128A926917EA70021EDF5 /* MyPageViewController.swift in Sources */,
-				9DC128A326917E740021EDF5 /* GameMatchingViewController.swift in Sources */,
+				9DC128A326917E740021EDF5 /* MainGameMatchingViewController.swift in Sources */,
 				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
 				9D686CA026AD6EC400440CBF /* FilterTagCollectionViewCell.swift in Sources */,
 				9D6B91E4266D08E000AF182B /* SceneDelegate.swift in Sources */,
 				9D10855926A2887700F8263F /* HorizontalCalendarModel.swift in Sources */,
+				9D997ABD26BEC1FB00AD1AB7 /* DetailGameMatchingViewController.swift in Sources */,
 				9D56CF2A26932D2200628608 /* SelectTableButton.swift in Sources */,
 				9DD474B026903D78006F00F1 /* RoundView.swift in Sources */,
 				9D686C9E26AD663700440CBF /* RoundStackView.swift in Sources */,

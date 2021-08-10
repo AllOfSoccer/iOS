@@ -12,7 +12,7 @@
         <!--경기 매칭-->
         <scene sceneID="1Xr-r9-5Cu">
             <objects>
-                <viewController id="V9G-Fe-OSJ" customClass="GameMatchingViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="V9G-Fe-OSJ" customClass="MainGameMatchingViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4i3-zD-eLK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,7 +259,7 @@
                                             </constraints>
                                         </view>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoticeTableViewCell" rowHeight="158" id="x83-q5-DUZ" customClass="NoticeTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoticeTableViewCell" rowHeight="158" id="x83-q5-DUZ" customClass="NoticeTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="74.5" width="414" height="158"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x83-q5-DUZ" id="MLl-ae-ZqP">

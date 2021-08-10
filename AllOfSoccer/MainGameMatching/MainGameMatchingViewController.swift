@@ -47,7 +47,7 @@ enum FilterType: CaseIterable {
     }
 }
 
-class GameMatchingViewController: UIViewController {
+class MainGameMatchingViewController: UIViewController {
 
     // MARK: - MatchingModeButton Variable
     @IBOutlet private weak var teamMatchButton: SelectTableButton!
@@ -443,7 +443,7 @@ class GameMatchingViewController: UIViewController {
 }
 
 // MARK: - CollectionViewDelegate
-extension GameMatchingViewController: UICollectionViewDelegate {
+extension MainGameMatchingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.horizontalCalendarView {
             // 데이터 처리
@@ -476,7 +476,7 @@ extension GameMatchingViewController: UICollectionViewDelegate {
 }
 
 // MARK: - CollectionViewDataSource
-extension GameMatchingViewController: UICollectionViewDataSource {
+extension MainGameMatchingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.horizontalCalendarView {
             return self.horizontalCalendarCellData.count
@@ -505,17 +505,28 @@ extension GameMatchingViewController: UICollectionViewDataSource {
 }
 
 // MARK: - CollectionViewFlowLayout
-extension GameMatchingViewController: UICollectionViewDelegateFlowLayout {
+extension MainGameMatchingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 6
     }
 }
 
-extension GameMatchingViewController: UITableViewDelegate {
 
+// MARK: - TableViewDelegate
+extension MainGameMatchingViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let detailGameMatchingNavigationContoller = UIStoryboard.init(name: "DetailGameMatching", bundle: nil).instantiateViewController(identifier: "DetailGameMatchingNavigationController") as? UINavigationController else { return }
+//        self.navigationController?.modalPresentationStyle = .fullScreen
+        self.navigationController?.present(detailGameMatchingNavigationContoller, animated: true, completion: nil)
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+
+    }
 }
 
-extension GameMatchingViewController: UITableViewDataSource {
+// MARK: - TableViewDataSource
+extension MainGameMatchingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
@@ -527,7 +538,7 @@ extension GameMatchingViewController: UITableViewDataSource {
 }
 
 // MARK: - FSCollectionViewDelegate
-extension GameMatchingViewController: FSCalendarDelegate {
+extension MainGameMatchingViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let stringDate = self.dateFormatter.string(from: date)
         self.selectedDate.append(stringDate)
@@ -551,12 +562,12 @@ extension GameMatchingViewController: FSCalendarDelegate {
 }
 
 // MARK: - FSCollectionViewDataSource
-extension GameMatchingViewController: FSCalendarDataSource {
+extension MainGameMatchingViewController: FSCalendarDataSource {
 
 }
 
 // MARK: - TableViewFilterViewDelegate
-extension GameMatchingViewController: TableViewFilterViewDelegate {
+extension MainGameMatchingViewController: TableViewFilterViewDelegate {
     func finishButtonDidSelected(_ tableViewFilterView: TableViewFilterView, sortMode: SortMode) {
         self.sortMode = sortMode
         self.tableViewFilterButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
@@ -566,7 +577,7 @@ extension GameMatchingViewController: TableViewFilterViewDelegate {
 }
 
 // MARK: - FilterDetailViewDelegate
-extension GameMatchingViewController: FilterDetailViewDelegate {
+extension MainGameMatchingViewController: FilterDetailViewDelegate {
     func finishButtonDidSelected(_ detailView: FilterDetailView) {
         UIView.animate(withDuration: 0.5) { [weak self] in
             guard let self = self else { return }
