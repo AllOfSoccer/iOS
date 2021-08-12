@@ -12,7 +12,7 @@
         <!--팀 모집 글쓰기-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="FirstRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -316,7 +316,7 @@
         <!--팀 모집 글쓰기-->
         <scene sceneID="yWg-b7-tDL">
             <objects>
-                <viewController id="Hwf-9T-Tbs" sceneMemberID="viewController">
+                <viewController id="Hwf-9T-Tbs" customClass="SecondRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oGE-d1-L44">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -602,6 +602,9 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="F3M-Au-6ws">
+            <size key="intrinsicContentSize" width="63" height="30"/>
+        </designable>
         <designable name="veK-sJ-5qI">
             <size key="intrinsicContentSize" width="63" height="30"/>
         </designable>
