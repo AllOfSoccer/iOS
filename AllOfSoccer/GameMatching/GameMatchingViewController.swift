@@ -348,7 +348,7 @@ class GameMatchingViewController: UIViewController {
         dateComponents.month = moveUp ? 1 : -1
 
         self.currentPage = calendar.date(byAdding: dateComponents, to: self.currentPage ?? Date())
-        guard let currentPage = self .currentPage else { return }
+        guard let currentPage = self.currentPage else { return }
         self.calendarView.setCurrentPage(currentPage, animated: true)
     }
 
