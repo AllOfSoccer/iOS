@@ -603,10 +603,10 @@
     </scenes>
     <designables>
         <designable name="F3M-Au-6ws">
-            <size key="intrinsicContentSize" width="63" height="30"/>
+            <size key="intrinsicContentSize" width="47" height="18"/>
         </designable>
         <designable name="veK-sJ-5qI">
-            <size key="intrinsicContentSize" width="63" height="30"/>
+            <size key="intrinsicContentSize" width="47" height="18"/>
         </designable>
     </designables>
     <resources>

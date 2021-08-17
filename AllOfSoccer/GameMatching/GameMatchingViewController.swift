@@ -511,10 +511,19 @@ extension GameMatchingViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - TableViewDelegate
 extension GameMatchingViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let gameMatchingDetailViewController = UIStoryboard.init(name: "GameMatchingDetail", bundle: nil).instantiateViewController(withIdentifier: "GameMatchingDetailViewController") as? GameMatchingDetailViewController else { return }
+        self.navigationController?.pushViewController(gameMatchingDetailViewController, animated: true)
+    }
 
+//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//
+//    }
 }
 
+// MARK: - TableViewDatasource
 extension GameMatchingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
