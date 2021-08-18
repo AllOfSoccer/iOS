@@ -9,6 +9,7 @@ import UIKit
 
 class SecondRecruitmentViewController: UIViewController {
 
+    private let searchPlaceView = SearchPlaceView()
     private let recruitmentCalendarView = RecruitmentCalendarView()
     private var backgroundView: UIView = {
         let view = UIView()
@@ -19,14 +20,23 @@ class SecondRecruitmentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.recruitmentCalendarView.backgroundColor = .green
-        self.view.addSubview(self.recruitmentCalendarView)
-        self.recruitmentCalendarView.translatesAutoresizingMaskIntoConstraints = false
+//        self.recruitmentCalendarView.backgroundColor = .green
+//        self.view.addSubview(self.recruitmentCalendarView)
+//        self.recruitmentCalendarView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            self.recruitmentCalendarView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 167),
+//            self.recruitmentCalendarView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -167),
+//            self.recruitmentCalendarView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+//            self.recruitmentCalendarView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20)
+//        ])
+        self.searchPlaceView.backgroundColor = .green
+        self.view.addSubview(self.searchPlaceView)
+        self.searchPlaceView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.recruitmentCalendarView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 167),
-            self.recruitmentCalendarView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -167),
-            self.recruitmentCalendarView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            self.recruitmentCalendarView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20)
+            self.searchPlaceView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 167),
+            self.searchPlaceView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -167),
+            self.searchPlaceView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.searchPlaceView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20)
         ])
     }
 }
