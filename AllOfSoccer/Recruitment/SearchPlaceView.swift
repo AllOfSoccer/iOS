@@ -8,7 +8,14 @@
 import UIKit
 import SearchTextField
 
+protocol SearchPlaceViewDelegate: AnyObject {
+    func cancelButtonDidSelected(_ sender: SearchPlaceView)
+    func okButtonDidSelected(_ sender: SearchPlaceView)
+}
+
 class SearchPlaceView: UIView {
+
+    weak var delegate: SearchPlaceViewDelegate?
 
     lazy private var textFieldView: UIView = {
         let view = UIView()
@@ -30,16 +37,20 @@ class SearchPlaceView: UIView {
         textField.maxResultsListHeight = 244
         textField.inlineMode = false
         textField.tableYOffset = 20
+
         return textField
     }()
 
     lazy private var textFieldButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .custom)
         button.layer.cornerRadius = CGFloat(5)
         let buttonImage = UIImage(named: "search")
-        button.setImage(buttonImage, for: .normal)
+        button.setImage(buttonImage?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(buttonImage?.withRenderingMode(.alwaysTemplate), for: .disabled)
         button.tintColor = .white
         button.backgroundColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
+        button.isEnabled = false
+
         return button
     }()
 
@@ -47,6 +58,7 @@ class SearchPlaceView: UIView {
         let label = UILabel()
         label.text = "경기 장소"
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+
         return label
     }()
 
@@ -58,6 +70,7 @@ class SearchPlaceView: UIView {
         button.layer.cornerRadius = CGFloat(8)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         button.addTarget(self, action: #selector(cancelButtonTouchUp), for: .touchUpInside)
+
         return button
     }()
 
@@ -69,6 +82,7 @@ class SearchPlaceView: UIView {
         button.layer.cornerRadius = CGFloat(8)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         button.addTarget(self, action: #selector(okButtonTouchUp), for: .touchUpInside)
+
         return button
     }()
 
@@ -78,6 +92,7 @@ class SearchPlaceView: UIView {
         stackView.axis = .horizontal
         stackView.spacing = 8
         stackView.distribution = .fillEqually
+        
         return stackView
     }()
 
@@ -93,9 +108,9 @@ class SearchPlaceView: UIView {
     }
 
     private func loadView() {
-        setupInputPlaceTextField()
         setupViewConstraint()
         setupSuperView()
+        setupInputPlaceTextField()
     }
 
     private func setupViewConstraint() {
@@ -155,11 +170,11 @@ class SearchPlaceView: UIView {
     }
 
     @objc private func cancelButtonTouchUp(sender: UIButton) {
-        print("취소버튼이 클릭되었습니다.")
+        self.delegate?.cancelButtonDidSelected(self)
     }
 
     @objc private func okButtonTouchUp(sender: UIButton) {
-        print("확인버튼이 클릭되었습니다.")
+        self.delegate?.okButtonDidSelected(self)
     }
 }
 
@@ -177,4 +192,3 @@ extension UITextField {
         }
     }
 }
-
