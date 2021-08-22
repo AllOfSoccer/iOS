@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -361,22 +362,99 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfl-Dd-Rhy" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                        <rect key="frame" x="339" y="650" width="50" height="50"/>
+                                        <color key="backgroundColor" name="tagBackTouchUpColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="VAv-P2-1vc"/>
+                                            <constraint firstAttribute="width" constant="50" id="hxb-Yq-KDD"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="cloth.fill"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
+                                                <color key="value" name="tagBackTouchUpColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="teamRecruitmentButtonTouchUp:" destination="V9G-Fe-OSJ" eventType="touchUpInside" id="4L6-3B-b1i"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWB-dj-IUj" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                        <rect key="frame" x="339" y="650" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="PVB-YV-skB"/>
+                                            <constraint firstAttribute="width" constant="50" id="SYx-Xi-WQB"/>
+                                        </constraints>
+                                        <state key="normal" image="man"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
+                                                <color key="value" name="tagBackTouchUpColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="manRecruitmentButtonTouchUp:" destination="V9G-Fe-OSJ" eventType="touchUpInside" id="QaM-Ci-Wkk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLd-kn-LVL" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                        <rect key="frame" x="334" y="645" width="60" height="60"/>
+                                        <color key="backgroundColor" name="tagBackTouchUpColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="hG9-e3-clb"/>
+                                            <constraint firstAttribute="height" constant="60" id="oit-m1-5ZI"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="plus" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
+                                                <color key="value" name="tagBackTouchUpColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="recruitmentButtonTouchUp:" destination="V9G-Fe-OSJ" eventType="touchUpInside" id="2Pk-pJ-PC3"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93333333333333335" green="0.93725490196078431" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Wzg-lJ-8FP" firstAttribute="top" secondItem="mfl-ke-ikR" secondAttribute="top" id="3dk-TD-hFi"/>
+                                    <constraint firstAttribute="trailing" secondItem="LWB-dj-IUj" secondAttribute="trailing" constant="25" id="5St-ge-R17"/>
                                     <constraint firstAttribute="trailing" secondItem="Y4S-Qh-qsF" secondAttribute="trailing" id="5qI-So-hAL"/>
                                     <constraint firstItem="Axh-HT-bKL" firstAttribute="leading" secondItem="mfl-ke-ikR" secondAttribute="leading" id="8xS-uj-Jld"/>
                                     <constraint firstAttribute="trailing" secondItem="Wzg-lJ-8FP" secondAttribute="trailing" id="Den-b1-fUJ"/>
                                     <constraint firstAttribute="trailing" secondItem="OtX-mI-ZLn" secondAttribute="trailing" id="Ldg-6h-OR4"/>
                                     <constraint firstItem="Y4S-Qh-qsF" firstAttribute="leading" secondItem="mfl-ke-ikR" secondAttribute="leading" id="Mwb-Hh-MyN"/>
+                                    <constraint firstAttribute="bottom" secondItem="gfl-Dd-Rhy" secondAttribute="bottom" constant="25" id="RC8-qu-bcA"/>
                                     <constraint firstItem="Axh-HT-bKL" firstAttribute="top" secondItem="OtX-mI-ZLn" secondAttribute="bottom" id="XF7-qb-dxC"/>
                                     <constraint firstAttribute="trailing" secondItem="Axh-HT-bKL" secondAttribute="trailing" id="bTY-5A-p1x"/>
                                     <constraint firstItem="OtX-mI-ZLn" firstAttribute="top" secondItem="Y4S-Qh-qsF" secondAttribute="bottom" constant="1" id="dOh-6h-Pcr"/>
                                     <constraint firstItem="Y4S-Qh-qsF" firstAttribute="top" secondItem="Wzg-lJ-8FP" secondAttribute="bottom" id="eS2-Lf-gCc"/>
+                                    <constraint firstAttribute="bottom" secondItem="hLd-kn-LVL" secondAttribute="bottom" constant="20" id="gZH-6F-2Vf"/>
+                                    <constraint firstAttribute="bottom" secondItem="LWB-dj-IUj" secondAttribute="bottom" constant="25" id="of5-2i-qLE"/>
                                     <constraint firstAttribute="bottom" secondItem="Axh-HT-bKL" secondAttribute="bottom" id="pGz-ub-YSE"/>
                                     <constraint firstItem="Wzg-lJ-8FP" firstAttribute="leading" secondItem="mfl-ke-ikR" secondAttribute="leading" id="r6u-iz-w2R"/>
                                     <constraint firstItem="OtX-mI-ZLn" firstAttribute="leading" secondItem="mfl-ke-ikR" secondAttribute="leading" id="u0c-dk-ksy"/>
+                                    <constraint firstAttribute="trailing" secondItem="hLd-kn-LVL" secondAttribute="trailing" constant="20" id="xfQ-yK-QYk"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -387,6 +465,7 @@
                             <constraint firstItem="k3U-ZW-q40" firstAttribute="bottom" secondItem="mfl-ke-ikR" secondAttribute="bottom" id="G0C-CT-Bgf"/>
                             <constraint firstItem="mfl-ke-ikR" firstAttribute="top" secondItem="k3U-ZW-q40" secondAttribute="top" id="ND4-FM-QE7"/>
                             <constraint firstItem="mfl-ke-ikR" firstAttribute="leading" secondItem="k3U-ZW-q40" secondAttribute="leading" id="ZHv-Of-KSz"/>
+                            <constraint firstItem="k3U-ZW-q40" firstAttribute="trailing" secondItem="gfl-Dd-Rhy" secondAttribute="trailing" constant="25" id="vB0-EY-iLz"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="경기 매칭" image="flag" catalog="system" selectedImage="flag.fill" id="K4L-YS-BYI"/>
@@ -396,13 +475,16 @@
                         <outlet property="filterTagCollectionView" destination="t1a-0J-LlW" id="hq2-G6-jJP"/>
                         <outlet property="horizontalCalendarView" destination="ujb-m5-sph" id="sTI-Uo-yQC"/>
                         <outlet property="manMatchButton" destination="DbN-Zz-RjJ" id="Clu-Rh-Rwh"/>
+                        <outlet property="manRecruitmentButton" destination="LWB-dj-IUj" id="7DH-kr-i9V"/>
                         <outlet property="monthButton" destination="Mil-d7-Lkb" id="yTk-WS-r4Z"/>
                         <outlet property="noticeTableView" destination="Axh-HT-bKL" id="heB-4U-YXs"/>
+                        <outlet property="recruitmentButton" destination="hLd-kn-LVL" id="dLY-mZ-NYo"/>
                         <outlet property="resetButtonView" destination="NU8-Dp-hy1" id="nBF-0H-7TW"/>
                         <outlet property="selectedLineCenterConstraint" destination="mvr-4R-FTb" id="VaU-jO-oPi"/>
                         <outlet property="tableViewFilterButton" destination="jBg-T2-uCl" id="arU-uF-l9n"/>
                         <outlet property="tagCollectionViewConstraint" destination="7JU-Qq-8W7" id="Dh5-X6-ECM"/>
                         <outlet property="teamMatchButton" destination="U8t-kY-EHS" id="555-Df-ej9"/>
+                        <outlet property="teamRecruitmentButton" destination="gfl-Dd-Rhy" id="yO7-DM-vEv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MxS-mu-eiR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -428,14 +510,31 @@
             <point key="canvasLocation" x="-253.62318840579712" y="-4.0178571428571423"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="LWB-dj-IUj">
+            <size key="intrinsicContentSize" width="42" height="38"/>
+        </designable>
+        <designable name="gfl-Dd-Rhy">
+            <size key="intrinsicContentSize" width="44" height="34"/>
+        </designable>
+        <designable name="hLd-kn-LVL">
+            <size key="intrinsicContentSize" width="38" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ArrowsClockwise" width="22" height="22"/>
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="circle" width="210" height="156"/>
+        <image name="cloth.fill" width="24" height="19"/>
         <image name="flag" catalog="system" width="128" height="121"/>
         <image name="flag.fill" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="man" width="22" height="26"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="tagBackTouchUpColor">
+            <color red="0.92500001192092896" green="0.37299999594688416" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

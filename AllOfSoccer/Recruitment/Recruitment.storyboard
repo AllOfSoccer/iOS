@@ -586,7 +586,7 @@
         <!--Navigation Controller-->
         <scene sceneID="DVP-Ym-5Vu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n5E-P7-dhY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RecruitmentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="n5E-P7-dhY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="BackButton" backIndicatorTransitionMaskImage="BackButton" id="px4-8s-eCL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -604,10 +604,10 @@
     </scenes>
     <designables>
         <designable name="F3M-Au-6ws">
-            <size key="intrinsicContentSize" width="55" height="22"/>
+            <size key="intrinsicContentSize" width="71" height="34"/>
         </designable>
         <designable name="veK-sJ-5qI">
-            <size key="intrinsicContentSize" width="47" height="18"/>
+            <size key="intrinsicContentSize" width="63" height="30"/>
         </designable>
     </designables>
     <resources>

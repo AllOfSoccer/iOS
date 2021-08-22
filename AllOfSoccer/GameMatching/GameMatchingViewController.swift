@@ -132,6 +132,17 @@ class GameMatchingViewController: UIViewController {
 
     @IBOutlet private weak var tableViewFilterButton: UIButton!
 
+    // MARK: - RecruitmentButtonAction
+    @IBOutlet private weak var recruitmentButton: RoundButton!
+    @IBOutlet private weak var manRecruitmentButton: RoundButton!
+    @IBOutlet private weak var teamRecruitmentButton: RoundButton!
+
+    private var recruitmentBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        return view
+    }()
+
     // MARK: - MatchingModeButtonAction
     @IBAction private func teamMatchButtonTouchUp(_ sender: Any) {
         self.teamMatchButton.isSelected = true
@@ -171,6 +182,30 @@ class GameMatchingViewController: UIViewController {
         appearTableViewFilterView()
     }
 
+    // MARK: - RecruitmentButtonAction
+    @IBAction private func recruitmentButtonTouchUp(_ sender: UIButton) {
+        if self.recruitmentButton.isSelected {
+            setupRecruitmentButtonIsDeSelected()
+            self.recruitmentButton.isSelected = false
+            self.recruitmentButton.tintColor = .white
+        } else {
+            setupRecruitmentButtonIsSelected()
+            self.recruitmentButton.isSelected = true
+            self.recruitmentButton.tintColor = UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0)
+        }
+    }
+
+    @IBAction func teamRecruitmentButtonTouchUp(_ sender: UIButton) {
+
+    }
+
+    @IBAction func manRecruitmentButtonTouchUp(_ sender: UIButton) {
+        guard let recruitmentNavigationController = UIStoryboard.init(name: "Recruitment", bundle: nil).instantiateViewController(identifier: "RecruitmentNavigationController") as? UINavigationController  else { return }
+
+        recruitmentNavigationController.modalPresentationStyle = .fullScreen
+        self.navigationController?.present(recruitmentNavigationController, animated: true, completion: nil)
+    }
+
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,6 +216,9 @@ class GameMatchingViewController: UIViewController {
         setupTableViewFilterView()
         setupFilterDetailView()
         setupNoticeTableView()
+
+        setupRecruitmentButton()
+        setupRecruitmentButtonConstraint()
     }
 
     // MARK: - Setup View
@@ -255,7 +293,7 @@ class GameMatchingViewController: UIViewController {
 
         for filterType in FilterType.allCases {
             let tagCellData = FilterTagModel(filterType: filterType)
-//            tagCellData.title = tagCellTitle
+            //            tagCellData.title = tagCellTitle
             self.tagCellModel.append(tagCellData)
         }
         print("ddd")
@@ -296,6 +334,51 @@ class GameMatchingViewController: UIViewController {
     private func setupNoticeTableView() {
         self.noticeTableView.delegate = self
         self.noticeTableView.dataSource = self
+    }
+
+    private func setupRecruitmentButton() {
+        self.recruitmentButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        self.recruitmentButton.setImage(UIImage(systemName: "xmark"), for: .selected)
+        self.recruitmentButton.setBackgroundColor(UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1), for: .normal)
+        self.recruitmentButton.setBackgroundColor(.white, for: .selected)
+        self.recruitmentButton.clipsToBounds = true
+    }
+
+    private func setupRecruitmentButtonConstraint() {
+        guard let tabbar = self.tabBarController else { return }
+        tabbar.view.addSubview(self.recruitmentButton)
+        self.recruitmentButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.recruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -100),
+            self.recruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -20)
+        ])
+
+        tabbar.view.addSubview(self.recruitmentBackgroundView)
+        self.recruitmentBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.recruitmentBackgroundView.topAnchor.constraint(equalTo: tabbar.view.topAnchor, constant: 0),
+            self.recruitmentBackgroundView.leadingAnchor.constraint(equalTo: tabbar.view.leadingAnchor, constant: 0),
+            self.recruitmentBackgroundView.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: 0),
+            self.recruitmentBackgroundView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: 0)
+        ])
+
+        tabbar.view.addSubview(self.manRecruitmentButton)
+        self.manRecruitmentButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.manRecruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -105),
+            self.manRecruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -25)
+        ])
+
+        tabbar.view.addSubview(self.teamRecruitmentButton)
+        self.teamRecruitmentButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.teamRecruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -105),
+            self.teamRecruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -25)
+        ])
+
+        self.recruitmentBackgroundView.isHidden = true
+        self.manRecruitmentButton.isHidden = true
+        self.teamRecruitmentButton.isHidden = true
     }
 
     private func makeDate(_ nextDay: Int) -> String? {
@@ -440,6 +523,39 @@ class GameMatchingViewController: UIViewController {
             make.height.equalTo(14)
         }
     }
+
+    private func setupRecruitmentButtonIsSelected() {
+        self.recruitmentBackgroundView.isHidden = false
+        self.manRecruitmentButton.isHidden = false
+        self.teamRecruitmentButton.isHidden = false
+
+        self.manRecruitmentButton.translatesAutoresizingMaskIntoConstraints = true
+        self.teamRecruitmentButton.translatesAutoresizingMaskIntoConstraints = true
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+
+            self.manRecruitmentButton.frame = CGRect(x: self.manRecruitmentButton.frame.minX, y: self.recruitmentButton.frame.minY - self.manRecruitmentButton.frame.height - 16, width: self.manRecruitmentButton.frame.width, height: self.manRecruitmentButton.frame.height)
+            self.teamRecruitmentButton.frame = CGRect(x: self.teamRecruitmentButton.frame.minX, y: self.recruitmentButton.frame.minY - self.manRecruitmentButton.frame.height - self.teamRecruitmentButton.frame.height - 32, width: self.manRecruitmentButton.frame.width, height: self.manRecruitmentButton.frame.height)
+            self.view.layoutIfNeeded()
+        }
+        self.tabBarController?.view.insertSubview(self.recruitmentButton, at: self.tabBarController?.view.subviews.count ?? 0)
+    }
+
+    private func setupRecruitmentButtonIsDeSelected() {
+
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+
+            self.manRecruitmentButton.frame = CGRect(x: self.recruitmentButton.frame.minX + 5, y: self.recruitmentButton.frame.minY + 5, width: self.manRecruitmentButton.frame.width, height: self.manRecruitmentButton.frame.height)
+            self.teamRecruitmentButton.frame = CGRect(x: self.recruitmentButton.frame.minX + 5, y: self.recruitmentButton.frame.minY + 5, width: self.teamRecruitmentButton.frame.width, height: self.teamRecruitmentButton.frame.height)
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.recruitmentBackgroundView.isHidden = true
+            self.teamRecruitmentButton.isHidden = true
+            self.manRecruitmentButton.isHidden = true
+            self.tabBarController?.view.insertSubview(self.recruitmentButton, at: self.tabBarController?.view.subviews.count ?? 0)
+        }
+    }
 }
 
 // MARK: - CollectionViewDelegate
@@ -518,9 +634,9 @@ extension GameMatchingViewController: UITableViewDelegate {
         self.navigationController?.pushViewController(gameMatchingDetailViewController, animated: true)
     }
 
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//
-//    }
+    //    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    //
+    //    }
 }
 
 // MARK: - TableViewDatasource
