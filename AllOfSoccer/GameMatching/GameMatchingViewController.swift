@@ -184,15 +184,7 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - RecruitmentButtonAction
     @IBAction private func recruitmentButtonTouchUp(_ sender: UIButton) {
-        if self.recruitmentButton.isSelected {
-            setupRecruitmentButtonIsDeSelected()
-            self.recruitmentButton.isSelected = false
-            self.recruitmentButton.tintColor = .white
-        } else {
-            setupRecruitmentButtonIsSelected()
-            self.recruitmentButton.isSelected = true
-            self.recruitmentButton.tintColor = UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0)
-        }
+        self.didSelectedRecruitmentButtonSetting(sender.isSelected)
     }
 
     @IBAction func teamRecruitmentButtonTouchUp(_ sender: UIButton) {
@@ -293,7 +285,6 @@ class GameMatchingViewController: UIViewController {
 
         for filterType in FilterType.allCases {
             let tagCellData = FilterTagModel(filterType: filterType)
-            //            tagCellData.title = tagCellTitle
             self.tagCellModel.append(tagCellData)
         }
         print("ddd")
@@ -533,7 +524,6 @@ class GameMatchingViewController: UIViewController {
         self.teamRecruitmentButton.translatesAutoresizingMaskIntoConstraints = true
         UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
-
             self.manRecruitmentButton.frame = CGRect(x: self.manRecruitmentButton.frame.minX, y: self.recruitmentButton.frame.minY - self.manRecruitmentButton.frame.height - 16, width: self.manRecruitmentButton.frame.width, height: self.manRecruitmentButton.frame.height)
             self.teamRecruitmentButton.frame = CGRect(x: self.teamRecruitmentButton.frame.minX, y: self.recruitmentButton.frame.minY - self.manRecruitmentButton.frame.height - self.teamRecruitmentButton.frame.height - 32, width: self.manRecruitmentButton.frame.width, height: self.manRecruitmentButton.frame.height)
             self.view.layoutIfNeeded()
@@ -589,6 +579,18 @@ extension GameMatchingViewController: UICollectionViewDelegate {
             self.tabBarController?.view.layoutIfNeeded()
         }
     }
+
+    private func didSelectedRecruitmentButtonSetting(_ isSelected: Bool) {
+        if isSelected {
+            setupRecruitmentButtonIsDeSelected()
+            self.recruitmentButton.isSelected = false
+            self.recruitmentButton.tintColor = .white
+        } else {
+            setupRecruitmentButtonIsSelected()
+            self.recruitmentButton.isSelected = true
+            self.recruitmentButton.tintColor = UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0)
+        }
+    }
 }
 
 // MARK: - CollectionViewDataSource
@@ -633,10 +635,6 @@ extension GameMatchingViewController: UITableViewDelegate {
         guard let gameMatchingDetailViewController = UIStoryboard.init(name: "GameMatchingDetail", bundle: nil).instantiateViewController(withIdentifier: "GameMatchingDetailViewController") as? GameMatchingDetailViewController else { return }
         self.navigationController?.pushViewController(gameMatchingDetailViewController, animated: true)
     }
-
-    //    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-    //
-    //    }
 }
 
 // MARK: - TableViewDatasource
