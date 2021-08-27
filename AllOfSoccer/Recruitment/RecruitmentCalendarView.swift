@@ -8,7 +8,14 @@
 import UIKit
 import FSCalendar
 
+protocol RecruitmentCalendarViewDelegate: AnyObject {
+    func cancelButtonDidSelected(_ sender: RecruitmentCalendarView)
+    func okButtonDidSelected(_ sender: RecruitmentCalendarView)
+}
+
 class RecruitmentCalendarView: UIView {
+
+    weak var delegate: RecruitmentCalendarViewDelegate?
 
     private var calendar = FSCalendar()
     private var monthButton: UIButton = {
@@ -19,10 +26,13 @@ class RecruitmentCalendarView: UIView {
         button.setTitleColor(buttonTitleColor, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         button.backgroundColor = buttonBackgroundColor
-        button.setImage(UIImage.init(systemName: "chevron.down"), for: .normal)
+        button.setImage(UIImage.init(systemName: "chevron.down")?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = buttonTitleColor
+        button.semanticContentAttribute = .forceRightToLeft
+        button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         return button
     }()
+
     private var yearButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 8
@@ -31,10 +41,13 @@ class RecruitmentCalendarView: UIView {
         button.setTitleColor(buttonTitleColor, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         button.backgroundColor = buttonBackgroundColor
-        button.setImage(UIImage.init(systemName: "chevron.down"), for: .normal)
+        button.setImage(UIImage.init(systemName: "chevron.down")?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = buttonTitleColor
+        button.semanticContentAttribute = .forceRightToLeft
+        button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         return button
     }()
+
     private var timeTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "시간"
@@ -43,36 +56,42 @@ class RecruitmentCalendarView: UIView {
         label.textColor = .black
         return label
     }()
+
     private var timeDatePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .time
         datePicker.preferredDatePickerStyle = .inline
         return datePicker
     }()
+
     private var cancelButton: UIButton = {
-        let button = UIButton()
-        let backgroundColorDidDeSeleted = UIColor(red: 246/255, green: 247/255, blue: 250/255, alpha: 1)
-        let backgroundColorDidSeleted = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
-        let titleColorDidDeSeleted = UIColor.black
-        let titleColorDidSeleted = UIColor.white
-        button.setBackgroundColor(backgroundColorDidDeSeleted, for: .normal)
-        button.setBackgroundColor(backgroundColorDidSeleted, for: .selected)
-        button.setTitleColor(titleColorDidDeSeleted, for: .normal)
-        button.setTitleColor(titleColorDidSeleted, for: .selected)
+        let button = UIButton(type: .custom)
+        button.setTitle("취소", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        button.setTitleColor(UIColor.black, for: .normal)
+        let backgroundColor = UIColor(red: 246/255, green: 247/255, blue: 250/255, alpha: 1)
+        button.backgroundColor = backgroundColor
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+
+        button.addTarget(self, action: #selector(cancelButtonDidSelected), for: .touchUpInside)
         return button
     }()
+
     private var okButton: UIButton = {
-        let button = UIButton()
-        let backgroundColorDidDeSeleted = UIColor(red: 246/255, green: 247/255, blue: 250/255, alpha: 1)
-        let backgroundColorDidSeleted = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
-        let titleColorDidDeSeleted = UIColor.black
-        let titleColorDidSeleted = UIColor.white
-        button.setBackgroundColor(backgroundColorDidDeSeleted, for: .normal)
-        button.setBackgroundColor(backgroundColorDidSeleted, for: .selected)
-        button.setTitleColor(titleColorDidDeSeleted, for: .normal)
-        button.setTitleColor(titleColorDidSeleted, for: .selected)
+        let button = UIButton(type: .custom)
+        button.setTitle("선택", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        button.setTitleColor(UIColor.white, for: .normal)
+        let backgroundColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
+        button.backgroundColor = backgroundColor
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+
+        button.addTarget(self, action: #selector(okButtonDidSelected), for: .touchUpInside)
         return button
     }()
+
     lazy private var yearAndmonthStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [self.monthButton, self.yearButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,8 +100,9 @@ class RecruitmentCalendarView: UIView {
         stackView.distribution = .fillEqually
         return stackView
     }()
+
     lazy private var okAndCancelStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [self.okButton, self.cancelButton])
+        let stackView = UIStackView(arrangedSubviews: [self.cancelButton, self.okButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.spacing = 8
@@ -101,30 +121,12 @@ class RecruitmentCalendarView: UIView {
     }
 
     private func loadView() {
+
         setupViewConstraint()
+        setupSuperView()
         setupCalendar()
-    }
 
-    private func setupCalendar() {
-        self.calendar.appearance.titleWeekendColor = UIColor.red
-        self.calendar.appearance.selectionColor = UIColor.black
-        self.calendar.appearance.todayColor = nil
-        self.calendar.appearance.titleTodayColor = nil
-
-        self.calendar.headerHeight = 0
-
-        self.calendar.locale = Locale(identifier: "ko_KR")
-        self.calendar.calendarWeekdayView.weekdayLabels[0].text = "일"
-        self.calendar.calendarWeekdayView.weekdayLabels[1].text = "월"
-        self.calendar.calendarWeekdayView.weekdayLabels[2].text = "화"
-        self.calendar.calendarWeekdayView.weekdayLabels[3].text = "수"
-        self.calendar.calendarWeekdayView.weekdayLabels[4].text = "목"
-        self.calendar.calendarWeekdayView.weekdayLabels[5].text = "금"
-        self.calendar.calendarWeekdayView.weekdayLabels[6].text = "토"
-
-        self.calendar.delegate = self
-        self.calendar.dataSource = self
-        self.calendar.allowsMultipleSelection = true
+        setupMonthAndYearButton()
     }
 
     private func setupViewConstraint() {
@@ -168,6 +170,59 @@ class RecruitmentCalendarView: UIView {
             self.okAndCancelStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -24),
             self.okAndCancelStackView.heightAnchor.constraint(equalToConstant: 40)
         ])
+    }
+
+    private func setupSuperView() {
+        self.layer.cornerRadius = 12
+    }
+
+    private func setupCalendar() {
+        self.calendar.appearance.titleWeekendColor = UIColor.red
+        self.calendar.appearance.selectionColor = UIColor.black
+        self.calendar.appearance.todayColor = nil
+        self.calendar.appearance.titleTodayColor = nil
+
+        self.calendar.headerHeight = 0
+
+        self.calendar.locale = Locale(identifier: "ko_KR")
+        self.calendar.calendarWeekdayView.weekdayLabels[0].text = "일"
+        self.calendar.calendarWeekdayView.weekdayLabels[1].text = "월"
+        self.calendar.calendarWeekdayView.weekdayLabels[2].text = "화"
+        self.calendar.calendarWeekdayView.weekdayLabels[3].text = "수"
+        self.calendar.calendarWeekdayView.weekdayLabels[4].text = "목"
+        self.calendar.calendarWeekdayView.weekdayLabels[5].text = "금"
+        self.calendar.calendarWeekdayView.weekdayLabels[6].text = "토"
+
+        self.calendar.delegate = self
+        self.calendar.dataSource = self
+        self.calendar.allowsMultipleSelection = true
+    }
+
+    private func setupMonthAndYearButton() {
+        setupDateButtonTitle(sender: self.monthButton)
+        setupDateButtonTitle(sender: self.yearButton)
+    }
+
+    private func setupDateButtonTitle(sender: UIButton) {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        if sender == self.monthButton {
+            dateFormatter.dateFormat = "M"
+            let dateString = dateFormatter.string(from: currentDate) + "월"
+            sender.setTitle(dateString, for: .normal)
+        } else if sender == self.yearButton {
+            dateFormatter.dateFormat = "yyyy"
+            let dateString = dateFormatter.string(from: currentDate)
+            sender.setTitle(dateString, for: .normal)
+        }
+    }
+
+    @objc private func cancelButtonDidSelected(sender: UIButton) {
+        self.delegate?.cancelButtonDidSelected(self)
+    }
+
+    @objc private func okButtonDidSelected(sender: UIButton) {
+        self.delegate?.okButtonDidSelected(self)
     }
 }
 

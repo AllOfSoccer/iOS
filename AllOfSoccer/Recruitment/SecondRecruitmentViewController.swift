@@ -17,26 +17,92 @@ class SecondRecruitmentViewController: UIViewController {
         return view
     }()
 
+    @IBAction private func calendarButtonTouchUp(_ sender: UIButton) {
+        self.recruitmentCalendarView.isHidden = false
+        self.backgroundView.isHidden = false
+    }
+
+    @IBAction private func placeButtonTouchUp(_ sender: UIButton) {
+        self.searchPlaceView.isHidden = false
+        self.backgroundView.isHidden = false
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        self.recruitmentCalendarView.backgroundColor = .green
-//        self.view.addSubview(self.recruitmentCalendarView)
-//        self.recruitmentCalendarView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            self.recruitmentCalendarView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 167),
-//            self.recruitmentCalendarView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -167),
-//            self.recruitmentCalendarView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-//            self.recruitmentCalendarView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20)
-//        ])
-        self.searchPlaceView.backgroundColor = .green
-        self.view.addSubview(self.searchPlaceView)
+        setupViewConstraint()
+        setupSearchPlaceView()
+        setupRecruitmentCalendarView()
+
+        self.backgroundView.isHidden = true
+        self.searchPlaceView.isHidden = true
+        self.recruitmentCalendarView.isHidden = true
+
+        self.recruitmentCalendarView.delegate = self
+        self.searchPlaceView.delegate = self
+    }
+
+    private func setupViewConstraint() {
+        guard let navigationController = self.navigationController else { return }
+        self.navigationController?.view.addSubview(self.backgroundView)
+        self.backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.backgroundView.topAnchor.constraint(equalTo: navigationController.view.topAnchor, constant: 0),
+            self.backgroundView.bottomAnchor.constraint(equalTo: navigationController.view.bottomAnchor, constant: 0),
+            self.backgroundView.leadingAnchor.constraint(equalTo: navigationController.view.leadingAnchor, constant: 0),
+            self.backgroundView.trailingAnchor.constraint(equalTo: navigationController.view.trailingAnchor, constant: 0)
+        ])
+
+        self.searchPlaceView.backgroundColor = .white
+        self.backgroundView.addSubview(self.searchPlaceView)
         self.searchPlaceView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.searchPlaceView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 167),
-            self.searchPlaceView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -167),
-            self.searchPlaceView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            self.searchPlaceView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20)
+            self.searchPlaceView.topAnchor.constraint(equalTo: self.backgroundView.topAnchor, constant: 167),
+            self.searchPlaceView.bottomAnchor.constraint(equalTo: self.backgroundView.bottomAnchor, constant: -167),
+            self.searchPlaceView.leadingAnchor.constraint(equalTo: self.backgroundView.leadingAnchor, constant: 20),
+            self.searchPlaceView.trailingAnchor.constraint(equalTo: self.backgroundView.trailingAnchor, constant: -20)
         ])
+
+        self.recruitmentCalendarView.backgroundColor = .white
+        self.backgroundView.addSubview(self.recruitmentCalendarView)
+        self.recruitmentCalendarView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.recruitmentCalendarView.topAnchor.constraint(equalTo: self.backgroundView.topAnchor, constant: 167),
+            self.recruitmentCalendarView.bottomAnchor.constraint(equalTo: self.backgroundView.bottomAnchor, constant: -167),
+            self.recruitmentCalendarView.leadingAnchor.constraint(equalTo: self.backgroundView.leadingAnchor, constant: 20),
+            self.recruitmentCalendarView.trailingAnchor.constraint(equalTo: self.backgroundView.trailingAnchor, constant: -20)
+        ])
+    }
+
+    private func setupSearchPlaceView() {
+
+    }
+
+    private func setupRecruitmentCalendarView() {
+
+    }
+}
+
+extension SecondRecruitmentViewController: RecruitmentCalendarViewDelegate {
+    func cancelButtonDidSelected(_ sender: RecruitmentCalendarView) {
+        self.backgroundView.isHidden = true
+        self.recruitmentCalendarView.isHidden = true
+    }
+
+    func okButtonDidSelected(_ sender: RecruitmentCalendarView) {
+        self.backgroundView.isHidden = true
+        self.recruitmentCalendarView.isHidden = true
+    }
+}
+
+extension SecondRecruitmentViewController: SearchPlaceViewDelegate {
+    func cancelButtonDidSelected(_ sender: SearchPlaceView) {
+        self.backgroundView.isHidden = true
+        self.searchPlaceView.isHidden = true
+    }
+
+    func okButtonDidSelected(_ sender: SearchPlaceView) {
+        self.backgroundView.isHidden = true
+        self.searchPlaceView.isHidden = true
     }
 }

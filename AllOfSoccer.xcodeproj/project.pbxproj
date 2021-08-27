@@ -14,8 +14,8 @@
 		9D1F225026ADA317000726CB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D1F224F26ADA317000726CB /* Colors.xcassets */; };
 		9D24EF7C26B3C68400F55676 /* FilterTagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D24EF7B26B3C68400F55676 /* FilterTagModel.swift */; };
 		9D338C2C26B6A603008A2EDA /* TableViewFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D338C2B26B6A603008A2EDA /* TableViewFilterView.swift */; };
-		9D3E375A266D11AF0058A4B7 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E3759266D11AF0058A4B7 /* SwiftPackageProductDependency */; };
-		9D3E375E266D11DF0058A4B7 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E375D266D11DF0058A4B7 /* SwiftPackageProductDependency */; };
+		9D3E375A266D11AF0058A4B7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E3759266D11AF0058A4B7 /* Alamofire */; };
+		9D3E375E266D11DF0058A4B7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E375D266D11DF0058A4B7 /* Kingfisher */; };
 		9D4EC53F26903C9500D1A27D /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4EC53E26903C9500D1A27D /* SignIn.storyboard */; };
 		9D56CF2A26932D2200628608 /* SelectTableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D56CF2926932D2200628608 /* SelectTableButton.swift */; };
 		9D5AA9C926CBC72500A33D20 /* SearchPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5AA9C826CBC72500A33D20 /* SearchPlaceView.swift */; };
@@ -32,10 +32,11 @@
 		9D7B9F8126C94B780075F211 /* GameMatchingDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B9F8026C94B780075F211 /* GameMatchingDetail.storyboard */; };
 		9D7D409D26BE792000E8329E /* FilterDetailTagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D409C26BE792000E8329E /* FilterDetailTagModel.swift */; };
 		9D8A32EF26B8FB0000A8F65B /* FilterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */; };
+		9D8D32FF26CD53970097A172 /* RecruitmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D32FE26CD53970097A172 /* RecruitmentTableViewCell.swift */; };
 		9DB1AB1A26B955F8003E517A /* FilterDetailTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */; };
 		9DB3547526C5539E00ADB9A0 /* SecondRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3547426C5539E00ADB9A0 /* SecondRecruitmentViewController.swift */; };
 		9DB3547726C554F500ADB9A0 /* RecruitmentCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3547626C554F500ADB9A0 /* RecruitmentCalendarView.swift */; };
-		9DBC70E826A986D0005F6BFA /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9DBC70E726A986D0005F6BFA /* SwiftPackageProductDependency */; };
+		9DBC70E826A986D0005F6BFA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9DBC70E726A986D0005F6BFA /* SnapKit */; };
 		9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC1289A269178500021EDF5 /* MainTabBarController.swift */; };
 		9DC128A026917E400021EDF5 /* GameMatching.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC1289F26917E400021EDF5 /* GameMatching.storyboard */; };
 		9DC128A326917E740021EDF5 /* GameMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC128A226917E740021EDF5 /* GameMatchingViewController.swift */; };
@@ -44,12 +45,12 @@
 		9DD474B026903D78006F00F1 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474AF26903D78006F00F1 /* RoundView.swift */; };
 		9DD474B326903D8A006F00F1 /* TopRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474B226903D8A006F00F1 /* TopRoundView.swift */; };
 		9DD474B626903D97006F00F1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474B526903D97006F00F1 /* RoundButton.swift */; };
-		9DD474BA26903E95006F00F1 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9DD474B926903E95006F00F1 /* SwiftPackageProductDependency */; };
-		9DD474BC26903E95006F00F1 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9DD474BB26903E95006F00F1 /* SwiftPackageProductDependency */; };
+		9DD474BA26903E95006F00F1 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 9DD474B926903E95006F00F1 /* NVActivityIndicatorView */; };
+		9DD474BC26903E95006F00F1 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 9DD474BB26903E95006F00F1 /* NVActivityIndicatorViewExtended */; };
 		9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */; };
 		9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */; };
-		9DE4F2A426AF070000F8974A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9DC128AD26918E710021EDF5 /* SwiftPackageProductDependency */; };
-		9DE4F2A726AF076600F8974A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE4F2A626AF076600F8974A /* SwiftPackageProductDependency */; };
+		9DE4F2A426AF070000F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DC128AD26918E710021EDF5 /* FSCalendar */; };
+		9DE4F2A726AF076600F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE4F2A626AF076600F8974A /* FSCalendar */; };
 		9DECF34826A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DECF34726A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift */; };
 		9DFB9C2F26B8DCBB00618D66 /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */; };
 		9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD93B426764DA10049ADF2 /* SignInViewController.swift */; };
@@ -84,6 +85,7 @@
 		9D7B9F8026C94B780075F211 /* GameMatchingDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameMatchingDetail.storyboard; sourceTree = "<group>"; };
 		9D7D409C26BE792000E8329E /* FilterDetailTagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailTagModel.swift; sourceTree = "<group>"; };
 		9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailView.swift; sourceTree = "<group>"; };
+		9D8D32FE26CD53970097A172 /* RecruitmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTableViewCell.swift; sourceTree = "<group>"; };
 		9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB3547426C5539E00ADB9A0 /* SecondRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondRecruitmentViewController.swift; sourceTree = "<group>"; };
 		9DB3547626C554F500ADB9A0 /* RecruitmentCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentCalendarView.swift; sourceTree = "<group>"; };
@@ -108,13 +110,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D3E375E266D11DF0058A4B7 /* BuildFile in Frameworks */,
-				9DE4F2A426AF070000F8974A /* BuildFile in Frameworks */,
-				9DD474BC26903E95006F00F1 /* BuildFile in Frameworks */,
-				9D3E375A266D11AF0058A4B7 /* BuildFile in Frameworks */,
-				9DBC70E826A986D0005F6BFA /* BuildFile in Frameworks */,
-				9DE4F2A726AF076600F8974A /* BuildFile in Frameworks */,
-				9DD474BA26903E95006F00F1 /* BuildFile in Frameworks */,
+				9D3E375E266D11DF0058A4B7 /* Kingfisher in Frameworks */,
+				9DE4F2A426AF070000F8974A /* FSCalendar in Frameworks */,
+				9DD474BC26903E95006F00F1 /* NVActivityIndicatorViewExtended in Frameworks */,
+				9D3E375A266D11AF0058A4B7 /* Alamofire in Frameworks */,
+				9DBC70E826A986D0005F6BFA /* SnapKit in Frameworks */,
+				9DE4F2A726AF076600F8974A /* FSCalendar in Frameworks */,
+				9DD474BA26903E95006F00F1 /* NVActivityIndicatorView in Frameworks */,
 				3542F8182701622A07873204 /* Pods_AllOfSoccer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +138,6 @@
 				5235469AE7719A82677ADFD6 /* Pods-AllOfSoccer.debug.xcconfig */,
 				57B576079C85BA1CFFC7E15C /* Pods-AllOfSoccer.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -181,6 +182,7 @@
 			children = (
 				9D5F573426C2A5D2004D8AE9 /* Recruitment.storyboard */,
 				9D5F573226C298D9004D8AE9 /* FirstRecruitmentViewController.swift */,
+				9D8D32FE26CD53970097A172 /* RecruitmentTableViewCell.swift */,
 				9DB3547426C5539E00ADB9A0 /* SecondRecruitmentViewController.swift */,
 				9DB3547626C554F500ADB9A0 /* RecruitmentCalendarView.swift */,
 				9D5AA9C826CBC72500A33D20 /* SearchPlaceView.swift */,
@@ -353,13 +355,13 @@
 			);
 			name = AllOfSoccer;
 			packageProductDependencies = (
-				9D3E3759266D11AF0058A4B7 /* SwiftPackageProductDependency */,
-				9D3E375D266D11DF0058A4B7 /* SwiftPackageProductDependency */,
-				9DD474B926903E95006F00F1 /* SwiftPackageProductDependency */,
-				9DD474BB26903E95006F00F1 /* SwiftPackageProductDependency */,
-				9DC128AD26918E710021EDF5 /* SwiftPackageProductDependency */,
-				9DBC70E726A986D0005F6BFA /* SwiftPackageProductDependency */,
-				9DE4F2A626AF076600F8974A /* SwiftPackageProductDependency */,
+				9D3E3759266D11AF0058A4B7 /* Alamofire */,
+				9D3E375D266D11DF0058A4B7 /* Kingfisher */,
+				9DD474B926903E95006F00F1 /* NVActivityIndicatorView */,
+				9DD474BB26903E95006F00F1 /* NVActivityIndicatorViewExtended */,
+				9DC128AD26918E710021EDF5 /* FSCalendar */,
+				9DBC70E726A986D0005F6BFA /* SnapKit */,
+				9DE4F2A626AF076600F8974A /* FSCalendar */,
 			);
 			productName = AllOfSoccer;
 			productReference = 9D6B91DE266D08E000AF182B /* AllOfSoccer.app */;
@@ -389,11 +391,11 @@
 			);
 			mainGroup = 9D6B91D5266D08E000AF182B;
 			packageReferences = (
-				9D3E3758266D11AF0058A4B7 /* RemoteSwiftPackageReference */,
-				9D3E375C266D11DF0058A4B7 /* RemoteSwiftPackageReference */,
-				9DC128AC26918E710021EDF5 /* RemoteSwiftPackageReference */,
-				9DBC70E626A986D0005F6BFA /* RemoteSwiftPackageReference */,
-				9DE4F2A526AF076600F8974A /* RemoteSwiftPackageReference */,
+				9D3E3758266D11AF0058A4B7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				9D3E375C266D11DF0058A4B7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				9DC128AC26918E710021EDF5 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+				9DBC70E626A986D0005F6BFA /* XCRemoteSwiftPackageReference "SnapKit" */,
+				9DE4F2A526AF076600F8974A /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 9D6B91DF266D08E000AF182B /* Products */;
 			projectDirPath = "";
@@ -508,6 +510,7 @@
 				9D5AA9C926CBC72500A33D20 /* SearchPlaceView.swift in Sources */,
 				9DC128A326917E740021EDF5 /* GameMatchingViewController.swift in Sources */,
 				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
+				9D8D32FF26CD53970097A172 /* RecruitmentTableViewCell.swift in Sources */,
 				9D686CA026AD6EC400440CBF /* FilterTagCollectionViewCell.swift in Sources */,
 				9D6B91E4266D08E000AF182B /* SceneDelegate.swift in Sources */,
 				9D10855926A2887700F8263F /* HorizontalCalendarModel.swift in Sources */,
@@ -729,7 +732,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9D3E3758266D11AF0058A4B7 /* RemoteSwiftPackageReference */ = {
+		9D3E3758266D11AF0058A4B7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -737,7 +740,7 @@
 				minimumVersion = 5.4.3;
 			};
 		};
-		9D3E375C266D11DF0058A4B7 /* RemoteSwiftPackageReference */ = {
+		9D3E375C266D11DF0058A4B7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -745,7 +748,7 @@
 				minimumVersion = 6.3.0;
 			};
 		};
-		9DBC70E626A986D0005F6BFA /* RemoteSwiftPackageReference */ = {
+		9DBC70E626A986D0005F6BFA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -753,7 +756,7 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		9DC128AC26918E710021EDF5 /* RemoteSwiftPackageReference */ = {
+		9DC128AC26918E710021EDF5 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
 			requirement = {
@@ -761,7 +764,7 @@
 				minimumVersion = 5.1.1;
 			};
 		};
-		9DE4F2A526AF076600F8974A /* RemoteSwiftPackageReference */ = {
+		9DE4F2A526AF076600F8974A /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
 			requirement = {
@@ -772,37 +775,37 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9D3E3759266D11AF0058A4B7 /* SwiftPackageProductDependency */ = {
+		9D3E3759266D11AF0058A4B7 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9D3E3758266D11AF0058A4B7 /* RemoteSwiftPackageReference */;
+			package = 9D3E3758266D11AF0058A4B7 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		9D3E375D266D11DF0058A4B7 /* SwiftPackageProductDependency */ = {
+		9D3E375D266D11DF0058A4B7 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9D3E375C266D11DF0058A4B7 /* RemoteSwiftPackageReference */;
+			package = 9D3E375C266D11DF0058A4B7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
-		9DBC70E726A986D0005F6BFA /* SwiftPackageProductDependency */ = {
+		9DBC70E726A986D0005F6BFA /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9DBC70E626A986D0005F6BFA /* RemoteSwiftPackageReference */;
+			package = 9DBC70E626A986D0005F6BFA /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		9DC128AD26918E710021EDF5 /* SwiftPackageProductDependency */ = {
+		9DC128AD26918E710021EDF5 /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9DC128AC26918E710021EDF5 /* RemoteSwiftPackageReference */;
+			package = 9DC128AC26918E710021EDF5 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
 			productName = FSCalendar;
 		};
-		9DD474B926903E95006F00F1 /* SwiftPackageProductDependency */ = {
+		9DD474B926903E95006F00F1 /* NVActivityIndicatorView */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NVActivityIndicatorView;
 		};
-		9DD474BB26903E95006F00F1 /* SwiftPackageProductDependency */ = {
+		9DD474BB26903E95006F00F1 /* NVActivityIndicatorViewExtended */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NVActivityIndicatorViewExtended;
 		};
-		9DE4F2A626AF076600F8974A /* SwiftPackageProductDependency */ = {
+		9DE4F2A626AF076600F8974A /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9DE4F2A526AF076600F8974A /* RemoteSwiftPackageReference */;
+			package = 9DE4F2A526AF076600F8974A /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
