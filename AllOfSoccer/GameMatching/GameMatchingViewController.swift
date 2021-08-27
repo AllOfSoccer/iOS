@@ -187,6 +187,7 @@ class GameMatchingViewController: UIViewController {
         self.didSelectedRecruitmentButtonSetting(sender.isSelected)
     }
 
+    // 뷰 완성시 코드 추가할 예정
     @IBAction func teamRecruitmentButtonTouchUp(_ sender: UIButton) {
 
     }
@@ -338,14 +339,24 @@ class GameMatchingViewController: UIViewController {
     private func setupRecruitmentButtonConstraint() {
         guard let tabbar = self.tabBarController else { return }
         tabbar.view.addSubview(self.recruitmentButton)
+        tabbar.view.addSubview(self.recruitmentBackgroundView)
+        tabbar.view.addSubview(self.manRecruitmentButton)
+        tabbar.view.addSubview(self.teamRecruitmentButton)
+
         self.recruitmentButton.translatesAutoresizingMaskIntoConstraints = false
+        self.recruitmentBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        self.manRecruitmentButton.translatesAutoresizingMaskIntoConstraints = false
+        self.teamRecruitmentButton.translatesAutoresizingMaskIntoConstraints = false
+
+        self.recruitmentBackgroundView.isHidden = true
+        self.manRecruitmentButton.isHidden = true
+        self.teamRecruitmentButton.isHidden = true
+
         NSLayoutConstraint.activate([
             self.recruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -100),
             self.recruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -20)
         ])
 
-        tabbar.view.addSubview(self.recruitmentBackgroundView)
-        self.recruitmentBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.recruitmentBackgroundView.topAnchor.constraint(equalTo: tabbar.view.topAnchor, constant: 0),
             self.recruitmentBackgroundView.leadingAnchor.constraint(equalTo: tabbar.view.leadingAnchor, constant: 0),
@@ -353,23 +364,16 @@ class GameMatchingViewController: UIViewController {
             self.recruitmentBackgroundView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: 0)
         ])
 
-        tabbar.view.addSubview(self.manRecruitmentButton)
-        self.manRecruitmentButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.manRecruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -105),
             self.manRecruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -25)
         ])
 
-        tabbar.view.addSubview(self.teamRecruitmentButton)
-        self.teamRecruitmentButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.teamRecruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -105),
             self.teamRecruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -25)
         ])
 
-        self.recruitmentBackgroundView.isHidden = true
-        self.manRecruitmentButton.isHidden = true
-        self.teamRecruitmentButton.isHidden = true
     }
 
     private func makeDate(_ nextDay: Int) -> String? {
