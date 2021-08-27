@@ -9,10 +9,13 @@ import UIKit
 
 class FirstRecruitmentViewController: UIViewController {
 
+    @IBAction private func backButtonItemTouchUp(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     @IBOutlet private weak var recruitmentTableView: UITableView!
     @IBOutlet private weak var addTeamButton: UIButton!
     @IBOutlet private weak var nextButton: UIButton!
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
