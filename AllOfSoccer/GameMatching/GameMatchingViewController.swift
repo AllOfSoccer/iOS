@@ -181,6 +181,7 @@ class GameMatchingViewController: UIViewController {
         setupTableViewFilterView()
         setupFilterDetailView()
         setupNoticeTableView()
+
     }
 
     // MARK: - Setup View
