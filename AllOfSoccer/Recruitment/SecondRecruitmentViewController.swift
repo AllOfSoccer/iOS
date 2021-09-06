@@ -1,108 +1,51 @@
 //
-//  SecondRecruitmentViewController.swift
+//  RecruitmentViewController.swift
 //  AllOfSoccer
 //
-//  Created by 최원석 on 2021/08/12.
+//  Created by 최원석 on 2021/08/10.
 //
 
 import UIKit
+import RangeSeekSlider
 
 class SecondRecruitmentViewController: UIViewController {
 
-    private let searchPlaceView = SearchPlaceView()
-    private let recruitmentCalendarView = RecruitmentCalendarView()
-    private var backgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-        return view
-    }()
+    @IBOutlet private weak var rangeSlider: RangeSeekSlider!
 
-    @IBAction private func calendarButtonTouchUp(_ sender: UIButton) {
-        self.recruitmentCalendarView.isHidden = false
-        self.backgroundView.isHidden = false
-    }
-
-    @IBAction private func placeButtonTouchUp(_ sender: UIButton) {
-        self.searchPlaceView.isHidden = false
-        self.backgroundView.isHidden = false
-    }
+    @IBOutlet private weak var firstAgeLabel: UILabel!
+    @IBOutlet private weak var secondAgeLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupViewConstraint()
-        setupSearchPlaceView()
-        setupRecruitmentCalendarView()
+        let rangeSliderLinePadding: CGFloat = 16
+//        let rangeSliderLineWidth = UIScreen.main.bounds.size.width - (2 * rangeSliderLinePadding)
+        let rangeSliderLineWidth = rangeSlider.frame.width - (2 * rangeSliderLinePadding)
+        var offset = rangeSliderLineWidth / 6
+        let firstLabelXPosition = rangeSliderLinePadding
+        var arrayLabelXPosition: [CGFloat] = []
 
-        self.backgroundView.isHidden = true
-        self.searchPlaceView.isHidden = true
-        self.recruitmentCalendarView.isHidden = true
+        arrayLabelXPosition.append(firstLabelXPosition)
+        for index in 1..<7 {
+//            let tempOffset = offset * CGFloat(index)
+//            print(offset)
+            let offset = (offset * CGFloat(index))
+            let labelXPosition = firstLabelXPosition + offset
+            arrayLabelXPosition.append(labelXPosition)
+        }
+        print(arrayLabelXPosition)
 
-        self.recruitmentCalendarView.delegate = self
-        self.searchPlaceView.delegate = self
-    }
 
-    private func setupViewConstraint() {
-        guard let navigationController = self.navigationController else { return }
-        self.navigationController?.view.addSubview(self.backgroundView)
-        self.backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        self.firstAgeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.backgroundView.topAnchor.constraint(equalTo: navigationController.view.topAnchor, constant: 0),
-            self.backgroundView.bottomAnchor.constraint(equalTo: navigationController.view.bottomAnchor, constant: 0),
-            self.backgroundView.leadingAnchor.constraint(equalTo: navigationController.view.leadingAnchor, constant: 0),
-            self.backgroundView.trailingAnchor.constraint(equalTo: navigationController.view.trailingAnchor, constant: 0)
+            self.firstAgeLabel.topAnchor.constraint(equalTo: self.rangeSlider.bottomAnchor, constant: 4),
+            self.firstAgeLabel.centerXAnchor.constraint(equalTo: self.rangeSlider.leadingAnchor, constant: 16)
         ])
 
-        self.searchPlaceView.backgroundColor = .white
-        self.backgroundView.addSubview(self.searchPlaceView)
-        self.searchPlaceView.translatesAutoresizingMaskIntoConstraints = false
+        self.secondAgeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.searchPlaceView.topAnchor.constraint(equalTo: self.backgroundView.topAnchor, constant: 167),
-            self.searchPlaceView.bottomAnchor.constraint(equalTo: self.backgroundView.bottomAnchor, constant: -167),
-            self.searchPlaceView.leadingAnchor.constraint(equalTo: self.backgroundView.leadingAnchor, constant: 20),
-            self.searchPlaceView.trailingAnchor.constraint(equalTo: self.backgroundView.trailingAnchor, constant: -20)
+            self.secondAgeLabel.topAnchor.constraint(equalTo: self.rangeSlider.bottomAnchor, constant: 4),
+            self.secondAgeLabel.centerXAnchor.constraint(equalTo: self.rangeSlider.leadingAnchor, constant: 207)
         ])
-
-        self.recruitmentCalendarView.backgroundColor = .white
-        self.backgroundView.addSubview(self.recruitmentCalendarView)
-        self.recruitmentCalendarView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.recruitmentCalendarView.topAnchor.constraint(equalTo: self.backgroundView.topAnchor, constant: 167),
-            self.recruitmentCalendarView.bottomAnchor.constraint(equalTo: self.backgroundView.bottomAnchor, constant: -167),
-            self.recruitmentCalendarView.leadingAnchor.constraint(equalTo: self.backgroundView.leadingAnchor, constant: 20),
-            self.recruitmentCalendarView.trailingAnchor.constraint(equalTo: self.backgroundView.trailingAnchor, constant: -20)
-        ])
-    }
-
-    private func setupSearchPlaceView() {
-
-    }
-
-    private func setupRecruitmentCalendarView() {
-
-    }
-}
-
-extension SecondRecruitmentViewController: RecruitmentCalendarViewDelegate {
-    func cancelButtonDidSelected(_ sender: RecruitmentCalendarView) {
-        self.backgroundView.isHidden = true
-        self.recruitmentCalendarView.isHidden = true
-    }
-
-    func okButtonDidSelected(_ sender: RecruitmentCalendarView) {
-        self.backgroundView.isHidden = true
-        self.recruitmentCalendarView.isHidden = true
-    }
-}
-
-extension SecondRecruitmentViewController: SearchPlaceViewDelegate {
-    func cancelButtonDidSelected(_ sender: SearchPlaceView) {
-        self.backgroundView.isHidden = true
-        self.searchPlaceView.isHidden = true
-    }
-
-    func okButtonDidSelected(_ sender: SearchPlaceView) {
-        self.backgroundView.isHidden = true
-        self.searchPlaceView.isHidden = true
     }
 }
