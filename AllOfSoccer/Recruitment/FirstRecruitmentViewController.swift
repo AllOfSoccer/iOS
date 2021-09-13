@@ -33,7 +33,7 @@ class FirstRecruitmentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupViewConstraint()
         setupSearchPlaceView()
         setupRecruitmentCalendarView()
