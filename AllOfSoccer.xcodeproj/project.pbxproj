@@ -11,6 +11,7 @@
 		9D034CE826903A9E0051FA02 /* -----Global----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CE726903A9E0051FA02 /* -----Global----- */; };
 		9D034CEE26903B590051FA02 /* -----Primary View----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CED26903B590051FA02 /* -----Primary View----- */; };
 		9D0DA54C26F2342F00726077 /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA54B26F2342F00726077 /* MyPageTableViewCell.swift */; };
+		9D0DA54E26F240B600726077 /* MyPageNoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA54D26F240B600726077 /* MyPageNoticeDetailViewController.swift */; };
 		9D10855926A2887700F8263F /* HorizontalCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D10855826A2887700F8263F /* HorizontalCalendarModel.swift */; };
 		9D1F225026ADA317000726CB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D1F224F26ADA317000726CB /* Colors.xcassets */; };
 		9D24EF7C26B3C68400F55676 /* FilterTagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D24EF7B26B3C68400F55676 /* FilterTagModel.swift */; };
@@ -67,6 +68,7 @@
 		9D034CE726903A9E0051FA02 /* -----Global----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Global-----"; sourceTree = "<group>"; };
 		9D034CED26903B590051FA02 /* -----Primary View----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Primary View-----"; sourceTree = "<group>"; };
 		9D0DA54B26F2342F00726077 /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
+		9D0DA54D26F240B600726077 /* MyPageNoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNoticeDetailViewController.swift; sourceTree = "<group>"; };
 		9D10855826A2887700F8263F /* HorizontalCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCalendarModel.swift; sourceTree = "<group>"; };
 		9D1F224F26ADA317000726CB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9D24EF7B26B3C68400F55676 /* FilterTagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTagModel.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			children = (
 				9D76674D26F2313200EE538E /* MyPageNoticeViewController.swift */,
 				9D0DA54B26F2342F00726077 /* MyPageTableViewCell.swift */,
+				9D0DA54D26F240B600726077 /* MyPageNoticeDetailViewController.swift */,
 			);
 			path = NoticeView;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				9D686CA026AD6EC400440CBF /* FilterTagCollectionViewCell.swift in Sources */,
 				9D6B91E4266D08E000AF182B /* SceneDelegate.swift in Sources */,
 				9D10855926A2887700F8263F /* HorizontalCalendarModel.swift in Sources */,
+				9D0DA54E26F240B600726077 /* MyPageNoticeDetailViewController.swift in Sources */,
 				9D56CF2A26932D2200628608 /* SelectTableButton.swift in Sources */,
 				9D5F573326C298D9004D8AE9 /* FirstRecruitmentViewController.swift in Sources */,
 				9D7B9F7F26C94B640075F211 /* GameMatchingDetailViewController.swift in Sources */,
