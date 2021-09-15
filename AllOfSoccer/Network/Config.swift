@@ -8,5 +8,5 @@
 import Foundation
 
 enum Config {
-    static let baseURL = "https://itunes.apple.com/search"
+    static let LoginURL = "https://itunes.apple.com/search"
 }

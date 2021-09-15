@@ -15,8 +15,8 @@ class ServiceProvider {
 
     private init() { }
 
-    func  getDataTest(parameters: [String: String], completion: @escaping (Result<[LoginModel]?, APIError>) -> Void) {
-        let url = Config.baseURL
+    func  getLoginData(parameters: [String: Any], completion: @escaping (Result<[LoginModel]?, APIError>) -> Void) {
+        let url = Config.LoginURL
         let resource = Resource<[LoginModel]>(url: url, parameters: parameters)
         defaultSession.load(resource) { result in
             switch result {
