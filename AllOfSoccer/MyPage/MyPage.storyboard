@@ -112,6 +112,9 @@
                                 <state key="normal" title="공지사항">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="KBU-Aj-1ci" kind="show" id="SUc-t1-6eg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Thm-Qi-TbE">
                                 <rect key="frame" x="20" y="496" width="63" height="34"/>
@@ -164,7 +167,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="설정" image="gearshape" catalog="system" selectedImage="gearshape.fill" id="JVT-FK-M7w"/>
-                    <navigationItem key="navigationItem" id="98T-yw-oRZ"/>
+                    <navigationItem key="navigationItem" id="98T-yw-oRZ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="mVf-yR-fSu"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="myfavoriteButton" destination="9lj-Hy-Imn" id="ZPW-wg-SKz"/>
@@ -174,6 +179,77 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oa8-Iq-Hq0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="428.98550724637687" y="4.6875"/>
+        </scene>
+        <!--공지사항-->
+        <scene sceneID="uNb-Hc-VhK">
+            <objects>
+                <viewController id="KBU-Aj-1ci" customClass="MyPageNoticeViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="61N-bV-tr6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xeE-zb-QXh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="kYf-kW-TIo">
+                                    <rect key="frame" x="0.0" y="153.00000034679067" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyPageTableViewCell" rowHeight="104" id="zcu-IM-WN8" customClass="MyPageTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="104"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zcu-IM-WN8" id="VBw-ac-cAP">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21.09.15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3f-rx-tp6">
+                                                    <rect key="frame" x="36" y="41.5" width="63" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYV-Iu-oYk">
+                                                    <rect key="frame" x="115" y="41.5" width="67" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PYV-Iu-oYk" firstAttribute="leading" secondItem="x3f-rx-tp6" secondAttribute="trailing" constant="16" id="JBt-OH-slu"/>
+                                                <constraint firstItem="PYV-Iu-oYk" firstAttribute="centerY" secondItem="VBw-ac-cAP" secondAttribute="centerY" id="X9q-gE-GtN"/>
+                                                <constraint firstItem="x3f-rx-tp6" firstAttribute="leading" secondItem="VBw-ac-cAP" secondAttribute="leadingMargin" constant="16" id="d7j-t3-GnH"/>
+                                                <constraint firstItem="x3f-rx-tp6" firstAttribute="centerY" secondItem="VBw-ac-cAP" secondAttribute="centerY" id="fTs-nc-Zqd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="PYV-Iu-oYk" id="NxS-lA-n92"/>
+                                            <outlet property="dateLabel" destination="x3f-rx-tp6" id="I6y-g1-jTe"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ij3-GQ-GO1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ij3-GQ-GO1" firstAttribute="trailing" secondItem="xeE-zb-QXh" secondAttribute="trailing" id="Amv-cv-znk"/>
+                            <constraint firstItem="xeE-zb-QXh" firstAttribute="top" secondItem="ij3-GQ-GO1" secondAttribute="top" id="Njx-m2-oHV"/>
+                            <constraint firstItem="xeE-zb-QXh" firstAttribute="leading" secondItem="ij3-GQ-GO1" secondAttribute="leading" id="qXS-ld-G1S"/>
+                            <constraint firstItem="ij3-GQ-GO1" firstAttribute="bottom" secondItem="xeE-zb-QXh" secondAttribute="bottom" id="wMm-7X-v2H"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="공지사항" id="sJe-2z-3CN"/>
+                    <connections>
+                        <outlet property="NoticeTableView" destination="xeE-zb-QXh" id="xR6-xU-gDI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t8e-0C-4RA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1728.985507246377" y="371.65178571428572"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kR5-hh-kk2">
