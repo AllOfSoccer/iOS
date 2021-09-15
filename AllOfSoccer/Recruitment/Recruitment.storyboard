@@ -693,16 +693,13 @@
     </scenes>
     <designables>
         <designable name="F3M-Au-6ws">
-            <size key="intrinsicContentSize" width="71" height="34"/>
-        </designable>
-        <designable name="veK-sJ-5qI">
-            <size key="intrinsicContentSize" width="63" height="30"/>
+            <size key="intrinsicContentSize" width="55" height="22"/>
         </designable>
         <designable name="GxI-7s-hmc">
-            <size key="intrinsicContentSize" width="84" height="32"/>
+            <size key="intrinsicContentSize" width="64" height="20"/>
         </designable>
         <designable name="veK-sJ-5qI">
-            <size key="intrinsicContentSize" width="71" height="34"/>
+            <size key="intrinsicContentSize" width="55" height="22"/>
         </designable>
     </designables>
     <resources>
