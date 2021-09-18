@@ -12,6 +12,9 @@
 		9D034CEE26903B590051FA02 /* -----Primary View----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CED26903B590051FA02 /* -----Primary View----- */; };
 		9D0DA54C26F2342F00726077 /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA54B26F2342F00726077 /* MyPageTableViewCell.swift */; };
 		9D0DA54E26F240B600726077 /* MyPageNoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA54D26F240B600726077 /* MyPageNoticeDetailViewController.swift */; };
+		9D0DA55026F2458E00726077 /* MyPageVersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA54F26F2458E00726077 /* MyPageVersionViewController.swift */; };
+		9D0DA55426F249A900726077 /* MyPageMyInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA55326F249A900726077 /* MyPageMyInformationViewController.swift */; };
+		9D0DA55626F24A1300726077 /* MyPageMyInformationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA55526F24A1300726077 /* MyPageMyInformationDetailViewController.swift */; };
 		9D10855926A2887700F8263F /* HorizontalCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D10855826A2887700F8263F /* HorizontalCalendarModel.swift */; };
 		9D1F225026ADA317000726CB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D1F224F26ADA317000726CB /* Colors.xcassets */; };
 		9D24EF7C26B3C68400F55676 /* FilterTagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D24EF7B26B3C68400F55676 /* FilterTagModel.swift */; };
@@ -56,6 +59,7 @@
 		9DE4F2A426AF070000F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DC128AD26918E710021EDF5 /* FSCalendar */; };
 		9DE4F2A726AF076600F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE4F2A626AF076600F8974A /* FSCalendar */; };
 		9DECF34826A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DECF34726A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift */; };
+		9DF52E5E26F4BB4F003DD7DC /* MyPageCustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF52E5D26F4BB4F003DD7DC /* MyPageCustomSlider.swift */; };
 		9DFB9C2F26B8DCBB00618D66 /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */; };
 		9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD93B426764DA10049ADF2 /* SignInViewController.swift */; };
 		9DFFB165266D0F3700B04D3D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFFB164266D0F3700B04D3D /* .swiftlint.yml */; };
@@ -69,6 +73,9 @@
 		9D034CED26903B590051FA02 /* -----Primary View----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Primary View-----"; sourceTree = "<group>"; };
 		9D0DA54B26F2342F00726077 /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
 		9D0DA54D26F240B600726077 /* MyPageNoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNoticeDetailViewController.swift; sourceTree = "<group>"; };
+		9D0DA54F26F2458E00726077 /* MyPageVersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVersionViewController.swift; sourceTree = "<group>"; };
+		9D0DA55326F249A900726077 /* MyPageMyInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyInformationViewController.swift; sourceTree = "<group>"; };
+		9D0DA55526F24A1300726077 /* MyPageMyInformationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyInformationDetailViewController.swift; sourceTree = "<group>"; };
 		9D10855826A2887700F8263F /* HorizontalCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCalendarModel.swift; sourceTree = "<group>"; };
 		9D1F224F26ADA317000726CB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9D24EF7B26B3C68400F55676 /* FilterTagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTagModel.swift; sourceTree = "<group>"; };
@@ -108,6 +115,7 @@
 		9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingActivityIndicator.swift; sourceTree = "<group>"; };
 		9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedCollectionView.swift; sourceTree = "<group>"; };
 		9DECF34726A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DF52E5D26F4BB4F003DD7DC /* MyPageCustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCustomSlider.swift; sourceTree = "<group>"; };
 		9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
 		9DFD93B426764DA10049ADF2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9DFFB164266D0F3700B04D3D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -176,6 +184,24 @@
 				9DC1289A269178500021EDF5 /* MainTabBarController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		9D0DA55126F2459400726077 /* VersionView */ = {
+			isa = PBXGroup;
+			children = (
+				9D0DA54F26F2458E00726077 /* MyPageVersionViewController.swift */,
+			);
+			path = VersionView;
+			sourceTree = "<group>";
+		};
+		9D0DA55226F2497500726077 /* MyinformationView */ = {
+			isa = PBXGroup;
+			children = (
+				9D0DA55326F249A900726077 /* MyPageMyInformationViewController.swift */,
+				9D0DA55526F24A1300726077 /* MyPageMyInformationDetailViewController.swift */,
+				9DF52E5D26F4BB4F003DD7DC /* MyPageCustomSlider.swift */,
+			);
+			path = MyinformationView;
 			sourceTree = "<group>";
 		};
 		9D5F573126C298AC004D8AE9 /* Recruitment */ = {
@@ -275,7 +301,9 @@
 			children = (
 				9DC128A526917E890021EDF5 /* MyPage.storyboard */,
 				9DC128A826917EA70021EDF5 /* MyPageViewController.swift */,
+				9D0DA55226F2497500726077 /* MyinformationView */,
 				9D76674F26F2313B00EE538E /* NoticeView */,
+				9D0DA55126F2459400726077 /* VersionView */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -504,8 +532,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF52E5E26F4BB4F003DD7DC /* MyPageCustomSlider.swift in Sources */,
 				9D338C2C26B6A603008A2EDA /* TableViewFilterView.swift in Sources */,
 				9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */,
+				9D0DA55626F24A1300726077 /* MyPageMyInformationDetailViewController.swift in Sources */,
 				9D24EF7C26B3C68400F55676 /* FilterTagModel.swift in Sources */,
 				9DB1AB1A26B955F8003E517A /* FilterDetailTagCollectionViewCell.swift in Sources */,
 				9D76674E26F2313200EE538E /* MyPageNoticeViewController.swift in Sources */,
@@ -516,6 +546,7 @@
 				9DB3547726C554F500ADB9A0 /* RecruitmentCalendarView.swift in Sources */,
 				9DD474B626903D97006F00F1 /* RoundButton.swift in Sources */,
 				9D6409A126F210D60076DEDC /* UIButton+Extension.swift in Sources */,
+				9D0DA55426F249A900726077 /* MyPageMyInformationViewController.swift in Sources */,
 				9DFB9C2F26B8DCBB00618D66 /* NoticeTableViewCell.swift in Sources */,
 				9D6B91E2266D08E000AF182B /* AppDelegate.swift in Sources */,
 				9D8A32EF26B8FB0000A8F65B /* FilterDetailView.swift in Sources */,
@@ -526,6 +557,7 @@
 				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
 				9D8D32FF26CD53970097A172 /* RecruitmentTableViewCell.swift in Sources */,
 				9D686CA026AD6EC400440CBF /* FilterTagCollectionViewCell.swift in Sources */,
+				9D0DA55026F2458E00726077 /* MyPageVersionViewController.swift in Sources */,
 				9D6B91E4266D08E000AF182B /* SceneDelegate.swift in Sources */,
 				9D10855926A2887700F8263F /* HorizontalCalendarModel.swift in Sources */,
 				9D0DA54E26F240B600726077 /* MyPageNoticeDetailViewController.swift in Sources */,
