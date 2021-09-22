@@ -42,7 +42,7 @@ extension Resource where T: Codable {
         }
     }
 
-    init<Body: Encodable>(postmodel: Body,url: URL, method: HttpMethod) {
+    init<HttpBody: Encodable>(postmodel: HttpBody,url: URL, method: HttpMethod) {
         self.urlRequest = URLRequest(url: url)
         self.urlRequest.httpMethod = method.rawValue
 
