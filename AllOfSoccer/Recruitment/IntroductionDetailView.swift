@@ -41,6 +41,8 @@ class IntroductionDetailView: UIView {
     private var fourthCommentButton = UIButton()
     private var fifthCommentButton = UIButton()
 
+    private lazy var commentsButtons: [UIButton] = [firstCommentButton, secondCommentButton, thirdCommentButton, fourthCommentButton, fifthCommentButton]
+
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("취소", for: .normal)
@@ -89,42 +91,9 @@ class IntroductionDetailView: UIView {
 
     @objc private func checkButtonTouchUp(_ sender: UIButton) {
         print("CheckButton이 클릭되었습니다.")
-        if sender.isSelected {
-            sender.isSelected = false
-            sender.tintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
 
-            if sender == firstCommentButton {
-                guard let index = self.commentsModel.firstIndex(of: Comment.first) else { return }
-                self.commentsModel.remove(at: index)
-            } else if sender == secondCommentButton {
-                guard let index = self.commentsModel.firstIndex(of: Comment.second) else { return }
-                self.commentsModel.remove(at: index)
-            } else if sender == thirdCommentButton {
-                guard let index = self.commentsModel.firstIndex(of: Comment.third) else { return }
-                self.commentsModel.remove(at: index)
-            } else if sender == fourthCommentButton {
-                guard let index = self.commentsModel.firstIndex(of: Comment.fourth) else { return }
-                self.commentsModel.remove(at: index)
-            } else if sender == fifthCommentButton {
-                guard let index = self.commentsModel.firstIndex(of: Comment.fifth) else { return }
-                self.commentsModel.remove(at: index)
-            }
-        } else {
-            sender.isSelected = true
-            sender.tintColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
-
-            if sender.tag == Comment.first.rawValue  {
-                self.commentsModel.append(Comment.first)
-            } else if sender.tag == Comment.second.rawValue {
-                self.commentsModel.append(Comment.second)
-            } else if sender.tag == Comment.third.rawValue {
-                self.commentsModel.append(Comment.third)
-            } else if sender.tag == Comment.fourth.rawValue {
-                self.commentsModel.append(Comment.fourth)
-            } else if sender.tag == Comment.fifth.rawValue {
-                self.commentsModel.append(Comment.fifth)
-            }
-         }
+        sender.isSelected = sender.isSelected == true ? false : true
+        sender.tintColor = sender.isSelected == true ? UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1) : UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
     }
 
     @objc func cancelButtonDidSelected(sender: UIButton) {
@@ -134,6 +103,7 @@ class IntroductionDetailView: UIView {
 
     @objc func OKButtonDidSelected(sender: UIButton) {
         print("OKButton이 클릭되었습니다")
+        self.commentsModel = self.commentsButtons.filter { $0.isSelected }.compactMap { Comment(rawValue: $0.tag) }
         self.delegate?.OKButtonDidSelected(self, self.commentsModel)
     }
 
@@ -144,12 +114,6 @@ class IntroductionDetailView: UIView {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        loadView()
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
         loadView()
     }
 
@@ -166,6 +130,7 @@ class IntroductionDetailView: UIView {
     }
 
     private func setCommentButton() {
+
         self.firstCommentButton = self.checkButton(Comment.first)
         self.secondCommentButton = self.checkButton(Comment.second)
         self.thirdCommentButton = self.checkButton(Comment.third)
@@ -214,22 +179,10 @@ class IntroductionDetailView: UIView {
 
         self.commentsModel = []
 
-        self.firstCommentButton.isSelected = false
-        self.secondCommentButton.isSelected = false
-        self.thirdCommentButton.isSelected = false
-        self.fourthCommentButton.isSelected = false
-        self.fifthCommentButton.isSelected = false
-
-        self.firstCommentButton.tintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
-        self.secondCommentButton.tintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
-        self.thirdCommentButton.tintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
-        self.fourthCommentButton.tintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
-        self.fifthCommentButton.tintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
-
-        self.firstCommentButton.layoutIfNeeded()
-        self.secondCommentButton.layoutIfNeeded()
-        self.thirdCommentButton.layoutIfNeeded()
-        self.fourthCommentButton.layoutIfNeeded()
-        self.fifthCommentButton.layoutIfNeeded()
+        self.commentsButtons.forEach {
+            $0.isSelected = false
+            $0.tintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
+            $0.layoutIfNeeded()
+        }
     }
 }

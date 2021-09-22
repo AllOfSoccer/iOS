@@ -922,24 +922,24 @@
                     <navigationItem key="navigationItem" title="팀 모집 글쓰기" id="5pd-XL-amH"/>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
+                        <outlet property="ageRangeSlider" destination="cvQ-AY-OcU" id="OXs-Wi-zW6"/>
                         <outlet property="informationCheckButton" destination="dvY-BX-FgD" id="85l-84-hbd"/>
                         <outlet property="introductionTableView" destination="SBP-OD-ZOc" id="rtm-So-CIJ"/>
-                        <outlet property="rangeSlider" destination="cvQ-AY-OcU" id="OXs-Wi-zW6"/>
                         <outlet property="skillSlider" destination="edA-vI-ay8" id="832-fH-BBf"/>
-                        <outletCollection property="ageLabelCollection" destination="pw0-YQ-1U7" collectionClass="NSMutableArray" id="5hi-b9-ffv"/>
-                        <outletCollection property="ageLabelCollection" destination="uE5-Il-dWk" collectionClass="NSMutableArray" id="4Kx-Gj-qwS"/>
-                        <outletCollection property="ageLabelCollection" destination="ROq-xR-ppg" collectionClass="NSMutableArray" id="ZM2-SS-AOv"/>
-                        <outletCollection property="ageLabelCollection" destination="NMM-Hg-fjh" collectionClass="NSMutableArray" id="KA9-qp-wKM"/>
-                        <outletCollection property="ageLabelCollection" destination="KMh-ED-4BZ" collectionClass="NSMutableArray" id="76U-Se-kIt"/>
-                        <outletCollection property="ageLabelCollection" destination="dXP-Z7-nVt" collectionClass="NSMutableArray" id="ycs-zK-yNi"/>
-                        <outletCollection property="ageLabelCollection" destination="nzj-e2-GGM" collectionClass="NSMutableArray" id="0GD-sD-PZG"/>
-                        <outletCollection property="skillLabelCollection" destination="yMy-QO-O18" collectionClass="NSMutableArray" id="Ri7-XA-LdG"/>
-                        <outletCollection property="skillLabelCollection" destination="2np-lI-tDy" collectionClass="NSMutableArray" id="rfg-FY-gsx"/>
-                        <outletCollection property="skillLabelCollection" destination="tmg-WM-rPD" collectionClass="NSMutableArray" id="HxM-la-pwj"/>
-                        <outletCollection property="skillLabelCollection" destination="g7U-zm-3fO" collectionClass="NSMutableArray" id="Be9-JF-lNn"/>
-                        <outletCollection property="skillLabelCollection" destination="S3s-M3-tyR" collectionClass="NSMutableArray" id="Flb-mA-0Nr"/>
-                        <outletCollection property="skillLabelCollection" destination="sO9-ne-29d" collectionClass="NSMutableArray" id="bk3-wh-AgM"/>
-                        <outletCollection property="skillLabelCollection" destination="lCT-3M-soQ" collectionClass="NSMutableArray" id="8wH-Gr-W9v"/>
+                        <outletCollection property="ageSliderLabels" destination="pw0-YQ-1U7" collectionClass="NSMutableArray" id="5hi-b9-ffv"/>
+                        <outletCollection property="ageSliderLabels" destination="uE5-Il-dWk" collectionClass="NSMutableArray" id="4Kx-Gj-qwS"/>
+                        <outletCollection property="ageSliderLabels" destination="ROq-xR-ppg" collectionClass="NSMutableArray" id="ZM2-SS-AOv"/>
+                        <outletCollection property="ageSliderLabels" destination="NMM-Hg-fjh" collectionClass="NSMutableArray" id="KA9-qp-wKM"/>
+                        <outletCollection property="ageSliderLabels" destination="KMh-ED-4BZ" collectionClass="NSMutableArray" id="76U-Se-kIt"/>
+                        <outletCollection property="ageSliderLabels" destination="dXP-Z7-nVt" collectionClass="NSMutableArray" id="ycs-zK-yNi"/>
+                        <outletCollection property="ageSliderLabels" destination="nzj-e2-GGM" collectionClass="NSMutableArray" id="0GD-sD-PZG"/>
+                        <outletCollection property="skillSliderLabels" destination="yMy-QO-O18" collectionClass="NSMutableArray" id="Ri7-XA-LdG"/>
+                        <outletCollection property="skillSliderLabels" destination="2np-lI-tDy" collectionClass="NSMutableArray" id="rfg-FY-gsx"/>
+                        <outletCollection property="skillSliderLabels" destination="tmg-WM-rPD" collectionClass="NSMutableArray" id="HxM-la-pwj"/>
+                        <outletCollection property="skillSliderLabels" destination="g7U-zm-3fO" collectionClass="NSMutableArray" id="Be9-JF-lNn"/>
+                        <outletCollection property="skillSliderLabels" destination="S3s-M3-tyR" collectionClass="NSMutableArray" id="Flb-mA-0Nr"/>
+                        <outletCollection property="skillSliderLabels" destination="sO9-ne-29d" collectionClass="NSMutableArray" id="bk3-wh-AgM"/>
+                        <outletCollection property="skillSliderLabels" destination="lCT-3M-soQ" collectionClass="NSMutableArray" id="8wH-Gr-W9v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kH1-S7-WqU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

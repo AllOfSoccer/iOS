@@ -29,18 +29,17 @@ class SkillSlider: UIControl {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.trackLayer.backgroundColor = UIColor(red: 236/255, green: 236/255, blue: 236/255, alpha: 1).cgColor
-        layer.addSublayer(trackLayer)
-
-        thumbImageView.image = thumbImage
-        addSubview(thumbImageView)
-
-        updateLayerFrames()
+        setSkillSlider()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
 
+        setSkillSlider()
+    }
+
+    private func setSkillSlider() {
+        self.trackLayer.frame = bounds.insetBy(dx: 0.0, dy: 6)
         self.trackLayer.backgroundColor = UIColor(red: 236/255, green: 236/255, blue: 236/255, alpha: 1).cgColor
         layer.addSublayer(trackLayer)
 

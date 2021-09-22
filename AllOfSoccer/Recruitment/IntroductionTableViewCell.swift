@@ -14,11 +14,6 @@ protocol IntroductionTableViewCellDelegate: AnyObject {
 
 class IntroductionTableViewCell: UITableViewCell {
 
-    private var model: Comment? {
-        didSet {
-            self.setUIFromModel()
-        }
-    }
     weak var delegate: IntroductionTableViewCellDelegate?
 
     @IBOutlet private weak var contentsLabel: UILabel!
@@ -32,11 +27,7 @@ class IntroductionTableViewCell: UITableViewCell {
         self.delegate?.updownButtonDidSelected(self)
     }
 
-    func setModel(_ model: Comment) {
-        self.model = model
-    }
-
-    func setUIFromModel() {
-        self.contentsLabel.text = model?.content
+    func configure(_ model: Comment) {
+        self.contentsLabel.text = model.content
     }
 }

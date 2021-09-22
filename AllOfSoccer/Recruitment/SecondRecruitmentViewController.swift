@@ -13,14 +13,16 @@ class SecondRecruitmentViewController: UIViewController {
     }()
 
     @IBOutlet private weak var skillSlider: SkillSlider!
-    @IBOutlet private weak var rangeSlider: RangeSeekSlider!
-    @IBOutlet private var ageLabelCollection: [UILabel]!
-    @IBOutlet private var skillLabelCollection: [UILabel]!
+    @IBOutlet private weak var ageRangeSlider: RangeSeekSlider!
+    @IBOutlet private var ageSliderLabels: [UILabel]!
+    @IBOutlet private var skillSliderLabels: [UILabel]!
     @IBOutlet private weak var introductionTableView: IntrinsicTableView!
     @IBOutlet private weak var informationCheckButton: UIButton!
 
     @IBAction private func addIntroductionButton(_ sender: RoundButton) {
 
+        self.introductionDetailView.clearView()
+        
         guard let navigationController = self.navigationController else { return }
         navigationController.view.addSubview(self.backgroundView)
         self.backgroundView.addSubview(self.introductionDetailView)
@@ -53,8 +55,8 @@ class SecondRecruitmentViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        setAgeLabel()
-        setSkillLabel()
+        setAgeLabelsLayout()
+        setSkillLabelsLayout()
     }
 
 
@@ -66,7 +68,6 @@ class SecondRecruitmentViewController: UIViewController {
 
         self.introductionTableView.delegate = self
         self.introductionTableView.dataSource = self
-        //        self.introductionTableView.isEditing = true
     }
 
     private func setIntroductionDetailView() {
@@ -74,40 +75,31 @@ class SecondRecruitmentViewController: UIViewController {
         self.introductionDetailView.delegate = self
     }
 
-    private func setAgeLabel() {
-        let arrayLabelPosition =  createLabelXPositions(slider: self.rangeSlider)
-        setupAgeLabelConstraint(labelXPositons: arrayLabelPosition)
+    private func setAgeLabelsLayout() {
+        let labelPositions =  createLabelXPositions(slider: self.ageRangeSlider)
+        setLabelsConstraint(slider: self.ageRangeSlider, labels: self.ageSliderLabels, labelXPositons: labelPositions)
     }
 
-    private func setSkillLabel() {
-        let arrayLabelPosition =  createLabelXPositions(slider: self.skillSlider)
-        self.setupSkillLabelConstraint(labelXPositons: arrayLabelPosition)
+    private func setSkillLabelsLayout() {
+        let labelPositions =  createLabelXPositions(slider: self.skillSlider)
+        self.setLabelsConstraint(slider: self.skillSlider, labels: self.skillSliderLabels, labelXPositons: labelPositions)
     }
 
-    private func setupAgeLabelConstraint(labelXPositons: [CGFloat]) {
+    private func setLabelsConstraint(slider: UIControl ,labels: [UILabel], labelXPositons: [CGFloat]) {
         for index in 0...6 {
-            self.ageLabelCollection[index].translatesAutoresizingMaskIntoConstraints = false
+            labels[index].translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                self.ageLabelCollection[index].topAnchor.constraint(equalTo: self.rangeSlider.bottomAnchor, constant: 4),
-                self.ageLabelCollection[index].centerXAnchor.constraint(equalTo: self.rangeSlider.leadingAnchor, constant: labelXPositons[index])
-            ])
-        }
-    }
-
-    private func setupSkillLabelConstraint(labelXPositons: [CGFloat]) {
-        for index in 0...6 {
-            self.skillLabelCollection[index].translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                self.skillLabelCollection[index].topAnchor.constraint(equalTo: self.skillSlider.bottomAnchor, constant: 4),
-                self.skillLabelCollection[index].centerXAnchor.constraint(equalTo: self.skillSlider.leadingAnchor, constant: labelXPositons[index])
+                labels[index].topAnchor.constraint(equalTo: slider.bottomAnchor, constant: 4),
+                labels[index].centerXAnchor.constraint(equalTo: slider.leadingAnchor, constant: labelXPositons[index])
             ])
         }
     }
 
     private func createLabelXPositions(slider: UIView) -> [CGFloat] {
-        let rangeSliderLinePadding: CGFloat = slider == self.rangeSlider ? 16 : 0
+        let rangeSliderLinePadding: CGFloat = slider == self.ageRangeSlider ? 16 : 0
         let rangeSliderLineWidth = slider.frame.width - (2 * rangeSliderLinePadding)
-        let offset = rangeSliderLineWidth / 6
+        let division: CGFloat = 6
+        let offset = rangeSliderLineWidth / division
         let firstLabelXPosition = rangeSliderLinePadding
 
         var arrayLabelXPosition: [CGFloat] = []
@@ -124,8 +116,6 @@ class SecondRecruitmentViewController: UIViewController {
     @objc func skillSliderValueChanged(_ sender: SkillSlider) {
         let values = "(\(sender.value)"
         print("Range slider value changed: \(values)")
-        //        let step: CGFloat = 6
-        //        skillSlider.value = CGFloat(roundf(Float(skillSlider.value / skillSlider.maximumValue * step))) * skillSlider.maximumValue / step
     }
 }
 
@@ -165,8 +155,10 @@ extension SecondRecruitmentViewController: UITableViewDataSource {
             return UITableViewCell()
         }
 
+        guard let model = self.tableViewModel[safe: indexPath.row] else { return UITableViewCell() }
+
+        cell.configure(model)
         cell.delegate = self
-        cell.setModel(self.tableViewModel[indexPath.row])
 
         return cell
     }

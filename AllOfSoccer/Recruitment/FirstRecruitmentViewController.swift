@@ -35,8 +35,6 @@ class FirstRecruitmentViewController: UIViewController {
         super.viewDidLoad()
         
         setupViewConstraint()
-        setupSearchPlaceView()
-        setupRecruitmentCalendarView()
 
         self.backgroundView.isHidden = true
         self.searchPlaceView.isHidden = true
@@ -48,7 +46,7 @@ class FirstRecruitmentViewController: UIViewController {
 
     private func setupViewConstraint() {
         guard let navigationController = self.navigationController else { return }
-        self.navigationController?.view.addSubview(self.backgroundView)
+        navigationController.view.addSubview(self.backgroundView)
         self.backgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.backgroundView.topAnchor.constraint(equalTo: navigationController.view.topAnchor, constant: 0),
@@ -77,22 +75,17 @@ class FirstRecruitmentViewController: UIViewController {
             self.recruitmentCalendarView.trailingAnchor.constraint(equalTo: self.backgroundView.trailingAnchor, constant: -20)
         ])
     }
-
-    private func setupSearchPlaceView() {
-
-    }
-
-    private func setupRecruitmentCalendarView() {
-
-    }
 }
 
-extension FirstRecruitmentViewController: RecruitmentCalendarViewDelegate {
+extension FirstRecruitmentViewController:
+    RecruitmentCalendarViewDelegate {
+
     func cancelButtonDidSelected(_ sender: RecruitmentCalendarView) {
         self.backgroundView.isHidden = true
         self.recruitmentCalendarView.isHidden = true
     }
 
+    // 향후 데이터 처리를 할 함수
     func okButtonDidSelected(_ sender: RecruitmentCalendarView) {
         self.backgroundView.isHidden = true
         self.recruitmentCalendarView.isHidden = true

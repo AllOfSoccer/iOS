@@ -54,6 +54,7 @@
 		9DD474BC26903E95006F00F1 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 9DD474BB26903E95006F00F1 /* NVActivityIndicatorViewExtended */; };
 		9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */; };
 		9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */; };
+		9DD694EA26FB4CF8006047A0 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD694E926FB4CF8006047A0 /* Array+Extension.swift */; };
 		9DDF10DE26EDE1F600A3986E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF10DD26EDE1F600A3986E /* UIView+Extension.swift */; };
 		9DE4F2A426AF070000F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DC128AD26918E710021EDF5 /* FSCalendar */; };
 		9DE4F2A726AF076600F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE4F2A626AF076600F8974A /* FSCalendar */; };
@@ -110,6 +111,7 @@
 		9DD474B526903D97006F00F1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingActivityIndicator.swift; sourceTree = "<group>"; };
 		9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedCollectionView.swift; sourceTree = "<group>"; };
+		9DD694E926FB4CF8006047A0 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		9DDF10DD26EDE1F600A3986E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9DECF34726A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
@@ -193,9 +195,6 @@
 				9D5AA9C826CBC72500A33D20 /* SearchPlaceView.swift */,
 				9DA714C126EC964D00B40D1E /* IntroductionDetailView.swift */,
 				9D4BC01E26E8CB6000867913 /* IntroductionTableViewCell.swift */,
-				9DC2AA2826E8986C000B35A3 /* CustomSlider.swift */,
-				9D1BE82F26EB6C6200BEA67E /* SkillSlider.swift */,
-				9D7E641226EC4BE900B51D37 /* IntrinsicTableView.swift */,
 			);
 			path = Recruitment;
 			sourceTree = "<group>";
@@ -306,6 +305,9 @@
 				9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */,
 				9D686C9D26AD663700440CBF /* RoundStackView.swift */,
 				9D56CF2926932D2200628608 /* SelectTableButton.swift */,
+				9DC2AA2826E8986C000B35A3 /* CustomSlider.swift */,
+				9D7E641226EC4BE900B51D37 /* IntrinsicTableView.swift */,
+				9D1BE82F26EB6C6200BEA67E /* SkillSlider.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -332,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				9DDF10DD26EDE1F600A3986E /* UIView+Extension.swift */,
+				9DD694E926FB4CF8006047A0 /* Array+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */,
 				9D7E641326EC4BE900B51D37 /* IntrinsicTableView.swift in Sources */,
 				9D7D409D26BE792000E8329E /* FilterDetailTagModel.swift in Sources */,
+				9DD694EA26FB4CF8006047A0 /* Array+Extension.swift in Sources */,
 				9DB3547726C554F500ADB9A0 /* RecruitmentCalendarView.swift in Sources */,
 				9DD474B626903D97006F00F1 /* RoundButton.swift in Sources */,
 				9DFB9C2F26B8DCBB00618D66 /* NoticeTableViewCell.swift in Sources */,

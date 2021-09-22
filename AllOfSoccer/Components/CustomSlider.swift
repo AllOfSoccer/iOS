@@ -34,13 +34,8 @@ class CustomSlider: UISlider {
     }
 
     private func thumbImage(diameter: CGFloat) -> UIImage {
-        // Set proper frame
-        // y: radius / 2 will correctly offset the thumb
         thumbView.frame = CGRect(x: 0, y: diameter / 2, width: diameter, height: diameter)
         thumbView.layer.cornerRadius = diameter / 2
-
-        // Convert thumbView to UIImage
-        // See this: https://stackoverflow.com/a/41288197/7235585
 
         let renderer = UIGraphicsImageRenderer(bounds: thumbView.bounds)
         return renderer.image { rendererContext in
@@ -49,8 +44,6 @@ class CustomSlider: UISlider {
     }
 
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
-        // Set custom track height
-        // As seen here: https://stackoverflow.com/a/49428606/7235585
         var newRect = super.trackRect(forBounds: bounds)
         newRect.size.height = trackHeight
         return newRect
