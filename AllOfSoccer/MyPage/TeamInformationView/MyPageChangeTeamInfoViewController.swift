@@ -9,8 +9,11 @@ import UIKit
 
 class MyPageChangeTeamInfoViewController: UIViewController {
 
-    @IBOutlet private var ageLabels: [UILabel]!
-    @IBOutlet private weak var skillLabels: UILabel!
+    @IBOutlet private var ageSliderLabels: [UILabel]!
+    @IBOutlet private var skillSliderLabels: [UILabel]!
+
+    @IBOutlet private weak var ageSlider: CustomSlider!
+    @IBOutlet private weak var skillSlider: CustomSlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()

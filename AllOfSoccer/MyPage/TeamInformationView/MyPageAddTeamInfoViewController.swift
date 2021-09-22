@@ -12,6 +12,9 @@ class MyPageAddTeamInfoViewController: UIViewController {
     @IBOutlet private var ageSliderLabels: [UILabel]!
     @IBOutlet private var skillSliderLabels: [UILabel]!
 
+    @IBOutlet private weak var ageSlider: CustomSlider!
+    @IBOutlet private weak var skillSlider: CustomSlider!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
