@@ -12,7 +12,7 @@
         <!--팀 모집 글쓰기-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="FirstRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstRecruitmentViewController FirstRecruitmentViewController" id="Y6W-OH-hqX" customClass="FirstRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -361,6 +361,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="팀 모집 글쓰기" id="1A4-OU-ua0">
                         <barButtonItem key="backBarButtonItem" title=" " id="zEH-Lb-Aq5"/>
+                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="0h4-65-SdE">
+                            <connections>
+                                <action selector="backButtonItemTouchUp:" destination="Y6W-OH-hqX" id="3kv-zI-1va"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addTeamButton" destination="GxI-7s-hmc" id="gGp-ZV-hzv"/>
@@ -670,7 +675,7 @@
         <!--Navigation Controller-->
         <scene sceneID="DVP-Ym-5Vu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n5E-P7-dhY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RecruitmentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="n5E-P7-dhY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="px4-8s-eCL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -690,6 +695,9 @@
         <designable name="F3M-Au-6ws">
             <size key="intrinsicContentSize" width="71" height="34"/>
         </designable>
+        <designable name="veK-sJ-5qI">
+            <size key="intrinsicContentSize" width="63" height="30"/>
+        </designable>
         <designable name="GxI-7s-hmc">
             <size key="intrinsicContentSize" width="84" height="32"/>
         </designable>
@@ -705,6 +713,7 @@
         <image name="Calendar" width="18" height="18"/>
         <image name="MapPinLine" width="18" height="18"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="tagBackTouchUpColor">
             <color red="0.92500001192092896" green="0.37299999594688416" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
