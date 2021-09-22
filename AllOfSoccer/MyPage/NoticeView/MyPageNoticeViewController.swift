@@ -9,13 +9,13 @@ import UIKit
 
 class MyPageNoticeViewController: UIViewController {
 
-    @IBOutlet private weak var NoticeTableView: UITableView!
+    @IBOutlet private weak var noticeTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.NoticeTableView.delegate = self
-        self.NoticeTableView.dataSource = self
+        self.noticeTableView.delegate = self
+        self.noticeTableView.dataSource = self
     }
 }
 
@@ -39,6 +39,4 @@ extension MyPageNoticeViewController: UITableViewDataSource {
 
         return cell
     }
-
-
 }

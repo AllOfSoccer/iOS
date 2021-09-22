@@ -51,7 +51,7 @@ class MyPageChangeTeamInfoViewController: UIViewController {
     }
 
     private func createLabelXPositions(slider: UISlider) -> [CGFloat] {
-        let sliderLinePadding: CGFloat = ((slider.currentThumbImage?.size.width)! / 2)
+        let sliderLinePadding: CGFloat = ((slider.currentThumbImage?.size.width) ?? 1 / 2)
         let sliderLineWidth = slider.frame.width - ((sliderLinePadding) * 2)
         let offset = (sliderLineWidth / 6)
         let firstLabelXPosition = sliderLinePadding - 2

@@ -61,6 +61,8 @@
 		9DD474BC26903E95006F00F1 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 9DD474BB26903E95006F00F1 /* NVActivityIndicatorViewExtended */; };
 		9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */; };
 		9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */; };
+		9DD694EC26FB5EE2006047A0 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD694EB26FB5EE2006047A0 /* UICollectionViewCell+Extension.swift */; };
+		9DD694EE26FB5F08006047A0 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD694ED26FB5F08006047A0 /* UITableViewCell+Extension.swift */; };
 		9DE4F2A426AF070000F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DC128AD26918E710021EDF5 /* FSCalendar */; };
 		9DE4F2A726AF076600F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE4F2A626AF076600F8974A /* FSCalendar */; };
 		9DE76BE026F86270007D3406 /* MyPageNoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE76BDF26F86270007D3406 /* MyPageNoticeDetailViewController.swift */; };
@@ -127,6 +129,8 @@
 		9DD474B526903D97006F00F1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingActivityIndicator.swift; sourceTree = "<group>"; };
 		9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedCollectionView.swift; sourceTree = "<group>"; };
+		9DD694EB26FB5EE2006047A0 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		9DD694ED26FB5F08006047A0 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		9DE76BDF26F86270007D3406 /* MyPageNoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNoticeDetailViewController.swift; sourceTree = "<group>"; };
 		9DE76BE126F8661A007D3406 /* MyPageQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageQuestionsViewController.swift; sourceTree = "<group>"; };
 		9DECF34726A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCalendarCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 			children = (
 				9D6409A026F210D60076DEDC /* UIButton+Extension.swift */,
 				9DBB9D3A26F8427E0035BEAF /* UIView+Extension.swift */,
+				9DD694EB26FB5EE2006047A0 /* UICollectionViewCell+Extension.swift */,
+				9DD694ED26FB5F08006047A0 /* UITableViewCell+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -585,6 +591,7 @@
 				9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */,
 				9DF9EEBE26F610A500D5132C /* MyPageTeamInfomationViewController.swift in Sources */,
 				9D74B11026F6F89C00D2F692 /* TeamInfoTableViewCell.swift in Sources */,
+				9DD694EC26FB5EE2006047A0 /* UICollectionViewCell+Extension.swift in Sources */,
 				9D51CE2326F7142C006119DE /* IntrinsicTableView.swift in Sources */,
 				9D0DA55626F24A1300726077 /* MyPageMyInformationDetailViewController.swift in Sources */,
 				9D24EF7C26B3C68400F55676 /* FilterTagModel.swift in Sources */,
@@ -622,6 +629,7 @@
 				9DD474B026903D78006F00F1 /* RoundView.swift in Sources */,
 				9D686C9E26AD663700440CBF /* RoundStackView.swift in Sources */,
 				9D6A430526F84D0B00AAA491 /* MyPageChangeTeamInfoViewController.swift in Sources */,
+				9DD694EE26FB5F08006047A0 /* UITableViewCell+Extension.swift in Sources */,
 				9D0DA54C26F2342F00726077 /* MyPageTableViewCell.swift in Sources */,
 				9DE76BE226F8661A007D3406 /* MyPageQuestionsViewController.swift in Sources */,
 			);

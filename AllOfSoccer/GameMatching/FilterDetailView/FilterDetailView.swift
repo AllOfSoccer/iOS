@@ -189,9 +189,3 @@ extension FilterDetailView: UICollectionViewDataSource {
     }
 }
 
-extension UICollectionViewCell {
-
-    static var reuseId: String {
-        return String(describing: self)
-    }
-}

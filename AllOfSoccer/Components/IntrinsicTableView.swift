@@ -8,8 +8,6 @@
 import UIKit
 
 class IntrinsicTableView: UITableView {
-    /// Will assign automatic dimension to the rowHeight variable
-    /// Will asign the value of this variable to estimated row height.
     var dynamicRowHeight: CGFloat = UITableView.automaticDimension {
         didSet {
             rowHeight = UITableView.automaticDimension

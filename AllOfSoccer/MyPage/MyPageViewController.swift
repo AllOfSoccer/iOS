@@ -47,9 +47,7 @@ class MyPageViewController: UIViewController {
         let mailComposerViewController = configureMailComposeController()
         self.present(mailComposerViewController, animated: true, completion: nil)
     }
-}
 
-extension MyPageViewController: MFMailComposeViewControllerDelegate {
     private func configureMailComposeController() -> MFMailComposeViewController {
         let mailComposerViewController = MFMailComposeViewController()
         mailComposerViewController.mailComposeDelegate = self
@@ -59,6 +57,9 @@ extension MyPageViewController: MFMailComposeViewControllerDelegate {
 
         return mailComposerViewController
     }
+}
+
+extension MyPageViewController: MFMailComposeViewControllerDelegate {
 
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
