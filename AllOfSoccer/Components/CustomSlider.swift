@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyPageCustomSlider: UISlider {
+class CustomSlider: UISlider {
 
     @IBInspectable var trackHeight: CGFloat = 3
 

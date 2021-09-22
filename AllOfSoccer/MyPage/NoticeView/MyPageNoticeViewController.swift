@@ -24,7 +24,6 @@ extension MyPageNoticeViewController: UITableViewDelegate {
         guard let MyPageNoticeDetailView = UIStoryboard.init(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "MyPageNoticeDetailViewController") as? MyPageNoticeDetailViewController else { return }
 
         navigationController?.pushViewController(MyPageNoticeDetailView, animated: true)
-
     }
 }
 

@@ -12,10 +12,10 @@ class MyPageMyInformationDetailViewController: UIViewController {
     @IBOutlet private weak var myImageView: UIImageView!
     @IBOutlet private weak var cameraButton: RoundButton!
 
-    @IBOutlet private weak var ageSlider: MyPageCustomSlider!
+    @IBOutlet private weak var ageSlider: CustomSlider!
     @IBOutlet private var ageSliderLabels: [UILabel]!
 
-    @IBOutlet private weak var skillSlider: MyPageCustomSlider!
+    @IBOutlet private weak var skillSlider: CustomSlider!
     @IBOutlet private var skillSliderLabels: [UILabel]!
 
 

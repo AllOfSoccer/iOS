@@ -11,7 +11,6 @@
 		9D034CE826903A9E0051FA02 /* -----Global----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CE726903A9E0051FA02 /* -----Global----- */; };
 		9D034CEE26903B590051FA02 /* -----Primary View----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CED26903B590051FA02 /* -----Primary View----- */; };
 		9D0DA54C26F2342F00726077 /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA54B26F2342F00726077 /* MyPageTableViewCell.swift */; };
-		9D0DA54E26F240B600726077 /* MyPageNoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA54D26F240B600726077 /* MyPageNoticeDetailViewController.swift */; };
 		9D0DA55026F2458E00726077 /* MyPageVersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA54F26F2458E00726077 /* MyPageVersionViewController.swift */; };
 		9D0DA55426F249A900726077 /* MyPageMyInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA55326F249A900726077 /* MyPageMyInformationViewController.swift */; };
 		9D0DA55626F24A1300726077 /* MyPageMyInformationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA55526F24A1300726077 /* MyPageMyInformationDetailViewController.swift */; };
@@ -22,6 +21,7 @@
 		9D3E375A266D11AF0058A4B7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E3759266D11AF0058A4B7 /* Alamofire */; };
 		9D3E375E266D11DF0058A4B7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E375D266D11DF0058A4B7 /* Kingfisher */; };
 		9D4EC53F26903C9500D1A27D /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4EC53E26903C9500D1A27D /* SignIn.storyboard */; };
+		9D51CE2326F7142C006119DE /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D51CE2226F7142C006119DE /* IntrinsicTableView.swift */; };
 		9D56CF2A26932D2200628608 /* SelectTableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D56CF2926932D2200628608 /* SelectTableButton.swift */; };
 		9D5AA9C926CBC72500A33D20 /* SearchPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5AA9C826CBC72500A33D20 /* SearchPlaceView.swift */; };
 		9D5F573326C298D9004D8AE9 /* FirstRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5F573226C298D9004D8AE9 /* FirstRecruitmentViewController.swift */; };
@@ -29,11 +29,14 @@
 		9D6409A126F210D60076DEDC /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6409A026F210D60076DEDC /* UIButton+Extension.swift */; };
 		9D686C9E26AD663700440CBF /* RoundStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D686C9D26AD663700440CBF /* RoundStackView.swift */; };
 		9D686CA026AD6EC400440CBF /* FilterTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D686C9F26AD6EC400440CBF /* FilterTagCollectionViewCell.swift */; };
+		9D6A430326F84CE200AAA491 /* MyPageAddTeamInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A430226F84CE200AAA491 /* MyPageAddTeamInfoViewController.swift */; };
+		9D6A430526F84D0B00AAA491 /* MyPageChangeTeamInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A430426F84D0B00AAA491 /* MyPageChangeTeamInfoViewController.swift */; };
 		9D6B91E2266D08E000AF182B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B91E1266D08E000AF182B /* AppDelegate.swift */; };
 		9D6B91E4266D08E000AF182B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B91E3266D08E000AF182B /* SceneDelegate.swift */; };
 		9D6B91E9266D08E000AF182B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91E7266D08E000AF182B /* Main.storyboard */; };
 		9D6B91EB266D08E100AF182B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91EA266D08E100AF182B /* Assets.xcassets */; };
 		9D6B91EE266D08E100AF182B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91EC266D08E100AF182B /* LaunchScreen.storyboard */; };
+		9D74B11026F6F89C00D2F692 /* TeamInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D74B10F26F6F89C00D2F692 /* TeamInfoTableViewCell.swift */; };
 		9D76674E26F2313200EE538E /* MyPageNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D76674D26F2313200EE538E /* MyPageNoticeViewController.swift */; };
 		9D7B9F7F26C94B640075F211 /* GameMatchingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B9F7E26C94B640075F211 /* GameMatchingDetailViewController.swift */; };
 		9D7B9F8126C94B780075F211 /* GameMatchingDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B9F8026C94B780075F211 /* GameMatchingDetail.storyboard */; };
@@ -43,6 +46,8 @@
 		9DB1AB1A26B955F8003E517A /* FilterDetailTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */; };
 		9DB3547526C5539E00ADB9A0 /* SecondRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3547426C5539E00ADB9A0 /* SecondRecruitmentViewController.swift */; };
 		9DB3547726C554F500ADB9A0 /* RecruitmentCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3547626C554F500ADB9A0 /* RecruitmentCalendarView.swift */; };
+		9DB354E626F70017007D8863 /* teamInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB354E526F70017007D8863 /* teamInfoModel.swift */; };
+		9DBB9D3B26F8427E0035BEAF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB9D3A26F8427E0035BEAF /* UIView+Extension.swift */; };
 		9DBC70E826A986D0005F6BFA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9DBC70E726A986D0005F6BFA /* SnapKit */; };
 		9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC1289A269178500021EDF5 /* MainTabBarController.swift */; };
 		9DC128A026917E400021EDF5 /* GameMatching.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC1289F26917E400021EDF5 /* GameMatching.storyboard */; };
@@ -58,8 +63,11 @@
 		9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */; };
 		9DE4F2A426AF070000F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DC128AD26918E710021EDF5 /* FSCalendar */; };
 		9DE4F2A726AF076600F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE4F2A626AF076600F8974A /* FSCalendar */; };
+		9DE76BE026F86270007D3406 /* MyPageNoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE76BDF26F86270007D3406 /* MyPageNoticeDetailViewController.swift */; };
+		9DE76BE226F8661A007D3406 /* MyPageQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE76BE126F8661A007D3406 /* MyPageQuestionsViewController.swift */; };
 		9DECF34826A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DECF34726A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift */; };
-		9DF52E5E26F4BB4F003DD7DC /* MyPageCustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF52E5D26F4BB4F003DD7DC /* MyPageCustomSlider.swift */; };
+		9DF52E5E26F4BB4F003DD7DC /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF52E5D26F4BB4F003DD7DC /* CustomSlider.swift */; };
+		9DF9EEBE26F610A500D5132C /* MyPageTeamInfomationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF9EEBD26F610A500D5132C /* MyPageTeamInfomationViewController.swift */; };
 		9DFB9C2F26B8DCBB00618D66 /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */; };
 		9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD93B426764DA10049ADF2 /* SignInViewController.swift */; };
 		9DFFB165266D0F3700B04D3D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFFB164266D0F3700B04D3D /* .swiftlint.yml */; };
@@ -72,7 +80,6 @@
 		9D034CE726903A9E0051FA02 /* -----Global----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Global-----"; sourceTree = "<group>"; };
 		9D034CED26903B590051FA02 /* -----Primary View----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Primary View-----"; sourceTree = "<group>"; };
 		9D0DA54B26F2342F00726077 /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
-		9D0DA54D26F240B600726077 /* MyPageNoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNoticeDetailViewController.swift; sourceTree = "<group>"; };
 		9D0DA54F26F2458E00726077 /* MyPageVersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVersionViewController.swift; sourceTree = "<group>"; };
 		9D0DA55326F249A900726077 /* MyPageMyInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyInformationViewController.swift; sourceTree = "<group>"; };
 		9D0DA55526F24A1300726077 /* MyPageMyInformationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyInformationDetailViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +88,7 @@
 		9D24EF7B26B3C68400F55676 /* FilterTagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTagModel.swift; sourceTree = "<group>"; };
 		9D338C2B26B6A603008A2EDA /* TableViewFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFilterView.swift; sourceTree = "<group>"; };
 		9D4EC53E26903C9500D1A27D /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		9D51CE2226F7142C006119DE /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		9D56CF2926932D2200628608 /* SelectTableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableButton.swift; sourceTree = "<group>"; };
 		9D5AA9C826CBC72500A33D20 /* SearchPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceView.swift; sourceTree = "<group>"; };
 		9D5F573226C298D9004D8AE9 /* FirstRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRecruitmentViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +96,8 @@
 		9D6409A026F210D60076DEDC /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		9D686C9D26AD663700440CBF /* RoundStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundStackView.swift; sourceTree = "<group>"; };
 		9D686C9F26AD6EC400440CBF /* FilterTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTagCollectionViewCell.swift; sourceTree = "<group>"; };
+		9D6A430226F84CE200AAA491 /* MyPageAddTeamInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAddTeamInfoViewController.swift; sourceTree = "<group>"; };
+		9D6A430426F84D0B00AAA491 /* MyPageChangeTeamInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageChangeTeamInfoViewController.swift; sourceTree = "<group>"; };
 		9D6B91DE266D08E000AF182B /* AllOfSoccer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllOfSoccer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D6B91E1266D08E000AF182B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D6B91E3266D08E000AF182B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +105,7 @@
 		9D6B91EA266D08E100AF182B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D6B91ED266D08E100AF182B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D6B91EF266D08E100AF182B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D74B10F26F6F89C00D2F692 /* TeamInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfoTableViewCell.swift; sourceTree = "<group>"; };
 		9D76674D26F2313200EE538E /* MyPageNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNoticeViewController.swift; sourceTree = "<group>"; };
 		9D7B9F7E26C94B640075F211 /* GameMatchingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMatchingDetailViewController.swift; sourceTree = "<group>"; };
 		9D7B9F8026C94B780075F211 /* GameMatchingDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameMatchingDetail.storyboard; sourceTree = "<group>"; };
@@ -104,6 +115,8 @@
 		9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB3547426C5539E00ADB9A0 /* SecondRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondRecruitmentViewController.swift; sourceTree = "<group>"; };
 		9DB3547626C554F500ADB9A0 /* RecruitmentCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentCalendarView.swift; sourceTree = "<group>"; };
+		9DB354E526F70017007D8863 /* teamInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamInfoModel.swift; sourceTree = "<group>"; };
+		9DBB9D3A26F8427E0035BEAF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9DC1289A269178500021EDF5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		9DC1289F26917E400021EDF5 /* GameMatching.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameMatching.storyboard; sourceTree = "<group>"; };
 		9DC128A226917E740021EDF5 /* GameMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMatchingViewController.swift; sourceTree = "<group>"; };
@@ -114,8 +127,11 @@
 		9DD474B526903D97006F00F1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingActivityIndicator.swift; sourceTree = "<group>"; };
 		9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedCollectionView.swift; sourceTree = "<group>"; };
+		9DE76BDF26F86270007D3406 /* MyPageNoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNoticeDetailViewController.swift; sourceTree = "<group>"; };
+		9DE76BE126F8661A007D3406 /* MyPageQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageQuestionsViewController.swift; sourceTree = "<group>"; };
 		9DECF34726A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCalendarCollectionViewCell.swift; sourceTree = "<group>"; };
-		9DF52E5D26F4BB4F003DD7DC /* MyPageCustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCustomSlider.swift; sourceTree = "<group>"; };
+		9DF52E5D26F4BB4F003DD7DC /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		9DF9EEBD26F610A500D5132C /* MyPageTeamInfomationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTeamInfomationViewController.swift; sourceTree = "<group>"; };
 		9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
 		9DFD93B426764DA10049ADF2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9DFFB164266D0F3700B04D3D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -199,7 +215,6 @@
 			children = (
 				9D0DA55326F249A900726077 /* MyPageMyInformationViewController.swift */,
 				9D0DA55526F24A1300726077 /* MyPageMyInformationDetailViewController.swift */,
-				9DF52E5D26F4BB4F003DD7DC /* MyPageCustomSlider.swift */,
 			);
 			path = MyinformationView;
 			sourceTree = "<group>";
@@ -221,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				9D6409A026F210D60076DEDC /* UIButton+Extension.swift */,
+				9DBB9D3A26F8427E0035BEAF /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -267,8 +283,8 @@
 			isa = PBXGroup;
 			children = (
 				9D76674D26F2313200EE538E /* MyPageNoticeViewController.swift */,
+				9DE76BDF26F86270007D3406 /* MyPageNoticeDetailViewController.swift */,
 				9D0DA54B26F2342F00726077 /* MyPageTableViewCell.swift */,
-				9D0DA54D26F240B600726077 /* MyPageNoticeDetailViewController.swift */,
 			);
 			path = NoticeView;
 			sourceTree = "<group>";
@@ -280,6 +296,14 @@
 				9D7B9F7E26C94B640075F211 /* GameMatchingDetailViewController.swift */,
 			);
 			path = GamematchingDetail;
+			sourceTree = "<group>";
+		};
+		9DBB9D3926F841470035BEAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9DB354E526F70017007D8863 /* teamInfoModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9DC1289D26917CA20021EDF5 /* GameMatching */ = {
@@ -302,8 +326,11 @@
 				9DC128A526917E890021EDF5 /* MyPage.storyboard */,
 				9DC128A826917EA70021EDF5 /* MyPageViewController.swift */,
 				9D0DA55226F2497500726077 /* MyinformationView */,
+				9DF9EEBC26F6106500D5132C /* TeamInformationView */,
 				9D76674F26F2313B00EE538E /* NoticeView */,
 				9D0DA55126F2459400726077 /* VersionView */,
+				9DE76BE326F86624007D3406 /* QuestionsView */,
+				9DBB9D3926F841470035BEAF /* Model */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -344,6 +371,8 @@
 				9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */,
 				9D686C9D26AD663700440CBF /* RoundStackView.swift */,
 				9D56CF2926932D2200628608 /* SelectTableButton.swift */,
+				9D51CE2226F7142C006119DE /* IntrinsicTableView.swift */,
+				9DF52E5D26F4BB4F003DD7DC /* CustomSlider.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -364,6 +393,25 @@
 				9D7D409C26BE792000E8329E /* FilterDetailTagModel.swift */,
 			);
 			path = FilterDetailView;
+			sourceTree = "<group>";
+		};
+		9DE76BE326F86624007D3406 /* QuestionsView */ = {
+			isa = PBXGroup;
+			children = (
+				9DE76BE126F8661A007D3406 /* MyPageQuestionsViewController.swift */,
+			);
+			path = QuestionsView;
+			sourceTree = "<group>";
+		};
+		9DF9EEBC26F6106500D5132C /* TeamInformationView */ = {
+			isa = PBXGroup;
+			children = (
+				9DF9EEBD26F610A500D5132C /* MyPageTeamInfomationViewController.swift */,
+				9D74B10F26F6F89C00D2F692 /* TeamInfoTableViewCell.swift */,
+				9D6A430226F84CE200AAA491 /* MyPageAddTeamInfoViewController.swift */,
+				9D6A430426F84D0B00AAA491 /* MyPageChangeTeamInfoViewController.swift */,
+			);
+			path = TeamInformationView;
 			sourceTree = "<group>";
 		};
 		9DFD93B8267655E90049ADF2 /* Login */ = {
@@ -532,15 +580,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DF52E5E26F4BB4F003DD7DC /* MyPageCustomSlider.swift in Sources */,
+				9DF52E5E26F4BB4F003DD7DC /* CustomSlider.swift in Sources */,
 				9D338C2C26B6A603008A2EDA /* TableViewFilterView.swift in Sources */,
 				9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */,
+				9DF9EEBE26F610A500D5132C /* MyPageTeamInfomationViewController.swift in Sources */,
+				9D74B11026F6F89C00D2F692 /* TeamInfoTableViewCell.swift in Sources */,
+				9D51CE2326F7142C006119DE /* IntrinsicTableView.swift in Sources */,
 				9D0DA55626F24A1300726077 /* MyPageMyInformationDetailViewController.swift in Sources */,
 				9D24EF7C26B3C68400F55676 /* FilterTagModel.swift in Sources */,
 				9DB1AB1A26B955F8003E517A /* FilterDetailTagCollectionViewCell.swift in Sources */,
 				9D76674E26F2313200EE538E /* MyPageNoticeViewController.swift in Sources */,
+				9DE76BE026F86270007D3406 /* MyPageNoticeDetailViewController.swift in Sources */,
 				9DD474B326903D8A006F00F1 /* TopRoundView.swift in Sources */,
 				9DECF34826A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift in Sources */,
+				9DBB9D3B26F8427E0035BEAF /* UIView+Extension.swift in Sources */,
 				9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */,
 				9D7D409D26BE792000E8329E /* FilterDetailTagModel.swift in Sources */,
 				9DB3547726C554F500ADB9A0 /* RecruitmentCalendarView.swift in Sources */,
@@ -551,23 +604,26 @@
 				9D6B91E2266D08E000AF182B /* AppDelegate.swift in Sources */,
 				9D8A32EF26B8FB0000A8F65B /* FilterDetailView.swift in Sources */,
 				9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */,
+				9DB354E626F70017007D8863 /* teamInfoModel.swift in Sources */,
 				9DC128A926917EA70021EDF5 /* MyPageViewController.swift in Sources */,
 				9D5AA9C926CBC72500A33D20 /* SearchPlaceView.swift in Sources */,
 				9DC128A326917E740021EDF5 /* GameMatchingViewController.swift in Sources */,
 				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
 				9D8D32FF26CD53970097A172 /* RecruitmentTableViewCell.swift in Sources */,
 				9D686CA026AD6EC400440CBF /* FilterTagCollectionViewCell.swift in Sources */,
+				9D6A430326F84CE200AAA491 /* MyPageAddTeamInfoViewController.swift in Sources */,
 				9D0DA55026F2458E00726077 /* MyPageVersionViewController.swift in Sources */,
 				9D6B91E4266D08E000AF182B /* SceneDelegate.swift in Sources */,
 				9D10855926A2887700F8263F /* HorizontalCalendarModel.swift in Sources */,
-				9D0DA54E26F240B600726077 /* MyPageNoticeDetailViewController.swift in Sources */,
 				9D56CF2A26932D2200628608 /* SelectTableButton.swift in Sources */,
 				9D5F573326C298D9004D8AE9 /* FirstRecruitmentViewController.swift in Sources */,
 				9D7B9F7F26C94B640075F211 /* GameMatchingDetailViewController.swift in Sources */,
 				9DB3547526C5539E00ADB9A0 /* SecondRecruitmentViewController.swift in Sources */,
 				9DD474B026903D78006F00F1 /* RoundView.swift in Sources */,
 				9D686C9E26AD663700440CBF /* RoundStackView.swift in Sources */,
+				9D6A430526F84D0B00AAA491 /* MyPageChangeTeamInfoViewController.swift in Sources */,
 				9D0DA54C26F2342F00726077 /* MyPageTableViewCell.swift in Sources */,
+				9DE76BE226F8661A007D3406 /* MyPageQuestionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
