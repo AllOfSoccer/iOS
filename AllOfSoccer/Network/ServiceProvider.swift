@@ -17,7 +17,7 @@ class ServiceProvider {
 
     func  getLoginData(parameters: [String: Any], completion: @escaping (Result<[LoginModel]?, APIError>) -> Void) {
         let url = NetworkConfig.LoginURL
-        let resource = Resource<[LoginModel]>(url: url, parameters: parameters)
+        let resource = Network.Resource<[LoginModel]>(url: url, parameters: parameters)
         defaultSession.load(resource) { result in
             switch result {
             case .success(let data):

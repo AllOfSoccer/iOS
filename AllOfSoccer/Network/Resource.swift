@@ -7,12 +7,18 @@
 
 import Foundation
 
-struct Resource<T> {
-    var urlRequest: URLRequest
-    let parse: (Data) -> T?
+struct Network {
+
 }
 
-extension Resource where T: Codable {
+extension Network {
+    struct Resource<T> {
+        var urlRequest: URLRequest
+        let parse: (Data) -> T?
+    }
+}
+
+extension Network.Resource where T: Codable {
     init(url: URL) {
         self.urlRequest = URLRequest(url: url)
         self.parse = { data in
