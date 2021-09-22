@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum Config {
+enum NetworkConfig {
     static let LoginURL = "https://itunes.apple.com/search"
 }

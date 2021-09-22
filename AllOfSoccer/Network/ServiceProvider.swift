@@ -11,12 +11,12 @@ class ServiceProvider {
 
     static let shared = ServiceProvider()
 
-    private lazy var defaultSession = URLSession(configuration: .default)
+    private let defaultSession = URLSession(configuration: .default)
 
     private init() { }
 
     func  getLoginData(parameters: [String: Any], completion: @escaping (Result<[LoginModel]?, APIError>) -> Void) {
-        let url = Config.LoginURL
+        let url = NetworkConfig.LoginURL
         let resource = Resource<[LoginModel]>(url: url, parameters: parameters)
         defaultSession.load(resource) { result in
             switch result {
