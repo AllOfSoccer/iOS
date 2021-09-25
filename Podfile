@@ -7,5 +7,6 @@ target 'AllOfSoccer' do
 
   # Pods for AllOfSoccer
   pod "SearchTextField"
+  pod "RangeSeekSlider"	
 
 end
