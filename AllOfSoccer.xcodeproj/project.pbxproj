@@ -33,6 +33,13 @@
 		9D7B9F8126C94B780075F211 /* GameMatchingDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B9F8026C94B780075F211 /* GameMatchingDetail.storyboard */; };
 		9D7D409D26BE792000E8329E /* FilterDetailTagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D409C26BE792000E8329E /* FilterDetailTagModel.swift */; };
 		9D7E641326EC4BE900B51D37 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E641226EC4BE900B51D37 /* IntrinsicTableView.swift */; };
+		9D80A3D726E0ECD500970612 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D80A3D626E0ECD500970612 /* ServiceProvider.swift */; };
+		9D80A3D926E0ECDF00970612 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D80A3D826E0ECDF00970612 /* NetworkConfig.swift */; };
+		9D80A3DB26E0ECEC00970612 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D80A3DA26E0ECEC00970612 /* HttpMethod.swift */; };
+		9D80A3DD26E0ED0F00970612 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D80A3DC26E0ED0F00970612 /* Resource.swift */; };
+		9D80A3DF26E0ED1800970612 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D80A3DE26E0ED1800970612 /* APIError.swift */; };
+		9D80A3E126E0ED3700970612 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D80A3E026E0ED3700970612 /* URLSession+Extension.swift */; };
+		9D80A3E326E1099900970612 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D80A3E226E1099900970612 /* LoginModel.swift */; };
 		9D8A32EF26B8FB0000A8F65B /* FilterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */; };
 		9D8D32FF26CD53970097A172 /* RecruitmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D32FE26CD53970097A172 /* RecruitmentTableViewCell.swift */; };
 		9D95F7C726EA360800F3F2C7 /* SecondRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95F7C626EA360800F3F2C7 /* SecondRecruitmentViewController.swift */; };
@@ -93,6 +100,13 @@
 		9D7B9F8026C94B780075F211 /* GameMatchingDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameMatchingDetail.storyboard; sourceTree = "<group>"; };
 		9D7D409C26BE792000E8329E /* FilterDetailTagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailTagModel.swift; sourceTree = "<group>"; };
 		9D7E641226EC4BE900B51D37 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
+		9D80A3D626E0ECD500970612 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		9D80A3D826E0ECDF00970612 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		9D80A3DA26E0ECEC00970612 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		9D80A3DC26E0ED0F00970612 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		9D80A3DE26E0ED1800970612 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		9D80A3E026E0ED3700970612 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
+		9D80A3E226E1099900970612 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailView.swift; sourceTree = "<group>"; };
 		9D8D32FE26CD53970097A172 /* RecruitmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTableViewCell.swift; sourceTree = "<group>"; };
 		9D95F7C626EA360800F3F2C7 /* SecondRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondRecruitmentViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +176,19 @@
 				9D6B91E3266D08E000AF182B /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		9D034CEB26903AD60051FA02 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9D80A3D626E0ECD500970612 /* ServiceProvider.swift */,
+				9D80A3D826E0ECDF00970612 /* NetworkConfig.swift */,
+				9D80A3DA26E0ECEC00970612 /* HttpMethod.swift */,
+				9D80A3DC26E0ED0F00970612 /* Resource.swift */,
+				9D80A3DE26E0ED1800970612 /* APIError.swift */,
+				9D80A3E026E0ED3700970612 /* URLSession+Extension.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		9D034CEC26903AF00051FA02 /* SupporttingFiles */ = {
@@ -344,6 +371,7 @@
 			children = (
 				9D4EC53E26903C9500D1A27D /* SignIn.storyboard */,
 				9DFD93B426764DA10049ADF2 /* SignInViewController.swift */,
+				9D80A3E226E1099900970612 /* LoginModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -526,8 +554,13 @@
 				9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */,
 				9DC128A926917EA70021EDF5 /* MyPageViewController.swift in Sources */,
 				9D5AA9C926CBC72500A33D20 /* SearchPlaceView.swift in Sources */,
+				9D80A3E126E0ED3700970612 /* URLSession+Extension.swift in Sources */,
+				9D80A3E326E1099900970612 /* LoginModel.swift in Sources */,
 				9DC128A326917E740021EDF5 /* GameMatchingViewController.swift in Sources */,
+				9D80A3DD26E0ED0F00970612 /* Resource.swift in Sources */,
+				9D80A3D926E0ECDF00970612 /* NetworkConfig.swift in Sources */,
 				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
+				9D80A3D726E0ECD500970612 /* ServiceProvider.swift in Sources */,
 				9D8D32FF26CD53970097A172 /* RecruitmentTableViewCell.swift in Sources */,
 				9D686CA026AD6EC400440CBF /* FilterTagCollectionViewCell.swift in Sources */,
 				9DDF10DE26EDE1F600A3986E /* UIView+Extension.swift in Sources */,
@@ -539,7 +572,9 @@
 				9D7B9F7F26C94B640075F211 /* GameMatchingDetailViewController.swift in Sources */,
 				9DB3547526C5539E00ADB9A0 /* FirstRecruitmentViewController.swift in Sources */,
 				9DD474B026903D78006F00F1 /* RoundView.swift in Sources */,
+				9D80A3DB26E0ECEC00970612 /* HttpMethod.swift in Sources */,
 				9D686C9E26AD663700440CBF /* RoundStackView.swift in Sources */,
+				9D80A3DF26E0ED1800970612 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
