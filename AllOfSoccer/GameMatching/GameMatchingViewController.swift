@@ -53,6 +53,8 @@ class GameMatchingViewController: UIViewController {
     @IBOutlet private weak var teamMatchButton: SelectTableButton!
     @IBOutlet private weak var manMatchButton: SelectTableButton!
     @IBOutlet private weak var selectedLineCenterConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var buttonUnderLine: UIView!
+
 
     // MARK: - HorizontalCalendar Variable
     private var selectedDate: [String] = []
@@ -149,8 +151,11 @@ class GameMatchingViewController: UIViewController {
         self.manMatchButton.isSelected = false
 
         UIView.animate(withDuration: 0.1) { [weak self] in
-            self?.selectedLineCenterConstraint.constant = 0
-            self?.view.layoutIfNeeded()
+
+            guard let self = self else { return }
+
+            self.selectedLineCenterConstraint.constant = 0
+            self.view.layoutIfNeeded()
         }
     }
 
@@ -161,8 +166,11 @@ class GameMatchingViewController: UIViewController {
         let constant = manMatchButton.center.x - teamMatchButton.center.x
 
         UIView.animate(withDuration: 0.1) { [weak self] in
-            self?.selectedLineCenterConstraint.constant = constant
-            self?.view.layoutIfNeeded()
+
+            guard let self = self else { return }
+
+            self.selectedLineCenterConstraint.constant = constant
+            self.view.layoutIfNeeded()
         }
     }
 
@@ -559,6 +567,7 @@ extension GameMatchingViewController: UICollectionViewDelegate {
             // 데이터 처리
         } else if collectionView == self.filterTagCollectionView {
             // 데이터 처리
+
             self.filterDetailView.filterType = self.tagCellModel[indexPath.item].filterType
             self.appearFilterDetailView()
         }
@@ -576,11 +585,11 @@ extension GameMatchingViewController: UICollectionViewDelegate {
         self.filterDetailView.isHidden = false
         self.filterDetailBackgroundView.isHidden = false
 
+        self.tabBarController?.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5) { [weak self] in
             guard let self = self else { return }
             guard let tabbar = self.tabBarController else { return }
             self.filterDetailView.frame = CGRect(x: 0, y: tabbar.view.frame.height - 244, width: self.filterDetailView.frame.width, height: self.filterDetailView.frame.height)
-            self.tabBarController?.view.layoutIfNeeded()
         }
     }
 
