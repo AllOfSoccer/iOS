@@ -1951,25 +1951,25 @@
     </scenes>
     <designables>
         <designable name="5Lw-ST-Cp4">
-            <size key="intrinsicContentSize" width="44.5" height="34"/>
+            <size key="intrinsicContentSize" width="24.5" height="22"/>
         </designable>
         <designable name="EK6-Ei-ZEG">
-            <size key="intrinsicContentSize" width="44.5" height="34"/>
+            <size key="intrinsicContentSize" width="24.5" height="22"/>
         </designable>
         <designable name="Emw-bg-NOG">
-            <size key="intrinsicContentSize" width="44.5" height="34"/>
+            <size key="intrinsicContentSize" width="24.5" height="22"/>
         </designable>
         <designable name="Ln4-mk-hi4">
-            <size key="intrinsicContentSize" width="98" height="32"/>
+            <size key="intrinsicContentSize" width="78" height="32"/>
         </designable>
         <designable name="aXT-a5-JLe">
-            <size key="intrinsicContentSize" width="158" height="30"/>
+            <size key="intrinsicContentSize" width="138" height="30"/>
         </designable>
         <designable name="fpO-Fi-PKz">
-            <size key="intrinsicContentSize" width="84" height="32"/>
+            <size key="intrinsicContentSize" width="64" height="20"/>
         </designable>
         <designable name="yTl-yq-cvS">
-            <size key="intrinsicContentSize" width="20" height="34"/>
+            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
     </designables>
     <resources>
