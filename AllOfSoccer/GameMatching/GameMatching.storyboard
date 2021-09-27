@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TsI-30-CMf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TsI-30-CMf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -235,6 +236,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Axh-HT-bKL">
                                         <rect key="frame" x="0.0" y="245" width="414" height="480"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <view key="tableHeaderView" contentMode="scaleToFill" id="SHE-Ce-TZO">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -252,7 +254,7 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="jBg-T2-uCl" firstAttribute="top" secondItem="SHE-Ce-TZO" secondAttribute="top" constant="16" id="Vde-HJ-HAk"/>
                                                 <constraint firstAttribute="bottom" secondItem="jBg-T2-uCl" secondAttribute="bottom" constant="17" id="W2x-ot-ntp"/>
@@ -261,7 +263,7 @@
                                         </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoticeTableViewCell" rowHeight="158" id="x83-q5-DUZ" customClass="NoticeTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="74.5" width="414" height="158"/>
+                                                <rect key="frame" x="0.0" y="94.5" width="414" height="158"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x83-q5-DUZ" id="MLl-ae-ZqP">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="158"/>
@@ -472,6 +474,7 @@
                     <navigationItem key="navigationItem" id="MUG-4k-kkH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="buttonUnderLine" destination="tsM-Bo-QU0" id="Hwj-TF-3UM"/>
                         <outlet property="filterTagCollectionView" destination="t1a-0J-LlW" id="hq2-G6-jJP"/>
                         <outlet property="horizontalCalendarView" destination="ujb-m5-sph" id="sTI-Uo-yQC"/>
                         <outlet property="manMatchButton" destination="DbN-Zz-RjJ" id="Clu-Rh-Rwh"/>
