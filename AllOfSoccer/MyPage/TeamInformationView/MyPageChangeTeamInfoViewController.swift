@@ -42,7 +42,7 @@ class MyPageChangeTeamInfoViewController: UIViewController {
 
     private func setupLabelConstraint(labelXPositons: [CGFloat],slider: UISlider, labels: [UILabel]) {
         for index in 0...6 {
-            labels[index].translatesAutoresizingMaskIntoConstraints = false
+            labels[safe: index]?.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 labels[index].topAnchor.constraint(equalTo: slider.bottomAnchor, constant: 4),
                 labels[index].centerXAnchor.constraint(equalTo: slider.leadingAnchor, constant: labelXPositons[index])
@@ -51,7 +51,7 @@ class MyPageChangeTeamInfoViewController: UIViewController {
     }
 
     private func createLabelXPositions(slider: UISlider) -> [CGFloat] {
-        let sliderLinePadding: CGFloat = ((slider.currentThumbImage?.size.width) ?? 1 / 2)
+        let sliderLinePadding: CGFloat = (((slider.currentThumbImage?.size.width) ?? 1) / 2)
         let sliderLineWidth = slider.frame.width - ((sliderLinePadding) * 2)
         let offset = (sliderLineWidth / 6)
         let firstLabelXPosition = sliderLinePadding - 2
