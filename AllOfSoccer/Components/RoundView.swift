@@ -18,4 +18,26 @@ final class RoundView: UIView {
         get { return layer.borderWidth }
         set { layer.borderWidth = newValue }
     }
+
+    @IBInspectable var borderColor: UIColor = #colorLiteral(red: 0.8196078431, green: 0.8274509804, blue: 0.8549019608, alpha: 1) {
+        didSet {
+            update()
+        }
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        update()
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        update()
+    }
+
+    func update() {
+        layer.borderColor = borderColor.cgColor
+        layer.borderWidth = borderWidth
+    }
+    
 }

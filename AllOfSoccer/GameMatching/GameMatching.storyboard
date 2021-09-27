@@ -515,13 +515,13 @@
     </scenes>
     <designables>
         <designable name="LWB-dj-IUj">
-            <size key="intrinsicContentSize" width="42" height="38"/>
+            <size key="intrinsicContentSize" width="22" height="26"/>
         </designable>
         <designable name="gfl-Dd-Rhy">
-            <size key="intrinsicContentSize" width="44" height="34"/>
+            <size key="intrinsicContentSize" width="24" height="22"/>
         </designable>
         <designable name="hLd-kn-LVL">
-            <size key="intrinsicContentSize" width="38" height="34"/>
+            <size key="intrinsicContentSize" width="18" height="22"/>
         </designable>
     </designables>
     <resources>
