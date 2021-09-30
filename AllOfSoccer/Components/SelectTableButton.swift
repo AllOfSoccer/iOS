@@ -71,6 +71,12 @@ class SelectTableButton: UIButton {
         update()
     }
 
+    override var isSelected: Bool {
+        didSet {
+            update()
+        }
+    }
+
     private func update() {
         layer.cornerRadius = cornerRadius
         setTitleColor(normalTitleColor, for: .normal)
@@ -81,13 +87,4 @@ class SelectTableButton: UIButton {
         contentEdgeInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
         tintColor = UIColor.clear
     }
-
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        setTitleColor(UIColor.black, for: .selected)
-//        setTitleColor(UIColor.systemGray5, for: .normal)
-//        tintColor = .clear
-//
-//        self.backgroundColor = self.isSelected ? UIColor
-//    }
 }

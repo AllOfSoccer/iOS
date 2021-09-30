@@ -17,6 +17,14 @@ class FirstRecruitmentViewController: UIViewController {
         return view
     }()
 
+    @IBOutlet weak var sixMatchButton: SelectTableButton!
+    @IBOutlet weak var elevenMatchButton: SelectTableButton!
+    @IBOutlet weak var manMatchButton: SelectTableButton!
+    @IBOutlet weak var womanMatchButton: SelectTableButton!
+    @IBOutlet weak var mixMatchButton: SelectTableButton!
+    @IBOutlet weak var futsalShoesButton: SelectTableButton!
+    @IBOutlet weak var soccerShoesButton: SelectTableButton!
+
     @IBAction private func calendarButtonTouchUp(_ sender: UIButton) {
         self.recruitmentCalendarView.isHidden = false
         self.backgroundView.isHidden = false
@@ -31,9 +39,11 @@ class FirstRecruitmentViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        setMatchButton()
         setupViewConstraint()
 
         self.backgroundView.isHidden = true
@@ -42,6 +52,16 @@ class FirstRecruitmentViewController: UIViewController {
 
         self.recruitmentCalendarView.delegate = self
         self.searchPlaceView.delegate = self
+    }
+
+    private func setMatchButton() {
+        self.sixMatchButton.addTarget(self, action: #selector(sixMatchButtonTouchUp), for: .touchUpInside)
+        self.elevenMatchButton.addTarget(self, action: #selector(elevenMatchButtonTouchUp), for: .touchUpInside)
+        self.manMatchButton.addTarget(self, action: #selector(manMatchButtonTouchUp), for: .touchUpInside)
+        self.womanMatchButton.addTarget(self, action: #selector(womanMatchButtonTouchUp), for: .touchUpInside)
+        self.mixMatchButton.addTarget(self, action: #selector(mixMatchButtonTouchUp), for: .touchUpInside)
+        self.futsalShoesButton.addTarget(self, action: #selector(futsalShoesButtonTouchUp), for: .touchUpInside)
+        self.soccerShoesButton.addTarget(self, action: #selector(soccerShoesButtonTouchUp), for: .touchUpInside)
     }
 
     private func setupViewConstraint() {
@@ -74,6 +94,34 @@ class FirstRecruitmentViewController: UIViewController {
             self.recruitmentCalendarView.leadingAnchor.constraint(equalTo: self.backgroundView.leadingAnchor, constant: 20),
             self.recruitmentCalendarView.trailingAnchor.constraint(equalTo: self.backgroundView.trailingAnchor, constant: -20)
         ])
+    }
+
+    @objc func sixMatchButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
+    }
+
+    @objc func elevenMatchButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
+    }
+
+    @objc func manMatchButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
+    }
+
+    @objc func womanMatchButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
+    }
+
+    @objc func mixMatchButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
+    }
+
+    @objc func futsalShoesButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
+    }
+
+    @objc func soccerShoesButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
     }
 }
 
