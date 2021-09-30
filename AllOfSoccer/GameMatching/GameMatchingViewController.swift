@@ -53,8 +53,6 @@ class GameMatchingViewController: UIViewController {
     @IBOutlet private weak var teamMatchButton: SelectTableButton!
     @IBOutlet private weak var manMatchButton: SelectTableButton!
     @IBOutlet private weak var selectedLineCenterConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var buttonUnderLine: UIView!
-
 
     // MARK: - HorizontalCalendar Variable
     private var selectedDate: [String] = []
