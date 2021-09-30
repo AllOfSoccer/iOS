@@ -41,6 +41,8 @@ final class RoundButton: UIButton {
 
     @IBInspectable var widthInset: CGFloat = 0
 
+
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         update()
@@ -66,6 +68,5 @@ final class RoundButton: UIButton {
         layer.borderColor = borderColor.cgColor
         layer.borderWidth = borderWidth
         contentEdgeInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
-//        self.sizeToFit()
     }
 }
