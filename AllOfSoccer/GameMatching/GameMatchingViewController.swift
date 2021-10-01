@@ -50,8 +50,8 @@ enum FilterType: CaseIterable {
 class GameMatchingViewController: UIViewController {
 
     // MARK: - MatchingModeButton Variable
-    @IBOutlet private weak var teamMatchButton: SelectTableButton!
-    @IBOutlet private weak var manMatchButton: SelectTableButton!
+    @IBOutlet private weak var teamMatchButton: IBSelectTableButton!
+    @IBOutlet private weak var manMatchButton: IBSelectTableButton!
     @IBOutlet private weak var selectedLineCenterConstraint: NSLayoutConstraint!
 
     // MARK: - HorizontalCalendar Variable

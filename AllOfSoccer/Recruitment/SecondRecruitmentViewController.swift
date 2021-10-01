@@ -12,7 +12,7 @@ class SecondRecruitmentViewController: UIViewController {
         return view
     }()
 
-    @IBOutlet private weak var skillSlider: SkillSlider!
+    @IBOutlet private weak var skillSlider: OneThumbSlider!
     @IBOutlet private weak var ageRangeSlider: RangeSeekSlider!
     @IBOutlet private var ageSliderLabels: [UILabel]!
     @IBOutlet private var skillSliderLabels: [UILabel]!
@@ -76,41 +76,65 @@ class SecondRecruitmentViewController: UIViewController {
     }
 
     private func setAgeLabelsLayout() {
-        let labelPositions =  createLabelXPositions(slider: self.ageRangeSlider)
-        setLabelsConstraint(slider: self.ageRangeSlider, labels: self.ageSliderLabels, labelXPositons: labelPositions)
+        let labelPositions =  createLabelXPositions(rangeSlider: self.ageRangeSlider, customSlider: nil)
+        setLabelsConstraint(slider: self.ageRangeSlider, labelXPositons: labelPositions, labels: self.ageSliderLabels)
     }
 
     private func setSkillLabelsLayout() {
-        let labelPositions =  createLabelXPositions(slider: self.skillSlider)
-        self.setLabelsConstraint(slider: self.skillSlider, labels: self.skillSliderLabels, labelXPositons: labelPositions)
+        let labelPositions =  createLabelXPositions(rangeSlider: nil, customSlider: self.skillSlider)
+        setLabelsConstraint(slider: self.skillSlider, labelXPositons: labelPositions, labels: self.skillSliderLabels)
     }
 
-    private func setLabelsConstraint(slider: UIControl ,labels: [UILabel], labelXPositons: [CGFloat]) {
-        for index in 0...6 {
-            labels[index].translatesAutoresizingMaskIntoConstraints = false
+    private func setLabelsConstraint(slider: UIControl, labelXPositons: [CGFloat], labels: [UILabel]) {
+        for index in 0..<labels.count {
+            guard let label = labels[safe: index] else { return }
+            guard let labelPosition = labelXPositons[safe: index] else { return }
+            label.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                labels[index].topAnchor.constraint(equalTo: slider.bottomAnchor, constant: 4),
-                labels[index].centerXAnchor.constraint(equalTo: slider.leadingAnchor, constant: labelXPositons[index])
+                label.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: 4),
+                label.centerXAnchor.constraint(equalTo: slider.leadingAnchor, constant: labelPosition)
             ])
         }
     }
 
-    private func createLabelXPositions(slider: UIView) -> [CGFloat] {
-        let rangeSliderLinePadding: CGFloat = slider == self.ageRangeSlider ? 16 : 0
-        let rangeSliderLineWidth = slider.frame.width - (2 * rangeSliderLinePadding)
-        let division: CGFloat = 6
-        let offset = rangeSliderLineWidth / division
-        let firstLabelXPosition = rangeSliderLinePadding
+    private func createLabelXPositions(rangeSlider: UIControl?, customSlider: UISlider?) -> [CGFloat] {
 
-        var arrayLabelXPosition: [CGFloat] = []
-        arrayLabelXPosition.append(firstLabelXPosition)
-        for index in 1..<7 {
-            let offset = (offset * CGFloat(index))
-            let labelXPosition = firstLabelXPosition + offset
-            arrayLabelXPosition.append(labelXPosition)
+        var labelsXPosition: [CGFloat] = []
+
+        if let rangeSlider = rangeSlider {
+            let rangeSliderLinePadding: CGFloat = 16
+            let rangeSliderLineWidth = rangeSlider.frame.width - (2 * rangeSliderLinePadding)
+            let division: CGFloat = 6
+            let offset = rangeSliderLineWidth / division
+            let firstLabelXPosition = rangeSliderLinePadding
+
+            var tempLabelsXPosition: [CGFloat] = []
+            tempLabelsXPosition.append(firstLabelXPosition)
+            for index in 1..<7 {
+                let offset = (offset * CGFloat(index))
+                let labelXPosition = firstLabelXPosition + offset
+                tempLabelsXPosition.append(labelXPosition)
+            }
+
+            labelsXPosition = tempLabelsXPosition
+        } else if let customSlider = customSlider {
+            let sliderLinePadding: CGFloat = (((customSlider.currentThumbImage?.size.width) ?? 1) / 2)
+            let sliderLineWidth = customSlider.frame.width - ((sliderLinePadding) * 2)
+            let offset = (sliderLineWidth / 6)
+            let firstLabelXPosition = sliderLinePadding - 2
+
+            var arrayLabelXPosition: [CGFloat] = []
+            arrayLabelXPosition.append(firstLabelXPosition)
+            for index in 1..<7 {
+                let offset = (offset * CGFloat(index))
+                let labelXPosition = firstLabelXPosition + offset
+                arrayLabelXPosition.append(labelXPosition)
+            }
+
+            labelsXPosition = arrayLabelXPosition
         }
 
-        return arrayLabelXPosition
+        return labelsXPosition
     }
 
     @objc func skillSliderValueChanged(_ sender: SkillSlider) {

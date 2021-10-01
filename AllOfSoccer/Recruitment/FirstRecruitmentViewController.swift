@@ -17,13 +17,13 @@ class FirstRecruitmentViewController: UIViewController {
         return view
     }()
 
-    @IBOutlet weak var sixMatchButton: SelectTableButton!
-    @IBOutlet weak var elevenMatchButton: SelectTableButton!
-    @IBOutlet weak var manMatchButton: SelectTableButton!
-    @IBOutlet weak var womanMatchButton: SelectTableButton!
-    @IBOutlet weak var mixMatchButton: SelectTableButton!
-    @IBOutlet weak var futsalShoesButton: SelectTableButton!
-    @IBOutlet weak var soccerShoesButton: SelectTableButton!
+    @IBOutlet weak var sixMatchButton: IBSelectTableButton!
+    @IBOutlet weak var elevenMatchButton: IBSelectTableButton!
+    @IBOutlet weak var manMatchButton: IBSelectTableButton!
+    @IBOutlet weak var womanMatchButton: IBSelectTableButton!
+    @IBOutlet weak var mixMatchButton: IBSelectTableButton!
+    @IBOutlet weak var futsalShoesButton: IBSelectTableButton!
+    @IBOutlet weak var soccerShoesButton: IBSelectTableButton!
 
     @IBAction private func calendarButtonTouchUp(_ sender: UIButton) {
         self.recruitmentCalendarView.isHidden = false

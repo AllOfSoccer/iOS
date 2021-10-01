@@ -1,6 +1,6 @@
 import UIKit
 
-class CustomSlider: UISlider {
+class OneThumbSlider: UISlider {
 
     @IBInspectable var trackHeight: CGFloat = 3
 

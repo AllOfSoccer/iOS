@@ -25,7 +25,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzg-lJ-8FP">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8t-kY-EHS" customClass="SelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8t-kY-EHS" customClass="IBSelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="30" width="68" height="41"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <color key="tintColor" systemColor="tintColor"/>
@@ -70,7 +70,7 @@
                                                     <action selector="teamMatchButtonTouchUp:" destination="V9G-Fe-OSJ" eventType="touchUpInside" id="ybk-j5-Gdm"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbN-Zz-RjJ" customClass="SelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbN-Zz-RjJ" customClass="IBSelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
                                                 <rect key="frame" x="104" y="30" width="89" height="41"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
