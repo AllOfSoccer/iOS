@@ -137,7 +137,7 @@ class SecondRecruitmentViewController: UIViewController {
         return labelsXPosition
     }
 
-    @objc func skillSliderValueChanged(_ sender: SkillSlider) {
+    @objc func skillSliderValueChanged(_ sender: OneThumbSlider) {
         let values = "(\(sender.value)"
         print("Range slider value changed: \(values)")
     }

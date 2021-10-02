@@ -19,6 +19,11 @@
 		9D24EF7C26B3C68400F55676 /* FilterTagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D24EF7B26B3C68400F55676 /* FilterTagModel.swift */; };
 		9D338C2C26B6A603008A2EDA /* TableViewFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D338C2B26B6A603008A2EDA /* TableViewFilterView.swift */; };
 		9D3DA5222706C43F00C40257 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3DA5212706C43F00C40257 /* BackgroundView.swift */; };
+		9D3DA5272706CFFE00C40257 /* ManRecruitment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D3DA5262706CFFE00C40257 /* ManRecruitment.storyboard */; };
+		9D3DA5292706D05400C40257 /* FirstManRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3DA5282706D05400C40257 /* FirstManRecruitmentViewController.swift */; };
+		9D3DA52B2706D15B00C40257 /* SecondManRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3DA52A2706D15B00C40257 /* SecondManRecruitmentViewController.swift */; };
+		9D3DA5302706D2BC00C40257 /* ManRecruitmenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3DA52F2706D2BC00C40257 /* ManRecruitmenTableViewCell.swift */; };
+		9D3DA5322706D30000C40257 /* ManIntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3DA5312706D30000C40257 /* ManIntroductionTableViewCell.swift */; };
 		9D3E375A266D11AF0058A4B7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E3759266D11AF0058A4B7 /* Alamofire */; };
 		9D3E375E266D11DF0058A4B7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E375D266D11DF0058A4B7 /* Kingfisher */; };
 		9D40BD972706BD330073C100 /* SeletableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D40BD962706BD330073C100 /* SeletableButton.swift */; };
@@ -98,6 +103,11 @@
 		9D24EF7B26B3C68400F55676 /* FilterTagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTagModel.swift; sourceTree = "<group>"; };
 		9D338C2B26B6A603008A2EDA /* TableViewFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFilterView.swift; sourceTree = "<group>"; };
 		9D3DA5212706C43F00C40257 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		9D3DA5262706CFFE00C40257 /* ManRecruitment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ManRecruitment.storyboard; sourceTree = "<group>"; };
+		9D3DA5282706D05400C40257 /* FirstManRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstManRecruitmentViewController.swift; sourceTree = "<group>"; };
+		9D3DA52A2706D15B00C40257 /* SecondManRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondManRecruitmentViewController.swift; sourceTree = "<group>"; };
+		9D3DA52F2706D2BC00C40257 /* ManRecruitmenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManRecruitmenTableViewCell.swift; sourceTree = "<group>"; };
+		9D3DA5312706D30000C40257 /* ManIntroductionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManIntroductionTableViewCell.swift; sourceTree = "<group>"; };
 		9D40BD962706BD330073C100 /* SeletableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeletableButton.swift; sourceTree = "<group>"; };
 		9D4BC01E26E8CB6000867913 /* IntroductionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionTableViewCell.swift; sourceTree = "<group>"; };
 		9D4EC53E26903C9500D1A27D /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -241,17 +251,46 @@
 			path = MyinformationView;
 			sourceTree = "<group>";
 		};
-		9D5F573126C298AC004D8AE9 /* Recruitment */ = {
+		9D3DA5242706CF6D00C40257 /* TeamRecruitment */ = {
 			isa = PBXGroup;
 			children = (
 				9D5F573426C2A5D2004D8AE9 /* Recruitment.storyboard */,
 				9DB3547426C5539E00ADB9A0 /* FirstRecruitmentViewController.swift */,
 				9D95F7C626EA360800F3F2C7 /* SecondRecruitmentViewController.swift */,
 				9D8D32FE26CD53970097A172 /* RecruitmentTableViewCell.swift */,
-				9DB3547626C554F500ADB9A0 /* RecruitmentCalendarView.swift */,
-				9D5AA9C826CBC72500A33D20 /* SearchPlaceView.swift */,
-				9DA714C126EC964D00B40D1E /* IntroductionDetailView.swift */,
 				9D4BC01E26E8CB6000867913 /* IntroductionTableViewCell.swift */,
+			);
+			path = TeamRecruitment;
+			sourceTree = "<group>";
+		};
+		9D3DA5252706CFA500C40257 /* ManRecruitment */ = {
+			isa = PBXGroup;
+			children = (
+				9D3DA5262706CFFE00C40257 /* ManRecruitment.storyboard */,
+				9D3DA5282706D05400C40257 /* FirstManRecruitmentViewController.swift */,
+				9D3DA52A2706D15B00C40257 /* SecondManRecruitmentViewController.swift */,
+				9D3DA52F2706D2BC00C40257 /* ManRecruitmenTableViewCell.swift */,
+				9D3DA5312706D30000C40257 /* ManIntroductionTableViewCell.swift */,
+			);
+			path = ManRecruitment;
+			sourceTree = "<group>";
+		};
+		9D3DA52E2706D1F000C40257 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				9DB3547626C554F500ADB9A0 /* RecruitmentCalendarView.swift */,
+				9DA714C126EC964D00B40D1E /* IntroductionDetailView.swift */,
+				9D5AA9C826CBC72500A33D20 /* SearchPlaceView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		9D5F573126C298AC004D8AE9 /* Recruitment */ = {
+			isa = PBXGroup;
+			children = (
+				9D3DA5252706CFA500C40257 /* ManRecruitment */,
+				9D3DA5242706CF6D00C40257 /* TeamRecruitment */,
+				9D3DA52E2706D1F000C40257 /* Component */,
 			);
 			path = Recruitment;
 			sourceTree = "<group>";
@@ -539,6 +578,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D3DA5272706CFFE00C40257 /* ManRecruitment.storyboard in Resources */,
 				9D7B9F8126C94B780075F211 /* GameMatchingDetail.storyboard in Resources */,
 				9DFFB165266D0F3700B04D3D /* .swiftlint.yml in Resources */,
 				9D6B91EE266D08E100AF182B /* LaunchScreen.storyboard in Resources */,
@@ -649,6 +689,7 @@
 				9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */,
 				9D40BD972706BD330073C100 /* SeletableButton.swift in Sources */,
 				9DB354E626F70017007D8863 /* teamInfoModel.swift in Sources */,
+				9D3DA52B2706D15B00C40257 /* SecondManRecruitmentViewController.swift in Sources */,
 				9DC128A926917EA70021EDF5 /* MyPageViewController.swift in Sources */,
 				9D5AA9C926CBC72500A33D20 /* SearchPlaceView.swift in Sources */,
 				9DB03E6C2701DF79004412AF /* UICollectionViewCell+Extension.swift in Sources */,
@@ -657,9 +698,11 @@
 				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
 				9D8D32FF26CD53970097A172 /* RecruitmentTableViewCell.swift in Sources */,
 				9DB03E6B2701DF79004412AF /* UIButton+Extension.swift in Sources */,
+				9D3DA5302706D2BC00C40257 /* ManRecruitmenTableViewCell.swift in Sources */,
 				9DF0B4C32705E0D6006F8A62 /* SliderLabels.swift in Sources */,
 				9D686CA026AD6EC400440CBF /* FilterTagCollectionViewCell.swift in Sources */,
 				9DDF10DE26EDE1F600A3986E /* UIView+Extension.swift in Sources */,
+				9D3DA5322706D30000C40257 /* ManIntroductionTableViewCell.swift in Sources */,
 				9DA714C226EC964D00B40D1E /* IntroductionDetailView.swift in Sources */,
 				9D6A430326F84CE200AAA491 /* MyPageAddTeamInfoViewController.swift in Sources */,
 				9D0DA55026F2458E00726077 /* MyPageVersionViewController.swift in Sources */,
@@ -669,6 +712,7 @@
 				9D95F7C726EA360800F3F2C7 /* SecondRecruitmentViewController.swift in Sources */,
 				9D7B9F7F26C94B640075F211 /* GameMatchingDetailViewController.swift in Sources */,
 				9DB3547526C5539E00ADB9A0 /* FirstRecruitmentViewController.swift in Sources */,
+				9D3DA5292706D05400C40257 /* FirstManRecruitmentViewController.swift in Sources */,
 				9DD474B026903D78006F00F1 /* RoundView.swift in Sources */,
 				9D686C9E26AD663700440CBF /* RoundStackView.swift in Sources */,
 				9D6A430526F84D0B00AAA491 /* MyPageChangeTeamInfoViewController.swift in Sources */,

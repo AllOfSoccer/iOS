@@ -51,7 +51,7 @@ class IBSelectTableButton: UIButton {
         }
     }
 
-    @IBInspectable var selectTintColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) {
+    @IBInspectable var selectTintColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) {
         didSet {
             update()
         }
@@ -95,9 +95,8 @@ class IBSelectTableButton: UIButton {
         setTitleColor(selectTitleColor, for: .selected)
         backgroundColor = isSelected ? selectBackgroundColor : normalBackgroundColor
         layer.borderColor = isSelected ? selectBorderColor.cgColor : normalBorderColor.cgColor
-        tintColor = isSelected ? selectTitleColor : normalTitleColor
+        tintColor = isSelected ? selectTintColor : selectTintColor
         layer.borderWidth = borderWidth
         contentEdgeInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
-
     }
 }

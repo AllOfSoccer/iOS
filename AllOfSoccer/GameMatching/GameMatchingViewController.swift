@@ -194,11 +194,14 @@ class GameMatchingViewController: UIViewController {
     }
 
     // 뷰 완성시 코드 추가할 예정
-    @IBAction func teamRecruitmentButtonTouchUp(_ sender: UIButton) {
+    @IBAction private func teamRecruitmentButtonTouchUp(_ sender: UIButton) {
+        guard let manRecruitmentNavigationController = UIStoryboard.init(name: "ManRecruitment", bundle: nil).instantiateViewController(identifier: "ManRecruitmentNavigationController") as? UINavigationController  else { return }
 
+        manRecruitmentNavigationController.modalPresentationStyle = .fullScreen
+        self.navigationController?.present(manRecruitmentNavigationController, animated: true, completion: nil)
     }
 
-    @IBAction func manRecruitmentButtonTouchUp(_ sender: UIButton) {
+    @IBAction private func manRecruitmentButtonTouchUp(_ sender: UIButton) {
         guard let recruitmentNavigationController = UIStoryboard.init(name: "Recruitment", bundle: nil).instantiateViewController(identifier: "RecruitmentNavigationController") as? UINavigationController  else { return }
 
         recruitmentNavigationController.modalPresentationStyle = .fullScreen
@@ -379,7 +382,6 @@ class GameMatchingViewController: UIViewController {
             self.teamRecruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -105),
             self.teamRecruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -25)
         ])
-
     }
 
     private func makeDate(_ nextDay: Int) -> String? {

@@ -93,7 +93,7 @@ class SeletableButton: UIButton {
         setTitleColor(selectTitleColor, for: .selected)
         backgroundColor = isSelected ? selectBackgroundColor : normalBackgroundColor
         layer.borderColor = isSelected ? selectBorderColor.cgColor : normalBorderColor.cgColor
-        tintColor = isSelected ? selectTitleColor : normalTitleColor
+        tintColor = isSelected ? selectTintColor : selectTintColor
         layer.borderWidth = borderWidth
         contentEdgeInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
         tintColor = UIColor.clear
