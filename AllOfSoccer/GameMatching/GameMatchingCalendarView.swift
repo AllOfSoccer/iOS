@@ -24,6 +24,7 @@ class GameMatchingCalendarView: UIView {
         let view = UIView()
         view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 12
+
         return view
     }()
 
@@ -109,6 +110,7 @@ class GameMatchingCalendarView: UIView {
         stackView.axis = .horizontal
         stackView.spacing = 8
         stackView.distribution = .fillEqually
+
         return stackView
     }()
 
@@ -157,20 +159,20 @@ class GameMatchingCalendarView: UIView {
             self.okAndCancelStackView.bottomAnchor.constraint(equalTo: self.baseView.bottomAnchor, constant: -24),
             self.okAndCancelStackView.heightAnchor.constraint(equalToConstant: 40),
 
-            self.calendar.topAnchor.constraint(equalTo: self.baseView.topAnchor, constant: 0),
-            self.calendar.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 28),
-            self.calendar.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -28),
+            self.calendar.topAnchor.constraint(equalTo: self.baseView.topAnchor, constant: 20),
+            self.calendar.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 22),
+            self.calendar.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -22),
             self.calendar.bottomAnchor.constraint(equalTo: self.okAndCancelStackView.topAnchor, constant: 0),
 
-            self.monthPrevButton.topAnchor.constraint(equalTo: calendar.topAnchor, constant: 15),
-            self.monthPrevButton.leadingAnchor.constraint(equalTo: calendar.leadingAnchor, constant: 25),
+            self.monthPrevButton.topAnchor.constraint(equalTo: calendar.topAnchor, constant: 5),
+            self.monthPrevButton.leadingAnchor.constraint(equalTo: calendar.leadingAnchor, constant: 2),
             self.monthPrevButton.widthAnchor.constraint(equalToConstant: 14),
             self.monthPrevButton.widthAnchor.constraint(equalToConstant: 14),
 
-            self.monthNextButton.topAnchor.constraint(equalTo: calendar.topAnchor, constant: 15),
-            self.monthNextButton.trailingAnchor.constraint(equalTo: calendar.trailingAnchor, constant: -25),
+            self.monthNextButton.topAnchor.constraint(equalTo: calendar.topAnchor, constant: 5),
+            self.monthNextButton.trailingAnchor.constraint(equalTo: calendar.trailingAnchor, constant: -2),
             self.monthNextButton.widthAnchor.constraint(equalToConstant: 14),
-            self.monthNextButton.widthAnchor.constraint(equalToConstant: 14),
+            self.monthNextButton.widthAnchor.constraint(equalToConstant: 14)
         ])
     }
 

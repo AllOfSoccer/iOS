@@ -108,6 +108,7 @@ class GameMatchingViewController: UIViewController {
     private var recruitmentBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+
         return view
     }()
 
@@ -208,12 +209,21 @@ class GameMatchingViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(false)
 
+        self.recruitmentButton.isHidden = false
+        self.manRecruitmentButton.isHidden = false
+        self.teamRecruitmentButton.isHidden = false
+        self.tabBarController?.view.insertSubview(self.recruitmentButton, at: self.tabBarController?.view.subviews.count ?? 0)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(false)
 
+        self.recruitmentButton.isHidden = true
+        self.manRecruitmentButton.isHidden = true
+        self.teamRecruitmentButton.isHidden = true
+        self.tabBarController?.view.insertSubview(self.recruitmentButton, at: self.tabBarController?.view.subviews.count ?? 0)
     }
 
     // MARK: - Setup View
@@ -242,6 +252,7 @@ class GameMatchingViewController: UIViewController {
     }
 
     private func setupFilterTagCollectionView() {
+
         self.filterTagCollectionView.delegate = self
         self.filterTagCollectionView.dataSource = self
         self.filterTagCollectionView.allowsMultipleSelection = true
@@ -260,7 +271,6 @@ class GameMatchingViewController: UIViewController {
             let tagCellData = FilterTagModel(filterType: filterType)
             self.tagCellModel.append(tagCellData)
         }
-        print("ddd")
     }
 
     private func setupTableViewFilterView() {
