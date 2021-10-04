@@ -9,8 +9,8 @@ import UIKit
 import FSCalendar
 
 protocol GameMatchingCalendarViewDelegate: AnyObject {
-    func cancelButtonDidSelected(_ sender: GameMatchingCalendarView)
-    func okButtonDidSelected(_ sender: GameMatchingCalendarView)
+    func cancelButtonDidSelected(sender: GameMatchingCalendarView)
+    func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDate: [String])
 }
 
 class GameMatchingCalendarView: UIView {
@@ -19,6 +19,13 @@ class GameMatchingCalendarView: UIView {
 
     private var selectedDate: [String] = []
     private var currentPage: Date?
+
+    private var baseView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = 12
+        return view
+    }()
 
     private var calendar: FSCalendar = {
         let calendar = FSCalendar()
@@ -34,12 +41,12 @@ class GameMatchingCalendarView: UIView {
 
         calendar.locale = Locale(identifier: "ko-KR")
         calendar.calendarWeekdayView.weekdayLabels[0].text = "일"
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "월"
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "화"
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "수"
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "목"
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "금"
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "토"
+        calendar.calendarWeekdayView.weekdayLabels[1].text = "월"
+        calendar.calendarWeekdayView.weekdayLabels[2].text = "화"
+        calendar.calendarWeekdayView.weekdayLabels[3].text = "수"
+        calendar.calendarWeekdayView.weekdayLabels[4].text = "목"
+        calendar.calendarWeekdayView.weekdayLabels[5].text = "금"
+        calendar.calendarWeekdayView.weekdayLabels[6].text = "토"
 
         calendar.allowsMultipleSelection = true
 
@@ -48,15 +55,19 @@ class GameMatchingCalendarView: UIView {
 
     private var monthPrevButton: UIButton = {
         let button = UIButton()
-
-        button.addTarget(self, action: #selector(monthBackButtonTouchUp), for: .touchUpInside)
+        let buttonImage = UIImage(systemName: "arrowtriangle.left.fill")
+        button.setImage(buttonImage, for: .normal)
+        button.tintColor = UIColor(red: 194.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0)
+        button.addTarget(self, action: #selector(monthPrevButtonTouchUp), for: .touchUpInside)
 
         return button
     }()
 
     private var monthNextButton: UIButton = {
         let button = UIButton()
-
+        let buttonImage = UIImage(systemName: "arrowtriangle.right.fill")
+        button.setImage(buttonImage, for: .normal)
+        button.tintColor = UIColor(red: 194.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0)
         button.addTarget(self, action: #selector(monthNextButtonTouchUp), for: .touchUpInside)
 
         return button
@@ -119,7 +130,7 @@ class GameMatchingCalendarView: UIView {
     }
 
     private func setSuperView() {
-        self.layer.cornerRadius = 12
+        self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
     }
 
     private func setCalendar() {
@@ -130,26 +141,33 @@ class GameMatchingCalendarView: UIView {
 
     private func setViewConstraint() {
 
-        self.addsubviews(self.okAndCancelStackView, self.calendar)
+        self.addsubviews(self.baseView)
+        self.baseView.addsubviews(self.okAndCancelStackView, self.calendar)
         self.calendar.addsubviews(self.monthPrevButton, self.monthNextButton)
 
         NSLayoutConstraint.activate([
-            self.okAndCancelStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
-            self.okAndCancelStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
-            self.okAndCancelStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -24),
+
+            self.baseView.widthAnchor.constraint(equalToConstant: 315),
+            self.baseView.heightAnchor.constraint(equalToConstant: 406),
+            self.baseView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.baseView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+
+            self.okAndCancelStackView.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 32),
+            self.okAndCancelStackView.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -32),
+            self.okAndCancelStackView.bottomAnchor.constraint(equalTo: self.baseView.bottomAnchor, constant: -24),
             self.okAndCancelStackView.heightAnchor.constraint(equalToConstant: 40),
 
-            self.calendar.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            self.calendar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            self.calendar.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+            self.calendar.topAnchor.constraint(equalTo: self.baseView.topAnchor, constant: 0),
+            self.calendar.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 28),
+            self.calendar.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -28),
             self.calendar.bottomAnchor.constraint(equalTo: self.okAndCancelStackView.topAnchor, constant: 0),
 
-            self.monthPrevButton.topAnchor.constraint(equalTo: calendar.topAnchor, constant: 25),
+            self.monthPrevButton.topAnchor.constraint(equalTo: calendar.topAnchor, constant: 15),
             self.monthPrevButton.leadingAnchor.constraint(equalTo: calendar.leadingAnchor, constant: 25),
             self.monthPrevButton.widthAnchor.constraint(equalToConstant: 14),
             self.monthPrevButton.widthAnchor.constraint(equalToConstant: 14),
 
-            self.monthNextButton.topAnchor.constraint(equalTo: calendar.topAnchor, constant: 25),
+            self.monthNextButton.topAnchor.constraint(equalTo: calendar.topAnchor, constant: 15),
             self.monthNextButton.trailingAnchor.constraint(equalTo: calendar.trailingAnchor, constant: -25),
             self.monthNextButton.widthAnchor.constraint(equalToConstant: 14),
             self.monthNextButton.widthAnchor.constraint(equalToConstant: 14),
@@ -157,14 +175,14 @@ class GameMatchingCalendarView: UIView {
     }
 
     @objc private func cancelButtonTouchUp(sender: UIButton) {
-        self.delegate?.cancelButtonDidSelected(self)
+        self.delegate?.cancelButtonDidSelected(sender: self)
     }
 
     @objc private func okButtonTouchUp(sender: UIButton) {
-        self.delegate?.okButtonDidSelected(self)
+        self.delegate?.okButtonDidSelected(sender: self, selectedDate: self.selectedDate)
     }
 
-    @objc private func monthBackButtonTouchUp(_ sender: UIButton) {
+    @objc private func monthPrevButtonTouchUp(_ sender: UIButton) {
         moveCurrentPage(moveUp: false)
     }
 

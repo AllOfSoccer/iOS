@@ -50,7 +50,7 @@ class FirstRecruitmentViewController: UIViewController {
         self.searchPlaceView.isHidden = true
         self.recruitmentCalendarView.isHidden = true
 
-        self.recruitmentCalendarView.delegate = self
+//        self.recruitmentCalendarView.delegate = self
         self.searchPlaceView.delegate = self
     }
 
@@ -125,20 +125,20 @@ class FirstRecruitmentViewController: UIViewController {
     }
 }
 
-extension FirstRecruitmentViewController:
-    RecruitmentCalendarViewDelegate {
-
-    func cancelButtonDidSelected(_ sender: GameMatchingCalendarView) {
-        self.backgroundView.isHidden = true
-        self.recruitmentCalendarView.isHidden = true
-    }
-
-    // 향후 데이터 처리를 할 함수
-    func okButtonDidSelected(_ sender: GameMatchingCalendarView) {
-        self.backgroundView.isHidden = true
-        self.recruitmentCalendarView.isHidden = true
-    }
-}
+//extension FirstRecruitmentViewController:
+//    RecruitmentCalendarViewDelegate {
+//
+//    func cancelButtonDidSelected(_ sender: GameMatchingCalendarView) {
+//        self.backgroundView.isHidden = true
+//        self.recruitmentCalendarView.isHidden = true
+//    }
+//
+//    // 향후 데이터 처리를 할 함수
+//    func okButtonDidSelected(_ sender: GameMatchingCalendarView) {
+//        self.backgroundView.isHidden = true
+//        self.recruitmentCalendarView.isHidden = true
+//    }
+//}
 
 extension FirstRecruitmentViewController: SearchPlaceViewDelegate {
     func cancelButtonDidSelected(_ sender: SearchPlaceView) {
