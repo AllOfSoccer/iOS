@@ -223,6 +223,15 @@ class GameMatchingViewController: UIViewController {
         setupRecruitmentButtonConstraint()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+
+    }
+
     // MARK: - Setup View
     private func setupHorizontalCalendarView() {
         self.horizontalCalendarView.delegate = self
@@ -346,41 +355,29 @@ class GameMatchingViewController: UIViewController {
     }
 
     private func setupRecruitmentButtonConstraint() {
-        guard let tabbar = self.tabBarController else { return }
-        tabbar.view.addSubview(self.recruitmentButton)
-        tabbar.view.addSubview(self.recruitmentBackgroundView)
-        tabbar.view.addSubview(self.manRecruitmentButton)
-        tabbar.view.addSubview(self.teamRecruitmentButton)
 
-        self.recruitmentButton.translatesAutoresizingMaskIntoConstraints = false
-        self.recruitmentBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        self.manRecruitmentButton.translatesAutoresizingMaskIntoConstraints = false
-        self.teamRecruitmentButton.translatesAutoresizingMaskIntoConstraints = false
+        guard let tabBarController = self.tabBarController else { return }
+
+        tabBarController.view.addsubviews(self.recruitmentButton, self.recruitmentBackgroundView, self.manRecruitmentButton, self.teamRecruitmentButton)
 
         self.recruitmentBackgroundView.isHidden = true
         self.manRecruitmentButton.isHidden = true
         self.teamRecruitmentButton.isHidden = true
 
         NSLayoutConstraint.activate([
-            self.recruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -100),
-            self.recruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -20)
-        ])
+            self.recruitmentButton.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: -100),
+            self.recruitmentButton.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: -20),
 
-        NSLayoutConstraint.activate([
-            self.recruitmentBackgroundView.topAnchor.constraint(equalTo: tabbar.view.topAnchor, constant: 0),
-            self.recruitmentBackgroundView.leadingAnchor.constraint(equalTo: tabbar.view.leadingAnchor, constant: 0),
-            self.recruitmentBackgroundView.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: 0),
-            self.recruitmentBackgroundView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: 0)
-        ])
+            self.recruitmentBackgroundView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 0),
+            self.recruitmentBackgroundView.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 0),
+            self.recruitmentBackgroundView.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: 0),
+            self.recruitmentBackgroundView.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: 0),
 
-        NSLayoutConstraint.activate([
-            self.manRecruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -105),
-            self.manRecruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -25)
-        ])
+            self.manRecruitmentButton.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: -105),
+            self.manRecruitmentButton.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: -25),
 
-        NSLayoutConstraint.activate([
-            self.teamRecruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -105),
-            self.teamRecruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -25)
+            self.teamRecruitmentButton.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: -105),
+            self.teamRecruitmentButton.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: -25)
         ])
     }
 
@@ -458,19 +455,20 @@ class GameMatchingViewController: UIViewController {
     private func appearTableViewFilterView() {
         self.tableViewFilterButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
 
-        guard let tabbar = self.tabBarController else { return }
-        tabbar.view.addSubview(self.filterBackgroundView)
-        self.filterBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.filterBackgroundView.topAnchor.constraint(equalTo: tabbar.view.topAnchor),
-            self.filterBackgroundView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor),
-            self.filterBackgroundView.leadingAnchor.constraint(equalTo: tabbar.view.leadingAnchor),
-            self.filterBackgroundView.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor)
-        ])
+        guard let tabBarController = self.tabBarController else { return }
 
+        tabBarController.view.addSubview(self.filterBackgroundView)
         self.filterBackgroundView.addSubview(self.tableViewFilterView)
+
+        self.filterBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         self.tableViewFilterView.translatesAutoresizingMaskIntoConstraints = false
+
         NSLayoutConstraint.activate([
+            self.filterBackgroundView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor),
+            self.filterBackgroundView.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor),
+            self.filterBackgroundView.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor),
+            self.filterBackgroundView.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor),
+
             self.tableViewFilterView.widthAnchor.constraint(equalToConstant: 315),
             self.tableViewFilterView.heightAnchor.constraint(equalToConstant: 271),
             self.tableViewFilterView.centerXAnchor.constraint(equalTo: self.filterBackgroundView.centerXAnchor),
