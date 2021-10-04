@@ -58,7 +58,6 @@
 		9DB03E6C2701DF79004412AF /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB03E692701DF78004412AF /* UICollectionViewCell+Extension.swift */; };
 		9DB1AB1A26B955F8003E517A /* FilterDetailTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */; };
 		9DB3547526C5539E00ADB9A0 /* FirstRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3547426C5539E00ADB9A0 /* FirstRecruitmentViewController.swift */; };
-		9DB3547726C554F500ADB9A0 /* RecruitmentCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3547626C554F500ADB9A0 /* RecruitmentCalendarView.swift */; };
 		9DB354E626F70017007D8863 /* teamInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB354E526F70017007D8863 /* teamInfoModel.swift */; };
 		9DBC70E826A986D0005F6BFA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9DBC70E726A986D0005F6BFA /* SnapKit */; };
 		9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC1289A269178500021EDF5 /* MainTabBarController.swift */; };
@@ -74,6 +73,7 @@
 		9DD474BC26903E95006F00F1 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 9DD474BB26903E95006F00F1 /* NVActivityIndicatorViewExtended */; };
 		9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */; };
 		9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */; };
+		9DD4AE32270B0AB500FF6976 /* GameMatchingCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4AE31270B0AB500FF6976 /* GameMatchingCalendarView.swift */; };
 		9DD694EA26FB4CF8006047A0 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD694E926FB4CF8006047A0 /* Array+Extension.swift */; };
 		9DDF10DE26EDE1F600A3986E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF10DD26EDE1F600A3986E /* UIView+Extension.swift */; };
 		9DE4F2A426AF070000F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DC128AD26918E710021EDF5 /* FSCalendar */; };
@@ -142,7 +142,6 @@
 		9DB03E692701DF78004412AF /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB3547426C5539E00ADB9A0 /* FirstRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRecruitmentViewController.swift; sourceTree = "<group>"; };
-		9DB3547626C554F500ADB9A0 /* RecruitmentCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentCalendarView.swift; sourceTree = "<group>"; };
 		9DB354E526F70017007D8863 /* teamInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamInfoModel.swift; sourceTree = "<group>"; };
 		9DC1289A269178500021EDF5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		9DC1289F26917E400021EDF5 /* GameMatching.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameMatching.storyboard; sourceTree = "<group>"; };
@@ -156,6 +155,7 @@
 		9DD474B526903D97006F00F1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		9DD474BE26903F75006F00F1 /* BlockingActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingActivityIndicator.swift; sourceTree = "<group>"; };
 		9DD474C126903F8F006F00F1 /* ContentSizedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedCollectionView.swift; sourceTree = "<group>"; };
+		9DD4AE31270B0AB500FF6976 /* GameMatchingCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMatchingCalendarView.swift; sourceTree = "<group>"; };
 		9DD694E926FB4CF8006047A0 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		9DDF10DD26EDE1F600A3986E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9DE76BDF26F86270007D3406 /* MyPageNoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNoticeDetailViewController.swift; sourceTree = "<group>"; };
@@ -278,7 +278,6 @@
 		9D3DA52E2706D1F000C40257 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				9DB3547626C554F500ADB9A0 /* RecruitmentCalendarView.swift */,
 				9DA714C126EC964D00B40D1E /* IntroductionDetailView.swift */,
 				9D5AA9C826CBC72500A33D20 /* SearchPlaceView.swift */,
 			);
@@ -374,6 +373,7 @@
 			children = (
 				9DC1289F26917E400021EDF5 /* GameMatching.storyboard */,
 				9DC128A226917E740021EDF5 /* GameMatchingViewController.swift */,
+				9DD4AE31270B0AB500FF6976 /* GameMatchingCalendarView.swift */,
 				9DC3C6DB26BBAE4500AD6B7D /* HorizontalCalendar */,
 				9DC3C6DC26BBAE6300AD6B7D /* FilterTagCollectionView */,
 				9DD48F9326BD8A1D00FE54FE /* FilterDetailView */,
@@ -679,7 +679,6 @@
 				9D7E641326EC4BE900B51D37 /* IntrinsicTableView.swift in Sources */,
 				9D7D409D26BE792000E8329E /* FilterDetailTagModel.swift in Sources */,
 				9DD694EA26FB4CF8006047A0 /* Array+Extension.swift in Sources */,
-				9DB3547726C554F500ADB9A0 /* RecruitmentCalendarView.swift in Sources */,
 				9DD474B626903D97006F00F1 /* RoundButton.swift in Sources */,
 				9D0DA55426F249A900726077 /* MyPageMyInformationViewController.swift in Sources */,
 				9D3DA5222706C43F00C40257 /* BackgroundView.swift in Sources */,
@@ -697,6 +696,7 @@
 				9DC128A326917E740021EDF5 /* GameMatchingViewController.swift in Sources */,
 				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
 				9D8D32FF26CD53970097A172 /* RecruitmentTableViewCell.swift in Sources */,
+				9DD4AE32270B0AB500FF6976 /* GameMatchingCalendarView.swift in Sources */,
 				9DB03E6B2701DF79004412AF /* UIButton+Extension.swift in Sources */,
 				9D3DA5302706D2BC00C40257 /* ManRecruitmenTableViewCell.swift in Sources */,
 				9DF0B4C32705E0D6006F8A62 /* SliderLabels.swift in Sources */,

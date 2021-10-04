@@ -10,7 +10,7 @@ import UIKit
 class FirstRecruitmentViewController: UIViewController {
 
     private let searchPlaceView = SearchPlaceView()
-    private let recruitmentCalendarView = RecruitmentCalendarView()
+    private let recruitmentCalendarView = GameMatchingCalendarView()
     private var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
@@ -128,13 +128,13 @@ class FirstRecruitmentViewController: UIViewController {
 extension FirstRecruitmentViewController:
     RecruitmentCalendarViewDelegate {
 
-    func cancelButtonDidSelected(_ sender: RecruitmentCalendarView) {
+    func cancelButtonDidSelected(_ sender: GameMatchingCalendarView) {
         self.backgroundView.isHidden = true
         self.recruitmentCalendarView.isHidden = true
     }
 
     // 향후 데이터 처리를 할 함수
-    func okButtonDidSelected(_ sender: RecruitmentCalendarView) {
+    func okButtonDidSelected(_ sender: GameMatchingCalendarView) {
         self.backgroundView.isHidden = true
         self.recruitmentCalendarView.isHidden = true
     }

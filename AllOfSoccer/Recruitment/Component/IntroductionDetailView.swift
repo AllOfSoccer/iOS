@@ -52,7 +52,7 @@ class IntroductionDetailView: UIView {
         button.layer.borderColor = UIColor(red: 246/255, green: 247/255, blue: 250/255, alpha: 1).cgColor
         button.clipsToBounds = true
         button.setBackgroundColor(UIColor(red: 246/255, green: 247/255, blue: 250/255, alpha: 1), for: .normal)
-        button.addTarget(self, action: #selector(cancelButtonDidSelected), for: .touchUpInside)
+        button.addTarget(self, action: #selector(cancelButtonTouchUp), for: .touchUpInside)
 
         return button
     }()
