@@ -22,84 +22,148 @@ enum SortMode: Int {
 }
 
 protocol TableViewFilterViewDelegate: AnyObject {
-    func finishButtonDidSelected(_ tableViewFilterView: TableViewFilterView, sortMode: SortMode)
+    func cancelButtonDidSelected(sender: TableViewFilterView)
+    func okButtonDidSelected(sender: TableViewFilterView, sortMode: SortMode)
 }
 
 class TableViewFilterView: UIView {
 
-    private var sortMode: SortMode?
     weak var delegate: TableViewFilterViewDelegate?
 
-    private var firstCheckButton = UIButton()
-    private var secondCheckButton = UIButton()
-    private var thirdCheckButton = UIButton()
+    private var sortMode: SortMode?
 
-    private var tableViewSortingFinishButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor(named: "tagBackTouchUpColor")
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("선택하기", for: .normal)
-
-        button.addTarget(self, action: #selector(sortingFinishButtonTouchUp), for: .touchUpInside)
-        return button
-    }()
-
-    private lazy var tableViewSortingContentView: UIView = {
+    private var baseView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
-
-        let titleLabel = UILabel()
-        titleLabel.textColor = .black
-        titleLabel.text = "정렬기준"
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-
-        view.addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
-        ])
-
-        self.firstCheckButton = checkButton(SortMode.distance)
-        self.secondCheckButton = checkButton(SortMode.registration)
-        self.thirdCheckButton = checkButton(SortMode.dateAndTime)
-
-        let stackView = UIStackView(arrangedSubviews: [firstCheckButton, secondCheckButton, thirdCheckButton])
-        stackView.axis = .vertical
-        stackView.spacing = 23
-        stackView.distribution = .fillEqually
-
-        view.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 19)
-        ])
+        view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = 12
 
         return view
     }()
 
-    private func checkButton(_ sortMode: SortMode) -> UIButton {
-        let button = UIButton()
+    private var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = "정렬기준"
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
 
-        let nonCheckedBoxImage = UIImage(systemName: "checkmark.circle")
-        let checkedBoxImage = UIImage(systemName: "checkmark.circle.fill")
-        button.setImage(nonCheckedBoxImage, for: .normal)
-        button.setImage(checkedBoxImage, for: .selected)
-        button.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        button.setTitleColor(.black, for: .normal)
-        button.setTitle(sortMode.sortModeTitle, for: .normal)
-        button.contentHorizontalAlignment = .left
-        button.tag = sortMode.rawValue
+        return label
+    }()
+
+    private var firstSelectableButton: SeletableButton = {
+        let button = SeletableButton()
+        button.setTitle(SortMode.distance.sortModeTitle, for: .normal)
+        button.normalImage = UIImage(systemName: "checkmark.circle")
+        button.selectImage = UIImage(systemName: "checkmark.circle.fill")
+        button.normalBackgroundColor = UIColor.clear
+        button.selectBackgroundColor = UIColor.clear
+        button.normalBorderColor = UIColor.clear
+        button.selectBorderColor = UIColor.clear
+        button.normalTintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
+        button.selectTintColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
+        button.normalTitleColor = UIColor.black
+        button.selectTitleColor = UIColor.black
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
+        button.contentHorizontalAlignment = .left
 
-        button.addTarget(self, action: #selector(checkButtonTouchUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(firstSelectableButtonTouchUp), for: .touchUpInside)
 
         return button
-    }
+    }()
+
+    private var secondSelectableButton: SeletableButton = {
+        let button = SeletableButton()
+        button.setTitle(SortMode.registration.sortModeTitle, for: .normal)
+        button.normalImage = UIImage(systemName: "checkmark.circle")
+        button.selectImage = UIImage(systemName: "checkmark.circle.fill")
+        button.normalBackgroundColor = UIColor.clear
+        button.selectBackgroundColor = UIColor.clear
+        button.normalBorderColor = UIColor.clear
+        button.selectBorderColor = UIColor.clear
+        button.normalTintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
+        button.selectTintColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
+        button.normalTitleColor = UIColor.black
+        button.selectTitleColor = UIColor.black
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
+        button.contentHorizontalAlignment = .left
+
+        button.addTarget(self, action: #selector(secondSelectableButtonTouchUp), for: .touchUpInside)
+
+        return button
+    }()
+
+    private var thirdSelectableButton: SeletableButton = {
+        let button = SeletableButton()
+        button.setTitle(SortMode.dateAndTime.sortModeTitle, for: .normal)
+        button.normalImage = UIImage(systemName: "checkmark.circle")
+        button.selectImage = UIImage(systemName: "checkmark.circle.fill")
+        button.normalBackgroundColor = UIColor.clear
+        button.selectBackgroundColor = UIColor.clear
+        button.normalBorderColor = UIColor.clear
+        button.selectBorderColor = UIColor.clear
+        button.normalTintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
+        button.selectTintColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
+        button.normalTitleColor = UIColor.black
+        button.selectTitleColor = UIColor.black
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
+        button.contentHorizontalAlignment = .left
+
+        button.addTarget(self, action: #selector(thirdSelectableButtonTouchUp), for: .touchUpInside)
+
+        return button
+    }()
+
+    private lazy var selectableButtonStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [self.firstSelectableButton, self.secondSelectableButton, self.thirdSelectableButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        stackView.distribution = .fillEqually
+
+        return stackView
+    }()
+
+    private var cancelButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("취소", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        button.setTitleColor(UIColor.black, for: .normal)
+        let backgroundColor = UIColor(red: 246/255, green: 247/255, blue: 250/255, alpha: 1)
+        button.backgroundColor = backgroundColor
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+
+        button.addTarget(self, action: #selector(cancelButtonTouchUp), for: .touchUpInside)
+
+        return button
+    }()
+
+    private var okButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("선택", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        button.setTitleColor(UIColor.white, for: .normal)
+        let backgroundColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
+        button.backgroundColor = backgroundColor
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+
+        button.addTarget(self, action: #selector(okButtonTouchUp), for: .touchUpInside)
+
+        return button
+    }()
+
+    lazy private var okAndCancelStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [self.cancelButton, self.okButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.distribution = .fillEqually
+
+        return stackView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -112,62 +176,79 @@ class TableViewFilterView: UIView {
     }
 
     private func loadView() {
-        let tableViewSortingCheckButton = tableViewSortingFinishButton
-        self.addSubview(tableViewSortingCheckButton)
-        tableViewSortingCheckButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tableViewSortingCheckButton.widthAnchor.constraint(equalTo: self.widthAnchor),
-            tableViewSortingCheckButton.heightAnchor.constraint(equalToConstant: 63),
-            tableViewSortingCheckButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
-        ])
 
-        let tableViewSortingContentView = tableViewSortingContentView
-        tableViewSortingContentView.backgroundColor = .white
-        self.addSubview(tableViewSortingContentView)
-        tableViewSortingContentView.translatesAutoresizingMaskIntoConstraints = false
+        setSuperView()
+        setViewConstraint()
+    }
+
+    private func setSuperView() {
+        self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+    }
+
+    private func setViewConstraint() {
+
+        self.addsubviews(self.baseView)
+        self.baseView.addsubviews(self.okAndCancelStackView, self.titleLabel, self.selectableButtonStackView)
+
         NSLayoutConstraint.activate([
-            tableViewSortingContentView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            tableViewSortingContentView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            tableViewSortingContentView.bottomAnchor.constraint(equalTo: tableViewSortingCheckButton.topAnchor, constant: 0)
+
+            self.baseView.widthAnchor.constraint(equalToConstant: 336),
+            self.baseView.heightAnchor.constraint(equalToConstant: 276),
+            self.baseView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.baseView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+
+            self.okAndCancelStackView.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 32),
+            self.okAndCancelStackView.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -32),
+            self.okAndCancelStackView.bottomAnchor.constraint(equalTo: self.baseView.bottomAnchor, constant: -24),
+            self.okAndCancelStackView.heightAnchor.constraint(equalToConstant: 40),
+
+            self.titleLabel.topAnchor.constraint(equalTo: self.baseView.topAnchor, constant: 24),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 29),
+
+            self.selectableButtonStackView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 28),
+            self.selectableButtonStackView.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 28)
         ])
     }
 
-    @objc private func checkButtonTouchUp(sender: UIButton) {
+    @objc func firstSelectableButtonTouchUp(_ sender: SeletableButton) {
+        self.sortMode = SortMode.distance
+
+        sender.isSelected = sender.isSelected ? false : true
+
         if sender.isSelected {
-            self.sortMode = nil
-            sender.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
-            sender.isSelected = false
-        } else {
-            if sender.tag == SortMode.distance.rawValue {
-                self.sortMode = .distance
-                self.secondCheckButton.isSelected = false
-                self.thirdCheckButton.isSelected = false
-
-                self.secondCheckButton.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
-                self.thirdCheckButton.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
-            } else if sender.tag == SortMode.registration.rawValue {
-                self.sortMode = .registration
-                self.firstCheckButton.isSelected = false
-                self.thirdCheckButton.isSelected = false
-
-                self.firstCheckButton.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
-                self.thirdCheckButton.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
-            } else if sender.tag == SortMode.dateAndTime.rawValue {
-                self.sortMode = .dateAndTime
-                self.firstCheckButton.isSelected = false
-                self.secondCheckButton.isSelected = false
-
-                self.firstCheckButton.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
-                self.secondCheckButton.tintColor = UIColor(named: "checkBoxTintColor_NoneChecked")
-            }
-
-            sender.tintColor = UIColor(named: "tagBackTouchUpColor")
-            sender.isSelected = true
+            self.secondSelectableButton.isSelected = false
+            self.thirdSelectableButton.isSelected = false
         }
     }
 
-    @objc private func sortingFinishButtonTouchUp(sender: UIButton) {
+    @objc func secondSelectableButtonTouchUp(_ sender: SeletableButton) {
+        self.sortMode = SortMode.registration
+
+        sender.isSelected = sender.isSelected ? false : true
+
+        if sender.isSelected {
+            self.firstSelectableButton.isSelected = false
+            self.thirdSelectableButton.isSelected = false
+        }
+    }
+
+    @objc func thirdSelectableButtonTouchUp(_ sender: SeletableButton) {
+        self.sortMode = SortMode.dateAndTime
+
+        sender.isSelected = sender.isSelected ? false : true
+
+        if sender.isSelected {
+            self.firstSelectableButton.isSelected = false
+            self.secondSelectableButton.isSelected = false
+        }
+    }
+
+    @objc private func cancelButtonTouchUp(sender: UIButton) {
+        self.delegate?.cancelButtonDidSelected(sender: self)
+    }
+
+    @objc private func okButtonTouchUp(sender: UIButton) {
         guard let sortMode = self.sortMode else { return }
-        self.delegate?.finishButtonDidSelected(self, sortMode: sortMode)
+        self.delegate?.okButtonDidSelected(sender: self, sortMode: sortMode)
     }
 }

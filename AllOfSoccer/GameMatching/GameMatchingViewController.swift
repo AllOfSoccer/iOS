@@ -83,20 +83,14 @@ class GameMatchingViewController: UIViewController {
     @IBOutlet private weak var tagCollectionViewConstraint: NSLayoutConstraint!
 
     // MARK: - NormalCalendarView Variable
-
     private var norMalCalendarView = GameMatchingCalendarView()
     private var norMalCalendarDidSelectedDate: [String] = []
 
     @IBOutlet private weak var monthButton: UIButton!
 
     // MARK: - TableViewFilterView Variable
-    private var tableViewFilterView = TableViewFilterView()
     private var sortMode = SortMode.distance
-    private lazy var filterBackgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-        return view
-    }()
+//    private var tableViewFilterView = TableViewFilterView()
 
     @IBOutlet private weak var tableViewFilterButton: UIButton!
 
@@ -168,7 +162,10 @@ class GameMatchingViewController: UIViewController {
     }
 
     @IBAction func tableViewSortingButtonTouchUp(_ sender: UIButton) {
-        appearTableViewFilterView()
+
+        let tableViewFilterView = TableViewFilterView()
+        tableViewFilterView.delegate = self
+        tableViewFilterViewConstraints(tableViewFilterView: tableViewFilterView)
     }
 
     // MARK: - RecruitmentButtonAction
@@ -200,7 +197,7 @@ class GameMatchingViewController: UIViewController {
 
         setupHorizontalCalendarView()
         setupFilterTagCollectionView()
-        setupTableViewFilterView()
+//        setupTableViewFilterView()
         setupFilterDetailView()
         setupNoticeTableView()
 
@@ -273,9 +270,9 @@ class GameMatchingViewController: UIViewController {
         }
     }
 
-    private func setupTableViewFilterView() {
-        self.tableViewFilterView.delegate = self
-    }
+//    private func setupTableViewFilterView() {
+//        self.tableViewFilterView.delegate = self
+//    }
 
     private func setupFilterDetailView() {
         self.filterDetailView.delegate = self
@@ -399,27 +396,16 @@ class GameMatchingViewController: UIViewController {
         }
     }
 
-    private func appearTableViewFilterView() {
-        self.tableViewFilterButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
+    private func tableViewFilterViewConstraints(tableViewFilterView: TableViewFilterView) {
 
         guard let tabBarController = self.tabBarController else { return }
 
-        tabBarController.view.addSubview(self.filterBackgroundView)
-        self.filterBackgroundView.addSubview(self.tableViewFilterView)
-
-        self.filterBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        self.tableViewFilterView.translatesAutoresizingMaskIntoConstraints = false
-
+        tabBarController.view.addsubviews(tableViewFilterView)
         NSLayoutConstraint.activate([
-            self.filterBackgroundView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor),
-            self.filterBackgroundView.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor),
-            self.filterBackgroundView.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor),
-            self.filterBackgroundView.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor),
-
-            self.tableViewFilterView.widthAnchor.constraint(equalToConstant: 315),
-            self.tableViewFilterView.heightAnchor.constraint(equalToConstant: 271),
-            self.tableViewFilterView.centerXAnchor.constraint(equalTo: self.filterBackgroundView.centerXAnchor),
-            self.tableViewFilterView.centerYAnchor.constraint(equalTo: self.filterBackgroundView.centerYAnchor)
+            tableViewFilterView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 0),
+            tableViewFilterView.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 0),
+            tableViewFilterView.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: 0),
+            tableViewFilterView.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: 0)
         ])
     }
 
@@ -574,12 +560,22 @@ extension GameMatchingViewController: GameMatchingCalendarViewDelegate {
 
 // MARK: - TableViewFilterViewDelegate
 extension GameMatchingViewController: TableViewFilterViewDelegate {
-    func finishButtonDidSelected(_ tableViewFilterView: TableViewFilterView, sortMode: SortMode) {
+    func cancelButtonDidSelected(sender: TableViewFilterView) {
+        sender.removeFromSuperview()
+    }
+
+    func okButtonDidSelected(sender: TableViewFilterView, sortMode: SortMode) {
         self.sortMode = sortMode
         self.tableViewFilterButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
-        self.tableViewFilterView.removeFromSuperview()
-        self.filterBackgroundView.removeFromSuperview()
+        sender.removeFromSuperview()
     }
+//
+//    func finishButtonDidSelected(_ tableViewFilterView: TableViewFilterView, sortMode: SortMode) {
+//        self.sortMode = sortMode
+//        self.tableViewFilterButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
+//        self.tableViewFilterView.removeFromSuperview()
+//        self.filterBackgroundView.removeFromSuperview()
+//    }
 }
 
 // MARK: - FilterDetailViewDelegate

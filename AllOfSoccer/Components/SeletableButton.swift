@@ -9,6 +9,18 @@ import UIKit
 
 class SeletableButton: UIButton {
 
+    var normalImage: UIImage? {
+        didSet {
+            update()
+        }
+    }
+
+    var selectImage: UIImage? {
+        didSet {
+            update()
+        }
+    }
+
     var normalBackgroundColor: UIColor = #colorLiteral(red: 0.9647058824, green: 0.968627451, blue: 0.9803921569, alpha: 1) {
         didSet {
             update()
@@ -93,9 +105,9 @@ class SeletableButton: UIButton {
         setTitleColor(selectTitleColor, for: .selected)
         backgroundColor = isSelected ? selectBackgroundColor : normalBackgroundColor
         layer.borderColor = isSelected ? selectBorderColor.cgColor : normalBorderColor.cgColor
-        tintColor = isSelected ? selectTintColor : selectTintColor
+        tintColor = isSelected ? selectTintColor : normalTintColor
         layer.borderWidth = borderWidth
-        contentEdgeInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
-        tintColor = UIColor.clear
+        setImage(normalImage, for: .normal)
+        setImage(selectImage, for: .selected)
     }
 }

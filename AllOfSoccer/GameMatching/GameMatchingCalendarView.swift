@@ -149,8 +149,8 @@ class GameMatchingCalendarView: UIView {
 
         NSLayoutConstraint.activate([
 
-            self.baseView.widthAnchor.constraint(equalToConstant: 315),
-            self.baseView.heightAnchor.constraint(equalToConstant: 406),
+            self.baseView.widthAnchor.constraint(equalToConstant: 336),
+            self.baseView.heightAnchor.constraint(equalToConstant: 432),
             self.baseView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.baseView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
 
