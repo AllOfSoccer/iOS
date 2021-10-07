@@ -90,7 +90,6 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - TableViewFilterView Variable
     private var sortMode = SortMode.distance
-//    private var tableViewFilterView = TableViewFilterView()
 
     @IBOutlet private weak var tableViewFilterButton: UIButton!
 
@@ -269,10 +268,6 @@ class GameMatchingViewController: UIViewController {
             self.tagCellModel.append(tagCellData)
         }
     }
-
-//    private func setupTableViewFilterView() {
-//        self.tableViewFilterView.delegate = self
-//    }
 
     private func setupFilterDetailView() {
         self.filterDetailView.delegate = self
@@ -569,13 +564,6 @@ extension GameMatchingViewController: TableViewFilterViewDelegate {
         self.tableViewFilterButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
         sender.removeFromSuperview()
     }
-//
-//    func finishButtonDidSelected(_ tableViewFilterView: TableViewFilterView, sortMode: SortMode) {
-//        self.sortMode = sortMode
-//        self.tableViewFilterButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
-//        self.tableViewFilterView.removeFromSuperview()
-//        self.filterBackgroundView.removeFromSuperview()
-//    }
 }
 
 // MARK: - FilterDetailViewDelegate
