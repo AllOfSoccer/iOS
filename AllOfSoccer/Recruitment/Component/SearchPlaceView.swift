@@ -9,13 +9,20 @@ import UIKit
 import SearchTextField
 
 protocol SearchPlaceViewDelegate: AnyObject {
-    func cancelButtonDidSelected(_ sender: SearchPlaceView)
-    func okButtonDidSelected(_ sender: SearchPlaceView)
+    func cancelButtonDidSelected(_ view: SearchPlaceView)
+    func okButtonDidSelected(_ view: SearchPlaceView)
 }
 
 class SearchPlaceView: UIView {
 
     weak var delegate: SearchPlaceViewDelegate?
+
+    private var baseView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 12
+        return view
+    }()
 
     lazy private var textFieldView: UIView = {
         let view = UIView()
@@ -107,59 +114,57 @@ class SearchPlaceView: UIView {
         loadView()
     }
 
-    private func loadView() {
-        setupViewConstraint()
-        setupSuperView()
-        setupInputPlaceTextField()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        loadView()
     }
 
-    private func setupViewConstraint() {
-        self.addSubview(self.titleLabel)
-        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 30),
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32)
-        ])
+    private func loadView() {
 
-        self.addSubview(self.textFieldView)
-        self.textFieldView.translatesAutoresizingMaskIntoConstraints = false
+        setSuperView()
+        setupInputPlaceTextField()
+        setViewConstraint()
+    }
+
+    private func setViewConstraint() {
+
+        self.addsubviews(self.baseView)
+        self.baseView.addsubviews(self.titleLabel, self.textFieldView, self.okAndCancelStackView)
+        self.textFieldView.addsubviews(self.textFieldButton, self.inputPlaceTextField)
+
         NSLayoutConstraint.activate([
+
+            self.baseView.topAnchor.constraint(equalTo: self.topAnchor, constant: 168),
+            self.baseView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            self.baseView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            self.baseView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -168),
+
+            self.titleLabel.topAnchor.constraint(equalTo: self.baseView.topAnchor, constant: 30),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 32),
+
             self.textFieldView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 10),
-            self.textFieldView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 33),
-            self.textFieldView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -31),
-            self.textFieldView.heightAnchor.constraint(equalToConstant: 56)
-        ])
+            self.textFieldView.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 33),
+            self.textFieldView.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -31),
+            self.textFieldView.heightAnchor.constraint(equalToConstant: 56),
 
-        self.textFieldView.addSubview(self.textFieldButton)
-        self.textFieldButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
             self.textFieldButton.topAnchor.constraint(equalTo: self.textFieldView.topAnchor, constant: 6),
             self.textFieldButton.bottomAnchor.constraint(equalTo: self.textFieldView.bottomAnchor, constant: -6),
             self.textFieldButton.trailingAnchor.constraint(equalTo: self.textFieldView.trailingAnchor, constant: -6),
-            self.textFieldButton.widthAnchor.constraint(equalToConstant: 44)
-        ])
+            self.textFieldButton.widthAnchor.constraint(equalToConstant: 44),
 
-        self.textFieldView.addSubview(self.inputPlaceTextField)
-        self.inputPlaceTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
             self.inputPlaceTextField.centerYAnchor.constraint(equalTo: self.textFieldView.centerYAnchor),
             self.inputPlaceTextField.leadingAnchor.constraint(equalTo: self.textFieldView.leadingAnchor, constant: 16),
             self.inputPlaceTextField.trailingAnchor.constraint(equalTo: self.textFieldButton.leadingAnchor, constant: -16),
-        ])
 
-        self.addSubview(self.okAndCancelStackView)
-        self.okAndCancelStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.okAndCancelStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -24),
-            self.okAndCancelStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
-            self.okAndCancelStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
+            self.okAndCancelStackView.bottomAnchor.constraint(equalTo: self.baseView.bottomAnchor, constant: -24),
+            self.okAndCancelStackView.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 32),
+            self.okAndCancelStackView.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -32),
             self.okAndCancelStackView.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 
-    private func setupSuperView() {
-        self.backgroundColor = .white
-        self.layer.cornerRadius = CGFloat(12)
+    private func setSuperView() {
+        self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
     }
 
     private func setupInputPlaceTextField() {
@@ -175,20 +180,5 @@ class SearchPlaceView: UIView {
 
     @objc private func okButtonTouchUp(sender: UIButton) {
         self.delegate?.okButtonDidSelected(self)
-    }
-}
-
-extension UITextField {
-    func setPadding(left: CGFloat? = nil, right: CGFloat? = nil){
-        if let left = left {
-            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: left, height: self.frame.size.height))
-            self.leftView = paddingView
-            self.leftViewMode = .always
-        }
-        if let right = right {
-            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: right, height: self.frame.size.height))
-            self.rightView = paddingView
-            self.rightViewMode = .always
-        }
     }
 }

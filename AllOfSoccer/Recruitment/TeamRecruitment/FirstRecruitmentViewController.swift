@@ -9,14 +9,6 @@ import UIKit
 
 class FirstRecruitmentViewController: UIViewController {
 
-    private let searchPlaceView = SearchPlaceView()
-    private let recruitmentCalendarView = GameMatchingCalendarView()
-    private var backgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-        return view
-    }()
-
     @IBOutlet weak var sixMatchButton: IBSelectTableButton!
     @IBOutlet weak var elevenMatchButton: IBSelectTableButton!
     @IBOutlet weak var manMatchButton: IBSelectTableButton!
@@ -26,32 +18,36 @@ class FirstRecruitmentViewController: UIViewController {
     @IBOutlet weak var soccerShoesButton: IBSelectTableButton!
 
     @IBAction private func calendarButtonTouchUp(_ sender: UIButton) {
-        self.recruitmentCalendarView.isHidden = false
-        self.backgroundView.isHidden = false
+        let recruitmentCalendarView = RecruitmentCalendarView()
+        recruitmentCalendarView.delegate = self
+        subviewConstraints(view: recruitmentCalendarView)
     }
 
     @IBAction private func placeButtonTouchUp(_ sender: UIButton) {
-        self.searchPlaceView.isHidden = false
-        self.backgroundView.isHidden = false
+        let searchPlaceView = SearchPlaceView()
+        searchPlaceView.delegate = self
+        subviewConstraints(view: searchPlaceView)
     }
 
     @IBAction private func backButtonItemTouchUp(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction private func informationRecordButton(_ sender: IBSelectTableButton) {
+        sender.isSelected = sender.isSelected ? false : true
+
+    }
+
+    @IBAction func callPreviousInformationButtonTouchUp(_ sender: UIButton) {
+        let callPreviousInformationView = CallPreviusMatchingInformationView()
+        callPreviousInformationView.delegate = self
+        subviewConstraints(view: callPreviousInformationView)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setMatchButton()
-        setupViewConstraint()
-
-        self.backgroundView.isHidden = true
-        self.searchPlaceView.isHidden = true
-        self.recruitmentCalendarView.isHidden = true
-
-//        self.recruitmentCalendarView.delegate = self
-        self.searchPlaceView.delegate = self
     }
 
     private func setMatchButton() {
@@ -64,35 +60,14 @@ class FirstRecruitmentViewController: UIViewController {
         self.soccerShoesButton.addTarget(self, action: #selector(soccerShoesButtonTouchUp), for: .touchUpInside)
     }
 
-    private func setupViewConstraint() {
+    private func subviewConstraints(view: UIView) {
         guard let navigationController = self.navigationController else { return }
-        navigationController.view.addSubview(self.backgroundView)
-        self.backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        navigationController.view.addsubviews(view)
         NSLayoutConstraint.activate([
-            self.backgroundView.topAnchor.constraint(equalTo: navigationController.view.topAnchor, constant: 0),
-            self.backgroundView.bottomAnchor.constraint(equalTo: navigationController.view.bottomAnchor, constant: 0),
-            self.backgroundView.leadingAnchor.constraint(equalTo: navigationController.view.leadingAnchor, constant: 0),
-            self.backgroundView.trailingAnchor.constraint(equalTo: navigationController.view.trailingAnchor, constant: 0)
-        ])
-
-        self.searchPlaceView.backgroundColor = .white
-        self.backgroundView.addSubview(self.searchPlaceView)
-        self.searchPlaceView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.searchPlaceView.topAnchor.constraint(equalTo: self.backgroundView.topAnchor, constant: 167),
-            self.searchPlaceView.bottomAnchor.constraint(equalTo: self.backgroundView.bottomAnchor, constant: -167),
-            self.searchPlaceView.leadingAnchor.constraint(equalTo: self.backgroundView.leadingAnchor, constant: 20),
-            self.searchPlaceView.trailingAnchor.constraint(equalTo: self.backgroundView.trailingAnchor, constant: -20)
-        ])
-
-        self.recruitmentCalendarView.backgroundColor = .white
-        self.backgroundView.addSubview(self.recruitmentCalendarView)
-        self.recruitmentCalendarView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.recruitmentCalendarView.topAnchor.constraint(equalTo: self.backgroundView.topAnchor, constant: 167),
-            self.recruitmentCalendarView.bottomAnchor.constraint(equalTo: self.backgroundView.bottomAnchor, constant: -167),
-            self.recruitmentCalendarView.leadingAnchor.constraint(equalTo: self.backgroundView.leadingAnchor, constant: 20),
-            self.recruitmentCalendarView.trailingAnchor.constraint(equalTo: self.backgroundView.trailingAnchor, constant: -20)
+            view.topAnchor.constraint(equalTo: navigationController.view.topAnchor, constant: 0),
+            view.leadingAnchor.constraint(equalTo: navigationController.view.leadingAnchor, constant: 0),
+            view.trailingAnchor.constraint(equalTo: navigationController.view.trailingAnchor, constant: 0),
+            view.bottomAnchor.constraint(equalTo: navigationController.view.bottomAnchor, constant: 0)
         ])
     }
 
@@ -125,29 +100,34 @@ class FirstRecruitmentViewController: UIViewController {
     }
 }
 
-//extension FirstRecruitmentViewController:
-//    RecruitmentCalendarViewDelegate {
-//
-//    func cancelButtonDidSelected(_ sender: GameMatchingCalendarView) {
-//        self.backgroundView.isHidden = true
-//        self.recruitmentCalendarView.isHidden = true
-//    }
-//
-//    // 향후 데이터 처리를 할 함수
-//    func okButtonDidSelected(_ sender: GameMatchingCalendarView) {
-//        self.backgroundView.isHidden = true
-//        self.recruitmentCalendarView.isHidden = true
-//    }
-//}
+extension FirstRecruitmentViewController:
+    RecruitmentCalendarViewDelegate {
 
-extension FirstRecruitmentViewController: SearchPlaceViewDelegate {
-    func cancelButtonDidSelected(_ sender: SearchPlaceView) {
-        self.backgroundView.isHidden = true
-        self.searchPlaceView.isHidden = true
+    func cancelButtonDidSelected(_ view: RecruitmentCalendarView) {
+        view.removeFromSuperview()
     }
 
-    func okButtonDidSelected(_ sender: SearchPlaceView) {
-        self.backgroundView.isHidden = true
-        self.searchPlaceView.isHidden = true
+    func okButtonDidSelected(_ view: RecruitmentCalendarView, selectedDate: [String]) {
+        view.removeFromSuperview()
+    }
+}
+
+extension FirstRecruitmentViewController: SearchPlaceViewDelegate {
+    func cancelButtonDidSelected(_ view: SearchPlaceView) {
+        view.removeFromSuperview()
+    }
+
+    func okButtonDidSelected(_ view: SearchPlaceView) {
+        view.removeFromSuperview()
+    }
+}
+
+extension FirstRecruitmentViewController: CallPreviusMatchingInformationViewDelegate {
+
+    func cancelButtonDidSelected(_ view: CallPreviusMatchingInformationView) {
+        view.removeFromSuperview()
+    }
+    func OKButtonDidSelected(_ view: CallPreviusMatchingInformationView, _ model: [Comment]) {
+        view.removeFromSuperview()
     }
 }

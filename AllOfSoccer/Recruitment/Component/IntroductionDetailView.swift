@@ -35,13 +35,137 @@ class IntroductionDetailView: UIView {
     weak var delegate: IntroductionDetailViewDelegate?
     private var commentsModel: [Comment] = []
 
-    private var firstCommentButton = UIButton()
-    private var secondCommentButton = UIButton()
-    private var thirdCommentButton = UIButton()
-    private var fourthCommentButton = UIButton()
-    private var fifthCommentButton = UIButton()
+    private var baseView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 12
+        return view
+    }()
 
-    private lazy var commentsButtons: [UIButton] = [firstCommentButton, secondCommentButton, thirdCommentButton, fourthCommentButton, fifthCommentButton]
+    private var firstCommentButton: SeletableButton = {
+        let button = SeletableButton()
+        button.setTitle(Comment.first.content, for: .normal)
+        button.normalImage = UIImage(systemName: "checkmark.circle")
+        button.selectImage = UIImage(systemName: "checkmark.circle.fill")
+        button.normalBackgroundColor = UIColor.clear
+        button.selectBackgroundColor = UIColor.clear
+        button.normalBorderColor = UIColor.clear
+        button.selectBorderColor = UIColor.clear
+        button.normalTintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
+        button.selectTintColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
+        button.normalTitleColor = UIColor.black
+        button.selectTitleColor = UIColor.black
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
+        button.contentHorizontalAlignment = .left
+        button.tag = Comment.first.rawValue
+
+        button.addTarget(self, action: #selector(firstSelectableButtonTouchUp), for: .touchUpInside)
+
+        return button
+    }()
+
+    private var secondCommentButton: SeletableButton = {
+        let button = SeletableButton()
+        button.setTitle(Comment.second.content, for: .normal)
+        button.normalImage = UIImage(systemName: "checkmark.circle")
+        button.selectImage = UIImage(systemName: "checkmark.circle.fill")
+        button.normalBackgroundColor = UIColor.clear
+        button.selectBackgroundColor = UIColor.clear
+        button.normalBorderColor = UIColor.clear
+        button.selectBorderColor = UIColor.clear
+        button.normalTintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
+        button.selectTintColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
+        button.normalTitleColor = UIColor.black
+        button.selectTitleColor = UIColor.black
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
+        button.contentHorizontalAlignment = .left
+        button.tag = Comment.second.rawValue
+
+        button.addTarget(self, action: #selector(secondSelectableButtonTouchUp), for: .touchUpInside)
+
+        return button
+    }()
+
+    private var thirdCommentButton: SeletableButton = {
+        let button = SeletableButton()
+        button.setTitle(Comment.third.content, for: .normal)
+        button.normalImage = UIImage(systemName: "checkmark.circle")
+        button.selectImage = UIImage(systemName: "checkmark.circle.fill")
+        button.normalBackgroundColor = UIColor.clear
+        button.selectBackgroundColor = UIColor.clear
+        button.normalBorderColor = UIColor.clear
+        button.selectBorderColor = UIColor.clear
+        button.normalTintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
+        button.selectTintColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
+        button.normalTitleColor = UIColor.black
+        button.selectTitleColor = UIColor.black
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
+        button.contentHorizontalAlignment = .left
+        button.tag = Comment.third.rawValue
+
+        button.addTarget(self, action: #selector(thirdSelectableButtonTouchUp), for: .touchUpInside)
+
+        return button
+    }()
+
+    private var fourthCommentButton: SeletableButton = {
+        let button = SeletableButton()
+        button.setTitle(Comment.fourth.content, for: .normal)
+        button.normalImage = UIImage(systemName: "checkmark.circle")
+        button.selectImage = UIImage(systemName: "checkmark.circle.fill")
+        button.normalBackgroundColor = UIColor.clear
+        button.selectBackgroundColor = UIColor.clear
+        button.normalBorderColor = UIColor.clear
+        button.selectBorderColor = UIColor.clear
+        button.normalTintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
+        button.selectTintColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
+        button.normalTitleColor = UIColor.black
+        button.selectTitleColor = UIColor.black
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
+        button.contentHorizontalAlignment = .left
+        button.tag = Comment.fourth.rawValue
+
+        button.addTarget(self, action: #selector(fourthSelectableButtonTouchUp), for: .touchUpInside)
+
+        return button
+    }()
+
+    private var fifthCommentButton: SeletableButton = {
+        let button = SeletableButton()
+        button.setTitle(Comment.fifth.content, for: .normal)
+        button.normalImage = UIImage(systemName: "checkmark.circle")
+        button.selectImage = UIImage(systemName: "checkmark.circle.fill")
+        button.normalBackgroundColor = UIColor.clear
+        button.selectBackgroundColor = UIColor.clear
+        button.normalBorderColor = UIColor.clear
+        button.selectBorderColor = UIColor.clear
+        button.normalTintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
+        button.selectTintColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
+        button.normalTitleColor = UIColor.black
+        button.selectTitleColor = UIColor.black
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
+        button.contentHorizontalAlignment = .left
+        button.tag = Comment.fifth.rawValue
+
+        button.addTarget(self, action: #selector(fifthSelectableButtonTouchUp), for: .touchUpInside)
+
+        return button
+    }()
+
+    private lazy var commentButtonStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [self.firstCommentButton, self.secondCommentButton, self.thirdCommentButton, self.fourthCommentButton, self.fifthCommentButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 19
+        stackView.distribution = .fillEqually
+
+        return stackView
+    }()
 
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
@@ -71,29 +195,32 @@ class IntroductionDetailView: UIView {
         return button
     }()
 
-    private lazy var commentsButtonStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [firstCommentButton, secondCommentButton, thirdCommentButton, fourthCommentButton, fifthCommentButton])
-
-        stackView.axis = .vertical
-        stackView.spacing = 16
-        stackView.distribution = .fillEqually
-        return stackView
-    }()
-
     private lazy var OKCancelButtonStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [cancelButton, okButton])
-
         stackView.axis = .horizontal
         stackView.spacing = 8
         stackView.distribution = .fillEqually
         return stackView
     }()
 
-    @objc private func checkButtonTouchUp(_ sender: UIButton) {
-        print("CheckButton이 클릭되었습니다.")
+    @objc private func firstSelectableButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
+    }
 
-        sender.isSelected = sender.isSelected == true ? false : true
-        sender.tintColor = sender.isSelected == true ? UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1) : UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
+    @objc private func secondSelectableButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
+    }
+
+    @objc private func thirdSelectableButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
+    }
+
+    @objc private func fourthSelectableButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
+    }
+
+    @objc private func fifthSelectableButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
     }
 
     @objc func cancelButtonDidSelected(sender: UIButton) {
@@ -103,7 +230,10 @@ class IntroductionDetailView: UIView {
 
     @objc func OKButtonDidSelected(sender: UIButton) {
         print("OKButton이 클릭되었습니다")
-        self.commentsModel = self.commentsButtons.filter { $0.isSelected }.compactMap { Comment(rawValue: $0.tag) }
+
+        let buttons = self.commentButtonStackView.arrangedSubviews.compactMap { $0 as? UIButton }.filter { $0.isSelected }.compactMap { Comment(rawValue: $0.tag) }
+        self.commentsModel = buttons
+
         self.delegate?.OKButtonDidSelected(self, self.commentsModel)
     }
 
@@ -118,71 +248,34 @@ class IntroductionDetailView: UIView {
     }
 
     private func loadView() {
-
-        setView()
-        setCommentButton()
+        setSuperView()
         setConstraint()
     }
 
-    private func setView() {
-        self.backgroundColor = .white
-        self.layer.cornerRadius = 12
-    }
-
-    private func setCommentButton() {
-
-        self.firstCommentButton = self.checkButton(Comment.first)
-        self.secondCommentButton = self.checkButton(Comment.second)
-        self.thirdCommentButton = self.checkButton(Comment.third)
-        self.fourthCommentButton = self.checkButton(Comment.fourth)
-        self.fifthCommentButton = self.checkButton(Comment.fifth)
+    private func setSuperView() {
+        self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
     }
 
     private func setConstraint() {
-        self.addsubviews([self.commentsButtonStackView, self.OKCancelButtonStackView])
+        self.addsubviews(self.baseView)
+        self.baseView.addsubviews(self.commentButtonStackView,self.OKCancelButtonStackView)
 
         NSLayoutConstraint.activate([
-            self.OKCancelButtonStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
-            self.OKCancelButtonStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
-            self.OKCancelButtonStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -24),
-            self.OKCancelButtonStackView.heightAnchor.constraint(equalToConstant: 40),
 
-            self.commentsButtonStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 30),
-            self.commentsButtonStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
-            self.commentsButtonStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
-            self.commentsButtonStackView.bottomAnchor.constraint(equalTo: self.OKCancelButtonStackView.topAnchor, constant: -30)
+            self.baseView.topAnchor.constraint(equalTo: self.topAnchor, constant: 257),
+            self.baseView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            self.baseView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            self.baseView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -257),
+
+            self.commentButtonStackView.topAnchor.constraint(equalTo: self.baseView.topAnchor, constant: 30),
+            self.commentButtonStackView.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 32),
+            self.commentButtonStackView.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -32),
+            self.commentButtonStackView.bottomAnchor.constraint(equalTo: self.OKCancelButtonStackView.topAnchor, constant: -30),
+
+            self.OKCancelButtonStackView.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 32),
+            self.OKCancelButtonStackView.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -32),
+            self.OKCancelButtonStackView.bottomAnchor.constraint(equalTo: self.baseView.bottomAnchor, constant: -24),
+            self.OKCancelButtonStackView.heightAnchor.constraint(equalToConstant: 40)
         ])
-    }
-
-    private func checkButton(_ commentType: Comment) -> UIButton {
-        let button = UIButton()
-
-        let nonCheckedBoxImage = UIImage(systemName: "checkmark.circle")
-        let checkedBoxImage = UIImage(systemName: "checkmark.circle.fill")
-        button.setImage(nonCheckedBoxImage, for: .normal)
-        button.setImage(checkedBoxImage, for: .selected)
-        button.tintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        button.setTitleColor(.black, for: .normal)
-        button.setTitle(commentType.content, for: .normal)
-        button.contentHorizontalAlignment = .left
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
-        button.tag = commentType.rawValue
-
-        button.addTarget(self, action: #selector(checkButtonTouchUp), for: .touchUpInside)
-
-        return button
-    }
-
-    internal func clearView() {
-
-        self.commentsModel = []
-
-        self.commentsButtons.forEach {
-            $0.isSelected = false
-            $0.tintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
-            $0.layoutIfNeeded()
-        }
     }
 }

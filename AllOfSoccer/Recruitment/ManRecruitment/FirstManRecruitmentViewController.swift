@@ -13,6 +13,12 @@ class FirstManRecruitmentViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction private func informationRecordButton(_ sender: IBSelectTableButton) {
+
+        sender.isSelected = sender.isSelected ? false : true
+    }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

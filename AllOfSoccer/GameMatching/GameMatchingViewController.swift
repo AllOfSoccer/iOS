@@ -164,7 +164,7 @@ class GameMatchingViewController: UIViewController {
 
         let tableViewFilterView = TableViewFilterView()
         tableViewFilterView.delegate = self
-        tableViewFilterViewConstraints(tableViewFilterView: tableViewFilterView)
+        setSubViewConstraints(view: tableViewFilterView)
     }
 
     // MARK: - RecruitmentButtonAction
@@ -196,7 +196,6 @@ class GameMatchingViewController: UIViewController {
 
         setupHorizontalCalendarView()
         setupFilterTagCollectionView()
-//        setupTableViewFilterView()
         setupFilterDetailView()
         setupNoticeTableView()
 
@@ -391,16 +390,16 @@ class GameMatchingViewController: UIViewController {
         }
     }
 
-    private func tableViewFilterViewConstraints(tableViewFilterView: TableViewFilterView) {
+    private func setSubViewConstraints(view: UIView) {
 
         guard let tabBarController = self.tabBarController else { return }
 
-        tabBarController.view.addsubviews(tableViewFilterView)
+        tabBarController.view.addsubviews(view)
         NSLayoutConstraint.activate([
-            tableViewFilterView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 0),
-            tableViewFilterView.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 0),
-            tableViewFilterView.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: 0),
-            tableViewFilterView.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: 0)
+            view.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 0),
+            view.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 0),
+            view.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: 0),
+            view.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: 0)
         ])
     }
 

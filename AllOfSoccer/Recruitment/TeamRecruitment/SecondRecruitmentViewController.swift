@@ -4,13 +4,6 @@ import RangeSeekSlider
 class SecondRecruitmentViewController: UIViewController {
 
     private var tableViewModel: [Comment] = []
-    private var introductionDetailView = IntroductionDetailView()
-
-    private lazy var backgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-        return view
-    }()
 
     @IBOutlet private weak var skillSlider: OneThumbSlider!
     @IBOutlet private weak var ageRangeSlider: RangeSeekSlider!
@@ -20,27 +13,28 @@ class SecondRecruitmentViewController: UIViewController {
     @IBOutlet private weak var informationCheckButton: UIButton!
 
     @IBAction private func addIntroductionButton(_ sender: RoundButton) {
+        let introductionDetailView = IntroductionDetailView()
+        introductionDetailView.delegate = self
+        self.subviewConstraints(view: introductionDetailView)
+    }
 
-        self.introductionDetailView.clearView()
-        
-        guard let navigationController = self.navigationController else { return }
-        navigationController.view.addSubview(self.backgroundView)
-        self.backgroundView.addSubview(self.introductionDetailView)
+    @IBAction private func informationRecordButton(_ sender: IBSelectTableButton) {
 
-        self.backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        self.introductionDetailView.translatesAutoresizingMaskIntoConstraints = false
+        sender.isSelected = sender.isSelected ? false : true
+    }
 
-        NSLayoutConstraint.activate([
-            self.backgroundView.topAnchor.constraint(equalTo: navigationController.view.topAnchor, constant: 0),
-            self.backgroundView.bottomAnchor.constraint(equalTo: navigationController.view.bottomAnchor, constant: 0),
-            self.backgroundView.leadingAnchor.constraint(equalTo: navigationController.view.leadingAnchor, constant: 0),
-            self.backgroundView.trailingAnchor.constraint(equalTo: navigationController.view.trailingAnchor, constant: 0),
+    @IBAction private func callTeamInformationButtonTouchUp(_ sender: UIButton) {
 
-            self.introductionDetailView.topAnchor.constraint(equalTo: self.backgroundView.topAnchor, constant: 257),
-            self.introductionDetailView.bottomAnchor.constraint(equalTo: self.backgroundView.bottomAnchor, constant: -258),
-            self.introductionDetailView.leadingAnchor.constraint(equalTo: self.backgroundView.leadingAnchor, constant: 20),
-            self.introductionDetailView.trailingAnchor.constraint(equalTo: self.backgroundView.trailingAnchor, constant: -20)
-        ])
+        let callTeamInformationView = CallTeamInformationView()
+        callTeamInformationView.delegate = self
+        subviewConstraints(view: callTeamInformationView)
+    }
+
+    @IBAction func registerTeamInformationTouchUp(_ sender: UIButton) {
+
+        let deleteTeamInformationView = DeleteTeamInformationView()
+        deleteTeamInformationView.delegate = self
+        subviewConstraints(view: deleteTeamInformationView)
     }
 
     // MARK: - view life cycle
@@ -49,7 +43,6 @@ class SecondRecruitmentViewController: UIViewController {
 
         setSkillSlider()
         setIntroductionTableView()
-        setIntroductionDetailView()
     }
 
     override func viewDidLayoutSubviews() {
@@ -68,11 +61,6 @@ class SecondRecruitmentViewController: UIViewController {
 
         self.introductionTableView.delegate = self
         self.introductionTableView.dataSource = self
-    }
-
-    private func setIntroductionDetailView() {
-
-        self.introductionDetailView.delegate = self
     }
 
     private func setAgeLabelsLayout() {
@@ -135,6 +123,17 @@ class SecondRecruitmentViewController: UIViewController {
         }
 
         return labelsXPosition
+    }
+
+    private func subviewConstraints(view: UIView) {
+        guard let navigationController = self.navigationController else { return }
+        navigationController.view.addsubviews(view)
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: navigationController.view.topAnchor, constant: 0),
+            view.leadingAnchor.constraint(equalTo: navigationController.view.leadingAnchor, constant: 0),
+            view.trailingAnchor.constraint(equalTo: navigationController.view.trailingAnchor, constant: 0),
+            view.bottomAnchor.constraint(equalTo: navigationController.view.bottomAnchor, constant: 0)
+        ])
     }
 
     @objc func skillSliderValueChanged(_ sender: OneThumbSlider) {
@@ -202,8 +201,7 @@ extension SecondRecruitmentViewController: IntroductionTableViewCellDelegate {
 extension SecondRecruitmentViewController: IntroductionDetailViewDelegate {
     func cancelButtonDidSelected(_ view: IntroductionDetailView) {
 
-        self.introductionDetailView.removeFromSuperview()
-        self.backgroundView.removeFromSuperview()
+        view.removeFromSuperview()
     }
 
     func OKButtonDidSelected(_ view: IntroductionDetailView, _ model: [Comment]) {
@@ -211,9 +209,27 @@ extension SecondRecruitmentViewController: IntroductionDetailViewDelegate {
         DispatchQueue.main.async {
             self.tableViewModel = model
             self.introductionTableView.reloadData()
+            view.removeFromSuperview()
         }
+    }
+}
 
-        self.introductionDetailView.removeFromSuperview()
-        self.backgroundView.removeFromSuperview()
+extension SecondRecruitmentViewController: CallTeamInformationViewDelegate {
+    func cancelButtonDidSelected(_ view: CallTeamInformationView) {
+        view.removeFromSuperview()
+    }
+
+    func OKButtonDidSelected(_ view: CallTeamInformationView) {
+        view.removeFromSuperview()
+    }
+}
+
+extension SecondRecruitmentViewController: DeleteTeamInformationViewDelegate {
+    func cancelButtonDidSelected(_ view: DeleteTeamInformationView) {
+        view.removeFromSuperview()
+    }
+
+    func OKButtonDidSelected(_ view: DeleteTeamInformationView) {
+        view.removeFromSuperview()
     }
 }
