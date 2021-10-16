@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol IntroductionTableViewCellDelegate: AnyObject {
-    func removeButtonDidSeleced(_ tableviewCell: IntroductionTableViewCell)
-    func updownButtonDidSelected(_ tableviewCell: IntroductionTableViewCell)
+protocol TeamIntroductionTableViewCellDelegate: AnyObject {
+    func removeButtonDidSeleced(_ tableviewCell: TeamIntroductionTableViewCell)
+    func updownButtonDidSelected(_ tableviewCell: TeamIntroductionTableViewCell)
 }
 
-class IntroductionTableViewCell: UITableViewCell {
+class TeamIntroductionTableViewCell: UITableViewCell {
 
-    weak var delegate: IntroductionTableViewCellDelegate?
+    weak var delegate: TeamIntroductionTableViewCellDelegate?
 
     @IBOutlet private weak var contentsLabel: UILabel!
     @IBOutlet private weak var removeButton: UIButton!

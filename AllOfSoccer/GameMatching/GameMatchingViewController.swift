@@ -175,17 +175,17 @@ class GameMatchingViewController: UIViewController {
 
     // 뷰 완성시 코드 추가할 예정
     @IBAction private func teamRecruitmentButtonTouchUp(_ sender: UIButton) {
+        guard let teamRecruitmentNavigationController = UIStoryboard.init(name: "TeamRecruitment", bundle: nil).instantiateViewController(identifier: "TeamRecruitmentNavigationController") as? UINavigationController  else { return }
+
+        teamRecruitmentNavigationController.modalPresentationStyle = .fullScreen
+        self.navigationController?.present(teamRecruitmentNavigationController, animated: true, completion: nil)
+    }
+
+    @IBAction private func manRecruitmentButtonTouchUp(_ sender: UIButton) {
         guard let manRecruitmentNavigationController = UIStoryboard.init(name: "ManRecruitment", bundle: nil).instantiateViewController(identifier: "ManRecruitmentNavigationController") as? UINavigationController  else { return }
 
         manRecruitmentNavigationController.modalPresentationStyle = .fullScreen
         self.navigationController?.present(manRecruitmentNavigationController, animated: true, completion: nil)
-    }
-
-    @IBAction private func manRecruitmentButtonTouchUp(_ sender: UIButton) {
-        guard let recruitmentNavigationController = UIStoryboard.init(name: "Recruitment", bundle: nil).instantiateViewController(identifier: "RecruitmentNavigationController") as? UINavigationController  else { return }
-
-        recruitmentNavigationController.modalPresentationStyle = .fullScreen
-        self.navigationController?.present(recruitmentNavigationController, animated: true, completion: nil)
     }
 
     // MARK: - ViewLifeCycle

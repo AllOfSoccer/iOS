@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecruitmentTableViewCell: UITableViewCell {
+class TeamRecruitmentTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var checkButton: UIButton!
     @IBOutlet private weak var teamNameLabel: UILabel!

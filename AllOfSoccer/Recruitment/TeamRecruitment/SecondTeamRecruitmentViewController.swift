@@ -1,7 +1,7 @@
 import UIKit
 import RangeSeekSlider
 
-class SecondRecruitmentViewController: UIViewController {
+class SecondTeamRecruitmentViewController: UIViewController {
 
     private var tableViewModel: [Comment] = []
 
@@ -18,7 +18,7 @@ class SecondRecruitmentViewController: UIViewController {
         self.subviewConstraints(view: introductionDetailView)
     }
 
-    @IBAction private func informationRecordButton(_ sender: IBSelectTableButton) {
+    @IBAction private func informationCheckButtonTouchUp(_ sender: IBSelectTableButton) {
 
         sender.isSelected = sender.isSelected ? false : true
     }
@@ -142,7 +142,7 @@ class SecondRecruitmentViewController: UIViewController {
     }
 }
 
-extension SecondRecruitmentViewController: UITableViewDelegate {
+extension SecondTeamRecruitmentViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         true
@@ -167,14 +167,14 @@ extension SecondRecruitmentViewController: UITableViewDelegate {
     }
 }
 
-extension SecondRecruitmentViewController: UITableViewDataSource {
+extension SecondTeamRecruitmentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tableViewModel.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "IntroductionTableViewCell", for: indexPath) as? IntroductionTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "IntroductionTableViewCell", for: indexPath) as? TeamIntroductionTableViewCell else {
             return UITableViewCell()
         }
 
@@ -187,18 +187,18 @@ extension SecondRecruitmentViewController: UITableViewDataSource {
     }
 }
 
-extension SecondRecruitmentViewController: IntroductionTableViewCellDelegate {
-    func updownButtonDidSelected(_ tableviewCell: IntroductionTableViewCell) {
+extension SecondTeamRecruitmentViewController: TeamIntroductionTableViewCellDelegate {
+    func updownButtonDidSelected(_ tableviewCell: TeamIntroductionTableViewCell) {
         self.introductionTableView.isEditing = true
     }
 
-    func removeButtonDidSeleced(_ tableviewCell: IntroductionTableViewCell) {
+    func removeButtonDidSeleced(_ tableviewCell: TeamIntroductionTableViewCell) {
         self.tableViewModel.removeLast()
         self.introductionTableView.reloadData()
     }
 }
 
-extension SecondRecruitmentViewController: IntroductionDetailViewDelegate {
+extension SecondTeamRecruitmentViewController: IntroductionDetailViewDelegate {
     func cancelButtonDidSelected(_ view: IntroductionDetailView) {
 
         view.removeFromSuperview()
@@ -214,7 +214,7 @@ extension SecondRecruitmentViewController: IntroductionDetailViewDelegate {
     }
 }
 
-extension SecondRecruitmentViewController: CallTeamInformationViewDelegate {
+extension SecondTeamRecruitmentViewController: CallTeamInformationViewDelegate {
     func cancelButtonDidSelected(_ view: CallTeamInformationView) {
         view.removeFromSuperview()
     }
@@ -224,7 +224,7 @@ extension SecondRecruitmentViewController: CallTeamInformationViewDelegate {
     }
 }
 
-extension SecondRecruitmentViewController: DeleteTeamInformationViewDelegate {
+extension SecondTeamRecruitmentViewController: DeleteTeamInformationViewDelegate {
     func cancelButtonDidSelected(_ view: DeleteTeamInformationView) {
         view.removeFromSuperview()
     }

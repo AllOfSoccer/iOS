@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FirstRecruitmentViewController: UIViewController {
+class FirstTeamRecruitmentViewController: UIViewController {
 
     @IBOutlet weak var sixMatchButton: IBSelectTableButton!
     @IBOutlet weak var elevenMatchButton: IBSelectTableButton!
@@ -33,7 +33,7 @@ class FirstRecruitmentViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction private func informationRecordButton(_ sender: IBSelectTableButton) {
+    @IBAction private func informationCheckButtonTouchUp(_ sender: IBSelectTableButton) {
         sender.isSelected = sender.isSelected ? false : true
 
     }
@@ -100,7 +100,7 @@ class FirstRecruitmentViewController: UIViewController {
     }
 }
 
-extension FirstRecruitmentViewController:
+extension FirstTeamRecruitmentViewController:
     RecruitmentCalendarViewDelegate {
 
     func cancelButtonDidSelected(_ view: RecruitmentCalendarView) {
@@ -112,7 +112,7 @@ extension FirstRecruitmentViewController:
     }
 }
 
-extension FirstRecruitmentViewController: SearchPlaceViewDelegate {
+extension FirstTeamRecruitmentViewController: SearchPlaceViewDelegate {
     func cancelButtonDidSelected(_ view: SearchPlaceView) {
         view.removeFromSuperview()
     }
@@ -122,7 +122,7 @@ extension FirstRecruitmentViewController: SearchPlaceViewDelegate {
     }
 }
 
-extension FirstRecruitmentViewController: CallPreviusMatchingInformationViewDelegate {
+extension FirstTeamRecruitmentViewController: CallPreviusMatchingInformationViewDelegate {
 
     func cancelButtonDidSelected(_ view: CallPreviusMatchingInformationView) {
         view.removeFromSuperview()

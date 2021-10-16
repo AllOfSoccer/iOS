@@ -13,7 +13,7 @@
         <!--팀 모집 글쓰기-->
         <scene sceneID="yWg-b7-tDL">
             <objects>
-                <viewController id="Hwf-9T-Tbs" customClass="FirstRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Hwf-9T-Tbs" customClass="FirstTeamRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oGE-d1-L44">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -657,7 +657,7 @@
         <!--팀 모집 글쓰기-->
         <scene sceneID="n4a-29-lDy">
             <objects>
-                <viewController id="89L-cF-gMN" customClass="SecondRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="89L-cF-gMN" customClass="SecondTeamRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pLw-Y7-OYe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -894,7 +894,7 @@
                                                 <rect key="frame" x="0.0" y="398" width="414" height="128"/>
                                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IntroductionTableViewCell" rowHeight="87" id="LHl-p9-GY7" customClass="IntroductionTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IntroductionTableViewCell" rowHeight="87" id="LHl-p9-GY7" customClass="TeamIntroductionTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="44.5" width="414" height="87"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LHl-p9-GY7" id="hG9-K7-arW">
@@ -1206,7 +1206,7 @@
         <!--Navigation Controller-->
         <scene sceneID="DVP-Ym-5Vu">
             <objects>
-                <navigationController storyboardIdentifier="RecruitmentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="n5E-P7-dhY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TeamRecruitmentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="n5E-P7-dhY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="px4-8s-eCL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1224,7 +1224,10 @@
     </scenes>
     <designables>
         <designable name="05i-uC-4b0">
-            <size key="intrinsicContentSize" width="70" height="22"/>
+            <size key="intrinsicContentSize" width="90" height="34"/>
+        </designable>
+        <designable name="cvQ-AY-OcU">
+            <size key="intrinsicContentSize" width="-1" height="65"/>
         </designable>
     </designables>
     <resources>

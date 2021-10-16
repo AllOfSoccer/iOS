@@ -9,14 +9,12 @@ import UIKit
 
 class ManRecruitmenTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet private weak var checkButton: UIButton!
+    @IBOutlet private weak var teamNameLabel: UILabel!
+    @IBOutlet private weak var ageLabel: UILabel!
+    @IBOutlet private weak var skillLevelLabel: UILabel!
+    @IBOutlet private weak var firstTopImageView: UIImageView!
+    @IBOutlet private weak var secondTopImageView: UIImageView!
+    @IBOutlet private weak var bottomImageVIew: UIImageView!
+    @IBOutlet private weak var phoneNumberLabel: UILabel!
 }

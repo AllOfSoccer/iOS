@@ -29,11 +29,11 @@
 		9D3E375A266D11AF0058A4B7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E3759266D11AF0058A4B7 /* Alamofire */; };
 		9D3E375E266D11DF0058A4B7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E375D266D11DF0058A4B7 /* Kingfisher */; };
 		9D40BD972706BD330073C100 /* SeletableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D40BD962706BD330073C100 /* SeletableButton.swift */; };
-		9D4BC01F26E8CB6000867913 /* IntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BC01E26E8CB6000867913 /* IntroductionTableViewCell.swift */; };
+		9D4BC01F26E8CB6000867913 /* TeamIntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BC01E26E8CB6000867913 /* TeamIntroductionTableViewCell.swift */; };
 		9D4EC53F26903C9500D1A27D /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4EC53E26903C9500D1A27D /* SignIn.storyboard */; };
 		9D56CF2A26932D2200628608 /* IBSelectTableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D56CF2926932D2200628608 /* IBSelectTableButton.swift */; };
 		9D5AA9C926CBC72500A33D20 /* SearchPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5AA9C826CBC72500A33D20 /* SearchPlaceView.swift */; };
-		9D5F573526C2A5D2004D8AE9 /* Recruitment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5F573426C2A5D2004D8AE9 /* Recruitment.storyboard */; };
+		9D5F573526C2A5D2004D8AE9 /* TeamRecruitment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5F573426C2A5D2004D8AE9 /* TeamRecruitment.storyboard */; };
 		9D686C9E26AD663700440CBF /* RoundStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D686C9D26AD663700440CBF /* RoundStackView.swift */; };
 		9D686CA026AD6EC400440CBF /* FilterTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D686C9F26AD6EC400440CBF /* FilterTagCollectionViewCell.swift */; };
 		9D6A430326F84CE200AAA491 /* MyPageAddTeamInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A430226F84CE200AAA491 /* MyPageAddTeamInfoViewController.swift */; };
@@ -52,14 +52,14 @@
 		9D80A3E326E1099900970612 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D80A3E226E1099900970612 /* LoginModel.swift */; };
 		9D884FC62700A0FB0024B24E /* Network in Resources */ = {isa = PBXBuildFile; fileRef = 9D884FC52700A0FB0024B24E /* Network */; };
 		9D8A32EF26B8FB0000A8F65B /* FilterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */; };
-		9D8D32FF26CD53970097A172 /* RecruitmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D32FE26CD53970097A172 /* RecruitmentTableViewCell.swift */; };
-		9D95F7C726EA360800F3F2C7 /* SecondRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95F7C626EA360800F3F2C7 /* SecondRecruitmentViewController.swift */; };
+		9D8D32FF26CD53970097A172 /* TeamRecruitmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D32FE26CD53970097A172 /* TeamRecruitmentTableViewCell.swift */; };
+		9D95F7C726EA360800F3F2C7 /* SecondTeamRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95F7C626EA360800F3F2C7 /* SecondTeamRecruitmentViewController.swift */; };
 		9DA714C226EC964D00B40D1E /* IntroductionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA714C126EC964D00B40D1E /* IntroductionDetailView.swift */; };
 		9DB03E6A2701DF79004412AF /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB03E672701DF78004412AF /* UITableViewCell+Extension.swift */; };
 		9DB03E6B2701DF79004412AF /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB03E682701DF78004412AF /* UIButton+Extension.swift */; };
 		9DB03E6C2701DF79004412AF /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB03E692701DF78004412AF /* UICollectionViewCell+Extension.swift */; };
 		9DB1AB1A26B955F8003E517A /* FilterDetailTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */; };
-		9DB3547526C5539E00ADB9A0 /* FirstRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3547426C5539E00ADB9A0 /* FirstRecruitmentViewController.swift */; };
+		9DB3547526C5539E00ADB9A0 /* FirstTeamRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3547426C5539E00ADB9A0 /* FirstTeamRecruitmentViewController.swift */; };
 		9DB354E626F70017007D8863 /* teamInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB354E526F70017007D8863 /* teamInfoModel.swift */; };
 		9DBC70E826A986D0005F6BFA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9DBC70E726A986D0005F6BFA /* SnapKit */; };
 		9DBFCF2C270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBFCF2B270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift */; };
@@ -123,11 +123,11 @@
 		9D3DA52F2706D2BC00C40257 /* ManRecruitmenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManRecruitmenTableViewCell.swift; sourceTree = "<group>"; };
 		9D3DA5312706D30000C40257 /* ManIntroductionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManIntroductionTableViewCell.swift; sourceTree = "<group>"; };
 		9D40BD962706BD330073C100 /* SeletableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeletableButton.swift; sourceTree = "<group>"; };
-		9D4BC01E26E8CB6000867913 /* IntroductionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionTableViewCell.swift; sourceTree = "<group>"; };
+		9D4BC01E26E8CB6000867913 /* TeamIntroductionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamIntroductionTableViewCell.swift; sourceTree = "<group>"; };
 		9D4EC53E26903C9500D1A27D /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		9D56CF2926932D2200628608 /* IBSelectTableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBSelectTableButton.swift; sourceTree = "<group>"; };
 		9D5AA9C826CBC72500A33D20 /* SearchPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceView.swift; sourceTree = "<group>"; };
-		9D5F573426C2A5D2004D8AE9 /* Recruitment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recruitment.storyboard; sourceTree = "<group>"; };
+		9D5F573426C2A5D2004D8AE9 /* TeamRecruitment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TeamRecruitment.storyboard; sourceTree = "<group>"; };
 		9D686C9D26AD663700440CBF /* RoundStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundStackView.swift; sourceTree = "<group>"; };
 		9D686C9F26AD6EC400440CBF /* FilterTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D6A430226F84CE200AAA491 /* MyPageAddTeamInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAddTeamInfoViewController.swift; sourceTree = "<group>"; };
@@ -148,14 +148,14 @@
 		9D80A3E226E1099900970612 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		9D884FC52700A0FB0024B24E /* Network */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Network; sourceTree = "<group>"; };
 		9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailView.swift; sourceTree = "<group>"; };
-		9D8D32FE26CD53970097A172 /* RecruitmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTableViewCell.swift; sourceTree = "<group>"; };
-		9D95F7C626EA360800F3F2C7 /* SecondRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondRecruitmentViewController.swift; sourceTree = "<group>"; };
+		9D8D32FE26CD53970097A172 /* TeamRecruitmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRecruitmentTableViewCell.swift; sourceTree = "<group>"; };
+		9D95F7C626EA360800F3F2C7 /* SecondTeamRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTeamRecruitmentViewController.swift; sourceTree = "<group>"; };
 		9DA714C126EC964D00B40D1E /* IntroductionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionDetailView.swift; sourceTree = "<group>"; };
 		9DB03E672701DF78004412AF /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		9DB03E682701DF78004412AF /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		9DB03E692701DF78004412AF /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailTagCollectionViewCell.swift; sourceTree = "<group>"; };
-		9DB3547426C5539E00ADB9A0 /* FirstRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRecruitmentViewController.swift; sourceTree = "<group>"; };
+		9DB3547426C5539E00ADB9A0 /* FirstTeamRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTeamRecruitmentViewController.swift; sourceTree = "<group>"; };
 		9DB354E526F70017007D8863 /* teamInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamInfoModel.swift; sourceTree = "<group>"; };
 		9DBFCF2B270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallPreviusMatchingInformationTableViewCell.swift; sourceTree = "<group>"; };
 		9DC1289A269178500021EDF5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -278,11 +278,11 @@
 		9D3DA5242706CF6D00C40257 /* TeamRecruitment */ = {
 			isa = PBXGroup;
 			children = (
-				9D5F573426C2A5D2004D8AE9 /* Recruitment.storyboard */,
-				9DB3547426C5539E00ADB9A0 /* FirstRecruitmentViewController.swift */,
-				9D95F7C626EA360800F3F2C7 /* SecondRecruitmentViewController.swift */,
-				9D8D32FE26CD53970097A172 /* RecruitmentTableViewCell.swift */,
-				9D4BC01E26E8CB6000867913 /* IntroductionTableViewCell.swift */,
+				9D5F573426C2A5D2004D8AE9 /* TeamRecruitment.storyboard */,
+				9DB3547426C5539E00ADB9A0 /* FirstTeamRecruitmentViewController.swift */,
+				9D95F7C626EA360800F3F2C7 /* SecondTeamRecruitmentViewController.swift */,
+				9D8D32FE26CD53970097A172 /* TeamRecruitmentTableViewCell.swift */,
+				9D4BC01E26E8CB6000867913 /* TeamIntroductionTableViewCell.swift */,
 			);
 			path = TeamRecruitment;
 			sourceTree = "<group>";
@@ -641,7 +641,7 @@
 				9D1F225026ADA317000726CB /* Colors.xcassets in Resources */,
 				9D034CE826903A9E0051FA02 /* -----Global----- in Resources */,
 				9D6B91E9266D08E000AF182B /* Main.storyboard in Resources */,
-				9D5F573526C2A5D2004D8AE9 /* Recruitment.storyboard in Resources */,
+				9D5F573526C2A5D2004D8AE9 /* TeamRecruitment.storyboard in Resources */,
 				9D4EC53F26903C9500D1A27D /* SignIn.storyboard in Resources */,
 				9D034CEE26903B590051FA02 /* -----Primary View----- in Resources */,
 			);
@@ -717,7 +717,7 @@
 				9D338C2C26B6A603008A2EDA /* TableViewFilterView.swift in Sources */,
 				9DBFCF2C270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift in Sources */,
 				9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */,
-				9D4BC01F26E8CB6000867913 /* IntroductionTableViewCell.swift in Sources */,
+				9D4BC01F26E8CB6000867913 /* TeamIntroductionTableViewCell.swift in Sources */,
 				9DF9EEBE26F610A500D5132C /* MyPageTeamInfomationViewController.swift in Sources */,
 				9D74B11026F6F89C00D2F692 /* TeamInfoTableViewCell.swift in Sources */,
 				9D0DA55626F24A1300726077 /* MyPageMyInformationDetailViewController.swift in Sources */,
@@ -756,7 +756,7 @@
 				9D80A3E326E1099900970612 /* LoginModel.swift in Sources */,
 				9DC128A326917E740021EDF5 /* GameMatchingViewController.swift in Sources */,
 				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
-				9D8D32FF26CD53970097A172 /* RecruitmentTableViewCell.swift in Sources */,
+				9D8D32FF26CD53970097A172 /* TeamRecruitmentTableViewCell.swift in Sources */,
 				9DD4AE32270B0AB500FF6976 /* GameMatchingCalendarView.swift in Sources */,
 				9DB03E6B2701DF79004412AF /* UIButton+Extension.swift in Sources */,
 				9D3DA5302706D2BC00C40257 /* ManRecruitmenTableViewCell.swift in Sources */,
@@ -772,10 +772,10 @@
 				9D10855926A2887700F8263F /* HorizontalCalendarModel.swift in Sources */,
 				9D56CF2A26932D2200628608 /* IBSelectTableButton.swift in Sources */,
 				9DCBDA8D271423BF00F4976E /* DeleteTeamInformationView.swift in Sources */,
-				9D95F7C726EA360800F3F2C7 /* SecondRecruitmentViewController.swift in Sources */,
+				9D95F7C726EA360800F3F2C7 /* SecondTeamRecruitmentViewController.swift in Sources */,
 				9D3B3D7027141AE200455301 /* CallTeamInformationTableViewCell.swift in Sources */,
 				9D7B9F7F26C94B640075F211 /* GameMatchingDetailViewController.swift in Sources */,
-				9DB3547526C5539E00ADB9A0 /* FirstRecruitmentViewController.swift in Sources */,
+				9DB3547526C5539E00ADB9A0 /* FirstTeamRecruitmentViewController.swift in Sources */,
 				9D3DA5292706D05400C40257 /* FirstManRecruitmentViewController.swift in Sources */,
 				9DD474B026903D78006F00F1 /* RoundView.swift in Sources */,
 				9D686C9E26AD663700440CBF /* RoundStackView.swift in Sources */,

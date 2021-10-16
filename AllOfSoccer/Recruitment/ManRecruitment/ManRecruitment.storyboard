@@ -28,6 +28,9 @@
                                         <state key="normal" title="이전 글 불러오기" image="ArchiveBox">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="callPreviousInformationButtonTouchUp:" destination="nvm-2t-jXU" eventType="touchUpInside" id="WVF-Lt-Vb1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -579,7 +582,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="informationRecordButton:" destination="nvm-2t-jXU" eventType="touchUpInside" id="pSj-KL-7Qg"/>
+                                    <action selector="informationCheckButtonTouchUp:" destination="nvm-2t-jXU" eventType="touchUpInside" id="Nuf-CV-ZAa"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이 정보 다음에 기억하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfJ-e4-rYT">
@@ -637,6 +640,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="elevenMatchButton" destination="3fL-I8-z9P" id="Wyj-ld-X0J"/>
+                        <outlet property="futsalShoesButton" destination="rGt-4N-lhH" id="hEa-tp-3Zl"/>
+                        <outlet property="manMatchButton" destination="wbA-0B-Fhg" id="X81-bJ-xPX"/>
+                        <outlet property="mixMatchButton" destination="1dy-JV-aWu" id="3uz-Hx-SIf"/>
+                        <outlet property="sixMatchButton" destination="Pn5-3n-TxA" id="uew-pk-Pd0"/>
+                        <outlet property="soccerShoesButton" destination="Pne-Lj-Ity" id="g54-ch-KRO"/>
+                        <outlet property="womanMatchButton" destination="0lA-Uq-CiI" id="LCd-e5-WQ9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N8s-uh-tAr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -666,6 +678,9 @@
                                                         <state key="normal" title="팀 소개 불러오기" image="ArchiveBox">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="callTeamInformationButtonTouchUp:" destination="RTY-QZ-FiB" eventType="touchUpInside" id="0cE-bK-Z8l"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -729,6 +744,9 @@
                                                 <state key="normal" title="등록하기">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="registerTeamInformationTouchUp:" destination="RTY-QZ-FiB" eventType="touchUpInside" id="Myy-5M-xNr"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yJV-mq-2V2" customClass="RangeSeekSlider" customModule="RangeSeekSlider">
                                                 <rect key="frame" x="0.0" y="206" width="414" height="18"/>
@@ -876,7 +894,7 @@
                                                 <rect key="frame" x="0.0" y="398" width="414" height="128"/>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IntroductionTableViewCell" rowHeight="87" id="9Ap-yL-hzI" customClass="IntroductionTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IntroductionTableViewCell" rowHeight="87" id="9Ap-yL-hzI" customClass="TeamIntroductionTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="44.5" width="414" height="87"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Ap-yL-hzI" id="4Qc-s8-BRN">
@@ -1009,6 +1027,9 @@
                                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addIntroductionButton:" destination="RTY-QZ-FiB" eventType="touchUpInside" id="ryj-TI-7Yy"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52f-US-yBM" customClass="IBSelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="717.5" width="22" height="22"/>
@@ -1048,7 +1069,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="informationRecordButton:" destination="RTY-QZ-FiB" eventType="touchUpInside" id="1gM-Ty-dTv"/>
+                                                    <action selector="informationCheckButtonTouchUp:" destination="RTY-QZ-FiB" eventType="touchUpInside" id="hsH-ej-yiX"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이 정보 다음에 기억하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvg-9K-x6v">
@@ -1157,7 +1178,10 @@
                     <navigationItem key="navigationItem" title="용병 모집 글쓰기" id="y7W-GX-127"/>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
+                        <outlet property="ageRangeSlider" destination="yJV-mq-2V2" id="p4G-Mw-lLf"/>
+                        <outlet property="informationCheckButton" destination="52f-US-yBM" id="PqN-r8-hfh"/>
                         <outlet property="introductionTableView" destination="1d6-6l-J7g" id="rXv-yh-Nqx"/>
+                        <outlet property="skillSlider" destination="Fbg-pH-RUu" id="Qmn-ee-ClY"/>
                         <outletCollection property="ageSliderLabels" destination="bM6-qB-GsQ" collectionClass="NSMutableArray" id="ahW-cD-7Qy"/>
                         <outletCollection property="ageSliderLabels" destination="tCJ-9p-HmJ" collectionClass="NSMutableArray" id="bqK-43-4PV"/>
                         <outletCollection property="ageSliderLabels" destination="ARW-SM-0Ko" collectionClass="NSMutableArray" id="YrE-GD-u0D"/>

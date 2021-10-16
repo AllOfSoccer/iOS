@@ -7,16 +7,27 @@
 
 import UIKit
 
+protocol ManIntroductionTableViewCellDelegate: AnyObject {
+    func removeButtonDidSeleced(_ tableviewCell: ManIntroductionTableViewCell)
+    func updownButtonDidSelected(_ tableviewCell: ManIntroductionTableViewCell)
+}
+
 class ManIntroductionTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    weak var delegate: ManIntroductionTableViewCellDelegate?
+
+    @IBOutlet private weak var contentsLabel: UILabel!
+    @IBOutlet private weak var removeButton: UIButton!
+
+    @IBAction func removeButtonDidSelected(_ sender: UIButton) {
+        self.delegate?.removeButtonDidSeleced(self)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    @IBAction func updownButtonDidSelected(_ sender: Any) {
+        self.delegate?.updownButtonDidSelected(self)
+    }
 
-        // Configure the view for the selected state
+    func configure(_ model: Comment) {
+        self.contentsLabel.text = model.content
     }
 }
