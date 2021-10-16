@@ -97,6 +97,21 @@ class GameMatchingViewController: UIViewController {
     @IBOutlet private weak var recruitmentButton: RoundButton!
     @IBOutlet private weak var manRecruitmentButton: RoundButton!
     @IBOutlet private weak var teamRecruitmentButton: RoundButton!
+    private var manRecruitmentButtonLabel: UILabel = {
+        let label = UILabel()
+        label.text = "용병 모집"
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = .white
+        return label
+    }()
+
+    private var teamRecruitmentButtonLabel: UILabel = {
+        let label = UILabel()
+        label.text = "팀 모집"
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = .white
+        return label
+    }()
 
     private var recruitmentBackgroundView: UIView = {
         let view = UIView()
@@ -137,20 +152,6 @@ class GameMatchingViewController: UIViewController {
     // MARK: - CalendarMonthButtonAction
     @IBAction func monthButtonTouchUp(_ sender: UIButton) {
         self.norMalCalendarView.isHidden = false
-    }
-
-    private func setNormalCalendarViewConstraint() {
-
-        guard let tabBarController = self.tabBarController else { return }
-
-        tabBarController.view.addSubview(self.norMalCalendarView)
-        self.norMalCalendarView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.norMalCalendarView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 0),
-            self.norMalCalendarView.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 0),
-            self.norMalCalendarView.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: 0),
-            self.norMalCalendarView.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: 0)
-        ])
     }
 
     @IBAction private func resetTagButtonTouchUp(_ sender: UIButton) {
@@ -198,8 +199,9 @@ class GameMatchingViewController: UIViewController {
         setupFilterTagCollectionView()
         setupFilterDetailView()
         setupNoticeTableView()
-
         setupRecruitmentButton()
+
+        setupFilterDetailViewConstraint()
         setupRecruitmentButtonConstraint()
     }
 
@@ -271,27 +273,6 @@ class GameMatchingViewController: UIViewController {
     private func setupFilterDetailView() {
         self.filterDetailView.delegate = self
 
-        guard let tabbar = self.tabBarController else { return }
-        tabbar.view.addSubview(self.filterDetailBackgroundView)
-        self.filterDetailBackgroundView.addSubview(self.filterDetailView)
-        let itemHeight = 244
-
-        self.filterDetailBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.filterDetailBackgroundView.leadingAnchor.constraint(equalTo: tabbar.view.leadingAnchor, constant: 0),
-            self.filterDetailBackgroundView.topAnchor.constraint(equalTo: tabbar.view.topAnchor, constant: 0),
-            self.filterDetailBackgroundView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: 0),
-            self.filterDetailBackgroundView.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: 0)
-        ])
-
-        self.filterDetailView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.filterDetailView.leadingAnchor.constraint(equalTo: self.filterDetailBackgroundView.leadingAnchor, constant: 0),
-            self.filterDetailView.trailingAnchor.constraint(equalTo: self.filterDetailBackgroundView.trailingAnchor, constant: 0),
-            self.filterDetailView.heightAnchor.constraint(equalToConstant: CGFloat(itemHeight)),
-            self.filterDetailView.bottomAnchor.constraint(equalTo: self.filterDetailBackgroundView.bottomAnchor, constant: CGFloat(itemHeight))
-        ])
-
         self.filterDetailView.isHidden = true
         self.filterDetailBackgroundView.isHidden = true
     }
@@ -315,15 +296,54 @@ class GameMatchingViewController: UIViewController {
         self.norMalCalendarView.isHidden = true
     }
 
+    private func setNormalCalendarViewConstraint() {
+
+        guard let tabBarController = self.tabBarController else { return }
+
+        tabBarController.view.addSubview(self.norMalCalendarView)
+        self.norMalCalendarView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.norMalCalendarView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 0),
+            self.norMalCalendarView.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 0),
+            self.norMalCalendarView.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: 0),
+            self.norMalCalendarView.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: 0)
+        ])
+    }
+
+    private func setupFilterDetailViewConstraint() {
+
+        guard let tabBarController = self.tabBarController else { return }
+
+        tabBarController.view.addSubview(self.filterDetailBackgroundView)
+        self.filterDetailBackgroundView.addSubview(self.filterDetailView)
+        self.filterDetailBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        self.filterDetailView.translatesAutoresizingMaskIntoConstraints = false
+        let itemHeight = 244
+
+        NSLayoutConstraint.activate([
+            self.filterDetailBackgroundView.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 0),
+            self.filterDetailBackgroundView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 0),
+            self.filterDetailBackgroundView.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: 0),
+            self.filterDetailBackgroundView.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: 0),
+
+            self.filterDetailView.leadingAnchor.constraint(equalTo: self.filterDetailBackgroundView.leadingAnchor, constant: 0),
+            self.filterDetailView.trailingAnchor.constraint(equalTo: self.filterDetailBackgroundView.trailingAnchor, constant: 0),
+            self.filterDetailView.heightAnchor.constraint(equalToConstant: CGFloat(itemHeight)),
+            self.filterDetailView.bottomAnchor.constraint(equalTo: self.filterDetailBackgroundView.bottomAnchor, constant: CGFloat(itemHeight))
+        ])
+    }
+
     private func setupRecruitmentButtonConstraint() {
 
         guard let tabBarController = self.tabBarController else { return }
 
-        tabBarController.view.addsubviews(self.recruitmentButton, self.recruitmentBackgroundView, self.manRecruitmentButton, self.teamRecruitmentButton)
+        tabBarController.view.addsubviews(self.recruitmentButton, self.recruitmentBackgroundView, self.manRecruitmentButton, self.teamRecruitmentButton, self.manRecruitmentButtonLabel, self.teamRecruitmentButtonLabel)
 
         self.recruitmentBackgroundView.isHidden = true
         self.manRecruitmentButton.isHidden = true
         self.teamRecruitmentButton.isHidden = true
+        self.manRecruitmentButtonLabel.isHidden = true
+        self.teamRecruitmentButtonLabel.isHidden = true
 
         NSLayoutConstraint.activate([
             self.recruitmentButton.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: -100),
@@ -338,7 +358,13 @@ class GameMatchingViewController: UIViewController {
             self.manRecruitmentButton.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: -25),
 
             self.teamRecruitmentButton.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: -105),
-            self.teamRecruitmentButton.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: -25)
+            self.teamRecruitmentButton.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: -25),
+
+            self.manRecruitmentButtonLabel.centerYAnchor.constraint(equalTo: self.manRecruitmentButton.centerYAnchor),
+            self.manRecruitmentButtonLabel.trailingAnchor.constraint(equalTo: self.manRecruitmentButton.leadingAnchor, constant: -10),
+
+            self.teamRecruitmentButtonLabel.centerYAnchor.constraint(equalTo: self.teamRecruitmentButton.centerYAnchor),
+            self.teamRecruitmentButtonLabel.trailingAnchor.constraint(equalTo: self.teamRecruitmentButton.leadingAnchor, constant: -10)
         ])
     }
 
@@ -415,7 +441,11 @@ class GameMatchingViewController: UIViewController {
             self.manRecruitmentButton.frame = CGRect(x: self.manRecruitmentButton.frame.minX, y: self.recruitmentButton.frame.minY - self.manRecruitmentButton.frame.height - 16, width: self.manRecruitmentButton.frame.width, height: self.manRecruitmentButton.frame.height)
             self.teamRecruitmentButton.frame = CGRect(x: self.teamRecruitmentButton.frame.minX, y: self.recruitmentButton.frame.minY - self.manRecruitmentButton.frame.height - self.teamRecruitmentButton.frame.height - 32, width: self.manRecruitmentButton.frame.width, height: self.manRecruitmentButton.frame.height)
             self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.teamRecruitmentButtonLabel.isHidden = false
+            self.manRecruitmentButtonLabel.isHidden = false
         }
+
         self.tabBarController?.view.insertSubview(self.recruitmentButton, at: self.tabBarController?.view.subviews.count ?? 0)
     }
 
@@ -433,6 +463,9 @@ class GameMatchingViewController: UIViewController {
             self.manRecruitmentButton.isHidden = true
             self.tabBarController?.view.insertSubview(self.recruitmentButton, at: self.tabBarController?.view.subviews.count ?? 0)
         }
+
+        self.manRecruitmentButtonLabel.isHidden = true
+        self.teamRecruitmentButtonLabel.isHidden = true
     }
 }
 
@@ -460,6 +493,9 @@ extension GameMatchingViewController: UICollectionViewDelegate {
     private func appearFilterDetailView() {
         self.filterDetailView.isHidden = false
         self.filterDetailBackgroundView.isHidden = false
+        self.recruitmentButton.isHidden = true
+        self.manRecruitmentButton.isHidden = true
+        self.teamRecruitmentButton.isHidden = true
 
         self.tabBarController?.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5) { [weak self] in
@@ -575,6 +611,9 @@ extension GameMatchingViewController: FilterDetailViewDelegate {
         } completion: { _ in
             self.filterDetailBackgroundView.isHidden = true
             self.filterDetailView.isHidden = true
+            self.recruitmentButton.isHidden = false
+            self.manRecruitmentButton.isHidden = false
+            self.teamRecruitmentButton.isHidden = false
 
             self.didSelectedFilterList = detailView.didSelectedFilterList
             if self.didSelectedFilterList.isEmpty {
@@ -595,6 +634,9 @@ extension GameMatchingViewController: FilterDetailViewDelegate {
         } completion: { _ in
             self.filterDetailBackgroundView.isHidden = true
             self.filterDetailView.isHidden = true
+            self.recruitmentButton.isHidden = false
+            self.manRecruitmentButton.isHidden = false
+            self.teamRecruitmentButton.isHidden = false
         }
     }
 }
