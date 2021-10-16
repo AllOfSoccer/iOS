@@ -1427,7 +1427,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJN-4Z-PoW">
-                                                            <rect key="frame" x="302" y="23.5" width="52" height="31"/>
+                                                            <rect key="frame" x="322" y="23.5" width="52" height="31"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" image="delete" title=" "/>
                                                             <connections>
@@ -1449,7 +1449,7 @@
                                                         <constraint firstItem="Ity-vQ-A1L" firstAttribute="leading" secondItem="RZP-Pb-gO2" secondAttribute="leading" id="WcV-2J-VWt"/>
                                                         <constraint firstItem="Ity-vQ-A1L" firstAttribute="top" secondItem="aIT-z3-y99" secondAttribute="bottom" constant="14" id="XzU-mW-hEH"/>
                                                         <constraint firstItem="RWp-Lt-VMf" firstAttribute="centerX" secondItem="NUA-Sb-r5V" secondAttribute="centerX" id="gLi-9P-2em"/>
-                                                        <constraint firstAttribute="trailing" secondItem="TJN-4Z-PoW" secondAttribute="trailing" constant="20" id="jby-cF-IfD"/>
+                                                        <constraint firstAttribute="trailing" secondItem="TJN-4Z-PoW" secondAttribute="trailing" id="jby-cF-IfD"/>
                                                         <constraint firstAttribute="bottom" secondItem="RWp-Lt-VMf" secondAttribute="bottom" constant="10" id="kME-bv-iMm"/>
                                                         <constraint firstItem="pcv-Rj-aQ7" firstAttribute="leading" secondItem="aIT-z3-y99" secondAttribute="trailing" constant="20" id="lbL-JV-MOr"/>
                                                         <constraint firstItem="RZP-Pb-gO2" firstAttribute="top" secondItem="NUA-Sb-r5V" secondAttribute="top" constant="20" id="oWE-ZR-FNc"/>
@@ -1518,7 +1518,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ecw-mg-gyz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ecw-mg-gyz">
                                 <rect key="frame" x="0.0" y="112" width="414" height="701"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>

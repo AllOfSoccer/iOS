@@ -56,7 +56,6 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - HorizontalCalendar Variable
     private var selectedDate: [String] = []
-    private var weeks: [String] = ["월","화","수","목","금","토","일"]
     private var horizontalCalendarCellData
         : [HorizontalCalendarModel] = []
 
@@ -83,7 +82,7 @@ class GameMatchingViewController: UIViewController {
     @IBOutlet private weak var tagCollectionViewConstraint: NSLayoutConstraint!
 
     // MARK: - NormalCalendarView Variable
-    private var norMalCalendarView = GameMatchingCalendarView()
+//    private var norMalCalendarView = GameMatchingCalendarView()
     private var norMalCalendarDidSelectedDate: [String] = []
 
     @IBOutlet private weak var monthButton: UIButton!
@@ -151,7 +150,10 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - CalendarMonthButtonAction
     @IBAction func monthButtonTouchUp(_ sender: UIButton) {
-        self.norMalCalendarView.isHidden = false
+
+        let norMalCalendarView = GameMatchingCalendarView()
+        norMalCalendarView.delegate = self
+        setSubViewConstraints(view: norMalCalendarView)
     }
 
     @IBAction private func resetTagButtonTouchUp(_ sender: UIButton) {
@@ -191,9 +193,6 @@ class GameMatchingViewController: UIViewController {
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setNormalCalendarView()
-        setNormalCalendarViewConstraint()
 
         setupHorizontalCalendarView()
         setupFilterTagCollectionView()
@@ -288,26 +287,6 @@ class GameMatchingViewController: UIViewController {
         self.recruitmentButton.setBackgroundColor(UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1), for: .normal)
         self.recruitmentButton.setBackgroundColor(.white, for: .selected)
         self.recruitmentButton.clipsToBounds = true
-    }
-
-    private func setNormalCalendarView() {
-        self.norMalCalendarView.delegate = self
-
-        self.norMalCalendarView.isHidden = true
-    }
-
-    private func setNormalCalendarViewConstraint() {
-
-        guard let tabBarController = self.tabBarController else { return }
-
-        tabBarController.view.addSubview(self.norMalCalendarView)
-        self.norMalCalendarView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.norMalCalendarView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 0),
-            self.norMalCalendarView.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 0),
-            self.norMalCalendarView.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: 0),
-            self.norMalCalendarView.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: 0)
-        ])
     }
 
     private func setupFilterDetailViewConstraint() {
@@ -576,15 +555,11 @@ extension GameMatchingViewController: UITableViewDataSource {
 
 extension GameMatchingViewController: GameMatchingCalendarViewDelegate {
     func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDate: [String]) {
-        self.norMalCalendarView.isHidden = true
+        sender.removeFromSuperview()
     }
 
     func cancelButtonDidSelected(sender: GameMatchingCalendarView) {
-        self.norMalCalendarView.isHidden = true
-    }
-
-    func okButtonDidSelected(sender: GameMatchingCalendarView) {
-
+        sender.removeFromSuperview()
     }
 }
 

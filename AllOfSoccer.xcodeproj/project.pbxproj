@@ -404,7 +404,7 @@
 			children = (
 				9DC1289F26917E400021EDF5 /* GameMatching.storyboard */,
 				9DC128A226917E740021EDF5 /* GameMatchingViewController.swift */,
-				9DD4AE31270B0AB500FF6976 /* GameMatchingCalendarView.swift */,
+				9DEA3624271B025C00F43230 /* GameMatchingCalendarView */,
 				9DC3C6DB26BBAE4500AD6B7D /* HorizontalCalendar */,
 				9DC3C6DC26BBAE6300AD6B7D /* FilterTagCollectionView */,
 				9DD48F9326BD8A1D00FE54FE /* FilterDetailView */,
@@ -513,6 +513,14 @@
 				9DE76BE126F8661A007D3406 /* MyPageQuestionsViewController.swift */,
 			);
 			path = QuestionsView;
+			sourceTree = "<group>";
+		};
+		9DEA3624271B025C00F43230 /* GameMatchingCalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				9DD4AE31270B0AB500FF6976 /* GameMatchingCalendarView.swift */,
+			);
+			path = GameMatchingCalendarView;
 			sourceTree = "<group>";
 		};
 		9DEBB25C271A8471006548E9 /* MyWritingViewController */ = {
