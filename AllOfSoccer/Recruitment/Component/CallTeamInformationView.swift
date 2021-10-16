@@ -117,7 +117,7 @@ class CallTeamInformationView: UIView {
     private func setTeamData() {
         for i in 0...2 {
             let data = TeamInfo(index: i, isSelected: false)
-            teamInfo.append( data)
+            teamInfo.append(data)
         }
     }
 

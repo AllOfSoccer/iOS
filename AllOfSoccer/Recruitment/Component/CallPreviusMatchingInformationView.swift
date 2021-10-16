@@ -9,7 +9,7 @@ import UIKit
 
 protocol CallPreviusMatchingInformationViewDelegate: AnyObject {
     func cancelButtonDidSelected(_ view: CallPreviusMatchingInformationView)
-    func OKButtonDidSelected(_ view: CallPreviusMatchingInformationView, _ model: [Comment])
+    func OKButtonDidSelected(_ view: CallPreviusMatchingInformationView)
 }
 
 class CallPreviusMatchingInformationView: UIView {
@@ -93,7 +93,7 @@ class CallPreviusMatchingInformationView: UIView {
     @objc func OKButtonDidSelected(sender: UIButton) {
         print("OKButton이 클릭되었습니다")
 //        self.commentsModel = self.commentsButtons.filter { $0.isSelected }.compactMap { Comment(rawValue: $0.tag) }
-        self.delegate?.OKButtonDidSelected(self, self.commentsModel)
+        self.delegate?.OKButtonDidSelected(self)
     }
 
     override init(frame: CGRect) {

@@ -1,12 +1,20 @@
 
 import UIKit
 
+protocol DeleteTeamInformationTableViewCellDelegate: AnyObject {
+    func didSelect(teamInfo: DeleteTeamInformationView.TeamInfo)
+}
+
 class DeleteTeamInformationTableViewCell: UITableViewCell {
+
+    internal weak var delegate: DeleteTeamInformationTableViewCellDelegate?
+
+    private var teamInfo: DeleteTeamInformationView.TeamInfo?
 
     private var trashButton: SeletableButton = {
         let button = SeletableButton()
         button.normalImage = UIImage(systemName: "trash")
-        button.selectImage = UIImage(systemName: "trash.fill")
+        button.selectImage = UIImage(systemName: "trash")
         button.normalBackgroundColor = UIColor.clear
         button.selectBackgroundColor = UIColor.clear
         button.normalBorderColor = UIColor.clear
@@ -69,8 +77,14 @@ class DeleteTeamInformationTableViewCell: UITableViewCell {
         ])
     }
 
+    internal func configure(teamInfo: DeleteTeamInformationView.TeamInfo) {
+        
+    }
+
     @objc func trashButtonTouchUp(_ sender: SeletableButton) {
-        sender.isSelected = sender.isSelected ? false : true
+
+        if let data = self.teamInfo {
+            delegate?.didSelect(teamInfo: data)
+        }
     }
 }
-

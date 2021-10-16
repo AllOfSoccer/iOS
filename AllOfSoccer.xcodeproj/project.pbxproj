@@ -88,6 +88,10 @@
 		9DE4F2A726AF076600F8974A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE4F2A626AF076600F8974A /* FSCalendar */; };
 		9DE76BE026F86270007D3406 /* MyPageNoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE76BDF26F86270007D3406 /* MyPageNoticeDetailViewController.swift */; };
 		9DE76BE226F8661A007D3406 /* MyPageQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE76BE126F8661A007D3406 /* MyPageQuestionsViewController.swift */; };
+		9DEBB25E271A84BE006548E9 /* MyWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEBB25D271A84BE006548E9 /* MyWritingViewController.swift */; };
+		9DEBB261271A8541006548E9 /* MyFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEBB260271A8541006548E9 /* MyFavoriteViewController.swift */; };
+		9DEBB263271A8791006548E9 /* MyWritingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEBB262271A8791006548E9 /* MyWritingTableViewCell.swift */; };
+		9DEBB265271A87A1006548E9 /* MyFavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEBB264271A87A1006548E9 /* MyFavoriteTableViewCell.swift */; };
 		9DECF34826A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DECF34726A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift */; };
 		9DF0B4C32705E0D6006F8A62 /* SliderLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0B4C22705E0D6006F8A62 /* SliderLabels.swift */; };
 		9DF9EEBE26F610A500D5132C /* MyPageTeamInfomationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF9EEBD26F610A500D5132C /* MyPageTeamInfomationViewController.swift */; };
@@ -176,6 +180,10 @@
 		9DDF10DD26EDE1F600A3986E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9DE76BDF26F86270007D3406 /* MyPageNoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNoticeDetailViewController.swift; sourceTree = "<group>"; };
 		9DE76BE126F8661A007D3406 /* MyPageQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageQuestionsViewController.swift; sourceTree = "<group>"; };
+		9DEBB25D271A84BE006548E9 /* MyWritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingViewController.swift; sourceTree = "<group>"; };
+		9DEBB260271A8541006548E9 /* MyFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteViewController.swift; sourceTree = "<group>"; };
+		9DEBB262271A8791006548E9 /* MyWritingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingTableViewCell.swift; sourceTree = "<group>"; };
+		9DEBB264271A87A1006548E9 /* MyFavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		9DECF34726A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DF0B4C22705E0D6006F8A62 /* SliderLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderLabels.swift; sourceTree = "<group>"; };
 		9DF9EEBD26F610A500D5132C /* MyPageTeamInfomationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTeamInfomationViewController.swift; sourceTree = "<group>"; };
@@ -416,6 +424,8 @@
 				9D76674F26F2313B00EE538E /* NoticeView */,
 				9D0DA55126F2459400726077 /* VersionView */,
 				9DE76BE326F86624007D3406 /* QuestionsView */,
+				9DEBB25C271A8471006548E9 /* MyWritingViewController */,
+				9DEBB25F271A8517006548E9 /* MyFavoriteViewController */,
 				9DBB9D3926F841470035BEAF /* Model */,
 			);
 			path = MyPage;
@@ -503,6 +513,24 @@
 				9DE76BE126F8661A007D3406 /* MyPageQuestionsViewController.swift */,
 			);
 			path = QuestionsView;
+			sourceTree = "<group>";
+		};
+		9DEBB25C271A8471006548E9 /* MyWritingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9DEBB25D271A84BE006548E9 /* MyWritingViewController.swift */,
+				9DEBB262271A8791006548E9 /* MyWritingTableViewCell.swift */,
+			);
+			path = MyWritingViewController;
+			sourceTree = "<group>";
+		};
+		9DEBB25F271A8517006548E9 /* MyFavoriteViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9DEBB260271A8541006548E9 /* MyFavoriteViewController.swift */,
+				9DEBB264271A87A1006548E9 /* MyFavoriteTableViewCell.swift */,
+			);
+			path = MyFavoriteViewController;
 			sourceTree = "<group>";
 		};
 		9DF9EEBC26F6106500D5132C /* TeamInformationView */ = {
@@ -701,17 +729,21 @@
 				9DCBDA8F2714240500F4976E /* DeleteTeamInformationTableViewCell.swift in Sources */,
 				9DE76BE026F86270007D3406 /* MyPageNoticeDetailViewController.swift in Sources */,
 				9DD474B326903D8A006F00F1 /* TopRoundView.swift in Sources */,
+				9DEBB263271A8791006548E9 /* MyWritingTableViewCell.swift in Sources */,
 				9DECF34826A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift in Sources */,
 				9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */,
 				9DB03E6A2701DF79004412AF /* UITableViewCell+Extension.swift in Sources */,
 				9D7E641326EC4BE900B51D37 /* IntrinsicTableView.swift in Sources */,
+				9DEBB261271A8541006548E9 /* MyFavoriteViewController.swift in Sources */,
 				9D7D409D26BE792000E8329E /* FilterDetailTagModel.swift in Sources */,
 				9DD694EA26FB4CF8006047A0 /* Array+Extension.swift in Sources */,
 				9DD474B626903D97006F00F1 /* RoundButton.swift in Sources */,
 				9D0DA55426F249A900726077 /* MyPageMyInformationViewController.swift in Sources */,
 				9D3DA5222706C43F00C40257 /* BackgroundView.swift in Sources */,
+				9DEBB25E271A84BE006548E9 /* MyWritingViewController.swift in Sources */,
 				9DFB9C2F26B8DCBB00618D66 /* NoticeTableViewCell.swift in Sources */,
 				9D6B91E2266D08E000AF182B /* AppDelegate.swift in Sources */,
+				9DEBB265271A87A1006548E9 /* MyFavoriteTableViewCell.swift in Sources */,
 				9D8A32EF26B8FB0000A8F65B /* FilterDetailView.swift in Sources */,
 				9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */,
 				9DDB1F952713DF2A00ADB396 /* RecruitmentCalendarView.swift in Sources */,

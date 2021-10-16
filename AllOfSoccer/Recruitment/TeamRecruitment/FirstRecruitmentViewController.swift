@@ -127,7 +127,7 @@ extension FirstRecruitmentViewController: CallPreviusMatchingInformationViewDele
     func cancelButtonDidSelected(_ view: CallPreviusMatchingInformationView) {
         view.removeFromSuperview()
     }
-    func OKButtonDidSelected(_ view: CallPreviusMatchingInformationView, _ model: [Comment]) {
+    func OKButtonDidSelected(_ view: CallPreviusMatchingInformationView) {
         view.removeFromSuperview()
     }
 }
