@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xop-Zj-bN6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xop-Zj-bN6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,44 +17,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acO-Yi-6GQ">
-                                <rect key="frame" x="54" y="610" width="306" height="44"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acO-Yi-6GQ" customClass="RoundView" customModule="AllOfSoccer" customModuleProvider="target">
+                                <rect key="frame" x="48" y="658" width="318" height="44"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="306" id="LNb-c1-DKA"/>
                                     <constraint firstAttribute="height" constant="44" id="Umi-ek-6au"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.80784313725490198" green="0.80784313725490198" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3H-SG-vNa">
-                                <rect key="frame" x="54" y="664" width="306" height="44"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0V-Aa-SDD" customClass="RoundView" customModule="AllOfSoccer" customModuleProvider="target">
+                                <rect key="frame" x="48" y="718" width="318" height="44"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Eje-dj-P8u"/>
-                                    <constraint firstAttribute="width" constant="306" id="GKS-sY-2qb"/>
-                                    <constraint firstAttribute="height" constant="44" id="bFO-FJ-6Ld"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="306" id="bO0-pa-53J"/>
+                                    <constraint firstAttribute="height" constant="44" id="hpq-3M-Oyi"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.80784313725490198" green="0.80784313725490198" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPu-Hf-IBc">
-                                <rect key="frame" x="54" y="718" width="306" height="44"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="306" id="9Ul-g1-Gcy"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="LAF-42-faY"/>
-                                    <constraint firstAttribute="width" constant="306" id="m5I-Gv-kSm"/>
-                                    <constraint firstAttribute="height" constant="44" id="zp4-XB-1yM"/>
-                                </constraints>
-                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="TapTapMark" translatesAutoresizingMaskIntoConstraints="NO" id="rJw-7u-YXT">
+                                <rect key="frame" x="113" y="204" width="188" height="115"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="반갑습니다!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdx-Ea-fJ4">
+                                <rect key="frame" x="167.5" y="335" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oKp-K2-llQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="O3H-SG-vNa" firstAttribute="top" secondItem="acO-Yi-6GQ" secondAttribute="bottom" constant="10" id="9IV-jp-vUZ"/>
-                            <constraint firstItem="O3H-SG-vNa" firstAttribute="centerX" secondItem="NqJ-T1-1DK" secondAttribute="centerX" id="COr-OC-dVg"/>
-                            <constraint firstItem="lPu-Hf-IBc" firstAttribute="top" secondItem="O3H-SG-vNa" secondAttribute="bottom" constant="10" id="Q10-x7-bhU"/>
+                            <constraint firstItem="rJw-7u-YXT" firstAttribute="leading" secondItem="oKp-K2-llQ" secondAttribute="leading" constant="113" id="4FR-gI-P9v"/>
+                            <constraint firstItem="bdx-Ea-fJ4" firstAttribute="top" secondItem="rJw-7u-YXT" secondAttribute="bottom" constant="16" id="M7M-Mi-1kE"/>
+                            <constraint firstItem="h0V-Aa-SDD" firstAttribute="leading" secondItem="oKp-K2-llQ" secondAttribute="leading" constant="48" id="OYn-5B-61f"/>
+                            <constraint firstItem="oKp-K2-llQ" firstAttribute="trailing" secondItem="h0V-Aa-SDD" secondAttribute="trailing" constant="48" id="OjB-E5-724"/>
+                            <constraint firstItem="acO-Yi-6GQ" firstAttribute="leading" secondItem="oKp-K2-llQ" secondAttribute="leading" constant="48" id="SCI-3S-OIO"/>
+                            <constraint firstItem="acO-Yi-6GQ" firstAttribute="top" secondItem="bdx-Ea-fJ4" secondAttribute="bottom" constant="302" id="W40-qS-ksj"/>
+                            <constraint firstItem="oKp-K2-llQ" firstAttribute="trailing" secondItem="acO-Yi-6GQ" secondAttribute="trailing" constant="48" id="aCX-eC-Fdc"/>
+                            <constraint firstItem="oKp-K2-llQ" firstAttribute="trailing" secondItem="rJw-7u-YXT" secondAttribute="trailing" constant="113" id="cLV-UZ-Fkn"/>
+                            <constraint firstItem="h0V-Aa-SDD" firstAttribute="top" secondItem="acO-Yi-6GQ" secondAttribute="bottom" constant="16" id="cWa-xo-6Ud"/>
                             <constraint firstItem="acO-Yi-6GQ" firstAttribute="centerX" secondItem="NqJ-T1-1DK" secondAttribute="centerX" id="ihX-vV-AUi"/>
-                            <constraint firstItem="lPu-Hf-IBc" firstAttribute="centerX" secondItem="NqJ-T1-1DK" secondAttribute="centerX" id="rLj-0N-HNh"/>
-                            <constraint firstItem="acO-Yi-6GQ" firstAttribute="top" secondItem="oKp-K2-llQ" secondAttribute="top" constant="566" id="sQS-us-PkB"/>
+                            <constraint firstItem="bdx-Ea-fJ4" firstAttribute="centerX" secondItem="NqJ-T1-1DK" secondAttribute="centerX" id="juE-cn-AOj"/>
+                            <constraint firstItem="rJw-7u-YXT" firstAttribute="top" secondItem="oKp-K2-llQ" secondAttribute="top" constant="160" id="pEm-SV-YIl"/>
+                            <constraint firstItem="h0V-Aa-SDD" firstAttribute="centerX" secondItem="NqJ-T1-1DK" secondAttribute="centerX" id="pHv-6N-ljg"/>
+                            <constraint firstItem="oKp-K2-llQ" firstAttribute="bottom" secondItem="h0V-Aa-SDD" secondAttribute="bottom" constant="100" id="rXu-GU-8xO"/>
+                            <constraint firstItem="rJw-7u-YXT" firstAttribute="centerX" secondItem="NqJ-T1-1DK" secondAttribute="centerX" id="uQE-u8-52e"/>
                         </constraints>
                     </view>
                     <connections>
@@ -66,11 +93,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TapTapMark" width="148" height="76"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
