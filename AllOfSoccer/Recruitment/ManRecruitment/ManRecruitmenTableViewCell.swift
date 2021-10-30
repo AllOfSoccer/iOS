@@ -1,13 +1,13 @@
 //
-//  RecruitmentTableViewCell.swift
+//  ManRecruitmenTableViewCell.swift
 //  AllOfSoccer
 //
-//  Created by 최원석 on 2021/08/18.
+//  Created by 최원석 on 2021/10/01.
 //
 
 import UIKit
 
-class RecruitmentTableViewCell: UITableViewCell {
+class ManRecruitmenTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var checkButton: UIButton!
     @IBOutlet private weak var teamNameLabel: UILabel!

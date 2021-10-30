@@ -1,20 +1,20 @@
 //
-//  IntroductionTableViewCell.swift
+//  ManIntroductionTableViewCell.swift
 //  AllOfSoccer
 //
-//  Created by 최원석 on 2021/09/08.
+//  Created by 최원석 on 2021/10/01.
 //
 
 import UIKit
 
-protocol IntroductionTableViewCellDelegate: AnyObject {
-    func removeButtonDidSeleced(_ tableviewCell: IntroductionTableViewCell)
-    func updownButtonDidSelected(_ tableviewCell: IntroductionTableViewCell)
+protocol ManIntroductionTableViewCellDelegate: AnyObject {
+    func removeButtonDidSeleced(_ tableviewCell: ManIntroductionTableViewCell)
+    func updownButtonDidSelected(_ tableviewCell: ManIntroductionTableViewCell)
 }
 
-class IntroductionTableViewCell: UITableViewCell {
+class ManIntroductionTableViewCell: UITableViewCell {
 
-    weak var delegate: IntroductionTableViewCellDelegate?
+    weak var delegate: ManIntroductionTableViewCellDelegate?
 
     @IBOutlet private weak var contentsLabel: UILabel!
     @IBOutlet private weak var removeButton: UIButton!

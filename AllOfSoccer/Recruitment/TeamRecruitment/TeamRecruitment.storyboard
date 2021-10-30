@@ -4,7 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,7 @@
         <!--팀 모집 글쓰기-->
         <scene sceneID="yWg-b7-tDL">
             <objects>
-                <viewController id="Hwf-9T-Tbs" customClass="FirstRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Hwf-9T-Tbs" customClass="FirstTeamRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oGE-d1-L44">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,6 +28,9 @@
                                         <state key="normal" title="이전 글 불러오기" image="ArchiveBox">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="callPreviousInformationButtonTouchUp:" destination="Hwf-9T-Tbs" eventType="touchUpInside" id="pGJ-zE-Fof"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -124,7 +127,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OHi-4g-ZvZ">
                                 <rect key="frame" x="16" y="353" width="251.5" height="36"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3M-Au-6ws" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3M-Au-6ws" customClass="IBSelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="120.5" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
@@ -145,14 +148,34 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
                                                 <color key="value" red="0.61568627450980395" green="0.62352941176470589" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                <color key="value" red="0.8666666666666667" green="0.87058823529411766" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBackgroundColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBorderColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedText" value="6vs6"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="deselectedText" value="6vs6"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veK-sJ-5qI" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veK-sJ-5qI" customClass="IBSelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
                                         <rect key="frame" x="130.5" y="0.0" width="121" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -175,10 +198,30 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
                                                 <color key="value" red="0.61568627450980395" green="0.62352941176470589" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                <color key="value" red="0.8666666666666667" green="0.87058823529411766" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBackgroundColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBorderColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedText" value="11vs11"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="deselectedText" value="11vs11"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
@@ -190,7 +233,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rDJ-xb-ghb">
                                 <rect key="frame" x="16" y="399" width="382" height="36"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXi-Q0-4Jj" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXi-Q0-4Jj" customClass="IBSelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="120.5" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
@@ -211,14 +254,34 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
                                                 <color key="value" red="0.61568627450000002" green="0.62352941179999999" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                <color key="value" red="0.8666666666666667" green="0.87058823529411766" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBackgroundColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBorderColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedText" value="남성 매치"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="deselectedText" value="남성 매치"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b90-cH-IrE" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b90-cH-IrE" customClass="IBSelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
                                         <rect key="frame" x="130.5" y="0.0" width="121" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
@@ -239,14 +302,34 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
                                                 <color key="value" red="0.61568627450000002" green="0.62352941179999999" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                <color key="value" red="0.8666666666666667" green="0.87058823529411766" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBackgroundColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBorderColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedText" value="여성 매치"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="deselectedText" value="여성 매치"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMm-6I-6qg" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMm-6I-6qg" customClass="IBSelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
                                         <rect key="frame" x="261.5" y="0.0" width="120.5" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
@@ -267,10 +350,30 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
                                                 <color key="value" red="0.61568627450000002" green="0.62352941179999999" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                <color key="value" red="0.8666666666666667" green="0.87058823529411766" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBackgroundColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBorderColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedText" value="혼성 매치"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="deselectedText" value="혼성 매치"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
@@ -338,7 +441,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tvJ-FR-vaT">
                                 <rect key="frame" x="16" y="445" width="251.5" height="36"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jym-es-rUU" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jym-es-rUU" customClass="IBSelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="120.5" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
@@ -359,14 +462,34 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
                                                 <color key="value" red="0.61568627450000002" green="0.62352941179999999" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                <color key="value" red="0.8666666666666667" green="0.87058823529411766" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBackgroundColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBorderColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedText" value="풋살화 필수"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="deselectedText" value="풋살화 필수"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUB-0h-EHA" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUB-0h-EHA" customClass="IBSelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
                                         <rect key="frame" x="130.5" y="0.0" width="121" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -389,10 +512,30 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
                                                 <color key="value" red="0.61568627450000002" green="0.62352941179999999" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                <color key="value" red="0.8666666666666667" green="0.87058823529411766" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBackgroundColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectBorderColor">
+                                                <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedText" value="축구화 필수"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="deselectedText" value="축구화 필수"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectTintColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
@@ -401,15 +544,46 @@
                                     <constraint firstAttribute="height" constant="36" id="N5N-uc-OMJ"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbz-xP-9Ys">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbz-xP-9Ys" customClass="IBSelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
                                 <rect key="frame" x="16" y="612.5" width="22" height="22"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="0Rb-hM-0qK"/>
                                     <constraint firstAttribute="width" constant="22" id="xdS-wL-fLY"/>
                                 </constraints>
-                                <color key="tintColor" name="tagBackTouchUpColor"/>
+                                <color key="tintColor" red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="checkmark.circle.fill" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectBackgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectBorderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalTintColor">
+                                        <color key="value" red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectTintColor">
+                                        <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="normalImage" value="checkmark.circle" catalog="system"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="selectImage" value="checkmark.circle.fill" catalog="system"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="informationRecordButton:" destination="Hwf-9T-Tbs" eventType="touchUpInside" id="Nap-zz-gYu"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이 정보 다음에 기억하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7z-hj-HNU">
                                 <rect key="frame" x="48" y="614" width="151" height="19.5"/>
@@ -466,6 +640,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="elevenMatchButton" destination="veK-sJ-5qI" id="uae-J2-2v3"/>
+                        <outlet property="futsalShoesButton" destination="Jym-es-rUU" id="tvn-5R-A28"/>
+                        <outlet property="manMatchButton" destination="wXi-Q0-4Jj" id="3Pz-ig-4LS"/>
+                        <outlet property="mixMatchButton" destination="gMm-6I-6qg" id="5AD-DS-SML"/>
+                        <outlet property="sixMatchButton" destination="F3M-Au-6ws" id="MFs-xP-YId"/>
+                        <outlet property="soccerShoesButton" destination="FUB-0h-EHA" id="QXq-sw-ERk"/>
+                        <outlet property="womanMatchButton" destination="b90-cH-IrE" id="q4x-km-mta"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNV-SE-8BN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -474,7 +657,7 @@
         <!--팀 모집 글쓰기-->
         <scene sceneID="n4a-29-lDy">
             <objects>
-                <viewController id="89L-cF-gMN" customClass="SecondRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="89L-cF-gMN" customClass="SecondTeamRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pLw-Y7-OYe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -483,7 +666,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="1078"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uf4-ZX-Jcp">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="830.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbt-xr-3ew">
                                                 <rect key="frame" x="0.0" y="1" width="414" height="52"/>
@@ -495,6 +678,9 @@
                                                         <state key="normal" title="팀 소개 불러오기" image="ArchiveBox">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="callTeamInformationButtonTouchUp:" destination="89L-cF-gMN" eventType="touchUpInside" id="1Rd-Mr-MVi"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -549,7 +735,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xb-0U-0Jz">
-                                                <rect key="frame" x="0.0" y="756.5" width="414" height="62"/>
+                                                <rect key="frame" x="0.0" y="768.5" width="414" height="62"/>
                                                 <color key="backgroundColor" red="0.92549019610000005" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="62" id="jcJ-dT-oek"/>
@@ -558,6 +744,9 @@
                                                 <state key="normal" title="등록하기">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="registerTeamInformationTouchUp:" destination="89L-cF-gMN" eventType="touchUpInside" id="adv-FA-g8x"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvQ-AY-OcU" customClass="RangeSeekSlider" customModule="RangeSeekSlider">
                                                 <rect key="frame" x="0.0" y="206" width="414" height="18"/>
@@ -653,66 +842,59 @@
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edA-vI-ay8" customClass="SkillSlider" customModule="AllOfSoccer" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="300" width="382" height="18"/>
-                                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="18" id="hk7-2l-xwl"/>
-                                                </constraints>
-                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="최하" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMy-QO-O18">
-                                                <rect key="frame" x="24" y="322" width="21" height="14.5"/>
+                                                <rect key="frame" x="24" y="334" width="21" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="중하" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmg-WM-rPD">
-                                                <rect key="frame" x="69" y="322" width="21" height="14.5"/>
+                                                <rect key="frame" x="69" y="334" width="21" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="중" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7U-zm-3fO">
-                                                <rect key="frame" x="102" y="322" width="15.5" height="14.5"/>
+                                                <rect key="frame" x="102" y="334" width="15.5" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="중상" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3s-M3-tyR">
-                                                <rect key="frame" x="131" y="322" width="21" height="14.5"/>
+                                                <rect key="frame" x="131" y="334" width="21" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="상" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sO9-ne-29d">
-                                                <rect key="frame" x="161" y="322" width="15.5" height="14.5"/>
+                                                <rect key="frame" x="161" y="334" width="15.5" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="하" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2np-lI-tDy">
-                                                <rect key="frame" x="49" y="322" width="15" height="14.5"/>
+                                                <rect key="frame" x="49" y="334" width="15" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="최상" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCT-3M-soQ">
-                                                <rect key="frame" x="189" y="322" width="21" height="14.5"/>
+                                                <rect key="frame" x="189" y="334" width="21" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소개글" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIy-1D-ltw">
-                                                <rect key="frame" x="16" y="356.5" width="42" height="19.5"/>
+                                                <rect key="frame" x="16" y="368.5" width="42" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="128" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SBP-OD-ZOc" customClass="IntrinsicTableView" customModule="AllOfSoccer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="386" width="414" height="128"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="128" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SBP-OD-ZOc" customClass="IntrinsicTableView" customModule="AllOfSoccer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="398" width="414" height="128"/>
                                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IntroductionTableViewCell" rowHeight="87" id="LHl-p9-GY7" customClass="IntroductionTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IntroductionTableViewCell" rowHeight="87" id="LHl-p9-GY7" customClass="TeamIntroductionTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="44.5" width="414" height="87"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LHl-p9-GY7" id="hG9-K7-arW">
@@ -785,13 +967,13 @@
                                                 </prototypes>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연락처" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqw-UA-xcC">
-                                                <rect key="frame" x="16" y="594" width="42" height="19.5"/>
+                                                <rect key="frame" x="16" y="606" width="42" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="75b-o1-yhY" customClass="RoundView" customModule="AllOfSoccer" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="625.5" width="382" height="50"/>
+                                                <rect key="frame" x="16" y="637.5" width="382" height="50"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone" translatesAutoresizingMaskIntoConstraints="NO" id="wpX-F1-UtC">
                                                         <rect key="frame" x="16" y="16" width="18" height="18"/>
@@ -823,7 +1005,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05i-uC-4b0" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="524" width="382" height="50"/>
+                                                <rect key="frame" x="16" y="536" width="382" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="TCV-5l-e1I"/>
@@ -848,22 +1030,72 @@
                                                     <action selector="addIntroductionButton:" destination="89L-cF-gMN" eventType="touchUpInside" id="WGI-Jz-70R"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvY-BX-FgD">
-                                                <rect key="frame" x="16" y="705.5" width="22" height="22"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvY-BX-FgD" customClass="IBSelectTableButton" customModule="AllOfSoccer" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="717.5" width="22" height="22"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="22" id="Qx8-g4-eXG"/>
                                                     <constraint firstAttribute="height" constant="22" id="mwG-uc-9fI"/>
                                                 </constraints>
-                                                <color key="tintColor" name="tagBackTouchUpColor"/>
+                                                <color key="tintColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                                 <state key="normal" image="checkmark.circle.fill" catalog="system"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="normalImage" value="checkmark.circle" catalog="system"/>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="selectImage">
+                                                        <imageReference key="value" image="checkmark.circle.fill" catalog="system" symbolScale="default"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectBackgroundColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="normalTitleColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectBorderColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="normalTintColor">
+                                                        <color key="value" red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectTintColor">
+                                                        <color key="value" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="informationRecordButton:" destination="89L-cF-gMN" eventType="touchUpInside" id="Dww-I0-AnM"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이 정보 다음에 기억하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkw-Vm-RtQ">
-                                                <rect key="frame" x="48" y="707" width="151" height="19.5"/>
+                                                <rect key="frame" x="48" y="719" width="151" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="10" maxValue="70" translatesAutoresizingMaskIntoConstraints="NO" id="k5n-mh-tQJ" customClass="OneThumbSlider" customModule="AllOfSoccer" customModuleProvider="target">
+                                                <rect key="frame" x="14" y="300" width="386" height="31"/>
+                                                <color key="minimumTrackTintColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="maximumTrackTintColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="thumbTintColor" red="0.92549019607843142" green="0.37254901960784315" blue="0.37254901960784315" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbDiameter">
+                                                        <real key="value" value="18"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="interval">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </slider>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -874,7 +1106,6 @@
                                             <constraint firstAttribute="trailing" secondItem="75b-o1-yhY" secondAttribute="trailing" constant="16" id="4BY-Sp-MeX"/>
                                             <constraint firstItem="aIy-1D-ltw" firstAttribute="leading" secondItem="uf4-ZX-Jcp" secondAttribute="leading" constant="16" id="6Fl-Mp-m8j"/>
                                             <constraint firstItem="Bbt-xr-3ew" firstAttribute="leading" secondItem="uf4-ZX-Jcp" secondAttribute="leading" id="7dC-H7-Ax7"/>
-                                            <constraint firstItem="edA-vI-ay8" firstAttribute="top" secondItem="O1r-OQ-xSJ" secondAttribute="bottom" constant="12" id="8Re-xr-3pe"/>
                                             <constraint firstItem="dXP-Z7-nVt" firstAttribute="centerY" secondItem="pw0-YQ-1U7" secondAttribute="centerY" id="9Vc-2K-zRb"/>
                                             <constraint firstItem="1xb-0U-0Jz" firstAttribute="top" secondItem="dvY-BX-FgD" secondAttribute="bottom" constant="29" id="AP9-sN-GbY"/>
                                             <constraint firstItem="luw-wO-SzI" firstAttribute="leading" secondItem="uf4-ZX-Jcp" secondAttribute="leading" constant="16" id="AoO-Zb-DCS"/>
@@ -887,9 +1118,11 @@
                                             <constraint firstItem="05i-uC-4b0" firstAttribute="leading" secondItem="uf4-ZX-Jcp" secondAttribute="leading" constant="16" id="GKQ-Sh-GgD"/>
                                             <constraint firstItem="rGi-l0-SMR" firstAttribute="top" secondItem="cfh-zJ-GvA" secondAttribute="bottom" constant="20" id="HEw-TQ-ehF"/>
                                             <constraint firstItem="O1r-OQ-xSJ" firstAttribute="leading" secondItem="uf4-ZX-Jcp" secondAttribute="leading" constant="16" id="J79-cs-HGu"/>
+                                            <constraint firstItem="k5n-mh-tQJ" firstAttribute="leading" secondItem="uf4-ZX-Jcp" secondAttribute="leading" constant="16" id="LJN-Pj-idB"/>
                                             <constraint firstItem="gkw-Vm-RtQ" firstAttribute="centerY" secondItem="dvY-BX-FgD" secondAttribute="centerY" id="LMT-bm-l1n"/>
                                             <constraint firstItem="g7U-zm-3fO" firstAttribute="centerY" secondItem="yMy-QO-O18" secondAttribute="centerY" id="Lz8-kZ-wif"/>
                                             <constraint firstItem="75b-o1-yhY" firstAttribute="top" secondItem="oqw-UA-xcC" secondAttribute="bottom" constant="12" id="Mx1-fM-ntu"/>
+                                            <constraint firstItem="k5n-mh-tQJ" firstAttribute="top" secondItem="O1r-OQ-xSJ" secondAttribute="bottom" constant="12" id="OGB-4I-6Yd"/>
                                             <constraint firstItem="cvQ-AY-OcU" firstAttribute="top" secondItem="rGi-l0-SMR" secondAttribute="bottom" constant="12" id="QEe-AT-qsh"/>
                                             <constraint firstItem="SBP-OD-ZOc" firstAttribute="top" secondItem="aIy-1D-ltw" secondAttribute="bottom" constant="10" id="SO9-Tk-Wl5"/>
                                             <constraint firstItem="rGi-l0-SMR" firstAttribute="leading" secondItem="uf4-ZX-Jcp" secondAttribute="leading" constant="16" id="U86-HY-uJq"/>
@@ -902,21 +1135,20 @@
                                             <constraint firstItem="tmg-WM-rPD" firstAttribute="centerY" secondItem="yMy-QO-O18" secondAttribute="centerY" id="fXd-w3-m8e"/>
                                             <constraint firstItem="dvY-BX-FgD" firstAttribute="top" secondItem="75b-o1-yhY" secondAttribute="bottom" constant="30" id="hBN-7H-0X6"/>
                                             <constraint firstItem="cfh-zJ-GvA" firstAttribute="leading" secondItem="uf4-ZX-Jcp" secondAttribute="leading" constant="16" id="hbL-Yj-ai4"/>
+                                            <constraint firstItem="yMy-QO-O18" firstAttribute="top" secondItem="k5n-mh-tQJ" secondAttribute="bottom" constant="4" id="hsC-6r-PMi"/>
                                             <constraint firstItem="dvY-BX-FgD" firstAttribute="leading" secondItem="uf4-ZX-Jcp" secondAttribute="leading" constant="16" id="iua-ph-c7c"/>
                                             <constraint firstItem="cfh-zJ-GvA" firstAttribute="top" secondItem="luw-wO-SzI" secondAttribute="bottom" constant="12" id="j4u-w9-x1g"/>
                                             <constraint firstItem="05i-uC-4b0" firstAttribute="top" secondItem="SBP-OD-ZOc" secondAttribute="bottom" constant="10" id="jfg-JB-PAC"/>
                                             <constraint firstAttribute="trailing" secondItem="1xb-0U-0Jz" secondAttribute="trailing" id="lqP-jT-UAP"/>
-                                            <constraint firstItem="edA-vI-ay8" firstAttribute="leading" secondItem="uf4-ZX-Jcp" secondAttribute="leading" constant="16" id="r3E-QB-ZOh"/>
                                             <constraint firstItem="aIy-1D-ltw" firstAttribute="top" secondItem="yMy-QO-O18" secondAttribute="bottom" constant="20" id="sme-je-fEY"/>
                                             <constraint firstItem="lCT-3M-soQ" firstAttribute="centerY" secondItem="yMy-QO-O18" secondAttribute="centerY" id="snU-w9-evX"/>
                                             <constraint firstItem="75b-o1-yhY" firstAttribute="leading" secondItem="uf4-ZX-Jcp" secondAttribute="leading" constant="16" id="sp6-WE-yM8"/>
                                             <constraint firstAttribute="trailing" secondItem="cvQ-AY-OcU" secondAttribute="trailing" id="t4Z-bK-zo9"/>
                                             <constraint firstAttribute="trailing" secondItem="SBP-OD-ZOc" secondAttribute="trailing" id="tSb-SB-f3C"/>
                                             <constraint firstItem="gkw-Vm-RtQ" firstAttribute="leading" secondItem="dvY-BX-FgD" secondAttribute="trailing" constant="10" id="vuD-VN-7X3"/>
-                                            <constraint firstAttribute="trailing" secondItem="edA-vI-ay8" secondAttribute="trailing" constant="16" id="wPD-lV-39V"/>
+                                            <constraint firstAttribute="trailing" secondItem="k5n-mh-tQJ" secondAttribute="trailing" constant="16" id="w8J-Wv-hgf"/>
                                             <constraint firstAttribute="trailing" secondItem="cfh-zJ-GvA" secondAttribute="trailing" constant="16" id="wRF-tA-R00"/>
                                             <constraint firstAttribute="trailing" secondItem="05i-uC-4b0" secondAttribute="trailing" constant="16" id="xY4-g4-k25"/>
-                                            <constraint firstItem="yMy-QO-O18" firstAttribute="top" secondItem="edA-vI-ay8" secondAttribute="bottom" constant="4" id="xfo-5c-YyI"/>
                                             <constraint firstItem="luw-wO-SzI" firstAttribute="top" secondItem="Bbt-xr-3ew" secondAttribute="bottom" constant="20" id="yIo-mq-aGY"/>
                                             <constraint firstItem="SBP-OD-ZOc" firstAttribute="leading" secondItem="uf4-ZX-Jcp" secondAttribute="leading" id="ybz-yF-CF8"/>
                                             <constraint firstItem="KMh-ED-4BZ" firstAttribute="centerY" secondItem="pw0-YQ-1U7" secondAttribute="centerY" id="z9a-kA-t6S"/>
@@ -950,7 +1182,7 @@
                         <outlet property="ageRangeSlider" destination="cvQ-AY-OcU" id="OXs-Wi-zW6"/>
                         <outlet property="informationCheckButton" destination="dvY-BX-FgD" id="85l-84-hbd"/>
                         <outlet property="introductionTableView" destination="SBP-OD-ZOc" id="rtm-So-CIJ"/>
-                        <outlet property="skillSlider" destination="edA-vI-ay8" id="832-fH-BBf"/>
+                        <outlet property="skillSlider" destination="k5n-mh-tQJ" id="M5v-Dg-CdI"/>
                         <outletCollection property="ageSliderLabels" destination="pw0-YQ-1U7" collectionClass="NSMutableArray" id="5hi-b9-ffv"/>
                         <outletCollection property="ageSliderLabels" destination="uE5-Il-dWk" collectionClass="NSMutableArray" id="4Kx-Gj-qwS"/>
                         <outletCollection property="ageSliderLabels" destination="ROq-xR-ppg" collectionClass="NSMutableArray" id="ZM2-SS-AOv"/>
@@ -974,7 +1206,7 @@
         <!--Navigation Controller-->
         <scene sceneID="DVP-Ym-5Vu">
             <objects>
-                <navigationController storyboardIdentifier="RecruitmentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="n5E-P7-dhY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TeamRecruitmentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="n5E-P7-dhY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="px4-8s-eCL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -994,29 +1226,8 @@
         <designable name="05i-uC-4b0">
             <size key="intrinsicContentSize" width="90" height="34"/>
         </designable>
-        <designable name="F3M-Au-6ws">
-            <size key="intrinsicContentSize" width="71" height="34"/>
-        </designable>
-        <designable name="FUB-0h-EHA">
-            <size key="intrinsicContentSize" width="104" height="34"/>
-        </designable>
-        <designable name="Jym-es-rUU">
-            <size key="intrinsicContentSize" width="104" height="34"/>
-        </designable>
-        <designable name="b90-cH-IrE">
-            <size key="intrinsicContentSize" width="88" height="34"/>
-        </designable>
         <designable name="cvQ-AY-OcU">
             <size key="intrinsicContentSize" width="-1" height="65"/>
-        </designable>
-        <designable name="gMm-6I-6qg">
-            <size key="intrinsicContentSize" width="88" height="34"/>
-        </designable>
-        <designable name="veK-sJ-5qI">
-            <size key="intrinsicContentSize" width="80" height="34"/>
-        </designable>
-        <designable name="wXi-Q0-4Jj">
-            <size key="intrinsicContentSize" width="88" height="34"/>
         </designable>
     </designables>
     <resources>
@@ -1027,18 +1238,19 @@
         <image name="MapPinLine" width="18" height="18"/>
         <image name="Phone" width="22" height="24"/>
         <image name="UserCircle" width="18" height="18"/>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <namedColor name="tagBackTouchUpColor">
-            <color red="0.92500001192092896" green="0.37299999594688416" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

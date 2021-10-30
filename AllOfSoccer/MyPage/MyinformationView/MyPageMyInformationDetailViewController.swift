@@ -12,10 +12,10 @@ class MyPageMyInformationDetailViewController: UIViewController {
     @IBOutlet private weak var myImageView: UIImageView!
     @IBOutlet private weak var cameraButton: RoundButton!
 
-    @IBOutlet private weak var ageSlider: CustomSlider!
+    @IBOutlet private weak var ageSlider: OneThumbSlider!
     @IBOutlet private var ageSliderLabels: [UILabel]!
 
-    @IBOutlet private weak var skillSlider: CustomSlider!
+    @IBOutlet private weak var skillSlider: OneThumbSlider!
     @IBOutlet private var skillSliderLabels: [UILabel]!
 
 
@@ -73,10 +73,12 @@ class MyPageMyInformationDetailViewController: UIViewController {
 
     private func setupLabelConstraint(labelXPositons: [CGFloat],slider: UISlider, labels: [UILabel]) {
         for index in 0..<labels.count {
-            labels[safe: index]?.translatesAutoresizingMaskIntoConstraints = false
+            guard let label = labels[safe: index] else { return }
+            guard let labelPosition = labelXPositons[safe: index] else { return }
+            label.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                labels[index].topAnchor.constraint(equalTo: slider.bottomAnchor, constant: 4),
-                labels[index].centerXAnchor.constraint(equalTo: slider.leadingAnchor, constant: labelXPositons[index])
+                label.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: 4),
+                label.centerXAnchor.constraint(equalTo: slider.leadingAnchor, constant: labelPosition)
             ])
         }
     }

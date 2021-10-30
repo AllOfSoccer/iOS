@@ -9,9 +9,11 @@ import UIKit
 
 class GameMatchingDetailViewController: UIViewController {
 
+    private var viewModel: [String] = []
+
     lazy var likeBarButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage.init(systemName: "heart"), style: .plain, target: self, action: #selector(likeBarbuttonTouchUp(_:)))
-        button.tintColor = .black
+        let button = UIBarButtonItem(image: UIImage(named: "HeartDeSeleded"), style: .plain, target: self, action: #selector(likeBarbuttonTouchUp(_:)))
+        button.tintColor = .clear
         return button
     }()
 
@@ -37,11 +39,26 @@ class GameMatchingDetailViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = [self.likeBarButton, self.shareBarButton]
     }
 
-    @objc private func likeBarbuttonTouchUp(_ sender: UIBarButtonItem) {
+    @objc private func likeBarbuttonTouchUp(_ sender: UIControl) {
         print("likeBarButton이 찍혔습니다.")
+
+        sender.isSelected.toggle()
+        if sender.isSelected {
+            self.likeBarButton.image = UIImage(named: "HeartSelected")
+        } else {
+            self.likeBarButton.image = UIImage(named: "HeartDeSeleded")
+        }
     }
 
     @objc private func shareBarButtonTouchup(_ sender: UIBarButtonItem) {
         print("shareBarButton이 찍혔습니다.")
+
+        for testString in 0...3 {
+            self.viewModel.append(String(testString))
+        }
+
+        let activityViewController = UIActivityViewController(activityItems: self.viewModel, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
     }
 }

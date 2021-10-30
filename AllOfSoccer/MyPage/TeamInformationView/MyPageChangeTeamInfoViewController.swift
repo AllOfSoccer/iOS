@@ -12,8 +12,8 @@ class MyPageChangeTeamInfoViewController: UIViewController {
     @IBOutlet private var ageSliderLabels: [UILabel]!
     @IBOutlet private var skillSliderLabels: [UILabel]!
 
-    @IBOutlet private weak var ageSlider: CustomSlider!
-    @IBOutlet private weak var skillSlider: CustomSlider!
+    @IBOutlet private weak var ageSlider: OneThumbSlider!
+    @IBOutlet private weak var skillSlider: OneThumbSlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -50,13 +50,12 @@ enum FilterType: CaseIterable {
 class GameMatchingViewController: UIViewController {
 
     // MARK: - MatchingModeButton Variable
-    @IBOutlet private weak var teamMatchButton: SelectTableButton!
-    @IBOutlet private weak var manMatchButton: SelectTableButton!
+    @IBOutlet private weak var teamMatchButton: IBSelectTableButton!
+    @IBOutlet private weak var manMatchButton: IBSelectTableButton!
     @IBOutlet private weak var selectedLineCenterConstraint: NSLayoutConstraint!
 
     // MARK: - HorizontalCalendar Variable
     private var selectedDate: [String] = []
-    private var weeks: [String] = ["월","화","수","목","금","토","일"]
     private var horizontalCalendarCellData
         : [HorizontalCalendarModel] = []
 
@@ -83,52 +82,13 @@ class GameMatchingViewController: UIViewController {
     @IBOutlet private weak var tagCollectionViewConstraint: NSLayoutConstraint!
 
     // MARK: - NormalCalendarView Variable
-    private let dateFormatter = DateFormatter()
-    private var currentPage: Date?
-    private lazy var normalCalendarView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
-    private var calendarView = FSCalendar()
-    private lazy var calendarButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0)
-        button.setTitle("선택해주세요", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        return button
-    }()
-    private lazy var calendarPrevButton: UIButton = {
-        let button = UIButton()
-        let buttonImage = UIImage(systemName: "arrowtriangle.left.fill")
-        button.setImage(buttonImage, for: .normal)
-        button.tintColor = UIColor(red: 194.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0)
-        return button
-    }()
-    private lazy var calendarNextButton: UIButton = {
-        let button = UIButton()
-        let buttonImage = UIImage(systemName: "arrowtriangle.right.fill")
-        button.setImage(buttonImage, for: .normal)
-        button.tintColor = UIColor(red: 194.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0)
-        return button
-    }()
-    private lazy var calendarBackgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-        return view
-    }()
+//    private var norMalCalendarView = GameMatchingCalendarView()
+    private var norMalCalendarDidSelectedDate: [String] = []
 
     @IBOutlet private weak var monthButton: UIButton!
 
     // MARK: - TableViewFilterView Variable
-    private var tableViewFilterView = TableViewFilterView()
     private var sortMode = SortMode.distance
-    private lazy var filterBackgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-        return view
-    }()
 
     @IBOutlet private weak var tableViewFilterButton: UIButton!
 
@@ -136,10 +96,26 @@ class GameMatchingViewController: UIViewController {
     @IBOutlet private weak var recruitmentButton: RoundButton!
     @IBOutlet private weak var manRecruitmentButton: RoundButton!
     @IBOutlet private weak var teamRecruitmentButton: RoundButton!
+    private var manRecruitmentButtonLabel: UILabel = {
+        let label = UILabel()
+        label.text = "용병 모집"
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = .white
+        return label
+    }()
+
+    private var teamRecruitmentButtonLabel: UILabel = {
+        let label = UILabel()
+        label.text = "팀 모집"
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = .white
+        return label
+    }()
 
     private var recruitmentBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+
         return view
     }()
 
@@ -174,7 +150,10 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - CalendarMonthButtonAction
     @IBAction func monthButtonTouchUp(_ sender: UIButton) {
-        appearNormalCalendarView()
+
+        let norMalCalendarView = GameMatchingCalendarView()
+        norMalCalendarView.delegate = self
+        setSubViewConstraints(view: norMalCalendarView)
     }
 
     @IBAction private func resetTagButtonTouchUp(_ sender: UIButton) {
@@ -185,7 +164,10 @@ class GameMatchingViewController: UIViewController {
     }
 
     @IBAction func tableViewSortingButtonTouchUp(_ sender: UIButton) {
-        appearTableViewFilterView()
+
+        let tableViewFilterView = TableViewFilterView()
+        tableViewFilterView.delegate = self
+        setSubViewConstraints(view: tableViewFilterView)
     }
 
     // MARK: - RecruitmentButtonAction
@@ -194,15 +176,18 @@ class GameMatchingViewController: UIViewController {
     }
 
     // 뷰 완성시 코드 추가할 예정
-    @IBAction func teamRecruitmentButtonTouchUp(_ sender: UIButton) {
+    @IBAction private func teamRecruitmentButtonTouchUp(_ sender: UIButton) {
+        guard let teamRecruitmentNavigationController = UIStoryboard.init(name: "TeamRecruitment", bundle: nil).instantiateViewController(identifier: "TeamRecruitmentNavigationController") as? UINavigationController  else { return }
 
+        teamRecruitmentNavigationController.modalPresentationStyle = .fullScreen
+        self.navigationController?.present(teamRecruitmentNavigationController, animated: true, completion: nil)
     }
 
-    @IBAction func manRecruitmentButtonTouchUp(_ sender: UIButton) {
-        guard let recruitmentNavigationController = UIStoryboard.init(name: "Recruitment", bundle: nil).instantiateViewController(identifier: "RecruitmentNavigationController") as? UINavigationController  else { return }
+    @IBAction private func manRecruitmentButtonTouchUp(_ sender: UIButton) {
+        guard let manRecruitmentNavigationController = UIStoryboard.init(name: "ManRecruitment", bundle: nil).instantiateViewController(identifier: "ManRecruitmentNavigationController") as? UINavigationController  else { return }
 
-        recruitmentNavigationController.modalPresentationStyle = .fullScreen
-        self.navigationController?.present(recruitmentNavigationController, animated: true, completion: nil)
+        manRecruitmentNavigationController.modalPresentationStyle = .fullScreen
+        self.navigationController?.present(manRecruitmentNavigationController, animated: true, completion: nil)
     }
 
     // MARK: - ViewLifeCycle
@@ -210,14 +195,31 @@ class GameMatchingViewController: UIViewController {
         super.viewDidLoad()
 
         setupHorizontalCalendarView()
-        setupNormalCalendarView()
         setupFilterTagCollectionView()
-        setupTableViewFilterView()
         setupFilterDetailView()
         setupNoticeTableView()
-
         setupRecruitmentButton()
+
+        setupFilterDetailViewConstraint()
         setupRecruitmentButtonConstraint()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+
+        self.recruitmentButton.isHidden = false
+        self.manRecruitmentButton.isHidden = false
+        self.teamRecruitmentButton.isHidden = false
+        self.tabBarController?.view.insertSubview(self.recruitmentButton, at: self.tabBarController?.view.subviews.count ?? 0)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(false)
+
+        self.recruitmentButton.isHidden = true
+        self.manRecruitmentButton.isHidden = true
+        self.teamRecruitmentButton.isHidden = true
+        self.tabBarController?.view.insertSubview(self.recruitmentButton, at: self.tabBarController?.view.subviews.count ?? 0)
     }
 
     // MARK: - Setup View
@@ -245,37 +247,8 @@ class GameMatchingViewController: UIViewController {
         self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
     }
 
-    private func setupNormalCalendarView() {
-
-        self.calendarView.appearance.titleWeekendColor = UIColor.red
-        self.calendarView.appearance.selectionColor = UIColor.black
-        self.calendarView.appearance.todayColor = nil
-        self.calendarView.appearance.titleTodayColor = nil
-
-        self.calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
-        self.calendarView.appearance.headerDateFormat = "M월"
-        self.calendarView.appearance.headerTitleColor = .black
-        self.calendarView.appearance.headerTitleFont = UIFont.systemFont(ofSize: 20, weight: .bold)
-
-        self.calendarView.locale = Locale(identifier: "ko_KR")
-        self.calendarView.calendarWeekdayView.weekdayLabels[0].text = "일"
-        self.calendarView.calendarWeekdayView.weekdayLabels[1].text = "월"
-        self.calendarView.calendarWeekdayView.weekdayLabels[2].text = "화"
-        self.calendarView.calendarWeekdayView.weekdayLabels[3].text = "수"
-        self.calendarView.calendarWeekdayView.weekdayLabels[4].text = "목"
-        self.calendarView.calendarWeekdayView.weekdayLabels[5].text = "금"
-        self.calendarView.calendarWeekdayView.weekdayLabels[6].text = "토"
-
-        self.calendarView.delegate = self
-        self.calendarView.dataSource = self
-        self.calendarView.allowsMultipleSelection = true
-
-        self.calendarButton.addTarget(self, action: #selector(calendarButtonTouchUp), for: .touchUpInside)
-        self.calendarPrevButton.addTarget(self, action: #selector(monthBackButtonTouchUp), for: .touchUpInside)
-        self.calendarNextButton.addTarget(self, action: #selector(monthNextButtonTouchUp), for: .touchUpInside)
-    }
-
     private func setupFilterTagCollectionView() {
+
         self.filterTagCollectionView.delegate = self
         self.filterTagCollectionView.dataSource = self
         self.filterTagCollectionView.allowsMultipleSelection = true
@@ -294,36 +267,10 @@ class GameMatchingViewController: UIViewController {
             let tagCellData = FilterTagModel(filterType: filterType)
             self.tagCellModel.append(tagCellData)
         }
-        print("ddd")
-    }
-
-    private func setupTableViewFilterView() {
-        self.tableViewFilterView.delegate = self
     }
 
     private func setupFilterDetailView() {
         self.filterDetailView.delegate = self
-
-        guard let tabbar = self.tabBarController else { return }
-        tabbar.view.addSubview(self.filterDetailBackgroundView)
-        self.filterDetailBackgroundView.addSubview(self.filterDetailView)
-        let itemHeight = 244
-
-        self.filterDetailBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.filterDetailBackgroundView.leadingAnchor.constraint(equalTo: tabbar.view.leadingAnchor, constant: 0),
-            self.filterDetailBackgroundView.topAnchor.constraint(equalTo: tabbar.view.topAnchor, constant: 0),
-            self.filterDetailBackgroundView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: 0),
-            self.filterDetailBackgroundView.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: 0)
-        ])
-
-        self.filterDetailView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.filterDetailView.leadingAnchor.constraint(equalTo: self.filterDetailBackgroundView.leadingAnchor, constant: 0),
-            self.filterDetailView.trailingAnchor.constraint(equalTo: self.filterDetailBackgroundView.trailingAnchor, constant: 0),
-            self.filterDetailView.heightAnchor.constraint(equalToConstant: CGFloat(itemHeight)),
-            self.filterDetailView.bottomAnchor.constraint(equalTo: self.filterDetailBackgroundView.bottomAnchor, constant: CGFloat(itemHeight))
-        ])
 
         self.filterDetailView.isHidden = true
         self.filterDetailBackgroundView.isHidden = true
@@ -342,44 +289,62 @@ class GameMatchingViewController: UIViewController {
         self.recruitmentButton.clipsToBounds = true
     }
 
-    private func setupRecruitmentButtonConstraint() {
-        guard let tabbar = self.tabBarController else { return }
-        tabbar.view.addSubview(self.recruitmentButton)
-        tabbar.view.addSubview(self.recruitmentBackgroundView)
-        tabbar.view.addSubview(self.manRecruitmentButton)
-        tabbar.view.addSubview(self.teamRecruitmentButton)
+    private func setupFilterDetailViewConstraint() {
 
-        self.recruitmentButton.translatesAutoresizingMaskIntoConstraints = false
-        self.recruitmentBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        self.manRecruitmentButton.translatesAutoresizingMaskIntoConstraints = false
-        self.teamRecruitmentButton.translatesAutoresizingMaskIntoConstraints = false
+        guard let tabBarController = self.tabBarController else { return }
+
+        tabBarController.view.addSubview(self.filterDetailBackgroundView)
+        self.filterDetailBackgroundView.addSubview(self.filterDetailView)
+        self.filterDetailBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        self.filterDetailView.translatesAutoresizingMaskIntoConstraints = false
+        let itemHeight = 244
+
+        NSLayoutConstraint.activate([
+            self.filterDetailBackgroundView.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 0),
+            self.filterDetailBackgroundView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 0),
+            self.filterDetailBackgroundView.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: 0),
+            self.filterDetailBackgroundView.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: 0),
+
+            self.filterDetailView.leadingAnchor.constraint(equalTo: self.filterDetailBackgroundView.leadingAnchor, constant: 0),
+            self.filterDetailView.trailingAnchor.constraint(equalTo: self.filterDetailBackgroundView.trailingAnchor, constant: 0),
+            self.filterDetailView.heightAnchor.constraint(equalToConstant: CGFloat(itemHeight)),
+            self.filterDetailView.bottomAnchor.constraint(equalTo: self.filterDetailBackgroundView.bottomAnchor, constant: CGFloat(itemHeight))
+        ])
+    }
+
+    private func setupRecruitmentButtonConstraint() {
+
+        guard let tabBarController = self.tabBarController else { return }
+
+        tabBarController.view.addsubviews(self.recruitmentButton, self.recruitmentBackgroundView, self.manRecruitmentButton, self.teamRecruitmentButton, self.manRecruitmentButtonLabel, self.teamRecruitmentButtonLabel)
 
         self.recruitmentBackgroundView.isHidden = true
         self.manRecruitmentButton.isHidden = true
         self.teamRecruitmentButton.isHidden = true
+        self.manRecruitmentButtonLabel.isHidden = true
+        self.teamRecruitmentButtonLabel.isHidden = true
 
         NSLayoutConstraint.activate([
-            self.recruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -100),
-            self.recruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -20)
-        ])
+            self.recruitmentButton.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: -100),
+            self.recruitmentButton.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: -20),
 
-        NSLayoutConstraint.activate([
-            self.recruitmentBackgroundView.topAnchor.constraint(equalTo: tabbar.view.topAnchor, constant: 0),
-            self.recruitmentBackgroundView.leadingAnchor.constraint(equalTo: tabbar.view.leadingAnchor, constant: 0),
-            self.recruitmentBackgroundView.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: 0),
-            self.recruitmentBackgroundView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: 0)
-        ])
+            self.recruitmentBackgroundView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 0),
+            self.recruitmentBackgroundView.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 0),
+            self.recruitmentBackgroundView.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: 0),
+            self.recruitmentBackgroundView.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: 0),
 
-        NSLayoutConstraint.activate([
-            self.manRecruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -105),
-            self.manRecruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -25)
-        ])
+            self.manRecruitmentButton.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: -105),
+            self.manRecruitmentButton.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: -25),
 
-        NSLayoutConstraint.activate([
-            self.teamRecruitmentButton.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: -105),
-            self.teamRecruitmentButton.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: -25)
-        ])
+            self.teamRecruitmentButton.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: -105),
+            self.teamRecruitmentButton.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: -25),
 
+            self.manRecruitmentButtonLabel.centerYAnchor.constraint(equalTo: self.manRecruitmentButton.centerYAnchor),
+            self.manRecruitmentButtonLabel.trailingAnchor.constraint(equalTo: self.manRecruitmentButton.leadingAnchor, constant: -10),
+
+            self.teamRecruitmentButtonLabel.centerYAnchor.constraint(equalTo: self.teamRecruitmentButton.centerYAnchor),
+            self.teamRecruitmentButtonLabel.trailingAnchor.constraint(equalTo: self.teamRecruitmentButton.leadingAnchor, constant: -10)
+        ])
     }
 
     private func makeDate(_ nextDay: Int) -> String? {
@@ -413,29 +378,6 @@ class GameMatchingViewController: UIViewController {
         return monthString
     }
 
-    @objc private func calendarButtonTouchUp() {
-        self.calendarBackgroundView.removeFromSuperview()
-        self.normalCalendarView.removeFromSuperview()
-    }
-
-    @objc private func monthBackButtonTouchUp() {
-        moveCurrentPage(moveUp: false)
-    }
-
-    @objc private func monthNextButtonTouchUp() {
-        moveCurrentPage(moveUp: true)
-    }
-
-    private func moveCurrentPage(moveUp: Bool) {
-        let calendar = Calendar.current
-        var dateComponents = DateComponents()
-        dateComponents.month = moveUp ? 1 : -1
-
-        self.currentPage = calendar.date(byAdding: dateComponents, to: self.currentPage ?? Date())
-        guard let currentPage = self.currentPage else { return }
-        self.calendarView.setCurrentPage(currentPage, animated: true)
-    }
-
     private func tagCollectionViewCellIsNotSelectedViewSetting() {
         let resetButtonViewWidth = self.resetButtonView.frame.width
         UIView.animate(withDuration: 0.05) { [weak self] in
@@ -453,76 +395,17 @@ class GameMatchingViewController: UIViewController {
         }
     }
 
-    private func appearTableViewFilterView() {
-        self.tableViewFilterButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
+    private func setSubViewConstraints(view: UIView) {
 
-        guard let tabbar = self.tabBarController else { return }
-        tabbar.view.addSubview(self.filterBackgroundView)
-        self.filterBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        guard let tabBarController = self.tabBarController else { return }
+
+        tabBarController.view.addsubviews(view)
         NSLayoutConstraint.activate([
-            self.filterBackgroundView.topAnchor.constraint(equalTo: tabbar.view.topAnchor),
-            self.filterBackgroundView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor),
-            self.filterBackgroundView.leadingAnchor.constraint(equalTo: tabbar.view.leadingAnchor),
-            self.filterBackgroundView.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor)
+            view.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 0),
+            view.leadingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 0),
+            view.trailingAnchor.constraint(equalTo: tabBarController.view.trailingAnchor, constant: 0),
+            view.bottomAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: 0)
         ])
-
-        self.filterBackgroundView.addSubview(self.tableViewFilterView)
-        self.tableViewFilterView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.tableViewFilterView.widthAnchor.constraint(equalToConstant: 315),
-            self.tableViewFilterView.heightAnchor.constraint(equalToConstant: 271),
-            self.tableViewFilterView.centerXAnchor.constraint(equalTo: self.filterBackgroundView.centerXAnchor),
-            self.tableViewFilterView.centerYAnchor.constraint(equalTo: self.filterBackgroundView.centerYAnchor)
-        ])
-    }
-
-    private func appearNormalCalendarView() {
-        guard let tabbar = self.tabBarController else { return }
-        tabbar.view.addSubview(calendarBackgroundView)
-        self.calendarBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.calendarBackgroundView.topAnchor.constraint(equalTo: tabbar.view.topAnchor, constant: 0),
-            self.calendarBackgroundView.bottomAnchor.constraint(equalTo: tabbar.view.bottomAnchor, constant: 0),
-            self.calendarBackgroundView.leadingAnchor.constraint(equalTo: tabbar.view.leadingAnchor, constant: 0),
-            self.calendarBackgroundView.trailingAnchor.constraint(equalTo: tabbar.view.trailingAnchor, constant: 0)
-        ])
-
-        self.calendarBackgroundView.addSubview(self.normalCalendarView)
-        self.normalCalendarView.snp.makeConstraints { (make) in
-            make.width.equalTo(315)
-            make.height.equalTo(406)
-            make.center.equalTo(self.view)
-        }
-
-        self.normalCalendarView.addSubview(calendarButton)
-        self.calendarButton.snp.makeConstraints { (make) in
-            make.width.equalTo(normalCalendarView)
-            make.height.equalTo(63)
-            make.bottom.equalTo(normalCalendarView)
-        }
-
-        self.normalCalendarView.addSubview(calendarView)
-        self.calendarView.snp.makeConstraints { (make) in
-            make.top.equalTo(normalCalendarView)
-            make.bottom.equalTo(calendarButton.snp.top)
-            make.width.equalTo(normalCalendarView)
-        }
-
-        self.calendarView.addSubview(calendarPrevButton)
-        self.calendarPrevButton.snp.makeConstraints { make in
-            make.top.equalTo(calendarView.snp.top).offset(25)
-            make.left.equalTo(calendarView.snp.left).offset(25)
-            make.width.equalTo(14)
-            make.height.equalTo(14)
-        }
-
-        self.calendarView.addSubview(calendarNextButton)
-        self.calendarNextButton.snp.makeConstraints { make in
-            make.top.equalTo(calendarView.snp.top).offset(25)
-            make.right.equalTo(calendarView.snp.right).offset(-25)
-            make.width.equalTo(14)
-            make.height.equalTo(14)
-        }
     }
 
     private func setupRecruitmentButtonIsSelected() {
@@ -537,7 +420,11 @@ class GameMatchingViewController: UIViewController {
             self.manRecruitmentButton.frame = CGRect(x: self.manRecruitmentButton.frame.minX, y: self.recruitmentButton.frame.minY - self.manRecruitmentButton.frame.height - 16, width: self.manRecruitmentButton.frame.width, height: self.manRecruitmentButton.frame.height)
             self.teamRecruitmentButton.frame = CGRect(x: self.teamRecruitmentButton.frame.minX, y: self.recruitmentButton.frame.minY - self.manRecruitmentButton.frame.height - self.teamRecruitmentButton.frame.height - 32, width: self.manRecruitmentButton.frame.width, height: self.manRecruitmentButton.frame.height)
             self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.teamRecruitmentButtonLabel.isHidden = false
+            self.manRecruitmentButtonLabel.isHidden = false
         }
+
         self.tabBarController?.view.insertSubview(self.recruitmentButton, at: self.tabBarController?.view.subviews.count ?? 0)
     }
 
@@ -555,6 +442,9 @@ class GameMatchingViewController: UIViewController {
             self.manRecruitmentButton.isHidden = true
             self.tabBarController?.view.insertSubview(self.recruitmentButton, at: self.tabBarController?.view.subviews.count ?? 0)
         }
+
+        self.manRecruitmentButtonLabel.isHidden = true
+        self.teamRecruitmentButtonLabel.isHidden = true
     }
 }
 
@@ -582,6 +472,9 @@ extension GameMatchingViewController: UICollectionViewDelegate {
     private func appearFilterDetailView() {
         self.filterDetailView.isHidden = false
         self.filterDetailBackgroundView.isHidden = false
+        self.recruitmentButton.isHidden = true
+        self.manRecruitmentButton.isHidden = true
+        self.teamRecruitmentButton.isHidden = true
 
         self.tabBarController?.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5) { [weak self] in
@@ -660,42 +553,26 @@ extension GameMatchingViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - FSCollectionViewDelegate
-extension GameMatchingViewController: FSCalendarDelegate {
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let stringDate = self.dateFormatter.string(from: date)
-        self.selectedDate.append(stringDate)
-        let countOfSeletedDate = self.selectedDate.count
-        let buttonTitle = self.selectedDate.isEmpty ? "선택해주세요" : "선택 적용하기 (\(countOfSeletedDate))"
-        self.calendarButton.setTitle(buttonTitle, for: .normal)
+extension GameMatchingViewController: GameMatchingCalendarViewDelegate {
+    func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDate: [String]) {
+        sender.removeFromSuperview()
     }
 
-    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let stringDate = self.dateFormatter.string(from: date)
-        guard let indexOfStringDate = selectedDate.firstIndex(of: stringDate) else { return }
-        self.selectedDate.remove(at: indexOfStringDate)
-        let countOfSeletedDate = self.selectedDate.count
-        let buttonTitle = self.selectedDate.isEmpty ? "선택해주세요" : "선택 적용하기 (\(countOfSeletedDate))"
-        self.calendarButton.setTitle(buttonTitle, for: .normal)
+    func cancelButtonDidSelected(sender: GameMatchingCalendarView) {
+        sender.removeFromSuperview()
     }
-
-    func minimumDate(for calendar: FSCalendar) -> Date {
-        return Date()
-    }
-}
-
-// MARK: - FSCollectionViewDataSource
-extension GameMatchingViewController: FSCalendarDataSource {
-
 }
 
 // MARK: - TableViewFilterViewDelegate
 extension GameMatchingViewController: TableViewFilterViewDelegate {
-    func finishButtonDidSelected(_ tableViewFilterView: TableViewFilterView, sortMode: SortMode) {
+    func cancelButtonDidSelected(sender: TableViewFilterView) {
+        sender.removeFromSuperview()
+    }
+
+    func okButtonDidSelected(sender: TableViewFilterView, sortMode: SortMode) {
         self.sortMode = sortMode
         self.tableViewFilterButton.setTitle(self.sortMode.sortModeTitle, for: .normal)
-        self.tableViewFilterView.removeFromSuperview()
-        self.filterBackgroundView.removeFromSuperview()
+        sender.removeFromSuperview()
     }
 }
 
@@ -709,6 +586,9 @@ extension GameMatchingViewController: FilterDetailViewDelegate {
         } completion: { _ in
             self.filterDetailBackgroundView.isHidden = true
             self.filterDetailView.isHidden = true
+            self.recruitmentButton.isHidden = false
+            self.manRecruitmentButton.isHidden = false
+            self.teamRecruitmentButton.isHidden = false
 
             self.didSelectedFilterList = detailView.didSelectedFilterList
             if self.didSelectedFilterList.isEmpty {
@@ -729,6 +609,9 @@ extension GameMatchingViewController: FilterDetailViewDelegate {
         } completion: { _ in
             self.filterDetailBackgroundView.isHidden = true
             self.filterDetailView.isHidden = true
+            self.recruitmentButton.isHidden = false
+            self.manRecruitmentButton.isHidden = false
+            self.teamRecruitmentButton.isHidden = false
         }
     }
 }
