@@ -9,35 +9,38 @@ import Foundation
 import UIKit
 
 struct HorizontalCalendarModel {
-    var weeks: [String] = ["토","일","월","화","수","목","금"]
-    var dayOfTheWeek: Int?
-    var date: String?
+    internal var weeks: [String] = ["토","일","월","화","수","목","금"]
 
-    var dayText: String {
-        guard let dayOfTheWeek = self.dayOfTheWeek else {
-            return ""
-        }
+    internal var date: Date
 
-        return self.weeks[dayOfTheWeek % 7]
+    internal var weeksDay: Int {
+        let calendar = Calendar.current
+        let dayOfTheWeekint = calendar.component(.weekday, from: self.date)
+        return dayOfTheWeekint
     }
 
-    var dateText: String {
-        guard let dayOfTheWeek = self.dayOfTheWeek else {
-            return ""
+    internal var dayText: String {
+        let calendar = Calendar.current
+        let dateFormatter = DateFormatter()
+        let chagedDateDay = calendar.dateComponents([.day], from: self.date).day
+        if chagedDateDay == 1 {
+            dateFormatter.dateFormat = "M/d"
+        } else {
+            dateFormatter.dateFormat = "d"
         }
-
-        return self.date ?? ""
+        let dateString = dateFormatter.string(from: self.date)
+        return dateString
     }
 
-    var dayTextColor: UIColor {
-        guard let dayOfTheWeek = self.dayOfTheWeek else {
-            return .white
-        }
+    internal var weeksDayText: String {
+        return self.weeks[self.weeksDay % 7]
+    }
 
-        if dayOfTheWeek % 7 == NumberOfDays.sunday.rawValue {
+    internal var dayTextColor: UIColor {
+        if self.weeksDay % 7 == NumberOfDays.sunday.rawValue {
             // 일요일
             return .red
-        } else if dayOfTheWeek % 7 == NumberOfDays.saturday.rawValue {
+        } else if self.weeksDay % 7 == NumberOfDays.saturday.rawValue {
             // 토요일
             return .blue
         } else {
@@ -46,15 +49,11 @@ struct HorizontalCalendarModel {
         }
     }
 
-    var dateTextColor: UIColor {
-        guard let dayOfTheWeek = self.dayOfTheWeek else {
-            return .white
-        }
-
-        if dayOfTheWeek % 7 == NumberOfDays.sunday.rawValue {
+    internal var dateTextColor: UIColor {
+        if self.weeksDay % 7 == NumberOfDays.sunday.rawValue {
             // 일요일
             return .red
-        } else if dayOfTheWeek % 7 == NumberOfDays.saturday.rawValue {
+        } else if self.weeksDay % 7 == NumberOfDays.saturday.rawValue {
             // 토요일
             return .blue
         } else {

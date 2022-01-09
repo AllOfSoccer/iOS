@@ -240,9 +240,8 @@ class GameMatchingViewController: UIViewController {
 
         let dateRange = 1000
         for nextDay in 0...dateRange {
-            var cellData = HorizontalCalendarModel()
-            cellData.date = makeDate(nextDay)
-            cellData.dayOfTheWeek = makeDayOfTheWeek(nextDay)
+            let cellData = HorizontalCalendarModel(date: makeDate(nextDay))
+//            cellData.dayOfTheWeek = makeDayOfTheWeek(nextDay)
             self.gameMatchingModel.append(cellData)
         }
         self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
@@ -348,27 +347,11 @@ class GameMatchingViewController: UIViewController {
         ])
     }
 
-    private func makeDate(_ nextDay: Int) -> String? {
+    private func makeDate(_ nextDay: Int) -> Date {
         let calendar = Calendar.current
         let currentDate = Date()
         let dateFormatter = DateFormatter()
-        guard let changedDate = calendar.date(byAdding: .day, value: nextDay, to: currentDate) else { return nil }
-        let chagedDateDay = calendar.dateComponents([.day], from: changedDate).day
-        if chagedDateDay == 1 {
-            dateFormatter.dateFormat = "M/d"
-        } else {
-            dateFormatter.dateFormat = "d"
-        }
-        let dateString = dateFormatter.string(from: changedDate)
-        return dateString
-    }
-
-    private func makeDayOfTheWeek(_ nextDay: Int) -> Int? {
-        let calendar = Calendar.current
-        let currentDate = Date()
-        guard let chagedDate = calendar.date(byAdding: .day, value: nextDay, to: currentDate) else { return nil}
-        let dayOfTheWeekint = calendar.component(.weekday, from: chagedDate)
-        return dayOfTheWeekint
+        return calendar.date(byAdding: .day, value: nextDay, to: currentDate) ?? currentDate
     }
 
     private func makeMonthButtonText() -> String {
@@ -514,6 +497,24 @@ extension GameMatchingViewController: UICollectionViewDataSource {
                 return .init()
             }
             cell.configure(self.gameMatchingModel.getSelectedDay(with: indexPath))
+
+            let firstCell = collectionView.visibleCells.compactMap { $0 as? HorizontalCalendarCollectionViewCell}.last
+            print("visibleCells: \(firstCell?.dayLabel.text), \(firstCell?.dateLabel.text)")
+
+            //let firstDate = firstCell.date
+            //self.setCurrentShowingDate(firstDate)
+
+//            print(collectionView.visibleCells.compactMap { $0 as? HorizontalCalendarCollectionViewCell}.first
+//                    .forEach { cell in
+//                print("visibleCells: \(cell.dayLabel.text), \(cell.dateLabel.text)")
+//            })
+            //print(collectionView.indexPathsForVisibleItems + "indexPathCell")
+
+            if ((cell.dateLabel.text?.contains("/")) != nil) {
+
+            } else {
+
+            }
 
             return cell
         } else {
