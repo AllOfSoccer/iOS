@@ -56,8 +56,9 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - HorizontalCalendar Variable
     private var selectedDate: [String] = []
-    private var horizontalCalendarCellData
-        : [HorizontalCalendarModel] = []
+    let gameMatchingModel = GameMatchingViewModel()
+//    private var horizontalCalendarCellData
+//        : [HorizontalCalendarModel] = []
 
     @IBOutlet private weak var horizontalCalendarView: UICollectionView!
     
@@ -242,7 +243,7 @@ class GameMatchingViewController: UIViewController {
             var cellData = HorizontalCalendarModel()
             cellData.date = makeDate(nextDay)
             cellData.dayOfTheWeek = makeDayOfTheWeek(nextDay)
-            self.horizontalCalendarCellData.append(cellData)
+            self.gameMatchingModel.append(cellData)
         }
         self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
     }
@@ -501,7 +502,7 @@ extension GameMatchingViewController: UICollectionViewDelegate {
 extension GameMatchingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.horizontalCalendarView {
-            return self.horizontalCalendarCellData.count
+            return self.gameMatchingModel.count
         } else {
             return self.tagCellModel.count
         }
@@ -512,7 +513,7 @@ extension GameMatchingViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCalendarCollectionViewCell", for: indexPath) as? HorizontalCalendarCollectionViewCell else {
                 return .init()
             }
-            cell.configure(self.horizontalCalendarCellData[indexPath.item])
+            cell.configure(self.gameMatchingModel.getSelectedDay(with: indexPath))
 
             return cell
         } else {

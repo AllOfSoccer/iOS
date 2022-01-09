@@ -51,7 +51,7 @@ class GameMatchingDetailViewController: UIViewController {
     private func setCamera() {
         let camPoition = NMGLatLng(lat: 37.5670135, lng: 126.9783740)
         let cameraUpdate = NMFCameraUpdate(scrollTo: camPoition)
-        self.naverMapView.moveCamera(cameraUpdate)
+        //self.naverMapView.moveCamera(cameraUpdate)
     }
 
     private func setMarker() {
@@ -61,7 +61,7 @@ class GameMatchingDetailViewController: UIViewController {
         marker.iconTintColor = UIColor.red
         marker.width = 50
         marker.height = 60
-        marker.mapView = self.naverMapView
+        //marker.mapView = self.naverMapView
 
         // 정보창 생성
         let infoWindow = NMFInfoWindow()

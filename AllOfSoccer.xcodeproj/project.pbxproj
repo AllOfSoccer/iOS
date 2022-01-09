@@ -45,6 +45,7 @@
 		9D6B91E9266D08E000AF182B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91E7266D08E000AF182B /* Main.storyboard */; };
 		9D6B91EB266D08E100AF182B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91EA266D08E100AF182B /* Assets.xcassets */; };
 		9D6B91EE266D08E100AF182B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91EC266D08E100AF182B /* LaunchScreen.storyboard */; };
+		9D6EAE22278AB855008CE0F2 /* GameMatchingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6EAE21278AB855008CE0F2 /* GameMatchingViewModel.swift */; };
 		9D74B11026F6F89C00D2F692 /* TeamInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D74B10F26F6F89C00D2F692 /* TeamInfoTableViewCell.swift */; };
 		9D76674E26F2313200EE538E /* MyPageNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D76674D26F2313200EE538E /* MyPageNoticeViewController.swift */; };
 		9D7B9F7F26C94B640075F211 /* GameMatchingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B9F7E26C94B640075F211 /* GameMatchingDetailViewController.swift */; };
@@ -146,6 +147,7 @@
 		9D6B91EA266D08E100AF182B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D6B91ED266D08E100AF182B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D6B91EF266D08E100AF182B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = AllOfSoccer/SupporttingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
+		9D6EAE21278AB855008CE0F2 /* GameMatchingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMatchingViewModel.swift; sourceTree = "<group>"; };
 		9D74B10F26F6F89C00D2F692 /* TeamInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfoTableViewCell.swift; sourceTree = "<group>"; };
 		9D76674D26F2313200EE538E /* MyPageNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNoticeViewController.swift; sourceTree = "<group>"; };
 		9D7B9F7E26C94B640075F211 /* GameMatchingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMatchingDetailViewController.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 			children = (
 				9DC1289F26917E400021EDF5 /* GameMatching.storyboard */,
 				9DC128A226917E740021EDF5 /* GameMatchingViewController.swift */,
+				9D6EAE21278AB855008CE0F2 /* GameMatchingViewModel.swift */,
 				9DEA3624271B025C00F43230 /* GameMatchingCalendarView */,
 				9DC3C6DB26BBAE4500AD6B7D /* HorizontalCalendar */,
 				9DC3C6DC26BBAE6300AD6B7D /* FilterTagCollectionView */,
@@ -798,6 +801,7 @@
 				9D686CA026AD6EC400440CBF /* FilterTagCollectionViewCell.swift in Sources */,
 				9DDF10DE26EDE1F600A3986E /* UIView+Extension.swift in Sources */,
 				9D3DA5322706D30000C40257 /* ManIntroductionTableViewCell.swift in Sources */,
+				9D6EAE22278AB855008CE0F2 /* GameMatchingViewModel.swift in Sources */,
 				9DA714C226EC964D00B40D1E /* IntroductionDetailView.swift in Sources */,
 				9D026ACE27525F9F00CA1D0C /* APIService.swift in Sources */,
 				9D026ACC27525F7700CA1D0C /* RootResponse.swift in Sources */,
