@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3542F8182701622A07873204 /* Pods_AllOfSoccer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B51BFFBEC81DF0013664BEF /* Pods_AllOfSoccer.framework */; };
+		9D026ACC27525F7700CA1D0C /* RootResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D026ACB27525F7700CA1D0C /* RootResponse.swift */; };
+		9D026ACE27525F9F00CA1D0C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D026ACD27525F9F00CA1D0C /* APIService.swift */; };
+		9D026AD02752601200CA1D0C /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D026ACF2752601200CA1D0C /* APITarget.swift */; };
 		9D034CE826903A9E0051FA02 /* -----Global----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CE726903A9E0051FA02 /* -----Global----- */; };
 		9D034CEE26903B590051FA02 /* -----Primary View----- in Resources */ = {isa = PBXBuildFile; fileRef = 9D034CED26903B590051FA02 /* -----Primary View----- */; };
 		9D0DA54C26F2342F00726077 /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DA54B26F2342F00726077 /* MyPageTableViewCell.swift */; };
@@ -17,6 +20,7 @@
 		9D10855926A2887700F8263F /* HorizontalCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D10855826A2887700F8263F /* HorizontalCalendarModel.swift */; };
 		9D1F225026ADA317000726CB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D1F224F26ADA317000726CB /* Colors.xcassets */; };
 		9D24EF7C26B3C68400F55676 /* FilterTagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D24EF7B26B3C68400F55676 /* FilterTagModel.swift */; };
+		9D30816E27534F5900765295 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D30816D27534F5900765295 /* Auth.swift */; };
 		9D338C2C26B6A603008A2EDA /* TableViewFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D338C2B26B6A603008A2EDA /* TableViewFilterView.swift */; };
 		9D3B3D6E271419B100455301 /* CallTeamInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3B3D6D271419B100455301 /* CallTeamInformationView.swift */; };
 		9D3B3D7027141AE200455301 /* CallTeamInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3B3D6F27141AE200455301 /* CallTeamInformationTableViewCell.swift */; };
@@ -26,8 +30,6 @@
 		9D3DA52B2706D15B00C40257 /* SecondManRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3DA52A2706D15B00C40257 /* SecondManRecruitmentViewController.swift */; };
 		9D3DA5302706D2BC00C40257 /* ManRecruitmenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3DA52F2706D2BC00C40257 /* ManRecruitmenTableViewCell.swift */; };
 		9D3DA5322706D30000C40257 /* ManIntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3DA5312706D30000C40257 /* ManIntroductionTableViewCell.swift */; };
-		9D3E375A266D11AF0058A4B7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E3759266D11AF0058A4B7 /* Alamofire */; };
-		9D3E375E266D11DF0058A4B7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3E375D266D11DF0058A4B7 /* Kingfisher */; };
 		9D40BD972706BD330073C100 /* SeletableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D40BD962706BD330073C100 /* SeletableButton.swift */; };
 		9D4BC01F26E8CB6000867913 /* TeamIntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BC01E26E8CB6000867913 /* TeamIntroductionTableViewCell.swift */; };
 		9D4EC53F26903C9500D1A27D /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4EC53E26903C9500D1A27D /* SignIn.storyboard */; };
@@ -49,8 +51,6 @@
 		9D7B9F8126C94B780075F211 /* GameMatchingDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B9F8026C94B780075F211 /* GameMatchingDetail.storyboard */; };
 		9D7D409D26BE792000E8329E /* FilterDetailTagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D409C26BE792000E8329E /* FilterDetailTagModel.swift */; };
 		9D7E641326EC4BE900B51D37 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E641226EC4BE900B51D37 /* IntrinsicTableView.swift */; };
-		9D80A3E326E1099900970612 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D80A3E226E1099900970612 /* LoginModel.swift */; };
-		9D884FC62700A0FB0024B24E /* Network in Resources */ = {isa = PBXBuildFile; fileRef = 9D884FC52700A0FB0024B24E /* Network */; };
 		9D8A32EF26B8FB0000A8F65B /* FilterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */; };
 		9D8D32FF26CD53970097A172 /* TeamRecruitmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D32FE26CD53970097A172 /* TeamRecruitmentTableViewCell.swift */; };
 		9D95F7C726EA360800F3F2C7 /* SecondTeamRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95F7C626EA360800F3F2C7 /* SecondTeamRecruitmentViewController.swift */; };
@@ -61,6 +61,9 @@
 		9DB1AB1A26B955F8003E517A /* FilterDetailTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */; };
 		9DB3547526C5539E00ADB9A0 /* FirstTeamRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3547426C5539E00ADB9A0 /* FirstTeamRecruitmentViewController.swift */; };
 		9DB354E626F70017007D8863 /* teamInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB354E526F70017007D8863 /* teamInfoModel.swift */; };
+		9DBB34332752690100887A2F /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB34322752690100887A2F /* SignInModel.swift */; };
+		9DBB34352752693100887A2F /* SaveUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB34342752693100887A2F /* SaveUserInfoModel.swift */; };
+		9DBB34372752696C00887A2F /* BrowseUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB34362752696C00887A2F /* BrowseUserInfoModel.swift */; };
 		9DBC70E826A986D0005F6BFA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9DBC70E726A986D0005F6BFA /* SnapKit */; };
 		9DBFCF2C270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBFCF2B270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift */; };
 		9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC1289A269178500021EDF5 /* MainTabBarController.swift */; };
@@ -104,6 +107,9 @@
 		0B51BFFBEC81DF0013664BEF /* Pods_AllOfSoccer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllOfSoccer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5235469AE7719A82677ADFD6 /* Pods-AllOfSoccer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllOfSoccer.debug.xcconfig"; path = "Target Support Files/Pods-AllOfSoccer/Pods-AllOfSoccer.debug.xcconfig"; sourceTree = "<group>"; };
 		57B576079C85BA1CFFC7E15C /* Pods-AllOfSoccer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllOfSoccer.release.xcconfig"; path = "Target Support Files/Pods-AllOfSoccer/Pods-AllOfSoccer.release.xcconfig"; sourceTree = "<group>"; };
+		9D026ACB27525F7700CA1D0C /* RootResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootResponse.swift; sourceTree = "<group>"; };
+		9D026ACD27525F9F00CA1D0C /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		9D026ACF2752601200CA1D0C /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
 		9D034CE726903A9E0051FA02 /* -----Global----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Global-----"; sourceTree = "<group>"; };
 		9D034CED26903B590051FA02 /* -----Primary View----- */ = {isa = PBXFileReference; lastKnownFileType = text; path = "-----Primary View-----"; sourceTree = "<group>"; };
 		9D0DA54B26F2342F00726077 /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 		9D10855826A2887700F8263F /* HorizontalCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCalendarModel.swift; sourceTree = "<group>"; };
 		9D1F224F26ADA317000726CB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9D24EF7B26B3C68400F55676 /* FilterTagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTagModel.swift; sourceTree = "<group>"; };
+		9D30816D27534F5900765295 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		9D338C2B26B6A603008A2EDA /* TableViewFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFilterView.swift; sourceTree = "<group>"; };
 		9D3B3D6D271419B100455301 /* CallTeamInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTeamInformationView.swift; sourceTree = "<group>"; };
 		9D3B3D6F27141AE200455301 /* CallTeamInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTeamInformationTableViewCell.swift; sourceTree = "<group>"; };
@@ -145,8 +152,6 @@
 		9D7B9F8026C94B780075F211 /* GameMatchingDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameMatchingDetail.storyboard; sourceTree = "<group>"; };
 		9D7D409C26BE792000E8329E /* FilterDetailTagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailTagModel.swift; sourceTree = "<group>"; };
 		9D7E641226EC4BE900B51D37 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
-		9D80A3E226E1099900970612 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
-		9D884FC52700A0FB0024B24E /* Network */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Network; sourceTree = "<group>"; };
 		9D8A32EE26B8FB0000A8F65B /* FilterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailView.swift; sourceTree = "<group>"; };
 		9D8D32FE26CD53970097A172 /* TeamRecruitmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRecruitmentTableViewCell.swift; sourceTree = "<group>"; };
 		9D95F7C626EA360800F3F2C7 /* SecondTeamRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTeamRecruitmentViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +162,9 @@
 		9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB3547426C5539E00ADB9A0 /* FirstTeamRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTeamRecruitmentViewController.swift; sourceTree = "<group>"; };
 		9DB354E526F70017007D8863 /* teamInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamInfoModel.swift; sourceTree = "<group>"; };
+		9DBB34322752690100887A2F /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
+		9DBB34342752693100887A2F /* SaveUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserInfoModel.swift; sourceTree = "<group>"; };
+		9DBB34362752696C00887A2F /* BrowseUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseUserInfoModel.swift; sourceTree = "<group>"; };
 		9DBFCF2B270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallPreviusMatchingInformationTableViewCell.swift; sourceTree = "<group>"; };
 		9DC1289A269178500021EDF5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		9DC1289F26917E400021EDF5 /* GameMatching.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameMatching.storyboard; sourceTree = "<group>"; };
@@ -197,10 +205,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D3E375E266D11DF0058A4B7 /* Kingfisher in Frameworks */,
 				9DE4F2A426AF070000F8974A /* FSCalendar in Frameworks */,
 				9DD474BC26903E95006F00F1 /* NVActivityIndicatorViewExtended in Frameworks */,
-				9D3E375A266D11AF0058A4B7 /* Alamofire in Frameworks */,
 				9DBC70E826A986D0005F6BFA /* SnapKit in Frameworks */,
 				9DE4F2A726AF076600F8974A /* FSCalendar in Frameworks */,
 				9DD474BA26903E95006F00F1 /* NVActivityIndicatorView in Frameworks */,
@@ -356,7 +362,7 @@
 				9D5F573126C298AC004D8AE9 /* Recruitment */,
 				9DC1289E26917CE90021EDF5 /* MyPage */,
 				9D034CE726903A9E0051FA02 /* -----Global----- */,
-				9D884FC52700A0FB0024B24E /* Network */,
+				9D969288272D085D00BFC46F /* Network */,
 				9DDF10DC26EDE1B500A3986E /* Extension */,
 				9DD474AE26903D31006F00F1 /* Components */,
 				9D034CEA26903AB40051FA02 /* Application */,
@@ -384,11 +390,32 @@
 			path = GamematchingDetail;
 			sourceTree = "<group>";
 		};
+		9D969288272D085D00BFC46F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9D026ACF2752601200CA1D0C /* APITarget.swift */,
+				9D026ACD27525F9F00CA1D0C /* APIService.swift */,
+				9D026ACB27525F7700CA1D0C /* RootResponse.swift */,
+				9D30816D27534F5900765295 /* Auth.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		9DB03E662701DEB6004412AF /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		9DBB3431275268EE00887A2F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9DBB34322752690100887A2F /* SignInModel.swift */,
+				9DBB34342752693100887A2F /* SaveUserInfoModel.swift */,
+				9DBB34362752696C00887A2F /* BrowseUserInfoModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9DBB9D3926F841470035BEAF /* Model */ = {
@@ -557,7 +584,7 @@
 			children = (
 				9D4EC53E26903C9500D1A27D /* SignIn.storyboard */,
 				9DFD93B426764DA10049ADF2 /* SignInViewController.swift */,
-				9D80A3E226E1099900970612 /* LoginModel.swift */,
+				9DBB3431275268EE00887A2F /* Model */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -582,8 +609,6 @@
 			);
 			name = AllOfSoccer;
 			packageProductDependencies = (
-				9D3E3759266D11AF0058A4B7 /* Alamofire */,
-				9D3E375D266D11DF0058A4B7 /* Kingfisher */,
 				9DD474B926903E95006F00F1 /* NVActivityIndicatorView */,
 				9DD474BB26903E95006F00F1 /* NVActivityIndicatorViewExtended */,
 				9DC128AD26918E710021EDF5 /* FSCalendar */,
@@ -618,8 +643,6 @@
 			);
 			mainGroup = 9D6B91D5266D08E000AF182B;
 			packageReferences = (
-				9D3E3758266D11AF0058A4B7 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				9D3E375C266D11DF0058A4B7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				9DC128AC26918E710021EDF5 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				9DBC70E626A986D0005F6BFA /* XCRemoteSwiftPackageReference "SnapKit" */,
 				9DE4F2A526AF076600F8974A /* XCRemoteSwiftPackageReference "FSCalendar" */,
@@ -643,7 +666,6 @@
 				9DFFB165266D0F3700B04D3D /* .swiftlint.yml in Resources */,
 				9D6B91EE266D08E100AF182B /* LaunchScreen.storyboard in Resources */,
 				9D6B91EB266D08E100AF182B /* Assets.xcassets in Resources */,
-				9D884FC62700A0FB0024B24E /* Network in Resources */,
 				9DC128A026917E400021EDF5 /* GameMatching.storyboard in Resources */,
 				9DC128A626917E890021EDF5 /* MyPage.storyboard in Resources */,
 				9D1F225026ADA317000726CB /* Colors.xcassets in Resources */,
@@ -725,7 +747,10 @@
 				9D338C2C26B6A603008A2EDA /* TableViewFilterView.swift in Sources */,
 				9DBFCF2C270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift in Sources */,
 				9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */,
+				9DBB34372752696C00887A2F /* BrowseUserInfoModel.swift in Sources */,
+				9D30816E27534F5900765295 /* Auth.swift in Sources */,
 				9D4BC01F26E8CB6000867913 /* TeamIntroductionTableViewCell.swift in Sources */,
+				9DBB34332752690100887A2F /* SignInModel.swift in Sources */,
 				9DF9EEBE26F610A500D5132C /* MyPageTeamInfomationViewController.swift in Sources */,
 				9D74B11026F6F89C00D2F692 /* TeamInfoTableViewCell.swift in Sources */,
 				9D0DA55626F24A1300726077 /* MyPageMyInformationDetailViewController.swift in Sources */,
@@ -741,8 +766,10 @@
 				9DECF34826A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift in Sources */,
 				9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */,
 				9DB03E6A2701DF79004412AF /* UITableViewCell+Extension.swift in Sources */,
+				9DBB34352752693100887A2F /* SaveUserInfoModel.swift in Sources */,
 				9D7E641326EC4BE900B51D37 /* IntrinsicTableView.swift in Sources */,
 				9DEBB261271A8541006548E9 /* MyFavoriteViewController.swift in Sources */,
+				9D026AD02752601200CA1D0C /* APITarget.swift in Sources */,
 				9D7D409D26BE792000E8329E /* FilterDetailTagModel.swift in Sources */,
 				9DD694EA26FB4CF8006047A0 /* Array+Extension.swift in Sources */,
 				9DD474B626903D97006F00F1 /* RoundButton.swift in Sources */,
@@ -761,7 +788,6 @@
 				9DC128A926917EA70021EDF5 /* MyPageViewController.swift in Sources */,
 				9D5AA9C926CBC72500A33D20 /* SearchPlaceView.swift in Sources */,
 				9DB03E6C2701DF79004412AF /* UICollectionViewCell+Extension.swift in Sources */,
-				9D80A3E326E1099900970612 /* LoginModel.swift in Sources */,
 				9DC128A326917E740021EDF5 /* GameMatchingViewController.swift in Sources */,
 				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
 				9D8D32FF26CD53970097A172 /* TeamRecruitmentTableViewCell.swift in Sources */,
@@ -773,6 +799,8 @@
 				9DDF10DE26EDE1F600A3986E /* UIView+Extension.swift in Sources */,
 				9D3DA5322706D30000C40257 /* ManIntroductionTableViewCell.swift in Sources */,
 				9DA714C226EC964D00B40D1E /* IntroductionDetailView.swift in Sources */,
+				9D026ACE27525F9F00CA1D0C /* APIService.swift in Sources */,
+				9D026ACC27525F7700CA1D0C /* RootResponse.swift in Sources */,
 				9D6A430326F84CE200AAA491 /* MyPageAddTeamInfoViewController.swift in Sources */,
 				9D3B3D6E271419B100455301 /* CallTeamInformationView.swift in Sources */,
 				9D0DA55026F2458E00726077 /* MyPageVersionViewController.swift in Sources */,
@@ -1002,22 +1030,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9D3E3758266D11AF0058A4B7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.3;
-			};
-		};
-		9D3E375C266D11DF0058A4B7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.3.0;
-			};
-		};
 		9DBC70E626A986D0005F6BFA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1045,16 +1057,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9D3E3759266D11AF0058A4B7 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9D3E3758266D11AF0058A4B7 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		9D3E375D266D11DF0058A4B7 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9D3E375C266D11DF0058A4B7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
 		9DBC70E726A986D0005F6BFA /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9DBC70E626A986D0005F6BFA /* XCRemoteSwiftPackageReference "SnapKit" */;

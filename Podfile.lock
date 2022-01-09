@@ -1,20 +1,34 @@
 PODS:
+  - Alamofire (5.4.4)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - NMapsMap (3.14.0)
   - RangeSeekSlider (1.8.0)
   - SearchTextField (1.2.4)
 
 DEPENDENCIES:
+  - Moya
+  - NMapsMap
   - RangeSeekSlider
   - SearchTextField
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - Moya
+    - NMapsMap
     - RangeSeekSlider
     - SearchTextField
 
 SPEC CHECKSUMS:
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  NMapsMap: 61c2abfc409bbcdc91583ccc455a5b6f64c7414e
   RangeSeekSlider: 650b11fa1edcb92e1e0ede797669d98622570fb5
   SearchTextField: 40dc3cc57def5a211f263cac263622c163bbc25a
 
-PODFILE CHECKSUM: a7c6226865fd7284a98eabbfac649e9cf95a9181
+PODFILE CHECKSUM: 0a2d6aa064d0d9cf08c0c4105febdd869383101b
 
 COCOAPODS: 1.10.1
