@@ -241,10 +241,9 @@ class GameMatchingViewController: UIViewController {
         let dateRange = 1000
         for nextDay in 0...dateRange {
             let cellData = HorizontalCalendarModel(date: makeDate(nextDay))
-//            cellData.dayOfTheWeek = makeDayOfTheWeek(nextDay)
             self.gameMatchingModel.append(cellData)
         }
-        self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
+//        self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
     }
 
     private func setupFilterTagCollectionView() {
@@ -434,6 +433,13 @@ class GameMatchingViewController: UIViewController {
 
 // MARK: - CollectionViewDelegate
 extension GameMatchingViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+        if collectionView == self.horizontalCalendarView {
+            self.monthButton.setTitle(self.gameMatchingModel.makeMonthButtonText(indexPath: indexPath), for: .normal)
+        }
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.horizontalCalendarView {
             // 데이터 처리
@@ -498,8 +504,8 @@ extension GameMatchingViewController: UICollectionViewDataSource {
             }
             cell.configure(self.gameMatchingModel.getSelectedDay(with: indexPath))
 
-            let firstCell = collectionView.visibleCells.compactMap { $0 as? HorizontalCalendarCollectionViewCell}.last
-            print("visibleCells: \(firstCell?.dayLabel.text), \(firstCell?.dateLabel.text)")
+//            let firstCell = collectionView.visibleCells.compactMap { $0 as? HorizontalCalendarCollectionViewCell}.last
+//            print("visibleCells: \(firstCell?.dayLabel.text), \(firstCell?.dateLabel.text)")
 
             //let firstDate = firstCell.date
             //self.setCurrentShowingDate(firstDate)
@@ -509,12 +515,6 @@ extension GameMatchingViewController: UICollectionViewDataSource {
 //                print("visibleCells: \(cell.dayLabel.text), \(cell.dateLabel.text)")
 //            })
             //print(collectionView.indexPathsForVisibleItems + "indexPathCell")
-
-            if ((cell.dateLabel.text?.contains("/")) != nil) {
-
-            } else {
-
-            }
 
             return cell
         } else {
