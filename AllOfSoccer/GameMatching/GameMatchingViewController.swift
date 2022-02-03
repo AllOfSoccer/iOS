@@ -56,7 +56,7 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - HorizontalCalendar Variable
     private var selectedDate: [String] = []
-    let gameMatchingModel = GameMatchingViewModel()
+    var gameMatchingModel = GameMatchingViewModel()
 //    private var horizontalCalendarCellData
 //        : [HorizontalCalendarModel] = []
 
@@ -84,7 +84,7 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - NormalCalendarView Variable
 //    private var norMalCalendarView = GameMatchingCalendarView()
-    private var norMalCalendarDidSelectedDate: [String] = []
+    private var norMalCalendarDidSelectedDate: [Date] = []
 
     @IBOutlet private weak var monthButton: UIButton!
 
@@ -153,6 +153,7 @@ class GameMatchingViewController: UIViewController {
     @IBAction func monthButtonTouchUp(_ sender: UIButton) {
 
         let norMalCalendarView = GameMatchingCalendarView()
+        norMalCalendarView.append(date: self.gameMatchingModel.tempSelectedDate)
         norMalCalendarView.delegate = self
         setSubViewConstraints(view: norMalCalendarView)
     }
@@ -507,18 +508,6 @@ extension GameMatchingViewController: UICollectionViewDataSource {
             }
             cell.configure(self.gameMatchingModel.getSelectedDay(with: indexPath))
 
-//            let firstCell = collectionView.visibleCells.compactMap { $0 as? HorizontalCalendarCollectionViewCell}.last
-//            print("visibleCells: \(firstCell?.dayLabel.text), \(firstCell?.dateLabel.text)")
-
-            //let firstDate = firstCell.date
-            //self.setCurrentShowingDate(firstDate)
-
-//            print(collectionView.visibleCells.compactMap { $0 as? HorizontalCalendarCollectionViewCell}.first
-//                    .forEach { cell in
-//                print("visibleCells: \(cell.dayLabel.text), \(cell.dateLabel.text)")
-//            })
-            //print(collectionView.indexPathsForVisibleItems + "indexPathCell")
-
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterTagCollectionViewCell", for: indexPath) as? FilterTagCollectionViewCell else {
@@ -558,8 +547,12 @@ extension GameMatchingViewController: UITableViewDataSource {
     }
 }
 
+
+// MARK: - GameMatchingCalendarDelegate
 extension GameMatchingViewController: GameMatchingCalendarViewDelegate {
-    func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDate: [String]) {
+    func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDate: [Date]) {
+
+        self.gameMatchingModel.appendSelectedDate(selectedDate)
         sender.removeFromSuperview()
     }
 

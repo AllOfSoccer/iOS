@@ -9,15 +9,24 @@ import Foundation
 
 class GameMatchingViewModel {
 
+    internal var tempSelectedDate: [Date] = []
+
     private var selectedDayData: [HorizontalCalendarModel] = []
 
     internal var count: Int {
         self.selectedDayData.count
     }
 
+    internal func appendSelectedDate(_ data: [Date]) {
+        self.tempSelectedDate = data
+        print(tempSelectedDate)
+    }
+
     internal func append(_ data: HorizontalCalendarModel) {
         self.selectedDayData.append(data)
     }
+
+//    internal func append(_ data: )
 
     internal func getSelectedDay(with indexpath: IndexPath) -> HorizontalCalendarModel {
         return self.selectedDayData[indexpath.item]

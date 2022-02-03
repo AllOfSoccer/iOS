@@ -9,9 +9,10 @@ import Foundation
 import UIKit
 
 struct HorizontalCalendarModel {
-    internal var weeks: [String] = ["토","일","월","화","수","목","금"]
 
     internal var date: Date
+
+    internal var weeks: [String] = ["토","일","월","화","수","목","금"]
 
     internal var weeksDay: Int {
         let calendar = Calendar.current
