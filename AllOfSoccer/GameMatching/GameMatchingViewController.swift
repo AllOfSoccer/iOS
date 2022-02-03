@@ -195,6 +195,8 @@ class GameMatchingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        self.tabBarController?.presentActivityIndicator()
+
         setupHorizontalCalendarView()
         setupFilterTagCollectionView()
         setupFilterDetailView()
@@ -443,6 +445,7 @@ extension GameMatchingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.horizontalCalendarView {
             // 데이터 처리
+
         } else if collectionView == self.filterTagCollectionView {
             // 데이터 처리
 

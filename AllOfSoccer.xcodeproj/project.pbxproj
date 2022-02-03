@@ -62,6 +62,7 @@
 		9DB1AB1A26B955F8003E517A /* FilterDetailTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */; };
 		9DB3547526C5539E00ADB9A0 /* FirstTeamRecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB3547426C5539E00ADB9A0 /* FirstTeamRecruitmentViewController.swift */; };
 		9DB354E626F70017007D8863 /* teamInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB354E526F70017007D8863 /* teamInfoModel.swift */; };
+		9DB35D8727A039B1003486A6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB35D8627A039B1003486A6 /* BaseViewController.swift */; };
 		9DBB34332752690100887A2F /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB34322752690100887A2F /* SignInModel.swift */; };
 		9DBB34352752693100887A2F /* SaveUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB34342752693100887A2F /* SaveUserInfoModel.swift */; };
 		9DBB34372752696C00887A2F /* BrowseUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB34362752696C00887A2F /* BrowseUserInfoModel.swift */; };
@@ -164,6 +165,7 @@
 		9DB1AB1926B955F8003E517A /* FilterDetailTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB3547426C5539E00ADB9A0 /* FirstTeamRecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTeamRecruitmentViewController.swift; sourceTree = "<group>"; };
 		9DB354E526F70017007D8863 /* teamInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamInfoModel.swift; sourceTree = "<group>"; };
+		9DB35D8627A039B1003486A6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9DBB34322752690100887A2F /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		9DBB34342752693100887A2F /* SaveUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserInfoModel.swift; sourceTree = "<group>"; };
 		9DBB34362752696C00887A2F /* BrowseUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseUserInfoModel.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				9D5F573126C298AC004D8AE9 /* Recruitment */,
 				9DC1289E26917CE90021EDF5 /* MyPage */,
 				9D034CE726903A9E0051FA02 /* -----Global----- */,
+				9DB35D8827A03B26003486A6 /* Base */,
 				9D969288272D085D00BFC46F /* Network */,
 				9DDF10DC26EDE1B500A3986E /* Extension */,
 				9DD474AE26903D31006F00F1 /* Components */,
@@ -408,6 +411,14 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		9DB35D8827A03B26003486A6 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				9DB35D8627A039B1003486A6 /* BaseViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		9DBB3431275268EE00887A2F /* Model */ = {
@@ -814,6 +825,7 @@
 				9DCBDA8D271423BF00F4976E /* DeleteTeamInformationView.swift in Sources */,
 				9D95F7C726EA360800F3F2C7 /* SecondTeamRecruitmentViewController.swift in Sources */,
 				9D3B3D7027141AE200455301 /* CallTeamInformationTableViewCell.swift in Sources */,
+				9DB35D8727A039B1003486A6 /* BaseViewController.swift in Sources */,
 				9D7B9F7F26C94B640075F211 /* GameMatchingDetailViewController.swift in Sources */,
 				9DB3547526C5539E00ADB9A0 /* FirstTeamRecruitmentViewController.swift in Sources */,
 				9D3DA5292706D05400C40257 /* FirstManRecruitmentViewController.swift in Sources */,
