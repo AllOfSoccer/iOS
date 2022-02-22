@@ -35,7 +35,6 @@ class FirstTeamRecruitmentViewController: UIViewController {
 
     @IBAction private func informationCheckButtonTouchUp(_ sender: IBSelectTableButton) {
         sender.isSelected = sender.isSelected ? false : true
-
     }
 
     @IBAction func callPreviousInformationButtonTouchUp(_ sender: UIButton) {
