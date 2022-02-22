@@ -49,6 +49,14 @@ class FirstTeamRecruitmentViewController: UIViewController {
         self.setMatchButton()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        if segue.destination is SecondTeamRecruitmentViewController {
+            print("중현: 필요한 데이터를 넘긴다.")
+        }
+    }
+
     private func setMatchButton() {
         self.sixMatchButton?.addTarget(self, action: #selector(sixMatchButtonTouchUp), for: .touchUpInside)
         self.elevenMatchButton?.addTarget(self, action: #selector(elevenMatchButtonTouchUp), for: .touchUpInside)
