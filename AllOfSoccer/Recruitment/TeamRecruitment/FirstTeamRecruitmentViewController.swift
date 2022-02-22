@@ -9,24 +9,24 @@ import UIKit
 
 class FirstTeamRecruitmentViewController: UIViewController {
 
-    @IBOutlet weak var sixMatchButton: IBSelectTableButton!
-    @IBOutlet weak var elevenMatchButton: IBSelectTableButton!
-    @IBOutlet weak var manMatchButton: IBSelectTableButton!
-    @IBOutlet weak var womanMatchButton: IBSelectTableButton!
-    @IBOutlet weak var mixMatchButton: IBSelectTableButton!
-    @IBOutlet weak var futsalShoesButton: IBSelectTableButton!
-    @IBOutlet weak var soccerShoesButton: IBSelectTableButton!
+    @IBOutlet private weak var sixMatchButton: IBSelectTableButton?
+    @IBOutlet private weak var elevenMatchButton: IBSelectTableButton?
+    @IBOutlet private weak var manMatchButton: IBSelectTableButton?
+    @IBOutlet private weak var womanMatchButton: IBSelectTableButton?
+    @IBOutlet private weak var mixMatchButton: IBSelectTableButton?
+    @IBOutlet private weak var futsalShoesButton: IBSelectTableButton?
+    @IBOutlet private weak var soccerShoesButton: IBSelectTableButton?
 
     @IBAction private func calendarButtonTouchUp(_ sender: UIButton) {
         let recruitmentCalendarView = RecruitmentCalendarView()
         recruitmentCalendarView.delegate = self
-        subviewConstraints(view: recruitmentCalendarView)
+        self.subviewConstraints(view: recruitmentCalendarView)
     }
 
     @IBAction private func placeButtonTouchUp(_ sender: UIButton) {
         let searchPlaceView = SearchPlaceView()
         searchPlaceView.delegate = self
-        subviewConstraints(view: searchPlaceView)
+        self.subviewConstraints(view: searchPlaceView)
     }
 
     @IBAction private func backButtonItemTouchUp(_ sender: UIBarButtonItem) {
@@ -40,23 +40,23 @@ class FirstTeamRecruitmentViewController: UIViewController {
     @IBAction func callPreviousInformationButtonTouchUp(_ sender: UIButton) {
         let callPreviousInformationView = CallPreviusMatchingInformationView()
         callPreviousInformationView.delegate = self
-        subviewConstraints(view: callPreviousInformationView)
+        self.subviewConstraints(view: callPreviousInformationView)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setMatchButton()
+        self.setMatchButton()
     }
 
     private func setMatchButton() {
-        self.sixMatchButton.addTarget(self, action: #selector(sixMatchButtonTouchUp), for: .touchUpInside)
-        self.elevenMatchButton.addTarget(self, action: #selector(elevenMatchButtonTouchUp), for: .touchUpInside)
-        self.manMatchButton.addTarget(self, action: #selector(manMatchButtonTouchUp), for: .touchUpInside)
-        self.womanMatchButton.addTarget(self, action: #selector(womanMatchButtonTouchUp), for: .touchUpInside)
-        self.mixMatchButton.addTarget(self, action: #selector(mixMatchButtonTouchUp), for: .touchUpInside)
-        self.futsalShoesButton.addTarget(self, action: #selector(futsalShoesButtonTouchUp), for: .touchUpInside)
-        self.soccerShoesButton.addTarget(self, action: #selector(soccerShoesButtonTouchUp), for: .touchUpInside)
+        self.sixMatchButton?.addTarget(self, action: #selector(sixMatchButtonTouchUp), for: .touchUpInside)
+        self.elevenMatchButton?.addTarget(self, action: #selector(elevenMatchButtonTouchUp), for: .touchUpInside)
+        self.manMatchButton?.addTarget(self, action: #selector(manMatchButtonTouchUp), for: .touchUpInside)
+        self.womanMatchButton?.addTarget(self, action: #selector(womanMatchButtonTouchUp), for: .touchUpInside)
+        self.mixMatchButton?.addTarget(self, action: #selector(mixMatchButtonTouchUp), for: .touchUpInside)
+        self.futsalShoesButton?.addTarget(self, action: #selector(futsalShoesButtonTouchUp), for: .touchUpInside)
+        self.soccerShoesButton?.addTarget(self, action: #selector(soccerShoesButtonTouchUp), for: .touchUpInside)
     }
 
     private func subviewConstraints(view: UIView) {
