@@ -10,15 +10,31 @@ import FSCalendar
 
 protocol GameMatchingCalendarViewDelegate: AnyObject {
     func cancelButtonDidSelected(sender: GameMatchingCalendarView)
-    func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDate: [Date])
+    func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDates: [Date])
 }
 
 class GameMatchingCalendarView: UIView {
 
+    static func make(viewModel: GameMatchingViewModel, delegate: GameMatchingCalendarViewDelegate) -> GameMatchingCalendarView {
+        return GameMatchingCalendarView(viewModel: viewModel, delegate: delegate)
+    }
+
     weak var delegate: GameMatchingCalendarViewDelegate?
 
-    private var selectedDate: [Date] = []
+    private let gameMatchingCalendarViewModel: GameMatchingViewModel
+
+    private var selectedDate: [Date]
     private var currentPage: Date?
+
+    init(viewModel: GameMatchingViewModel, delegate: GameMatchingCalendarViewDelegate) {
+        self.gameMatchingCalendarViewModel = viewModel
+//        self.selectedDate = []
+        self.delegate = delegate
+    }
+
+    deinit {
+        print("deinit GameMatchingCalendarView")
+    }
 
     private var baseView: UIView = {
         let view = UIView()
@@ -124,6 +140,11 @@ class GameMatchingCalendarView: UIView {
         loadView()
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setOKButtonTitle()
+    }
+
     private func loadView() {
 
         setSuperView()
@@ -145,8 +166,9 @@ class GameMatchingCalendarView: UIView {
 
     private func setOKButtonTitle() {
 
-        let countOfSeletedDate = self.selectedDate.count
-        let buttonTitle = self.selectedDate.isEmpty ? "선택" : "선택 (\(countOfSeletedDate)건)"
+        let countOfSeletedDate = self.gameMatchingCalendarViewModel.formalSelectedDate.count
+
+        let buttonTitle = countOfSeletedDate <= 0 ? "선택" : "선택 (\(countOfSeletedDate)건)"
         self.okButton.setTitle(buttonTitle, for: .normal)
     }
 
@@ -190,7 +212,7 @@ class GameMatchingCalendarView: UIView {
     }
 
     @objc private func okButtonTouchUp(sender: UIButton) {
-        self.delegate?.okButtonDidSelected(sender: self, selectedDate: self.selectedDate)
+        self.delegate?.okButtonDidSelected(sender: self, selectedDates: self.gameMatchingCalendarViewModel.selectedDate)
     }
 
     @objc private func monthPrevButtonTouchUp(_ sender: UIButton) {
@@ -211,8 +233,14 @@ class GameMatchingCalendarView: UIView {
         self.calendar.setCurrentPage(currentPage, animated: true)
     }
 
-    internal func append(date: [Date]) {
-        self.selectedDate = date
+//    internal func append(date: [Date]) {
+//        self.selectedDate = date
+//
+//        setOKButtonTitle()
+//    }
+
+    internal func append(viewModel: GameMatchingViewModel) {
+        self.gameMatchingCalendarViewModel = viewModel
 
         setOKButtonTitle()
     }
@@ -223,29 +251,29 @@ extension GameMatchingCalendarView: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
 
         appendDate(date: date)
+        setOKButtonTitle()
     }
 
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
 
         deleteDate(date: date)
+        setOKButtonTitle()
     }
 
     func minimumDate(for calendar: FSCalendar) -> Date {
         return Date()
-    }
+     }
 
     private func appendDate(date: Date) {
-        //        let dateFormatter = DateFormatter()
-        //        let stringDate = dateFormatter.string(from: date)
-        self.selectedDate.append(date)
+        self.gameMatchingCalendarViewModel.appendSelectedDate(nil, date)
+//        self.selectedDate.append(date)
         self.setOKButtonTitle()
     }
 
     private func deleteDate(date: Date) {
-        //        let dateFormatter = DateFormatter()
-        //        let stringDate = dateFormatter.string(from: date)
-        guard let indexOfDate = selectedDate.firstIndex(of: date) else { return }
-        self.selectedDate.remove(at: indexOfDate)
+        self.gameMatchingCalendarViewModel.deleteSelectedDate(date)
+//        guard let indexOfDate = selectedDate.firstIndex(of: date) else { return }
+//        self.selectedDate.remove(at: indexOfDate)
         self.setOKButtonTitle()
     }
 }
@@ -256,10 +284,25 @@ extension GameMatchingCalendarView: FSCalendarDataSource {
 
         guard let cell = calendar.dequeueReusableCell(withIdentifier: "GameMatchingCalendarCell", for: date, at: position) as? GameMatchingCalendarCell else { return .init() }
 
-        if self.selectedDate.contains(date) {
+        let selectedDate = self.gameMatchingCalendarViewModel.formalStrSelectedDate
+        let calendarDate = self.changeDateFormat(date)
+
+        if selectedDate.contains(calendarDate) {
             calendar.select(date)
         }
 
         return cell
+    }
+}
+
+extension GameMatchingCalendarView {
+    private func changeDateFormat(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+
+        let changedSelectedDate = dateFormatter.string(from: date)
+
+        return changedSelectedDate
     }
 }

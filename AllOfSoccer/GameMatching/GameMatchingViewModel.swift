@@ -9,32 +9,69 @@ import Foundation
 
 class GameMatchingViewModel {
 
-    internal var tempSelectedDate: [Date] = []
+    // MARK: - selectedDateModel
+    internal var selectedDate: [Date] = []
 
-    private var selectedDayData: [HorizontalCalendarModel] = []
+    internal private(set) var selectedString: Set<String> = []
 
-    internal var count: Int {
-        self.selectedDayData.count
+    internal func updateSelectedDate(_ selectedDateString: String) {
+        self.selectedString.insert(selectedDateString)
     }
 
-    internal func appendSelectedDate(_ data: [Date]) {
-        self.tempSelectedDate = data
-        print(tempSelectedDate)
+    internal var formalSelectedDate: [Date] {
+        return selectedDate
+    }
+
+    internal var formalStrSelectedDate: [String] {
+        let strSelectedDate = self.selectedDate.map { self.changeDateFormat($0) }
+        return strSelectedDate
+    }
+
+    internal func appendSelectedDate(_ dates: [Date]?, _ date: Date?) {
+        if let dates = dates {
+            self.selectedDate = dates
+        } else if let date = date {
+            self.selectedDate.append(date)
+        }
+    }
+
+    internal func deleteSelectedDate(_ date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+
+        guard let indexOfDate = self.selectedDate.firstIndex(of: date) else { return }
+        self.selectedDate.remove(at: indexOfDate)
+    }
+
+    // MARK: - horizontalCalendarModel
+    private var horizontalCalendarModels: [HorizontalCalendarModel] = []
+
+    internal var formalHorizontalCalendarModels: [HorizontalCalendarModel] {
+        return horizontalCalendarModels
+    }
+
+    internal var formalStrHorizontalCalendarDates: [String] {
+        let strHorizontalCalendarDates = self.horizontalCalendarModels.map { self.changeDateFormat($0.date) }
+
+        return strHorizontalCalendarDates
+    }
+
+    internal var horizontalCount: Int {
+        self.horizontalCalendarModels.count
     }
 
     internal func append(_ data: HorizontalCalendarModel) {
-        self.selectedDayData.append(data)
+        self.horizontalCalendarModels.append(data)
     }
 
-//    internal func append(_ data: )
-
-    internal func getSelectedDay(with indexpath: IndexPath) -> HorizontalCalendarModel {
-        return self.selectedDayData[indexpath.item]
+    internal func getSelectedDateModel(with indexpath: IndexPath) -> HorizontalCalendarModel {
+        return self.horizontalCalendarModels[indexpath.item]
     }
 
     internal func makeMonthButtonText(indexPath: IndexPath) -> String {
         let newIndexPathItem = makeNewIndexPathItem(indexPath: indexPath)
-        let currentDate = self.selectedDayData[newIndexPathItem].date
+        let currentDate = self.horizontalCalendarModels[newIndexPathItem].date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M월"
         let monthString = dateFormatter.string(from: currentDate)
@@ -47,5 +84,17 @@ class GameMatchingViewModel {
             newIndexPathItem = newIndexPathItem - 6
         }
         return newIndexPathItem
+    }
+}
+
+extension GameMatchingViewModel {
+    private func changeDateFormat(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+
+        let changedSelectedDate = dateFormatter.string(from: date)
+
+        return changedSelectedDate
     }
 }
