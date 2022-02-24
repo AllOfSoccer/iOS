@@ -10,7 +10,7 @@ import FSCalendar
 
 protocol RecruitmentCalendarViewDelegate: AnyObject {
     func cancelButtonDidSelected(_ view: RecruitmentCalendarView)
-    func okButtonDidSelected(_ view: RecruitmentCalendarView, selectedDate: [String])
+    func okButtonDidSelected(_ view: RecruitmentCalendarView, selectedDate: String)
 }
 
 class RecruitmentCalendarView: UIView {
@@ -18,6 +18,10 @@ class RecruitmentCalendarView: UIView {
     weak var delegate: RecruitmentCalendarViewDelegate?
 
     private var selectedDate: [String] = []
+
+    private var selectDate: Date?
+    private var selectTime: String = Date().timeString
+
     private var currentPage: Date?
 
     private var baseView: UIView = {
@@ -40,7 +44,7 @@ class RecruitmentCalendarView: UIView {
         calendar.appearance.headerTitleColor = .black
         calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 20, weight: .bold)
 
-        calendar.locale = Locale(identifier: "ko-KR")
+        calendar.locale = Locale(identifier: "ko_KR")
         calendar.calendarWeekdayView.weekdayLabels[0].text = "일"
         calendar.calendarWeekdayView.weekdayLabels[1].text = "월"
         calendar.calendarWeekdayView.weekdayLabels[2].text = "화"
@@ -49,7 +53,7 @@ class RecruitmentCalendarView: UIView {
         calendar.calendarWeekdayView.weekdayLabels[5].text = "금"
         calendar.calendarWeekdayView.weekdayLabels[6].text = "토"
 
-        calendar.allowsMultipleSelection = true
+        calendar.allowsMultipleSelection = false
 
         return calendar
     }()
@@ -205,7 +209,9 @@ class RecruitmentCalendarView: UIView {
     }
 
     @objc private func okButtonTouchUp(sender: UIButton) {
-        self.delegate?.okButtonDidSelected(self, selectedDate: self.selectedDate)
+        self.selectDate.map {
+            self.delegate?.okButtonDidSelected(self, selectedDate: $0.toDay + " " + self.selectTime)
+        }
     }
 
     @objc private func monthPrevButtonTouchUp(_ sender: UIButton) {
@@ -217,7 +223,7 @@ class RecruitmentCalendarView: UIView {
     }
 
     @objc private func handleDatePicker(_ sender: UIDatePicker) {
-
+        self.selectTime = sender.date.timeString
     }
 
     private func moveCurrentPage(moveUp: Bool) {
@@ -235,6 +241,7 @@ class RecruitmentCalendarView: UIView {
 extension RecruitmentCalendarView: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
 
+        self.selectDate = date
         appendDate(date: date)
     }
 
@@ -270,4 +277,22 @@ extension RecruitmentCalendarView: FSCalendarDelegate {
 // MARK: - FSCollectionViewDataSource
 extension RecruitmentCalendarView: FSCalendarDataSource {
 
+}
+
+extension Date {
+    var timeString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        formatter.locale = Locale.current
+
+        return formatter.string(from: self)
+    }
+
+    var toDay: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale.current
+
+        return formatter.string(from: self)
+    }
 }
