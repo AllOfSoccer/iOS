@@ -278,21 +278,3 @@ extension RecruitmentCalendarView: FSCalendarDelegate {
 extension RecruitmentCalendarView: FSCalendarDataSource {
 
 }
-
-extension Date {
-    var timeString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        formatter.locale = Locale.current
-
-        return formatter.string(from: self)
-    }
-
-    var toDay: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.locale = Locale.current
-
-        return formatter.string(from: self)
-    }
-}
