@@ -56,7 +56,7 @@ class SearchPlaceView: UIView {
         button.setImage(buttonImage?.withRenderingMode(.alwaysTemplate), for: .disabled)
         button.tintColor = .white
         button.backgroundColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
-        button.isEnabled = false
+        button.isEnabled = true
 
         return button
     }()
@@ -132,6 +132,8 @@ class SearchPlaceView: UIView {
         self.baseView.addsubviews(self.titleLabel, self.textFieldView, self.okAndCancelStackView)
         self.textFieldView.addsubviews(self.textFieldButton, self.inputPlaceTextField)
 
+        self.textFieldButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+
         NSLayoutConstraint.activate([
 
             self.baseView.topAnchor.constraint(equalTo: self.topAnchor, constant: 168),
@@ -168,9 +170,9 @@ class SearchPlaceView: UIView {
     }
 
     private func setupInputPlaceTextField() {
-        let item1 = SearchTextFieldItem(title: "Blue", subtitle: "Color", image: UIImage(named: "icon_blue"))
-        let item2 = SearchTextFieldItem(title: "Red", subtitle: "Color", image: UIImage(named: "icon_red"))
-        let item3 = SearchTextFieldItem(title: "Yellow", subtitle: "Color", image: UIImage(named: "icon_yellow"))
+        let item1 = SearchTextFieldItem(title: "Blue", subtitle: "Color", image: nil)
+        let item2 = SearchTextFieldItem(title: "Red", subtitle: "Color", image: nil)
+        let item3 = SearchTextFieldItem(title: "Yellow", subtitle: "Color", image: nil)
         self.inputPlaceTextField.filterItems([item1, item2, item3])
     }
 
@@ -180,5 +182,34 @@ class SearchPlaceView: UIView {
 
     @objc private func okButtonTouchUp(sender: UIButton) {
         self.delegate?.okButtonDidSelected(self)
+    }
+
+    @objc private func searchButtonTapped() {
+        print("검색 API 요청 \(self.inputPlaceTextField.text)")
+
+        guard let searchText = self.inputPlaceTextField.text else {
+            return
+        }
+
+        guard let urlString = "https://openapi.naver.com/v1/search/local.json?query=\(searchText)?display=\(10)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+
+        guard let url = URL(string: urlString) else {
+            return
+        }
+
+        var urlReuest = URLRequest(url: url)
+        urlReuest.httpMethod = "GET"
+        urlReuest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        urlReuest.addValue("IgvVcqCnm3_RhM7INYwu", forHTTPHeaderField: "X-Naver-Client-Id")
+        urlReuest.addValue("0FTVxW906A", forHTTPHeaderField: "X-Naver-Client-Secret")
+
+        URLSession.shared.dataTask(with: urlReuest) { [weak self] data, response, error in
+            print("data: \(data)")
+            print("response: \(response)")
+            print("error: \(error)")
+        }.resume()
     }
 }
