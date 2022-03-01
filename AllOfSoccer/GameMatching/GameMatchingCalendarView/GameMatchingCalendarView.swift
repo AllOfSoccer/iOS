@@ -28,7 +28,6 @@ class GameMatchingCalendarView: UIView {
 
     init(viewModel: GameMatchingViewModel, delegate: GameMatchingCalendarViewDelegate) {
         self.gameMatchingCalendarViewModel = viewModel
-//        self.selectedDate = []
         self.delegate = delegate
     }
 
@@ -142,7 +141,7 @@ class GameMatchingCalendarView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        setOKButtonTitle()
+        setOKButton()
     }
 
     private func loadView() {
@@ -164,7 +163,7 @@ class GameMatchingCalendarView: UIView {
         self.calendar.register(GameMatchingCalendarCell.self, forCellReuseIdentifier: GameMatchingCalendarCell.reuseId)
     }
 
-    private func setOKButtonTitle() {
+    private func setOKButton() {
 
         let countOfSeletedDate = self.gameMatchingCalendarViewModel.formalSelectedDate.count
 
@@ -242,7 +241,7 @@ class GameMatchingCalendarView: UIView {
     internal func append(viewModel: GameMatchingViewModel) {
         self.gameMatchingCalendarViewModel = viewModel
 
-        setOKButtonTitle()
+        setOKButton()
     }
 }
 
@@ -251,13 +250,13 @@ extension GameMatchingCalendarView: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
 
         appendDate(date: date)
-        setOKButtonTitle()
+        setOKButton()
     }
 
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
 
         deleteDate(date: date)
-        setOKButtonTitle()
+        setOKButton()
     }
 
     func minimumDate(for calendar: FSCalendar) -> Date {
@@ -267,14 +266,14 @@ extension GameMatchingCalendarView: FSCalendarDelegate {
     private func appendDate(date: Date) {
         self.gameMatchingCalendarViewModel.appendSelectedDate(nil, date)
 //        self.selectedDate.append(date)
-        self.setOKButtonTitle()
+        self.setOKButton()
     }
 
     private func deleteDate(date: Date) {
         self.gameMatchingCalendarViewModel.deleteSelectedDate(date)
 //        guard let indexOfDate = selectedDate.firstIndex(of: date) else { return }
 //        self.selectedDate.remove(at: indexOfDate)
-        self.setOKButtonTitle()
+        self.setOKButton()
     }
 }
 

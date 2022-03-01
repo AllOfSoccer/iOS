@@ -69,7 +69,7 @@ class GameMatchingViewModel {
         return self.horizontalCalendarModels[indexpath.item]
     }
 
-    internal func makeMonthButtonText(indexPath: IndexPath) -> String {
+    internal func makeMonthText(indexPath: IndexPath) -> String {
         let newIndexPathItem = makeNewIndexPathItem(indexPath: indexPath)
         let currentDate = self.horizontalCalendarModels[newIndexPathItem].date
         let dateFormatter = DateFormatter()

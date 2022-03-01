@@ -442,7 +442,7 @@ extension GameMatchingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         print(indexPath.item)
         if collectionView == self.horizontalCalendarView {
-            self.monthButton.setTitle(self.gameMatchingModel.makeMonthButtonText(indexPath: indexPath), for: .normal)
+            self.monthButton.setTitle(self.gameMatchingModel.makeMonthText(indexPath: indexPath), for: .normal)
         }
     }
 

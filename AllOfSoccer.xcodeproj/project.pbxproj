@@ -47,6 +47,7 @@
 		9D6B91EB266D08E100AF182B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91EA266D08E100AF182B /* Assets.xcassets */; };
 		9D6B91EE266D08E100AF182B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91EC266D08E100AF182B /* LaunchScreen.storyboard */; };
 		9D6EAE22278AB855008CE0F2 /* GameMatchingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6EAE21278AB855008CE0F2 /* GameMatchingViewModel.swift */; };
+		9D6FC6AD27CE489A006D1DA5 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FC6AC27CE489A006D1DA5 /* Login.swift */; };
 		9D74B11026F6F89C00D2F692 /* TeamInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D74B10F26F6F89C00D2F692 /* TeamInfoTableViewCell.swift */; };
 		9D76674E26F2313200EE538E /* MyPageNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D76674D26F2313200EE538E /* MyPageNoticeViewController.swift */; };
 		9D7B9F7F26C94B640075F211 /* GameMatchingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B9F7E26C94B640075F211 /* GameMatchingDetailViewController.swift */; };
@@ -65,8 +66,6 @@
 		9DB354E626F70017007D8863 /* teamInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB354E526F70017007D8863 /* teamInfoModel.swift */; };
 		9DB35D8727A039B1003486A6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB35D8627A039B1003486A6 /* BaseViewController.swift */; };
 		9DBB34332752690100887A2F /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB34322752690100887A2F /* SignInModel.swift */; };
-		9DBB34352752693100887A2F /* SaveUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB34342752693100887A2F /* SaveUserInfoModel.swift */; };
-		9DBB34372752696C00887A2F /* BrowseUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB34362752696C00887A2F /* BrowseUserInfoModel.swift */; };
 		9DBC70E826A986D0005F6BFA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9DBC70E726A986D0005F6BFA /* SnapKit */; };
 		9DBFCF2C270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBFCF2B270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift */; };
 		9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC1289A269178500021EDF5 /* MainTabBarController.swift */; };
@@ -151,6 +150,7 @@
 		9D6B91ED266D08E100AF182B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D6B91EF266D08E100AF182B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = AllOfSoccer/SupporttingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
 		9D6EAE21278AB855008CE0F2 /* GameMatchingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMatchingViewModel.swift; sourceTree = "<group>"; };
+		9D6FC6AC27CE489A006D1DA5 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		9D74B10F26F6F89C00D2F692 /* TeamInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfoTableViewCell.swift; sourceTree = "<group>"; };
 		9D76674D26F2313200EE538E /* MyPageNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNoticeViewController.swift; sourceTree = "<group>"; };
 		9D7B9F7E26C94B640075F211 /* GameMatchingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMatchingDetailViewController.swift; sourceTree = "<group>"; };
@@ -169,8 +169,6 @@
 		9DB354E526F70017007D8863 /* teamInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamInfoModel.swift; sourceTree = "<group>"; };
 		9DB35D8627A039B1003486A6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9DBB34322752690100887A2F /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
-		9DBB34342752693100887A2F /* SaveUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserInfoModel.swift; sourceTree = "<group>"; };
-		9DBB34362752696C00887A2F /* BrowseUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseUserInfoModel.swift; sourceTree = "<group>"; };
 		9DBFCF2B270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallPreviusMatchingInformationTableViewCell.swift; sourceTree = "<group>"; };
 		9DC1289A269178500021EDF5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		9DC1289F26917E400021EDF5 /* GameMatching.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameMatching.storyboard; sourceTree = "<group>"; };
@@ -427,8 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				9DBB34322752690100887A2F /* SignInModel.swift */,
-				9DBB34342752693100887A2F /* SaveUserInfoModel.swift */,
-				9DBB34362752696C00887A2F /* BrowseUserInfoModel.swift */,
+				9D6FC6AC27CE489A006D1DA5 /* Login.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -764,7 +761,6 @@
 				9D338C2C26B6A603008A2EDA /* TableViewFilterView.swift in Sources */,
 				9DBFCF2C270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift in Sources */,
 				9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */,
-				9DBB34372752696C00887A2F /* BrowseUserInfoModel.swift in Sources */,
 				9D30816E27534F5900765295 /* Auth.swift in Sources */,
 				9D4BC01F26E8CB6000867913 /* TeamIntroductionTableViewCell.swift in Sources */,
 				9DBB34332752690100887A2F /* SignInModel.swift in Sources */,
@@ -783,7 +779,6 @@
 				9DECF34826A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift in Sources */,
 				9DC1289B269178500021EDF5 /* MainTabBarController.swift in Sources */,
 				9DB03E6A2701DF79004412AF /* UITableViewCell+Extension.swift in Sources */,
-				9DBB34352752693100887A2F /* SaveUserInfoModel.swift in Sources */,
 				9D7E641326EC4BE900B51D37 /* IntrinsicTableView.swift in Sources */,
 				9DEBB261271A8541006548E9 /* MyFavoriteViewController.swift in Sources */,
 				9D026AD02752601200CA1D0C /* APITarget.swift in Sources */,
@@ -805,6 +800,7 @@
 				9DC128A926917EA70021EDF5 /* MyPageViewController.swift in Sources */,
 				9D5AA9C926CBC72500A33D20 /* SearchPlaceView.swift in Sources */,
 				9DB03E6C2701DF79004412AF /* UICollectionViewCell+Extension.swift in Sources */,
+				9D6FC6AD27CE489A006D1DA5 /* Login.swift in Sources */,
 				9DC128A326917E740021EDF5 /* GameMatchingViewController.swift in Sources */,
 				9DD474C226903F8F006F00F1 /* ContentSizedCollectionView.swift in Sources */,
 				9D8D32FF26CD53970097A172 /* TeamRecruitmentTableViewCell.swift in Sources */,
