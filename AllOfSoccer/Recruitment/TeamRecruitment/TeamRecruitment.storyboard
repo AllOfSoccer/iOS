@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n5E-P7-dhY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n5E-P7-dhY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -644,6 +645,7 @@
                         <outlet property="futsalShoesButton" destination="Jym-es-rUU" id="tvn-5R-A28"/>
                         <outlet property="manMatchButton" destination="wXi-Q0-4Jj" id="3Pz-ig-4LS"/>
                         <outlet property="mixMatchButton" destination="gMm-6I-6qg" id="5AD-DS-SML"/>
+                        <outlet property="selectTimeLabel" destination="R4a-o1-cEb" id="0H7-ia-Azb"/>
                         <outlet property="sixMatchButton" destination="F3M-Au-6ws" id="MFs-xP-YId"/>
                         <outlet property="soccerShoesButton" destination="FUB-0h-EHA" id="QXq-sw-ERk"/>
                         <outlet property="womanMatchButton" destination="b90-cH-IrE" id="q4x-km-mta"/>
@@ -894,7 +896,7 @@
                                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IntroductionTableViewCell" rowHeight="87" id="LHl-p9-GY7" customClass="TeamIntroductionTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="24.5" width="414" height="87"/>
+                                                        <rect key="frame" x="0.0" y="44.5" width="414" height="87"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LHl-p9-GY7" id="hG9-K7-arW">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
@@ -1223,7 +1225,7 @@
     </scenes>
     <designables>
         <designable name="05i-uC-4b0">
-            <size key="intrinsicContentSize" width="90" height="34"/>
+            <size key="intrinsicContentSize" width="70" height="22"/>
         </designable>
         <designable name="cvQ-AY-OcU">
             <size key="intrinsicContentSize" width="-1" height="65"/>
@@ -1246,7 +1248,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

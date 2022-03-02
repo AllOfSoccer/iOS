@@ -17,6 +17,8 @@ class FirstTeamRecruitmentViewController: UIViewController {
     @IBOutlet private weak var futsalShoesButton: IBSelectTableButton?
     @IBOutlet private weak var soccerShoesButton: IBSelectTableButton?
 
+    @IBOutlet private weak var selectTimeLabel: UILabel?
+
     @IBAction private func calendarButtonTouchUp(_ sender: UIButton) {
         let recruitmentCalendarView = RecruitmentCalendarView()
         recruitmentCalendarView.delegate = self
@@ -115,7 +117,7 @@ extension FirstTeamRecruitmentViewController:
     }
 
     func okButtonDidSelected(_ view: RecruitmentCalendarView, selectedDate: String) {
-        print("중현: 선택된 날짜 \(selectedDate)")
+        self.selectTimeLabel?.text = selectedDate
         view.removeFromSuperview()
     }
 }
