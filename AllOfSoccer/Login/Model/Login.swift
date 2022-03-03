@@ -36,5 +36,5 @@ struct LogIn: Codable {
         let profileImgUrl: String
         let introduction: String
     }
-    
+
 }

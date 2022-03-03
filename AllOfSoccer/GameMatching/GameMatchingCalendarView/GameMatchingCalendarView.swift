@@ -21,15 +21,10 @@ class GameMatchingCalendarView: UIView {
 
     weak var delegate: GameMatchingCalendarViewDelegate?
 
-    private let gameMatchingCalendarViewModel: GameMatchingViewModel
+    private var gameMatchingCalendarViewModel: GameMatchingViewModel
 
-    private var selectedDate: [Date]
+//    private var selectedDate: [Date]
     private var currentPage: Date?
-
-    init(viewModel: GameMatchingViewModel, delegate: GameMatchingCalendarViewDelegate) {
-        self.gameMatchingCalendarViewModel = viewModel
-        self.delegate = delegate
-    }
 
     deinit {
         print("deinit GameMatchingCalendarView")
@@ -129,14 +124,17 @@ class GameMatchingCalendarView: UIView {
         return stackView
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(viewModel: GameMatchingViewModel, delegate: GameMatchingCalendarViewDelegate) {
+        self.gameMatchingCalendarViewModel = viewModel
+        self.delegate = delegate
+
+        super.init(frame: .zero)
+
         loadView()
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        loadView()
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func awakeFromNib() {
@@ -238,11 +236,11 @@ class GameMatchingCalendarView: UIView {
 //        setOKButtonTitle()
 //    }
 
-    internal func append(viewModel: GameMatchingViewModel) {
-        self.gameMatchingCalendarViewModel = viewModel
-
-        setOKButton()
-    }
+//    internal func append(viewModel: GameMatchingViewModel) {
+//        self.gameMatchingCalendarViewModel = viewModel
+//
+//        setOKButton()
+//    }
 }
 
 // MARK: - FSCollectionViewDelegate
@@ -305,3 +303,4 @@ extension GameMatchingCalendarView {
         return changedSelectedDate
     }
 }
+
