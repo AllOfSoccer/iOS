@@ -106,6 +106,15 @@ class SearchPlaceView: UIView {
         return stackView
     }()
 
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SearchPlaceResultCell")
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 88
+        return tableView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -132,7 +141,7 @@ class SearchPlaceView: UIView {
     private func setViewConstraint() {
 
         self.addsubviews(self.baseView)
-        self.baseView.addsubviews(self.titleLabel, self.textFieldView, self.okAndCancelStackView)
+        self.baseView.addsubviews(self.titleLabel, self.textFieldView, self.okAndCancelStackView, self.tableView)
         self.textFieldView.addsubviews(self.textFieldButton, self.inputPlaceTextField)
 
         NSLayoutConstraint.activate([
@@ -162,7 +171,12 @@ class SearchPlaceView: UIView {
             self.okAndCancelStackView.bottomAnchor.constraint(equalTo: self.baseView.bottomAnchor, constant: -24),
             self.okAndCancelStackView.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 32),
             self.okAndCancelStackView.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -32),
-            self.okAndCancelStackView.heightAnchor.constraint(equalToConstant: 40)
+            self.okAndCancelStackView.heightAnchor.constraint(equalToConstant: 40),
+
+            self.tableView.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 32),
+            self.tableView.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -32),
+            self.tableView.topAnchor.constraint(equalTo: inputPlaceTextField.bottomAnchor, constant: 20),
+            self.tableView.bottomAnchor.constraint(equalTo: self.okAndCancelStackView.topAnchor, constant: -20)
         ])
     }
 
@@ -194,10 +208,35 @@ class SearchPlaceView: UIView {
 
                 DispatchQueue.main.async {
                     self?.inputPlaceTextField.filterItems(filterItem)
+                    self?.searchItem = items
+                    self?.tableView.reloadData()
                 }
             case .failure(let error):
                 print("Error: \(error.localizedDescription)")
             }
         }
     }
+
+    private var searchItem: [SearchPlaceAPI.Item] = []
+}
+
+extension SearchPlaceView: UITableViewDelegate {
+
+}
+
+extension SearchPlaceView: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.searchItem.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "SearchPlaceResultCell")
+
+        cell.textLabel?.text = self.searchItem[safe: indexPath.row]?.title ?? "실패-조중현"
+        cell.detailTextLabel?.text = self.searchItem[safe: indexPath.row]?.address ?? "실패-조중현"
+
+        return cell
+    }
+
 }
