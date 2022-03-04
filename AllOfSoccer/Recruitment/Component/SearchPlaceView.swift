@@ -7,6 +7,7 @@
 
 import UIKit
 import SearchTextField
+import SwiftUI
 
 protocol SearchPlaceViewDelegate: AnyObject {
     func cancelButtonDidSelected(_ view: SearchPlaceView)
@@ -40,10 +41,12 @@ class SearchPlaceView: UIView {
         textField.layer.cornerRadius = 6
         textField.theme.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         textField.theme.subtitleFontColor = UIColor(red: 157/255, green: 159/255, blue: 160/255, alpha: 1)
-        textField.maxNumberOfResults = 4
+        textField.maxNumberOfResults = 10
         textField.maxResultsListHeight = 244
         textField.inlineMode = false
         textField.tableYOffset = 20
+        textField.startVisibleWithoutInteraction = true
+        textField.forceNoFiltering = true
 
         return textField
     }()
@@ -56,7 +59,7 @@ class SearchPlaceView: UIView {
         button.setImage(buttonImage?.withRenderingMode(.alwaysTemplate), for: .disabled)
         button.tintColor = .white
         button.backgroundColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
-        button.isEnabled = false
+        button.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
 
         return button
     }()
@@ -181,4 +184,112 @@ class SearchPlaceView: UIView {
     @objc private func okButtonTouchUp(sender: UIButton) {
         self.delegate?.okButtonDidSelected(self)
     }
+
+    @objc private func searchButtonTapped() {
+        guard let searchText = self.inputPlaceTextField.text, self.inputPlaceTextField.text?.isEmpty == false  else {
+            return
+        }
+
+        SearchPlaceAPI.request(searchText: searchText) { [weak self] result in
+            switch result {
+            case .success(let items):
+                print("wndgus: items \(items.map { $0.title })")
+
+                let filterItem = items.map { SearchTextFieldItem(title: $0.title) }
+
+                DispatchQueue.main.async {
+                    self?.inputPlaceTextField.filterItems(filterItem)
+
+                }
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+}
+
+internal struct SearchPlaceAPI {
+
+    enum RequestError: Error {
+        case parsingError
+        case errorExist
+        case dataIsNil
+    }
+
+    static func request(searchText: String, completion: @escaping (Result<[Item], RequestError>) -> Void) {
+        let urlString = "https://openapi.naver.com/v1/search/local.json?query=\(searchText)&display=10".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        guard let url = URL(string: urlString) else {
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.addValue("IgvVcqCnm3_RhM7INYwu", forHTTPHeaderField: "X-Naver-Client-Id")
+        request.addValue("0FTVxW906A", forHTTPHeaderField: "X-Naver-Client-Secret")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                completion(.failure(.errorExist))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(.dataIsNil))
+                return
+            }
+
+            do {
+                let result = try JSONDecoder().decode(SearchPlaceAPI.ResponseValue.self, from: data)
+                completion(.success(result.items))
+            } catch {
+                completion(.failure(.parsingError))
+            }
+        }.resume()
+    }
+
+    struct ResponseValue: Codable {
+        let lastBuildDate: String
+        let total, start, display: Int
+        let items: [Item]
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+
+            self.lastBuildDate = try container.decode(String.self, forKey: .lastBuildDate)
+            self.total = try container.decode(Int.self, forKey: .total)
+            self.start = try container.decode(Int.self, forKey: .start)
+            self.display = try container.decode(Int.self, forKey: .display)
+            self.items = try container.decode([Item].self, forKey: .items)
+        }
+    }
+
+    // MARK: - Item
+    struct Item: Codable {
+        let title: String
+        let link: String
+        let category, telephone, address: String
+        let roadAddress, mapx, mapy: String
+        let itemDescription: String?
+
+        enum CodingKeys: String, CodingKey {
+            case title, link, category
+            case itemDescription
+            case telephone, address, roadAddress, mapx, mapy
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+
+            self.title = try container.decode(String.self, forKey: .title)
+            self.link = try container.decode(String.self, forKey: .link)
+            self.category = try container.decode(String.self, forKey: .category)
+            self.itemDescription = try? container.decode(String.self, forKey: .itemDescription)
+            self.address = try container.decode(String.self, forKey: .address)
+            self.roadAddress = try container.decode(String.self, forKey: .roadAddress)
+            self.mapx = try container.decode(String.self, forKey: .mapx)
+            self.mapy = try container.decode(String.self, forKey: .mapy)
+
+            self.telephone = try container.decode(String.self, forKey: .telephone)
+        }
+    }
+
 }
