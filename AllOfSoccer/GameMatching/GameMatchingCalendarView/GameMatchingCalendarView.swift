@@ -131,6 +131,7 @@ class GameMatchingCalendarView: UIView {
         super.init(frame: .zero)
 
         loadView()
+        setOKButton()
     }
 
     required init?(coder: NSCoder) {
@@ -249,6 +250,7 @@ extension GameMatchingCalendarView: FSCalendarDelegate {
 
         appendDate(date: date)
         setOKButton()
+
     }
 
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {

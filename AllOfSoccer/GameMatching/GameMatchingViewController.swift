@@ -154,7 +154,7 @@ class GameMatchingViewController: UIViewController {
 //        norMalCalendarView.append(date: self.gameMatchingModel.formalSelectedDate)
 
         let norMalCalendarView = GameMatchingCalendarView.make(viewModel: self.gameMatchingModel, delegate: self)
-        setSubViewConstraints(view: norMalCalendarView)
+        self.setSubViewConstraints(view: norMalCalendarView)
     }
 
     @IBAction private func resetTagButtonTouchUp(_ sender: UIButton) {

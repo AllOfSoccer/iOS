@@ -32,6 +32,7 @@ class GameMatchingViewModel {
             self.selectedDate = dates
         } else if let date = date {
             self.selectedDate.append(date)
+            print(self.selectedDate)
         }
     }
 
