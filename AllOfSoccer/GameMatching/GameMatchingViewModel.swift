@@ -23,7 +23,7 @@ class GameMatchingViewModel {
     }
 
     internal var formalStrSelectedDate: [String] {
-        let strSelectedDate = self.selectedDate.map { self.changeDateFormat($0) }
+        let strSelectedDate = self.selectedDate.map { self.changeDateToString($0) }
         return strSelectedDate
     }
 
@@ -37,11 +37,11 @@ class GameMatchingViewModel {
     }
 
     internal func deleteSelectedDate(_ date: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let deselectedDateStr = self.changeDateToString(date)
 
+        let selectedDateArry = self.selectedDate.map { $0.changedSringFromDate }
 
-        guard let indexOfDate = self.selectedDate.firstIndex(of: date) else { return }
+        guard let indexOfDate = selectedDateArry.firstIndex(of: deselectedDateStr) else { return }
         self.selectedDate.remove(at: indexOfDate)
     }
 
@@ -53,7 +53,7 @@ class GameMatchingViewModel {
     }
 
     internal var formalStrHorizontalCalendarDates: [String] {
-        let strHorizontalCalendarDates = self.horizontalCalendarModels.map { self.changeDateFormat($0.date) }
+        let strHorizontalCalendarDates = self.horizontalCalendarModels.map { self.changeDateToString($0.date) }
 
         return strHorizontalCalendarDates
     }
@@ -89,12 +89,24 @@ class GameMatchingViewModel {
 }
 
 extension GameMatchingViewModel {
-    private func changeDateFormat(_ date: Date) -> String {
+    private func changeDateToString(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale(identifier: "ko_KR")
 
         let changedSelectedDate = dateFormatter.string(from: date)
+
+        return changedSelectedDate
+    }
+}
+
+extension Date {
+    internal var changedSringFromDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+
+        let changedSelectedDate = dateFormatter.string(from: self)
 
         return changedSelectedDate
     }

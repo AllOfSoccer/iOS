@@ -352,10 +352,7 @@ class GameMatchingViewController: UIViewController {
     private func makeDate(_ nextDay: Int) -> Date {
         let calendar = Calendar.current
         let currentDate = Date()
-//        date -> String
-//        string -> date
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_KR")
+
         return calendar.date(byAdding: .day, value: nextDay, to: currentDate) ?? currentDate
     }
 
@@ -364,6 +361,7 @@ class GameMatchingViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M월"
         let monthString = dateFormatter.string(from: currentDate)
+        
         return monthString
     }
 
