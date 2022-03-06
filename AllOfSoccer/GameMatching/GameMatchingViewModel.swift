@@ -14,10 +14,6 @@ class GameMatchingViewModel {
 
     internal private(set) var selectedString: Set<String> = []
 
-    internal func updateSelectedDate(_ selectedDateString: String) {
-        self.selectedString.insert(selectedDateString)
-    }
-
     internal var formalSelectedDate: [Date] {
         return selectedDate
     }
@@ -27,12 +23,15 @@ class GameMatchingViewModel {
         return strSelectedDate
     }
 
+    internal func update(_ selectedDateString: String) {
+        self.selectedString.insert(selectedDateString)
+    }
+
     internal func appendSelectedDate(_ dates: [Date]?, _ date: Date?) {
         if let dates = dates {
             self.selectedDate = dates
         } else if let date = date {
             self.selectedDate.append(date)
-            print(self.selectedDate)
         }
     }
 

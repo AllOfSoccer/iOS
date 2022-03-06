@@ -149,11 +149,7 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - CalendarMonthButtonAction
     @IBAction func monthButtonTouchUp(_ sender: UIButton) {
-
-        //norMalCalendarView.append(viewModel: self.gameMatchingModel)
-//        norMalCalendarView.append(date: self.gameMatchingModel.formalSelectedDate)
-
-        let norMalCalendarView = GameMatchingCalendarView.make(viewModel: self.gameMatchingModel, delegate: self)
+        let norMalCalendarView = GameMatchingCalendarView.make(selectedDates: self.gameMatchingModel.selectedDate, delegate: self)
         self.setSubViewConstraints(view: norMalCalendarView)
     }
 
@@ -579,13 +575,14 @@ extension GameMatchingViewController: UITableViewDataSource {
 
 // MARK: - GameMatchingCalendarDelegate
 extension GameMatchingViewController: GameMatchingCalendarViewDelegate {
-    func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDates:   [Date]) {
+    func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDates: [Date]) {
         self.gameMatchingModel.appendSelectedDate(selectedDates, nil)
         self.horizontalCalendarView.reloadData()
         sender.removeFromSuperview()
     }
 
     func cancelButtonDidSelected(sender: GameMatchingCalendarView) {
+        print(self.gameMatchingModel.selectedDate)
         sender.removeFromSuperview()
     }
 }
