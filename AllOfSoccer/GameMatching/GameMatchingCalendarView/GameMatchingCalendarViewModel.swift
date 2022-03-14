@@ -10,11 +10,7 @@ import Foundation
 class GameMatchingCalendarViewModel {
 
     // MARK: - Properties
-    internal var selectedDate: [Date] = []
-
-    internal var formalSelectedDate: [Date] {
-        return self.selectedDate
-    }
+    internal private(set) var selectedDate: [Date] = []
 
     internal var formalStrSelectedDate: [String] {
         let strSelectedDate = self.selectedDate.map { self.changeDateToString($0) }
@@ -22,12 +18,12 @@ class GameMatchingCalendarViewModel {
     }
 
     // MARK: - Function
-    internal func append(dates: [Date]?, date: Date?) {
-        if let dates = dates {
-            self.selectedDate = dates
-        } else if let date = date {
+    internal func append(dates: [Date], date: Date?) {
+
+        if let date = date {
             self.selectedDate.append(date)
-            print(self.selectedDate)
+        } else {
+            self.selectedDate = dates
         }
     }
 

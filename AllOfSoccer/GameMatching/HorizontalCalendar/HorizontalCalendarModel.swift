@@ -63,3 +63,15 @@ struct HorizontalCalendarModel {
         }
     }
 }
+
+extension HorizontalCalendarModel {
+    private func changeDateToString(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+
+        let changedSelectedDate = dateFormatter.string(from: date)
+
+        return changedSelectedDate
+    }
+}

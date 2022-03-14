@@ -117,7 +117,7 @@ class GameMatchingCalendarView: UIView {
 
     init(selectedDates: [Date], delegate: GameMatchingCalendarViewDelegate) {
 
-        self.gameMatchingCalendarViewModel.selectedDate = selectedDates
+        self.gameMatchingCalendarViewModel.append(dates: selectedDates, date: nil)
         self.delegate = delegate
 
         super.init(frame: .zero)
@@ -160,7 +160,7 @@ class GameMatchingCalendarView: UIView {
 
     private func setOKButton() {
 
-        let countOfSeletedDate = self.gameMatchingCalendarViewModel.formalSelectedDate.count
+        let countOfSeletedDate = self.gameMatchingCalendarViewModel.selectedDate.count
 
         let buttonTitle = countOfSeletedDate <= 0 ? "선택" : "선택 (\(countOfSeletedDate)건)"
         self.okButton.setTitle(buttonTitle, for: .normal)
@@ -206,7 +206,7 @@ class GameMatchingCalendarView: UIView {
     }
 
     @objc private func okButtonTouchUp(sender: UIButton) {
-        self.delegate?.okButtonDidSelected(sender: self, selectedDates: self.gameMatchingCalendarViewModel.formalSelectedDate)
+        self.delegate?.okButtonDidSelected(sender: self, selectedDates: self.gameMatchingCalendarViewModel.selectedDate)
     }
 
     @objc private func monthPrevButtonTouchUp(_ sender: UIButton) {
@@ -236,7 +236,7 @@ class GameMatchingCalendarView: UIView {
 extension GameMatchingCalendarView: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
 
-        self.gameMatchingCalendarViewModel.append(dates: nil, date: date)
+        self.gameMatchingCalendarViewModel.append(dates: [], date: date)
         self.setOKButton()
     }
 

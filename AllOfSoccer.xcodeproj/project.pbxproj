@@ -48,6 +48,8 @@
 		9D6B91EE266D08E100AF182B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6B91EC266D08E100AF182B /* LaunchScreen.storyboard */; };
 		9D6EAE22278AB855008CE0F2 /* GameMatchingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6EAE21278AB855008CE0F2 /* GameMatchingViewModel.swift */; };
 		9D6FC6AD27CE489A006D1DA5 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FC6AC27CE489A006D1DA5 /* Login.swift */; };
+		9D73759327DE120C0098C7FA /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D73759227DE120C0098C7FA /* Date+Extension.swift */; };
+		9D73759527DE1A5B0098C7FA /* HorizontalCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D73759427DE1A5B0098C7FA /* HorizontalCalendarViewModel.swift */; };
 		9D73BB1427D4F19700D0828E /* GameMatchingCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D73BB1327D4F19700D0828E /* GameMatchingCalendarViewModel.swift */; };
 		9D74B11026F6F89C00D2F692 /* TeamInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D74B10F26F6F89C00D2F692 /* TeamInfoTableViewCell.swift */; };
 		9D76674E26F2313200EE538E /* MyPageNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D76674D26F2313200EE538E /* MyPageNoticeViewController.swift */; };
@@ -152,6 +154,8 @@
 		9D6B91EF266D08E100AF182B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = AllOfSoccer/SupporttingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
 		9D6EAE21278AB855008CE0F2 /* GameMatchingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMatchingViewModel.swift; sourceTree = "<group>"; };
 		9D6FC6AC27CE489A006D1DA5 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		9D73759227DE120C0098C7FA /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		9D73759427DE1A5B0098C7FA /* HorizontalCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCalendarViewModel.swift; sourceTree = "<group>"; };
 		9D73BB1327D4F19700D0828E /* GameMatchingCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMatchingCalendarViewModel.swift; sourceTree = "<group>"; };
 		9D74B10F26F6F89C00D2F692 /* TeamInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfoTableViewCell.swift; sourceTree = "<group>"; };
 		9D76674D26F2313200EE538E /* MyPageNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNoticeViewController.swift; sourceTree = "<group>"; };
@@ -478,6 +482,7 @@
 			children = (
 				9DECF34726A0468900C846DB /* HorizontalCalendarCollectionViewCell.swift */,
 				9D10855826A2887700F8263F /* HorizontalCalendarModel.swift */,
+				9D73759427DE1A5B0098C7FA /* HorizontalCalendarViewModel.swift */,
 			);
 			path = HorizontalCalendar;
 			sourceTree = "<group>";
@@ -545,6 +550,7 @@
 				9DB03E692701DF78004412AF /* UICollectionViewCell+Extension.swift */,
 				9DB03E672701DF78004412AF /* UITableViewCell+Extension.swift */,
 				9DDB1F962713F1DB00ADB396 /* UITextField+Extension.swift */,
+				9D73759227DE120C0098C7FA /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -765,6 +771,7 @@
 				9DBFCF2C270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift in Sources */,
 				9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */,
 				9D30816E27534F5900765295 /* Auth.swift in Sources */,
+				9D73759327DE120C0098C7FA /* Date+Extension.swift in Sources */,
 				9D4BC01F26E8CB6000867913 /* TeamIntroductionTableViewCell.swift in Sources */,
 				9DBB34332752690100887A2F /* SignInModel.swift in Sources */,
 				9DF9EEBE26F610A500D5132C /* MyPageTeamInfomationViewController.swift in Sources */,
@@ -795,6 +802,7 @@
 				9D6B91E2266D08E000AF182B /* AppDelegate.swift in Sources */,
 				9DEBB265271A87A1006548E9 /* MyFavoriteTableViewCell.swift in Sources */,
 				9D8A32EF26B8FB0000A8F65B /* FilterDetailView.swift in Sources */,
+				9D73759527DE1A5B0098C7FA /* HorizontalCalendarViewModel.swift in Sources */,
 				9DD474BF26903F75006F00F1 /* BlockingActivityIndicator.swift in Sources */,
 				9DDB1F952713DF2A00ADB396 /* RecruitmentCalendarView.swift in Sources */,
 				9D40BD972706BD330073C100 /* SeletableButton.swift in Sources */,
