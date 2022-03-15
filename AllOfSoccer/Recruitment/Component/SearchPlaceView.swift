@@ -7,6 +7,7 @@
 
 import UIKit
 import SearchTextField
+import SwiftUI
 
 protocol SearchPlaceViewDelegate: AnyObject {
     func cancelButtonDidSelected(_ view: SearchPlaceView)
@@ -40,10 +41,12 @@ class SearchPlaceView: UIView {
         textField.layer.cornerRadius = 6
         textField.theme.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         textField.theme.subtitleFontColor = UIColor(red: 157/255, green: 159/255, blue: 160/255, alpha: 1)
-        textField.maxNumberOfResults = 4
+        textField.maxNumberOfResults = 10
         textField.maxResultsListHeight = 244
         textField.inlineMode = false
         textField.tableYOffset = 20
+        textField.startVisibleWithoutInteraction = true
+        textField.forceNoFiltering = true
 
         return textField
     }()
@@ -56,7 +59,7 @@ class SearchPlaceView: UIView {
         button.setImage(buttonImage?.withRenderingMode(.alwaysTemplate), for: .disabled)
         button.tintColor = .white
         button.backgroundColor = UIColor(red: 236/255, green: 95/255, blue: 95/255, alpha: 1)
-        button.isEnabled = false
+        button.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
 
         return button
     }()
@@ -103,6 +106,15 @@ class SearchPlaceView: UIView {
         return stackView
     }()
 
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SearchPlaceResultCell")
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 88
+        return tableView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -129,7 +141,7 @@ class SearchPlaceView: UIView {
     private func setViewConstraint() {
 
         self.addsubviews(self.baseView)
-        self.baseView.addsubviews(self.titleLabel, self.textFieldView, self.okAndCancelStackView)
+        self.baseView.addsubviews(self.titleLabel, self.textFieldView, self.okAndCancelStackView, self.tableView)
         self.textFieldView.addsubviews(self.textFieldButton, self.inputPlaceTextField)
 
         NSLayoutConstraint.activate([
@@ -159,7 +171,12 @@ class SearchPlaceView: UIView {
             self.okAndCancelStackView.bottomAnchor.constraint(equalTo: self.baseView.bottomAnchor, constant: -24),
             self.okAndCancelStackView.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 32),
             self.okAndCancelStackView.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -32),
-            self.okAndCancelStackView.heightAnchor.constraint(equalToConstant: 40)
+            self.okAndCancelStackView.heightAnchor.constraint(equalToConstant: 40),
+
+            self.tableView.leadingAnchor.constraint(equalTo: self.baseView.leadingAnchor, constant: 32),
+            self.tableView.trailingAnchor.constraint(equalTo: self.baseView.trailingAnchor, constant: -32),
+            self.tableView.topAnchor.constraint(equalTo: inputPlaceTextField.bottomAnchor, constant: 20),
+            self.tableView.bottomAnchor.constraint(equalTo: self.okAndCancelStackView.topAnchor, constant: -20)
         ])
     }
 
@@ -168,10 +185,7 @@ class SearchPlaceView: UIView {
     }
 
     private func setupInputPlaceTextField() {
-        let item1 = SearchTextFieldItem(title: "Blue", subtitle: "Color", image: UIImage(named: "icon_blue"))
-        let item2 = SearchTextFieldItem(title: "Red", subtitle: "Color", image: UIImage(named: "icon_red"))
-        let item3 = SearchTextFieldItem(title: "Yellow", subtitle: "Color", image: UIImage(named: "icon_yellow"))
-        self.inputPlaceTextField.filterItems([item1, item2, item3])
+        self.inputPlaceTextField.filterItems([])
     }
 
     @objc private func cancelButtonTouchUp(sender: UIButton) {
@@ -181,4 +195,48 @@ class SearchPlaceView: UIView {
     @objc private func okButtonTouchUp(sender: UIButton) {
         self.delegate?.okButtonDidSelected(self)
     }
+
+    @objc private func searchButtonTapped() {
+        guard let searchText = self.inputPlaceTextField.text, self.inputPlaceTextField.text?.isEmpty == false  else {
+            return
+        }
+
+        SearchPlaceAPI.request(searchText: searchText) { [weak self] result in
+            switch result {
+            case .success(let items):
+                let filterItem = items.map { SearchTextFieldItem(title: $0.title) }
+
+                DispatchQueue.main.async {
+                    self?.inputPlaceTextField.filterItems(filterItem)
+                    self?.searchItem = items
+                    self?.tableView.reloadData()
+                }
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    private var searchItem: [SearchPlaceAPI.Item] = []
+}
+
+extension SearchPlaceView: UITableViewDelegate {
+
+}
+
+extension SearchPlaceView: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.searchItem.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "SearchPlaceResultCell")
+
+        cell.textLabel?.text = self.searchItem[safe: indexPath.row]?.title ?? "실패-조중현"
+        cell.detailTextLabel?.text = self.searchItem[safe: indexPath.row]?.address ?? "실패-조중현"
+
+        return cell
+    }
+
 }

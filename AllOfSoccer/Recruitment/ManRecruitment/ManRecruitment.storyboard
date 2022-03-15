@@ -13,7 +13,7 @@
         <!--용병 모집 글쓰기-->
         <scene sceneID="uI3-wj-mJf">
             <objects>
-                <viewController id="nvm-2t-jXU" customClass="FirstManRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nvm-2t-jXU" customClass="ㅊ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hFa-9D-lRN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1224,7 +1224,7 @@
     </scenes>
     <designables>
         <designable name="njn-oY-UHa">
-            <size key="intrinsicContentSize" width="70" height="22"/>
+            <size key="intrinsicContentSize" width="90" height="34"/>
         </designable>
         <designable name="yJV-mq-2V2">
             <size key="intrinsicContentSize" width="-1" height="65"/>
