@@ -19,8 +19,8 @@ enum NumberOfDays: Int {
 }
 
 class HorizontalCalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
-    @IBOutlet private weak var dayLabel: UILabel!
-    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet internal weak var dayLabel: UILabel!
+    @IBOutlet internal weak var dateLabel: UILabel!
     @IBOutlet private weak var stackView: UIStackView!
 
     override func awakeFromNib() {
@@ -36,22 +36,10 @@ class HorizontalCalendarCollectionViewCell: UICollectionViewCell, UIGestureRecog
     }
 
     func configure(_ cellData: HorizontalCalendarModel) {
-        guard let dayOfTheWeek = cellData.dayOfTheWeek else { return }
-        self.dayLabel.text = cellData.weeks[dayOfTheWeek % 7]
-        self.dateLabel.text = cellData.date
+        self.dayLabel.text = cellData.dayText
+        self.dateLabel.text = cellData.weeksDayText
 
-        if dayOfTheWeek % 7 == NumberOfDays.sunday.rawValue {
-            // 일요일
-            self.dayLabel.textColor = .red
-            self.dateLabel.textColor = .red
-        } else if dayOfTheWeek % 7 == NumberOfDays.saturday.rawValue {
-            // 토요일
-            self.dayLabel.textColor = .blue
-            self.dateLabel.textColor = .blue
-        } else {
-            // 평일
-            self.dayLabel.textColor = .black
-            self.dateLabel.textColor = .black
-        }
+        self.dayLabel.textColor = cellData.dayTextColor
+        self.dateLabel.textColor = cellData.dateTextColor
     }
 }

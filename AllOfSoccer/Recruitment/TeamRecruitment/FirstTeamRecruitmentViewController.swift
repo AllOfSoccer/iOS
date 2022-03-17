@@ -60,13 +60,7 @@ class FirstTeamRecruitmentViewController: UIViewController {
     }
 
     private func setMatchButton() {
-        self.sixMatchButton?.addTarget(self, action: #selector(sixMatchButtonTouchUp), for: .touchUpInside)
-        self.elevenMatchButton?.addTarget(self, action: #selector(elevenMatchButtonTouchUp), for: .touchUpInside)
-        self.manMatchButton?.addTarget(self, action: #selector(manMatchButtonTouchUp), for: .touchUpInside)
-        self.womanMatchButton?.addTarget(self, action: #selector(womanMatchButtonTouchUp), for: .touchUpInside)
-        self.mixMatchButton?.addTarget(self, action: #selector(mixMatchButtonTouchUp), for: .touchUpInside)
-        self.futsalShoesButton?.addTarget(self, action: #selector(futsalShoesButtonTouchUp), for: .touchUpInside)
-        self.soccerShoesButton?.addTarget(self, action: #selector(soccerShoesButtonTouchUp), for: .touchUpInside)
+        [self.sixMatchButton, self.elevenMatchButton, self.manMatchButton, self.womanMatchButton, self.mixMatchButton, self.futsalShoesButton, self.soccerShoesButton].forEach { $0.addTarget(self, action: #selector(matchButtonTouchUp), for: .touchUpInside)
     }
 
     private func subviewConstraints(view: UIView) {
@@ -80,31 +74,7 @@ class FirstTeamRecruitmentViewController: UIViewController {
         ])
     }
 
-    @objc func sixMatchButtonTouchUp(_ sender: UIButton) {
-        sender.isSelected = sender.isSelected ? false : true
-    }
-
-    @objc func elevenMatchButtonTouchUp(_ sender: UIButton) {
-        sender.isSelected = sender.isSelected ? false : true
-    }
-
-    @objc func manMatchButtonTouchUp(_ sender: UIButton) {
-        sender.isSelected = sender.isSelected ? false : true
-    }
-
-    @objc func womanMatchButtonTouchUp(_ sender: UIButton) {
-        sender.isSelected = sender.isSelected ? false : true
-    }
-
-    @objc func mixMatchButtonTouchUp(_ sender: UIButton) {
-        sender.isSelected = sender.isSelected ? false : true
-    }
-
-    @objc func futsalShoesButtonTouchUp(_ sender: UIButton) {
-        sender.isSelected = sender.isSelected ? false : true
-    }
-
-    @objc func soccerShoesButtonTouchUp(_ sender: UIButton) {
+    @objc func matchButtonTouchUp(_ sender: UIButton) {
         sender.isSelected = sender.isSelected ? false : true
     }
 }

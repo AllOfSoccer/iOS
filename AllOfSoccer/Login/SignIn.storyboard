@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xop-Zj-bN6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xop-Zj-bN6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="48" y="658" width="318" height="44"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Umi-ek-6au"/>
+                                    <constraint firstAttribute="height" constant="44" id="lVT-ay-2Ac"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -39,7 +39,7 @@
                                 <rect key="frame" x="48" y="718" width="318" height="44"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="hpq-3M-Oyi"/>
+                                    <constraint firstAttribute="height" constant="44" id="wA7-oD-NBf"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -53,11 +53,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="TapTapMark" translatesAutoresizingMaskIntoConstraints="NO" id="rJw-7u-YXT">
-                                <rect key="frame" x="113" y="204" width="188" height="115"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TapTapMark" translatesAutoresizingMaskIntoConstraints="NO" id="rJw-7u-YXT">
+                                <rect key="frame" x="113" y="204" width="188" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="vs1-ib-fIQ"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="반갑습니다!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdx-Ea-fJ4">
-                                <rect key="frame" x="167.5" y="335" width="79" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="반갑습니다!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdx-Ea-fJ4">
+                                <rect key="frame" x="167.5" y="296" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -66,25 +69,22 @@
                         <viewLayoutGuide key="safeArea" id="oKp-K2-llQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rJw-7u-YXT" firstAttribute="leading" secondItem="oKp-K2-llQ" secondAttribute="leading" constant="113" id="4FR-gI-P9v"/>
-                            <constraint firstItem="bdx-Ea-fJ4" firstAttribute="top" secondItem="rJw-7u-YXT" secondAttribute="bottom" constant="16" id="M7M-Mi-1kE"/>
-                            <constraint firstItem="h0V-Aa-SDD" firstAttribute="leading" secondItem="oKp-K2-llQ" secondAttribute="leading" constant="48" id="OYn-5B-61f"/>
-                            <constraint firstItem="oKp-K2-llQ" firstAttribute="trailing" secondItem="h0V-Aa-SDD" secondAttribute="trailing" constant="48" id="OjB-E5-724"/>
-                            <constraint firstItem="acO-Yi-6GQ" firstAttribute="leading" secondItem="oKp-K2-llQ" secondAttribute="leading" constant="48" id="SCI-3S-OIO"/>
-                            <constraint firstItem="acO-Yi-6GQ" firstAttribute="top" secondItem="bdx-Ea-fJ4" secondAttribute="bottom" constant="302" id="W40-qS-ksj"/>
-                            <constraint firstItem="oKp-K2-llQ" firstAttribute="trailing" secondItem="acO-Yi-6GQ" secondAttribute="trailing" constant="48" id="aCX-eC-Fdc"/>
-                            <constraint firstItem="oKp-K2-llQ" firstAttribute="trailing" secondItem="rJw-7u-YXT" secondAttribute="trailing" constant="113" id="cLV-UZ-Fkn"/>
-                            <constraint firstItem="h0V-Aa-SDD" firstAttribute="top" secondItem="acO-Yi-6GQ" secondAttribute="bottom" constant="16" id="cWa-xo-6Ud"/>
-                            <constraint firstItem="acO-Yi-6GQ" firstAttribute="centerX" secondItem="NqJ-T1-1DK" secondAttribute="centerX" id="ihX-vV-AUi"/>
-                            <constraint firstItem="bdx-Ea-fJ4" firstAttribute="centerX" secondItem="NqJ-T1-1DK" secondAttribute="centerX" id="juE-cn-AOj"/>
-                            <constraint firstItem="rJw-7u-YXT" firstAttribute="top" secondItem="oKp-K2-llQ" secondAttribute="top" constant="160" id="pEm-SV-YIl"/>
-                            <constraint firstItem="h0V-Aa-SDD" firstAttribute="centerX" secondItem="NqJ-T1-1DK" secondAttribute="centerX" id="pHv-6N-ljg"/>
-                            <constraint firstItem="oKp-K2-llQ" firstAttribute="bottom" secondItem="h0V-Aa-SDD" secondAttribute="bottom" constant="100" id="rXu-GU-8xO"/>
-                            <constraint firstItem="rJw-7u-YXT" firstAttribute="centerX" secondItem="NqJ-T1-1DK" secondAttribute="centerX" id="uQE-u8-52e"/>
+                            <constraint firstItem="h0V-Aa-SDD" firstAttribute="top" secondItem="acO-Yi-6GQ" secondAttribute="bottom" constant="16" id="1kH-hs-zEP"/>
+                            <constraint firstItem="oKp-K2-llQ" firstAttribute="bottom" secondItem="h0V-Aa-SDD" secondAttribute="bottom" constant="100" id="9h0-Wx-fzM"/>
+                            <constraint firstItem="rJw-7u-YXT" firstAttribute="top" secondItem="oKp-K2-llQ" secondAttribute="top" constant="160" id="Bq7-VQ-peD"/>
+                            <constraint firstItem="oKp-K2-llQ" firstAttribute="trailing" secondItem="h0V-Aa-SDD" secondAttribute="trailing" constant="48" id="doo-j1-l6e"/>
+                            <constraint firstItem="oKp-K2-llQ" firstAttribute="trailing" secondItem="acO-Yi-6GQ" secondAttribute="trailing" constant="48" id="hDW-La-8Xz"/>
+                            <constraint firstItem="bdx-Ea-fJ4" firstAttribute="centerX" secondItem="NqJ-T1-1DK" secondAttribute="centerX" id="khm-uJ-7sk"/>
+                            <constraint firstItem="acO-Yi-6GQ" firstAttribute="leading" secondItem="oKp-K2-llQ" secondAttribute="leading" constant="48" id="m17-jg-vbW"/>
+                            <constraint firstItem="rJw-7u-YXT" firstAttribute="leading" secondItem="oKp-K2-llQ" secondAttribute="leading" constant="113" id="oj2-hD-GQE"/>
+                            <constraint firstItem="bdx-Ea-fJ4" firstAttribute="top" secondItem="rJw-7u-YXT" secondAttribute="bottom" constant="16" id="rDs-M6-v4g"/>
+                            <constraint firstItem="h0V-Aa-SDD" firstAttribute="leading" secondItem="oKp-K2-llQ" secondAttribute="leading" constant="48" id="tV0-Xf-TmA"/>
+                            <constraint firstItem="oKp-K2-llQ" firstAttribute="trailing" secondItem="rJw-7u-YXT" secondAttribute="trailing" constant="113" id="wEy-X6-sCd"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="signInView" destination="acO-Yi-6GQ" id="hGi-dX-uoM"/>
+                        <outlet property="appleLogInView" destination="h0V-Aa-SDD" id="9ZJ-N7-J6W"/>
+                        <outlet property="kakaotalkLogInView" destination="acO-Yi-6GQ" id="ekw-Wa-Fxm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7kQ-cL-eoT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -10,7 +10,15 @@ import AuthenticationServices
 import KakaoSDKAuth
 
 class SignInViewController: UIViewController {
-    @IBOutlet weak var signInView: UIView?
+
+    @IBOutlet weak var kakaotalkLogInView: RoundView!
+    @IBOutlet weak var appleLogInView: RoundView!
+
+    private let appleButton: ASAuthorizationAppleIDButton = {
+        let button = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .whiteOutline)
+        button.addTarget(self, action: #selector(handleAppleSignButton), for: .touchUpInside)
+        return button
+    }()
 
     // viewmodel 브랜치안에 login 관련 코드가 있어 나중에 충돌이 발생할 수 있으므로 주석처리 해놓음
     // 추후 사용할거임
@@ -29,21 +37,21 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addButton()
+        setConstraint()
     }
 
-    func addButton() {
-        guard let signInView = self.signInView else { return }
+    private func setConstraint() {
 
-        let button = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
-        button.addTarget(self, action: #selector(handleAppleSignButton), for: .touchUpInside)
-        signInView.addSubview(button)
+        guard let signInView = self.appleLogInView else { return }
 
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.leadingAnchor.constraint(equalTo: signInView.leadingAnchor).isActive = true
-        button.trailingAnchor.constraint(equalTo: signInView.trailingAnchor).isActive = true
-        button.topAnchor.constraint(equalTo: signInView.topAnchor).isActive = true
-        button.bottomAnchor.constraint(equalTo: signInView.bottomAnchor).isActive = true
+        signInView.addsubviews(self.appleButton)
+
+        NSLayoutConstraint.activate([
+            self.appleButton.leadingAnchor.constraint(equalTo: signInView.leadingAnchor, constant: 0),
+            self.appleButton.trailingAnchor.constraint(equalTo: signInView.trailingAnchor, constant: 0),
+            self.appleButton.topAnchor.constraint(equalTo: signInView.topAnchor, constant: 0),
+            self.appleButton.bottomAnchor.constraint(equalTo: signInView.bottomAnchor, constant: 0)
+        ])
     }
 
     @objc func handleAppleSignButton() {
@@ -79,13 +87,13 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
             print("fullName: \(fullName)")
             print("email: \(email)")
 
-//        case let passwordCredential as ASPasswordCredential:
-//            // Sign in using an existing iCloud Keychain credential.
-//            let username = passwordCredential.user
-//            let password = passwordCredential.password
-//
-//            print("username: \(username)")
-//            print("password: \(password)")
+            //        case let passwordCredential as ASPasswordCredential:
+            //            // Sign in using an existing iCloud Keychain credential.
+            //            let username = passwordCredential.user
+            //            let password = passwordCredential.password
+            //
+            //            print("username: \(username)")
+            //            print("password: \(password)")
         default:
             break
         }

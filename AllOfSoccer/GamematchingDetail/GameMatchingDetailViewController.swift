@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NMapsMap
 
 class GameMatchingDetailViewController: UIViewController {
 
@@ -26,7 +27,9 @@ class GameMatchingDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
         setupNavigationItem()
+        setnaverMapView()
     }
 
     private func setupNavigationItem() {
@@ -37,6 +40,37 @@ class GameMatchingDetailViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = ""
 
         self.navigationItem.rightBarButtonItems = [self.likeBarButton, self.shareBarButton]
+    }
+
+    private func setnaverMapView() {
+
+//        setCamera()
+//        setMarker()
+    }
+
+    private func setCamera() {
+        let camPoition = NMGLatLng(lat: 37.5670135, lng: 126.9783740)
+        let cameraUpdate = NMFCameraUpdate(scrollTo: camPoition)
+        //self.naverMapView.moveCamera(cameraUpdate)
+    }
+
+    private func setMarker() {
+        let marker = NMFMarker()
+        marker.position = NMGLatLng(lat: 37.5670135, lng: 126.9783740)
+        marker.iconImage = NMF_MARKER_IMAGE_BLACK
+        marker.iconTintColor = UIColor.red
+        marker.width = 50
+        marker.height = 60
+        //marker.mapView = self.naverMapView
+
+        // 정보창 생성
+        let infoWindow = NMFInfoWindow()
+        let dataSource = NMFInfoWindowDefaultTextSource.data()
+        dataSource.title = "서울특별시청"
+        infoWindow.dataSource = dataSource
+
+        // 마커에 달아주기
+        infoWindow.open(with: marker)
     }
 
     @objc private func likeBarbuttonTouchUp(_ sender: UIControl) {
@@ -61,4 +95,9 @@ class GameMatchingDetailViewController: UIViewController {
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
     }
+}
+
+
+extension GameMatchingDetailViewController: NMFMapViewDelegate {
+
 }

@@ -1,5 +1,10 @@
 PODS:
   - Alamofire (5.4.4)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - NMapsMap (3.14.0)
   - KakaoSDK (2.8.6):
     - KakaoSDKAuth (= 2.8.6)
     - KakaoSDKCommon (= 2.8.6)
@@ -36,6 +41,8 @@ PODS:
   - SearchTextField (1.2.4)
 
 DEPENDENCIES:
+  - Moya
+  - NMapsMap
   - KakaoSDK
   - RangeSeekSlider
   - SearchTextField
@@ -43,6 +50,8 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Moya
+    - NMapsMap
     - KakaoSDK
     - KakaoSDKAuth
     - KakaoSDKCommon
@@ -57,6 +66,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  NMapsMap: 61c2abfc409bbcdc91583ccc455a5b6f64c7414e
+  RangeSeekSlider: 650b11fa1edcb92e1e0ede797669d98622570fb5
+  SearchTextField: 40dc3cc57def5a211f263cac263622c163bbc25a
+
+PODFILE CHECKSUM: 0a2d6aa064d0d9cf08c0c4105febdd869383101b
   KakaoSDK: 29ca188341fbb8994586eac73c10209f3889b574
   KakaoSDKAuth: 53e747a3bf343a3f3e87b14478d5a865d6c2acae
   KakaoSDKCommon: 7e56600ff4c1bd82bed93fea4299b5a37f47e6a5

@@ -6,9 +6,72 @@
 //
 
 import Foundation
+import UIKit
 
 struct HorizontalCalendarModel {
-    var weeks: [String] = ["토","일","월","화","수","목","금"]
-    var dayOfTheWeek: Int?
-    var date: String?
+
+    internal var date: Date
+
+    internal var weeks: [String] = ["토","일","월","화","수","목","금"]
+
+    internal var weeksDay: Int {
+        let calendar = Calendar.current
+        let dayOfTheWeekint = calendar.component(.weekday, from: self.date)
+        return dayOfTheWeekint
+    }
+
+    internal var dayText: String {
+        let calendar = Calendar.current
+        let dateFormatter = DateFormatter()
+        let chagedDateDay = calendar.dateComponents([.day], from: self.date).day
+        if chagedDateDay == 1 {
+            dateFormatter.dateFormat = "M/d"
+        } else {
+            dateFormatter.dateFormat = "d"
+        }
+        let dateString = dateFormatter.string(from: self.date)
+        return dateString
+    }
+
+    internal var weeksDayText: String {
+        return self.weeks[self.weeksDay % 7]
+    }
+
+    internal var dayTextColor: UIColor {
+        if self.weeksDay % 7 == NumberOfDays.sunday.rawValue {
+            // 일요일
+            return .red
+        } else if self.weeksDay % 7 == NumberOfDays.saturday.rawValue {
+            // 토요일
+            return .blue
+        } else {
+            // 평일
+            return .black
+        }
+    }
+
+    internal var dateTextColor: UIColor {
+        if self.weeksDay % 7 == NumberOfDays.sunday.rawValue {
+            // 일요일
+            return .red
+        } else if self.weeksDay % 7 == NumberOfDays.saturday.rawValue {
+            // 토요일
+            return .blue
+        } else {
+            // 평일
+            return .black
+        }
+    }
+}
+
+extension HorizontalCalendarModel {
+    private func changeDateToString(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+
+        let changedSelectedDate = dateFormatter.string(from: date)
+
+        return changedSelectedDate
+    }
 }

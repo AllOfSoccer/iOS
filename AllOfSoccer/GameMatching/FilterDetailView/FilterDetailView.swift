@@ -180,7 +180,6 @@ extension FilterDetailView: UICollectionViewDataSource {
         if !didSelectedFilterList.isEmpty {
             let keyFiterList = Set(didSelectedFilterList.keys)
             if keyFiterList.contains(model.title) {
-                cell.isSelected = true
                 collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             }
         }

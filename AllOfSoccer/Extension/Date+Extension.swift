@@ -1,13 +1,16 @@
-//
-//  Date+Extension.swift
-//  AllOfSoccer
-//
-//  Created by 조중현 on 2022/02/24.
-//
-
 import UIKit
 
 extension Date {
+  
+    internal var changedSringFromDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+
+        let changedSelectedDate = dateFormatter.string(from: self)
+
+        return changedSelectedDate
+    }
     
     var timeString: String {
         let formatter = DateFormatter()

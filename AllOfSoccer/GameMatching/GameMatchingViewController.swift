@@ -48,6 +48,9 @@ enum FilterType: CaseIterable {
 }
 
 class GameMatchingViewController: UIViewController {
+    // MARK: - ViewModel
+    var gameMatchingModel = GameMatchingViewModel()
+    var horizontalCalendarViewModel = HorizonralCalendarViewModel()
 
     // MARK: - MatchingModeButton Variable
     @IBOutlet private weak var teamMatchButton: IBSelectTableButton!
@@ -55,10 +58,6 @@ class GameMatchingViewController: UIViewController {
     @IBOutlet private weak var selectedLineCenterConstraint: NSLayoutConstraint!
 
     // MARK: - HorizontalCalendar Variable
-    private var selectedDate: [String] = []
-    private var horizontalCalendarCellData
-        : [HorizontalCalendarModel] = []
-
     @IBOutlet private weak var horizontalCalendarView: UICollectionView!
     
     // MARK: - FilterDetailView
@@ -83,7 +82,7 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - NormalCalendarView Variable
 //    private var norMalCalendarView = GameMatchingCalendarView()
-    private var norMalCalendarDidSelectedDate: [String] = []
+    private var norMalCalendarDidSelectedDate: [Date] = []
 
     @IBOutlet private weak var monthButton: UIButton!
 
@@ -150,10 +149,8 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - CalendarMonthButtonAction
     @IBAction func monthButtonTouchUp(_ sender: UIButton) {
-
-        let norMalCalendarView = GameMatchingCalendarView()
-        norMalCalendarView.delegate = self
-        setSubViewConstraints(view: norMalCalendarView)
+        let norMalCalendarView = GameMatchingCalendarView.make(selectedDates: self.gameMatchingModel.selectedDate, delegate: self)
+        self.setSubViewConstraints(view: norMalCalendarView)
     }
 
     @IBAction private func resetTagButtonTouchUp(_ sender: UIButton) {
@@ -194,6 +191,8 @@ class GameMatchingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        self.tabBarController?.presentActivityIndicator()
+
         setupHorizontalCalendarView()
         setupFilterTagCollectionView()
         setupFilterDetailView()
@@ -226,6 +225,7 @@ class GameMatchingViewController: UIViewController {
     private func setupHorizontalCalendarView() {
         self.horizontalCalendarView.delegate = self
         self.horizontalCalendarView.dataSource = self
+        self.horizontalCalendarView.allowsMultipleSelection = true
 
         let flowlayout = UICollectionViewFlowLayout()
         flowlayout.minimumInteritemSpacing = 15
@@ -239,12 +239,10 @@ class GameMatchingViewController: UIViewController {
 
         let dateRange = 1000
         for nextDay in 0...dateRange {
-            var cellData = HorizontalCalendarModel()
-            cellData.date = makeDate(nextDay)
-            cellData.dayOfTheWeek = makeDayOfTheWeek(nextDay)
-            self.horizontalCalendarCellData.append(cellData)
+            let cellData = HorizontalCalendarModel(date: makeDate(nextDay))
+            self.horizontalCalendarViewModel.append(cellData)
         }
-        self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
+//        self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
     }
 
     private func setupFilterTagCollectionView() {
@@ -347,27 +345,11 @@ class GameMatchingViewController: UIViewController {
         ])
     }
 
-    private func makeDate(_ nextDay: Int) -> String? {
+    private func makeDate(_ nextDay: Int) -> Date {
         let calendar = Calendar.current
         let currentDate = Date()
-        let dateFormatter = DateFormatter()
-        guard let changedDate = calendar.date(byAdding: .day, value: nextDay, to: currentDate) else { return nil }
-        let chagedDateDay = calendar.dateComponents([.day], from: changedDate).day
-        if chagedDateDay == 1 {
-            dateFormatter.dateFormat = "M/d"
-        } else {
-            dateFormatter.dateFormat = "d"
-        }
-        let dateString = dateFormatter.string(from: changedDate)
-        return dateString
-    }
 
-    private func makeDayOfTheWeek(_ nextDay: Int) -> Int? {
-        let calendar = Calendar.current
-        let currentDate = Date()
-        guard let chagedDate = calendar.date(byAdding: .day, value: nextDay, to: currentDate) else { return nil}
-        let dayOfTheWeekint = calendar.component(.weekday, from: chagedDate)
-        return dayOfTheWeekint
+        return calendar.date(byAdding: .day, value: nextDay, to: currentDate) ?? currentDate
     }
 
     private func makeMonthButtonText() -> String {
@@ -375,6 +357,7 @@ class GameMatchingViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M월"
         let monthString = dateFormatter.string(from: currentDate)
+        
         return monthString
     }
 
@@ -450,9 +433,19 @@ class GameMatchingViewController: UIViewController {
 
 // MARK: - CollectionViewDelegate
 extension GameMatchingViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+        if collectionView == self.horizontalCalendarView {
+            self.monthButton.setTitle(self.horizontalCalendarViewModel.makeMonthText(indexPath: indexPath), for: .normal)
+        }
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.horizontalCalendarView {
             // 데이터 처리
+            let seletedHorizontalDate = self.horizontalCalendarViewModel.getSelectedDateModel(with: indexPath).date
+            self.gameMatchingModel.append([], seletedHorizontalDate)
+            print(self.gameMatchingModel.selectedDate)
         } else if collectionView == self.filterTagCollectionView {
             // 데이터 처리
 
@@ -464,6 +457,9 @@ extension GameMatchingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView == self.horizontalCalendarView {
             // 데이터 처리
+            let deSeletedHorizontalDate = self.horizontalCalendarViewModel.getSelectedDateModel(with: indexPath).date
+            self.gameMatchingModel.delete(deSeletedHorizontalDate)
+            print(self.gameMatchingModel.selectedDate)
         } else if collectionView == self.filterTagCollectionView {
             // 데이터 처리
         }
@@ -495,13 +491,24 @@ extension GameMatchingViewController: UICollectionViewDelegate {
             self.recruitmentButton.tintColor = UIColor(red: 236.0/255.0, green: 95.0/255.0, blue: 95.0/255.0, alpha: 1.0)
         }
     }
+
+//    private func appendDate(date: Date) {
+//        self.selectedDate.append(date)
+//        self.setOKButtonTitle()
+//    }
+//
+//    private func deleteDate(date: Date) {
+//        guard let indexOfDate = selectedDate.firstIndex(of: date) else { return }
+//        self.selectedDate.remove(at: indexOfDate)
+//        self.setOKButtonTitle()
+//    }
 }
 
 // MARK: - CollectionViewDataSource
 extension GameMatchingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.horizontalCalendarView {
-            return self.horizontalCalendarCellData.count
+            return self.horizontalCalendarViewModel.horizontalCount
         } else {
             return self.tagCellModel.count
         }
@@ -512,7 +519,19 @@ extension GameMatchingViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCalendarCollectionViewCell", for: indexPath) as? HorizontalCalendarCollectionViewCell else {
                 return .init()
             }
-            cell.configure(self.horizontalCalendarCellData[indexPath.item])
+
+            cell.configure(self.horizontalCalendarViewModel.getSelectedDateModel(with: indexPath))
+
+            let selectedDate = self.gameMatchingModel.formalStrSelectedDate
+            let horizontalDate = self.horizontalCalendarViewModel.formalStrHorizontalCalendarDates[indexPath.item]
+
+            if !selectedDate.isEmpty {
+                for date in selectedDate {
+                    if date == horizontalDate {
+                        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+                    }
+                }
+            }
 
             return cell
         } else {
@@ -553,12 +572,17 @@ extension GameMatchingViewController: UITableViewDataSource {
     }
 }
 
+
+// MARK: - GameMatchingCalendarDelegate
 extension GameMatchingViewController: GameMatchingCalendarViewDelegate {
-    func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDate: [String]) {
+    func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDates: [Date]) {
+        self.gameMatchingModel.append(selectedDates, nil)
+        self.horizontalCalendarView.reloadData()
         sender.removeFromSuperview()
     }
 
     func cancelButtonDidSelected(sender: GameMatchingCalendarView) {
+        print(self.gameMatchingModel.selectedDate)
         sender.removeFromSuperview()
     }
 }

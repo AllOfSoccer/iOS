@@ -10,15 +10,16 @@ import FSCalendar
 
 protocol GameMatchingCalendarViewDelegate: AnyObject {
     func cancelButtonDidSelected(sender: GameMatchingCalendarView)
-    func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDate: [String])
+    func okButtonDidSelected(sender: GameMatchingCalendarView, selectedDates: [Date])
 }
 
 class GameMatchingCalendarView: UIView {
 
     weak var delegate: GameMatchingCalendarViewDelegate?
 
-    private var selectedDate: [String] = []
+    private var gameMatchingCalendarViewModel = GameMatchingCalendarViewModel()
     private var currentPage: Date?
+    private var selectedDate: [Date] = []
 
     private var baseView: UIView = {
         let view = UIView()
@@ -114,14 +115,28 @@ class GameMatchingCalendarView: UIView {
         return stackView
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(selectedDates: [Date], delegate: GameMatchingCalendarViewDelegate) {
+
+        self.gameMatchingCalendarViewModel.append(dates: selectedDates, date: nil)
+        self.delegate = delegate
+
+        super.init(frame: .zero)
+
         loadView()
+        setOKButton()
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        loadView()
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setOKButton()
+    }
+
+    static func make(selectedDates: [Date], delegate: GameMatchingCalendarViewDelegate) -> GameMatchingCalendarView {
+        return GameMatchingCalendarView(selectedDates: selectedDates, delegate: delegate)
     }
 
     private func loadView() {
@@ -137,8 +152,18 @@ class GameMatchingCalendarView: UIView {
 
     private func setCalendar() {
 
-        calendar.delegate = self
-        calendar.dataSource = self
+        self.calendar.delegate = self
+        self.calendar.dataSource = self
+
+        self.calendar.register(GameMatchingCalendarCell.self, forCellReuseIdentifier: GameMatchingCalendarCell.reuseId)
+    }
+
+    private func setOKButton() {
+
+        let countOfSeletedDate = self.gameMatchingCalendarViewModel.selectedDate.count
+
+        let buttonTitle = countOfSeletedDate <= 0 ? "선택" : "선택 (\(countOfSeletedDate)건)"
+        self.okButton.setTitle(buttonTitle, for: .normal)
     }
 
     private func setViewConstraint() {
@@ -181,7 +206,7 @@ class GameMatchingCalendarView: UIView {
     }
 
     @objc private func okButtonTouchUp(sender: UIButton) {
-        self.delegate?.okButtonDidSelected(sender: self, selectedDate: self.selectedDate)
+        self.delegate?.okButtonDidSelected(sender: self, selectedDates: self.gameMatchingCalendarViewModel.selectedDate)
     }
 
     @objc private func monthPrevButtonTouchUp(_ sender: UIButton) {
@@ -201,45 +226,57 @@ class GameMatchingCalendarView: UIView {
         guard let currentPage = self.currentPage else { return }
         self.calendar.setCurrentPage(currentPage, animated: true)
     }
+
+    deinit {
+        print("클래스가 deinit이 되었습니다.")
+    }
 }
 
 // MARK: - FSCollectionViewDelegate
 extension GameMatchingCalendarView: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
 
-        appendDate(date: date)
+        self.gameMatchingCalendarViewModel.append(dates: [], date: date)
+        self.setOKButton()
     }
 
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
 
-        deleteDate(date: date)
+        self.gameMatchingCalendarViewModel.delete(date: date)
+        self.setOKButton()
     }
 
     func minimumDate(for calendar: FSCalendar) -> Date {
         return Date()
-    }
-
-    private func appendDate(date: Date) {
-        let dateFormatter = DateFormatter()
-        let stringDate = dateFormatter.string(from: date)
-        self.selectedDate.append(stringDate)
-        let countOfSeletedDate = self.selectedDate.count
-        let buttonTitle = self.selectedDate.isEmpty ? "선택" : "선택 (\(countOfSeletedDate)건)"
-        self.okButton.setTitle(buttonTitle, for: .normal)
-    }
-
-    private func deleteDate(date: Date) {
-        let dateFormatter = DateFormatter()
-        let stringDate = dateFormatter.string(from: date)
-        guard let indexOfStringDate = selectedDate.firstIndex(of: stringDate) else { return }
-        self.selectedDate.remove(at: indexOfStringDate)
-        let countOfSeletedDate = self.selectedDate.count
-        let buttonTitle = self.selectedDate.isEmpty ? "선택" : "선택 (\(countOfSeletedDate)건)"
-        self.okButton.setTitle(buttonTitle, for: .normal)
-    }
+     }
 }
 
 // MARK: - FSCollectionViewDataSource
 extension GameMatchingCalendarView: FSCalendarDataSource {
+    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
 
+        guard let cell = calendar.dequeueReusableCell(withIdentifier: "GameMatchingCalendarCell", for: date, at: position) as? GameMatchingCalendarCell else { return .init() }
+
+        let selectedDate = gameMatchingCalendarViewModel.formalStrSelectedDate
+        let calendarDate = self.changeDateFormat(date)
+
+        if selectedDate.contains(calendarDate) {
+            calendar.select(date)
+        }
+
+        return cell
+    }
 }
+
+extension GameMatchingCalendarView {
+    private func changeDateFormat(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+
+        let changedSelectedDate = dateFormatter.string(from: date)
+
+        return changedSelectedDate
+    }
+}
+

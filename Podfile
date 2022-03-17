@@ -7,7 +7,9 @@ target 'AllOfSoccer' do
 
   # Pods for AllOfSoccer
   pod "SearchTextField"
-  pod "RangeSeekSlider"
+  pod "RangeSeekSlider"	
+  pod "Moya"
+  pod "NMapsMap"
   pod "KakaoSDK"
 
 end
