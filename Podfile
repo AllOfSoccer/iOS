@@ -10,5 +10,6 @@ target 'AllOfSoccer' do
   pod "RangeSeekSlider"	
   pod "Moya"
   pod "NMapsMap"
+  pod "KakaoSDK"
 
 end

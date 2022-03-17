@@ -9,24 +9,26 @@ import UIKit
 
 class FirstTeamRecruitmentViewController: UIViewController {
 
-    @IBOutlet weak var sixMatchButton: IBSelectTableButton!
-    @IBOutlet weak var elevenMatchButton: IBSelectTableButton!
-    @IBOutlet weak var manMatchButton: IBSelectTableButton!
-    @IBOutlet weak var womanMatchButton: IBSelectTableButton!
-    @IBOutlet weak var mixMatchButton: IBSelectTableButton!
-    @IBOutlet weak var futsalShoesButton: IBSelectTableButton!
-    @IBOutlet weak var soccerShoesButton: IBSelectTableButton!
+    @IBOutlet private weak var sixMatchButton: IBSelectTableButton?
+    @IBOutlet private weak var elevenMatchButton: IBSelectTableButton?
+    @IBOutlet private weak var manMatchButton: IBSelectTableButton?
+    @IBOutlet private weak var womanMatchButton: IBSelectTableButton?
+    @IBOutlet private weak var mixMatchButton: IBSelectTableButton?
+    @IBOutlet private weak var futsalShoesButton: IBSelectTableButton?
+    @IBOutlet private weak var soccerShoesButton: IBSelectTableButton?
+
+    @IBOutlet private weak var selectTimeLabel: UILabel?
 
     @IBAction private func calendarButtonTouchUp(_ sender: UIButton) {
         let recruitmentCalendarView = RecruitmentCalendarView()
         recruitmentCalendarView.delegate = self
-        subviewConstraints(view: recruitmentCalendarView)
+        self.subviewConstraints(view: recruitmentCalendarView)
     }
 
     @IBAction private func placeButtonTouchUp(_ sender: UIButton) {
         let searchPlaceView = SearchPlaceView()
         searchPlaceView.delegate = self
-        subviewConstraints(view: searchPlaceView)
+        self.subviewConstraints(view: searchPlaceView)
     }
 
     @IBAction private func backButtonItemTouchUp(_ sender: UIBarButtonItem) {
@@ -35,24 +37,30 @@ class FirstTeamRecruitmentViewController: UIViewController {
 
     @IBAction private func informationCheckButtonTouchUp(_ sender: IBSelectTableButton) {
         sender.isSelected = sender.isSelected ? false : true
-
     }
 
     @IBAction func callPreviousInformationButtonTouchUp(_ sender: UIButton) {
         let callPreviousInformationView = CallPreviusMatchingInformationView()
         callPreviousInformationView.delegate = self
-        subviewConstraints(view: callPreviousInformationView)
+        self.subviewConstraints(view: callPreviousInformationView)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setMatchButton()
+        self.setMatchButton()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        if segue.destination is SecondTeamRecruitmentViewController {
+            print("중현: 필요한 데이터를 넘긴다.")
+        }
     }
 
     private func setMatchButton() {
         [self.sixMatchButton, self.elevenMatchButton, self.manMatchButton, self.womanMatchButton, self.mixMatchButton, self.futsalShoesButton, self.soccerShoesButton].forEach { $0.addTarget(self, action: #selector(matchButtonTouchUp), for: .touchUpInside)
-        }
     }
 
     private func subviewConstraints(view: UIView) {
@@ -78,7 +86,8 @@ extension FirstTeamRecruitmentViewController:
         view.removeFromSuperview()
     }
 
-    func okButtonDidSelected(_ view: RecruitmentCalendarView, selectedDate: [String]) {
+    func okButtonDidSelected(_ view: RecruitmentCalendarView, selectedDate: String) {
+        self.selectTimeLabel?.text = selectedDate
         view.removeFromSuperview()
     }
 }

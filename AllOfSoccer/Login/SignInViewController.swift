@@ -7,6 +7,7 @@
 
 import UIKit
 import AuthenticationServices
+import KakaoSDKAuth
 
 class SignInViewController: UIViewController {
 
@@ -18,6 +19,20 @@ class SignInViewController: UIViewController {
         button.addTarget(self, action: #selector(handleAppleSignButton), for: .touchUpInside)
         return button
     }()
+
+    // viewmodel 브랜치안에 login 관련 코드가 있어 나중에 충돌이 발생할 수 있으므로 주석처리 해놓음
+    // 추후 사용할거임
+//    @IBAction func login() {
+//        AuthApi.shared.loginWithKakaoAccount { oauthToken, error in
+//            if let error = error {
+//                print(error)
+//            } else {
+//                print("loginWithKakaoAccount() success.")
+//                // do something
+//                _ = oauthToken
+//            }
+//        }
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
