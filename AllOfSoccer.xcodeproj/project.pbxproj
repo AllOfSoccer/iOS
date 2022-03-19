@@ -106,8 +106,6 @@
 		9DFB9C2F26B8DCBB00618D66 /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */; };
 		9DFD93B526764DA10049ADF2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD93B426764DA10049ADF2 /* SignInViewController.swift */; };
 		9DFFB165266D0F3700B04D3D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9DFFB164266D0F3700B04D3D /* .swiftlint.yml */; };
-		CE2C9FF727D247C700B77DBB /* SearchPlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C9FF627D247C700B77DBB /* SearchPlaceAPI.swift */; };
-		CE52394327C7AD3700EA6AEC /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52394227C7AD3700EA6AEC /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -210,8 +208,6 @@
 		9DFB9C2E26B8DCBB00618D66 /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
 		9DFD93B426764DA10049ADF2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9DFFB164266D0F3700B04D3D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		CE2C9FF627D247C700B77DBB /* SearchPlaceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceAPI.swift; sourceTree = "<group>"; };
-		CE52394227C7AD3700EA6AEC /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,7 +320,6 @@
 			children = (
 				9DA714C126EC964D00B40D1E /* IntroductionDetailView.swift */,
 				9D5AA9C826CBC72500A33D20 /* SearchPlaceView.swift */,
-				CE2C9FF627D247C700B77DBB /* SearchPlaceAPI.swift */,
 				9DDB1F942713DF2A00ADB396 /* RecruitmentCalendarView.swift */,
 				9DDB1F982713F8C400ADB396 /* CallPreviusMatchingInformationView.swift */,
 				9DBFCF2B270F3AF300016435 /* CallPreviusMatchingInformationTableViewCell.swift */,
@@ -555,7 +550,7 @@
 				9DB03E692701DF78004412AF /* UICollectionViewCell+Extension.swift */,
 				9DB03E672701DF78004412AF /* UITableViewCell+Extension.swift */,
 				9DDB1F962713F1DB00ADB396 /* UITextField+Extension.swift */,
-				CE52394227C7AD3700EA6AEC /* Date+Extension.swift */,
+				9D73759227DE120C0098C7FA /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -800,8 +795,6 @@
 				9D7D409D26BE792000E8329E /* FilterDetailTagModel.swift in Sources */,
 				9DD694EA26FB4CF8006047A0 /* Array+Extension.swift in Sources */,
 				9DD474B626903D97006F00F1 /* RoundButton.swift in Sources */,
-				CE52394327C7AD3700EA6AEC /* Date+Extension.swift in Sources */,
-				CE2C9FF727D247C700B77DBB /* SearchPlaceAPI.swift in Sources */,
 				9D0DA55426F249A900726077 /* MyPageMyInformationViewController.swift in Sources */,
 				9D3DA5222706C43F00C40257 /* BackgroundView.swift in Sources */,
 				9DEBB25E271A84BE006548E9 /* MyWritingViewController.swift in Sources */,

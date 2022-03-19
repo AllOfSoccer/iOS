@@ -1,7 +1,13 @@
-import UIKit
+//
+//  Date+Extension.swift
+//  AllOfSoccer
+//
+//  Created by 최원석 on 2022/03/13.
+//
+
+import Foundation
 
 extension Date {
-  
     internal var changedSringFromDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -10,21 +16,5 @@ extension Date {
         let changedSelectedDate = dateFormatter.string(from: self)
 
         return changedSelectedDate
-    }
-    
-    var timeString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        formatter.locale = Locale.current
-
-        return formatter.string(from: self)
-    }
-
-    var toDay: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.locale = Locale.current
-
-        return formatter.string(from: self)
     }
 }
