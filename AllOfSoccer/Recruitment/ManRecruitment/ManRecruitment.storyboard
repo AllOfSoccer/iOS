@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QcO-wt-uyT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QcO-wt-uyT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,7 +13,7 @@
         <!--용병 모집 글쓰기-->
         <scene sceneID="uI3-wj-mJf">
             <objects>
-                <viewController id="nvm-2t-jXU" customClass="ㅊ" sceneMemberID="viewController">
+                <viewController id="nvm-2t-jXU" customClass="FirstManRecruitmentViewController" customModule="AllOfSoccer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hFa-9D-lRN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -645,7 +645,6 @@
                         <outlet property="futsalShoesButton" destination="rGt-4N-lhH" id="hEa-tp-3Zl"/>
                         <outlet property="manMatchButton" destination="wbA-0B-Fhg" id="X81-bJ-xPX"/>
                         <outlet property="mixMatchButton" destination="1dy-JV-aWu" id="3uz-Hx-SIf"/>
-                        <outlet property="selectTimeLabel" destination="4bj-7s-lY4" id="23d-gk-t3b"/>
                         <outlet property="sixMatchButton" destination="Pn5-3n-TxA" id="uew-pk-Pd0"/>
                         <outlet property="soccerShoesButton" destination="Pne-Lj-Ity" id="g54-ch-KRO"/>
                         <outlet property="womanMatchButton" destination="0lA-Uq-CiI" id="LCd-e5-WQ9"/>
