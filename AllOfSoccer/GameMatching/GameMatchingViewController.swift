@@ -56,6 +56,7 @@ class GameMatchingViewController: UIViewController {
     @IBOutlet private weak var teamMatchButton: IBSelectTableButton!
     @IBOutlet private weak var manMatchButton: IBSelectTableButton!
     @IBOutlet private weak var selectedLineCenterConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var selectedLineWidthConstraint: NSLayoutConstraint!
 
     // MARK: - HorizontalCalendar Variable
     @IBOutlet private weak var horizontalCalendarView: UICollectionView!
@@ -123,11 +124,14 @@ class GameMatchingViewController: UIViewController {
         self.teamMatchButton.isSelected = true
         self.manMatchButton.isSelected = false
 
+        let teamMatchingButtonWidth = self.teamMatchButton.frame.width
+
         UIView.animate(withDuration: 0.1) { [weak self] in
 
             guard let self = self else { return }
 
             self.selectedLineCenterConstraint.constant = 0
+            self.selectedLineWidthConstraint.constant = teamMatchingButtonWidth
             self.view.layoutIfNeeded()
         }
     }
@@ -137,12 +141,14 @@ class GameMatchingViewController: UIViewController {
         self.manMatchButton.isSelected = true
 
         let constant = manMatchButton.center.x - teamMatchButton.center.x
+        let manMatchingButtonWidth = self.manMatchButton.frame.width
 
         UIView.animate(withDuration: 0.1) { [weak self] in
 
             guard let self = self else { return }
 
             self.selectedLineCenterConstraint.constant = constant
+            self.selectedLineWidthConstraint.constant = manMatchingButtonWidth
             self.view.layoutIfNeeded()
         }
     }
@@ -191,16 +197,15 @@ class GameMatchingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        self.tabBarController?.presentActivityIndicator()
+        self.setupModeButtonUnderLine()
+        self.setupHorizontalCalendarView()
+        self.setupFilterTagCollectionView()
+        self.setupFilterDetailView()
+        self.setupNoticeTableView()
+        self.setupRecruitmentButton()
 
-        setupHorizontalCalendarView()
-        setupFilterTagCollectionView()
-        setupFilterDetailView()
-        setupNoticeTableView()
-        setupRecruitmentButton()
-
-        setupFilterDetailViewConstraint()
-        setupRecruitmentButtonConstraint()
+        self.setupFilterDetailViewConstraint()
+        self.setupRecruitmentButtonConstraint()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -222,6 +227,12 @@ class GameMatchingViewController: UIViewController {
     }
 
     // MARK: - Setup View
+    private func setupModeButtonUnderLine() {
+        let teamMatchingButtonConstant = self.teamMatchButton.frame.width
+
+        self.selectedLineWidthConstraint.constant = teamMatchingButtonConstant
+    }
+
     private func setupHorizontalCalendarView() {
         self.horizontalCalendarView.delegate = self
         self.horizontalCalendarView.dataSource = self
@@ -242,7 +253,6 @@ class GameMatchingViewController: UIViewController {
             let cellData = HorizontalCalendarModel(date: makeDate(nextDay))
             self.horizontalCalendarViewModel.append(cellData)
         }
-//        self.monthButton.setTitle(makeMonthButtonText(), for: .normal)
     }
 
     private func setupFilterTagCollectionView() {
