@@ -132,12 +132,12 @@
                                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="3" id="NwA-eW-KVl"/>
+                                                    <constraint firstAttribute="width" constant="68" id="qFA-sb-wcw"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="tsM-Bo-QU0" firstAttribute="width" secondItem="U8t-kY-EHS" secondAttribute="width" id="9b8-lS-MYr"/>
                                             <constraint firstItem="tsM-Bo-QU0" firstAttribute="top" secondItem="U8t-kY-EHS" secondAttribute="bottom" constant="3" id="Ktt-Ub-1aZ"/>
                                             <constraint firstItem="DbN-Zz-RjJ" firstAttribute="leading" secondItem="U8t-kY-EHS" secondAttribute="trailing" constant="20" id="MzU-zm-hCs"/>
                                             <constraint firstItem="U8t-kY-EHS" firstAttribute="leading" secondItem="Wzg-lJ-8FP" secondAttribute="leading" constant="16" id="OHr-3m-GVo"/>
@@ -592,6 +592,7 @@
                         <outlet property="recruitmentButton" destination="hLd-kn-LVL" id="dLY-mZ-NYo"/>
                         <outlet property="resetButtonView" destination="NU8-Dp-hy1" id="nBF-0H-7TW"/>
                         <outlet property="selectedLineCenterConstraint" destination="mvr-4R-FTb" id="VaU-jO-oPi"/>
+                        <outlet property="selectedLineWidthConstraint" destination="qFA-sb-wcw" id="Ryo-gZ-1EM"/>
                         <outlet property="tableViewFilterButton" destination="jBg-T2-uCl" id="arU-uF-l9n"/>
                         <outlet property="tagCollectionViewConstraint" destination="7JU-Qq-8W7" id="Dh5-X6-ECM"/>
                         <outlet property="teamMatchButton" destination="U8t-kY-EHS" id="555-Df-ej9"/>
