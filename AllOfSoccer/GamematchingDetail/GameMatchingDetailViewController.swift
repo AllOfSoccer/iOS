@@ -10,7 +10,13 @@ import NMapsMap
 
 class GameMatchingDetailViewController: UIViewController {
 
+    @IBOutlet private weak var naverMapView: NMFNaverMapView!
+
+    private var infoWindow = NMFInfoWindow()
+    private var defaultInfoWindowImage = NMFInfoWindowDefaultTextSource.data()
+
     private var viewModel: [String] = []
+    private let testModel: GameMatchingDetailModel = GameMatchingDetailModel(latitude: 37.56113305647401, hardness: 126.99471726933801, positionName: "춤무로")
 
     lazy var likeBarButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(named: "HeartDeSeleded"), style: .plain, target: self, action: #selector(likeBarbuttonTouchUp(_:)))
@@ -27,9 +33,8 @@ class GameMatchingDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         setupNavigationItem()
-        setnaverMapView()
+        setNaverMapView()
     }
 
     private func setupNavigationItem() {
@@ -42,35 +47,46 @@ class GameMatchingDetailViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = [self.likeBarButton, self.shareBarButton]
     }
 
-    private func setnaverMapView() {
+    private func setNaverMapView() {
 
-//        setCamera()
-//        setMarker()
+        self.naverMapView.mapView.touchDelegate = self
+
+        self.setCamera()
+        self.setInfoWindow()
+        self.setMarker()
     }
 
     private func setCamera() {
-        let camPoition = NMGLatLng(lat: 37.5670135, lng: 126.9783740)
+
+        let camPoition = NMGLatLng(lat: self.testModel.latitude, lng: self.testModel.hardness)
         let cameraUpdate = NMFCameraUpdate(scrollTo: camPoition)
-        //self.naverMapView.moveCamera(cameraUpdate)
+        self.naverMapView.mapView.moveCamera(cameraUpdate)
+    }
+
+    private func setInfoWindow() {
+
+        self.infoWindow.dataSource = defaultInfoWindowImage
+        self.infoWindow.mapView = self.naverMapView.mapView
     }
 
     private func setMarker() {
+
         let marker = NMFMarker()
-        marker.position = NMGLatLng(lat: 37.5670135, lng: 126.9783740)
+        marker.position = NMGLatLng(lat: self.testModel.latitude, lng: self.testModel.hardness)
         marker.iconImage = NMF_MARKER_IMAGE_BLACK
         marker.iconTintColor = UIColor.red
         marker.width = 50
         marker.height = 60
-        //marker.mapView = self.naverMapView
 
-        // 정보창 생성
-        let infoWindow = NMFInfoWindow()
-        let dataSource = NMFInfoWindowDefaultTextSource.data()
-        dataSource.title = "서울특별시청"
-        infoWindow.dataSource = dataSource
+        marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+            self?.infoWindow.close()
+            self?.defaultInfoWindowImage.title = marker.userInfo["tag"] as! String
+            self?.infoWindow.open(with: marker)
+            return true
+        }
 
-        // 마커에 달아주기
-        infoWindow.open(with: marker)
+        marker.userInfo = ["tag" : self.testModel.positionName]
+        marker.mapView = self.naverMapView.mapView
     }
 
     @objc private func likeBarbuttonTouchUp(_ sender: UIControl) {
@@ -98,6 +114,9 @@ class GameMatchingDetailViewController: UIViewController {
 }
 
 
-extension GameMatchingDetailViewController: NMFMapViewDelegate {
+extension GameMatchingDetailViewController: NMFMapViewTouchDelegate {
 
+    func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
+        infoWindow.close()
+    }
 }
