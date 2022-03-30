@@ -10,11 +10,7 @@ import Foundation
 class HorizonralCalendarViewModel {
 
     // MARK: - Properties
-    private var horizontalCalendarModels: [HorizontalCalendarModel] = []
-
-    internal var formalHorizontalCalendarModels: [HorizontalCalendarModel] {
-        return horizontalCalendarModels
-    }
+    internal private(set) var horizontalCalendarModels: [HorizontalCalendarModel] = []
 
     internal var formalStrHorizontalCalendarDates: [String] {
         let strHorizontalCalendarDates = self.horizontalCalendarModels.map { self.changeDateToString($0.date) }
@@ -45,9 +41,11 @@ class HorizonralCalendarViewModel {
     }
 
     private func makeNewIndexPathItem(indexPath: IndexPath) -> Int {
+        let numberForMakingFirstIndexPath = 6
+
         var newIndexPathItem = indexPath.item
-        if newIndexPathItem >= 6 {
-            newIndexPathItem = newIndexPathItem - 6
+        if newIndexPathItem >= numberForMakingFirstIndexPath {
+            newIndexPathItem = newIndexPathItem - numberForMakingFirstIndexPath
         }
         return newIndexPathItem
     }
