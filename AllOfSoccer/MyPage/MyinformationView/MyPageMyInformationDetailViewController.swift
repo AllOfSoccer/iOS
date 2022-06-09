@@ -105,11 +105,11 @@ class MyPageMyInformationDetailViewController: UIViewController {
     }
 
     @objc private func ageSliderValueChanged(sender: UISlider) {
-        print(sender.value)
+        
     }
 
     @objc private func skillSliderValueChanged(sender: UISlider) {
-        print(sender.value)
+
     }
 }
 

@@ -444,7 +444,6 @@ class GameMatchingViewController: UIViewController {
 // MARK: - CollectionViewDelegate
 extension GameMatchingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print(indexPath.item)
         if collectionView == self.horizontalCalendarView {
             self.monthButton.setTitle(self.horizontalCalendarViewModel.makeMonthText(indexPath: indexPath), for: .normal)
         }
@@ -455,7 +454,6 @@ extension GameMatchingViewController: UICollectionViewDelegate {
             // 데이터 처리
             let seletedHorizontalDate = self.horizontalCalendarViewModel.getSelectedDateModel(with: indexPath).date
             self.gameMatchingModel.append([], seletedHorizontalDate)
-            print(self.gameMatchingModel.selectedDate)
         } else if collectionView == self.filterTagCollectionView {
             // 데이터 처리
 
@@ -469,7 +467,6 @@ extension GameMatchingViewController: UICollectionViewDelegate {
             // 데이터 처리
             let deSeletedHorizontalDate = self.horizontalCalendarViewModel.getSelectedDateModel(with: indexPath).date
             self.gameMatchingModel.delete(deSeletedHorizontalDate)
-            print(self.gameMatchingModel.selectedDate)
         } else if collectionView == self.filterTagCollectionView {
             // 데이터 처리
         }

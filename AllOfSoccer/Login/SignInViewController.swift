@@ -62,23 +62,7 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                let identityToken = appleIDCredential.identityToken,
                let authString = String(data: authorizationCode, encoding: .utf8),
                let tokenString = String(data: identityToken, encoding: .utf8) {
-                print("authorizationCode: \(authorizationCode)")
-                print("identityToken: \(identityToken)")
-                print("authString: \(authString)")
-                print("tokenString: \(tokenString)")
             }
-
-            print("useridentifier: \(userIdentifier)")
-            print("fullName: \(fullName)")
-            print("email: \(email)")
-
-            //        case let passwordCredential as ASPasswordCredential:
-            //            // Sign in using an existing iCloud Keychain credential.
-            //            let username = passwordCredential.user
-            //            let password = passwordCredential.password
-            //
-            //            print("username: \(username)")
-            //            print("password: \(password)")
         default:
             break
         }
