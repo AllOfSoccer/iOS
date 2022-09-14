@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfl-ke-ikR">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="763"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzg-lJ-8FP">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
@@ -315,7 +315,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Axh-HT-bKL">
-                                        <rect key="frame" x="0.0" y="245" width="414" height="480"/>
+                                        <rect key="frame" x="0.0" y="245" width="414" height="518"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <view key="tableHeaderView" contentMode="scaleToFill" id="SHE-Ce-TZO">
@@ -474,7 +474,7 @@
                                         </prototypes>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfl-Dd-Rhy" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
-                                        <rect key="frame" x="339" y="650" width="50" height="50"/>
+                                        <rect key="frame" x="339" y="688" width="50" height="50"/>
                                         <color key="backgroundColor" name="tagBackTouchUpColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="VAv-P2-1vc"/>
@@ -498,7 +498,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWB-dj-IUj" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
-                                        <rect key="frame" x="339" y="650" width="50" height="50"/>
+                                        <rect key="frame" x="339" y="688" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="PVB-YV-skB"/>
                                             <constraint firstAttribute="width" constant="50" id="SYx-Xi-WQB"/>
@@ -520,7 +520,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLd-kn-LVL" customClass="RoundButton" customModule="AllOfSoccer" customModuleProvider="target">
-                                        <rect key="frame" x="334" y="645" width="60" height="60"/>
+                                        <rect key="frame" x="334" y="683" width="60" height="60"/>
                                         <color key="backgroundColor" name="tagBackTouchUpColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="hG9-e3-clb"/>
@@ -574,7 +574,7 @@
                         <constraints>
                             <constraint firstItem="k3U-ZW-q40" firstAttribute="trailing" secondItem="mfl-ke-ikR" secondAttribute="trailing" id="CH1-hC-ts7"/>
                             <constraint firstItem="k3U-ZW-q40" firstAttribute="bottom" secondItem="mfl-ke-ikR" secondAttribute="bottom" id="G0C-CT-Bgf"/>
-                            <constraint firstItem="mfl-ke-ikR" firstAttribute="top" secondItem="k3U-ZW-q40" secondAttribute="top" id="ND4-FM-QE7"/>
+                            <constraint firstItem="mfl-ke-ikR" firstAttribute="top" secondItem="4i3-zD-eLK" secondAttribute="top" constant="50" id="ND4-FM-QE7"/>
                             <constraint firstItem="mfl-ke-ikR" firstAttribute="leading" secondItem="k3U-ZW-q40" secondAttribute="leading" id="ZHv-Of-KSz"/>
                             <constraint firstItem="k3U-ZW-q40" firstAttribute="trailing" secondItem="gfl-Dd-Rhy" secondAttribute="trailing" constant="25" id="vB0-EY-iLz"/>
                         </constraints>
