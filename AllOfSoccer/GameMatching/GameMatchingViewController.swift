@@ -157,8 +157,9 @@ class GameMatchingViewController: UIViewController {
 
     // MARK: - CalendarMonthButtonAction
     @IBAction func monthButtonTouchUp(_ sender: UIButton) {
-        let norMalCalendarView = GameMatchingCalendarView.make(selectedDates: self.gameMatchingModel.selectedDate, delegate: self)
-        self.setSubViewConstraints(view: norMalCalendarView)
+        //중현: 추후에 기능 추가
+//        let norMalCalendarView = GameMatchingCalendarView.make(selectedDates: self.gameMatchingModel.selectedDate, delegate: self)
+//        self.setSubViewConstraints(view: norMalCalendarView)
     }
 
     @IBAction private func resetTagButtonTouchUp(_ sender: UIButton) {
@@ -250,7 +251,7 @@ class GameMatchingViewController: UIViewController {
         flowlayout.itemSize = CGSize(width: itemWidth, height: 66)
         self.horizontalCalendarView.collectionViewLayout = flowlayout
 
-        let dateRange = 1000
+        let dateRange = 90
         for nextDay in 0...dateRange {
             let cellData = HorizontalCalendarModel(date: makeDate(nextDay))
             self.horizontalCalendarViewModel.append(cellData)

@@ -151,9 +151,9 @@
                                         <rect key="frame" x="0.0" y="96" width="414" height="96"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mil-d7-Lkb">
-                                                <rect key="frame" x="16" y="37" width="42.5" height="22"/>
+                                                <rect key="frame" x="16" y="31" width="30" height="34"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="1월" image="chevron.down" catalog="system">
+                                                <state key="normal" title="1월">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -161,7 +161,7 @@
                                                 </connections>
                                             </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ujb-m5-sph">
-                                                <rect key="frame" x="70.5" y="0.0" width="326.5" height="96"/>
+                                                <rect key="frame" x="58" y="0.0" width="339" height="96"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ri5-zk-cr4">
                                                     <size key="itemSize" width="153" height="94"/>
