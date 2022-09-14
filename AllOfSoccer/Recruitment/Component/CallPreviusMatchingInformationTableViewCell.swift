@@ -9,7 +9,7 @@ import UIKit
 
 class CallPreviusMatchingInformationTableViewCell: UITableViewCell {
 
-    private var checkButton: SeletableButton = {
+    private var favoriteButton: SeletableButton = {
         let button = SeletableButton()
         button.setTitle(SortMode.distance.sortModeTitle, for: .normal)
         button.normalImage = UIImage(systemName: "checkmark.circle")
@@ -31,7 +31,7 @@ class CallPreviusMatchingInformationTableViewCell: UITableViewCell {
         return button
     }()
 
-    private var mainLabel: UILabel = {
+    private var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "6vs6 / 남성매치 / 7000원"
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -40,7 +40,7 @@ class CallPreviusMatchingInformationTableViewCell: UITableViewCell {
         return label
     }()
 
-    private var subLabel: UILabel = {
+    private var addressLabel: UILabel = {
         let label = UILabel()
         label.text = "8월 27일 용산 아이파크몰"
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -59,29 +59,41 @@ class CallPreviusMatchingInformationTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
+    internal func update(viewModel: GameMatchListViewModel) {
+        self.addressLabel.text = viewModel.address
+        self.descriptionLabel.text = viewModel.description
+        self.favoriteButton.isSelected = viewModel.isFavorite
     }
 
     private func setConstraints() {
-        self.contentView.addsubviews(checkButton, mainLabel, subLabel)
+        self.debugBorder()
+        self.backgroundColor = .blue
+
+        self.contentView.addsubviews(favoriteButton, descriptionLabel, addressLabel)
         NSLayoutConstraint.activate([
-            self.checkButton.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5),
-            self.checkButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0),
+            self.favoriteButton.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5),
+            self.favoriteButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0),
 
-            self.mainLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5),
-            self.mainLabel.leadingAnchor.constraint(equalTo: self.checkButton.trailingAnchor, constant: 8),
+            self.descriptionLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5),
+            self.descriptionLabel.leadingAnchor.constraint(equalTo: self.favoriteButton.trailingAnchor, constant: 8),
 
-            self.subLabel.topAnchor.constraint(equalTo: self.mainLabel.bottomAnchor, constant: 5),
-            self.subLabel.leadingAnchor.constraint(equalTo: self.checkButton.trailingAnchor, constant: 8),
-            self.subLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -5)
+            self.addressLabel.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 5),
+            self.addressLabel.leadingAnchor.constraint(equalTo: self.favoriteButton.trailingAnchor, constant: 8),
+            self.addressLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -5)
         ])
     }
 
     @objc func checkButtonTouchUp(_ sender: SeletableButton) {
         sender.isSelected = sender.isSelected ? false : true
 
+    }
+}
 
+
+extension UIView {
+
+    internal func debugBorder(width: CGFloat = 1, color: UIColor = .red) {
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = width
     }
 }

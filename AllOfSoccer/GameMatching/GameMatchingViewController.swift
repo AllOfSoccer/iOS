@@ -52,6 +52,8 @@ class GameMatchingViewController: UIViewController {
     var gameMatchingModel = GameMatchingViewModel()
     var horizontalCalendarViewModel = HorizonralCalendarViewModel()
 
+    private var matchingList: [GameMatchListViewModel] = [GameMatchListViewModel.mockData, GameMatchListViewModel.mockData1, GameMatchListViewModel.mockData2]
+
     // MARK: - MatchingModeButton Variable
     @IBOutlet private weak var teamMatchButton: IBSelectTableButton!
     @IBOutlet private weak var manMatchButton: IBSelectTableButton!
@@ -452,13 +454,10 @@ extension GameMatchingViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.horizontalCalendarView {
-            // 데이터 처리
             let seletedHorizontalDate = self.horizontalCalendarViewModel.getSelectedDateModel(with: indexPath).date
             self.gameMatchingModel.append([], seletedHorizontalDate)
-            print(self.gameMatchingModel.selectedDate)
+            print("중현: 날짜가 선택됨, 선택된 날짜에 따라 필터 필요함. \(self.gameMatchingModel.selectedDate)")
         } else if collectionView == self.filterTagCollectionView {
-            // 데이터 처리
-
             self.filterDetailView.filterType = self.tagCellModel[indexPath.item].filterType
             self.appearFilterDetailView()
         }
@@ -573,11 +572,14 @@ extension GameMatchingViewController: UITableViewDelegate {
 // MARK: - TableViewDatasource
 extension GameMatchingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.matchingList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoticeTableViewCell", for: indexPath) as? NoticeTableViewCell else { return UITableViewCell() }
+
+        cell.update(viewModel: self.matchingList[indexPath.row])
+        
         return cell
     }
 }
@@ -649,3 +651,4 @@ extension GameMatchingViewController: FilterDetailViewDelegate {
         }
     }
 }
+
