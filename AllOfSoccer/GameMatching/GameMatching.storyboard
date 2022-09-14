@@ -318,33 +318,9 @@
                                         <rect key="frame" x="0.0" y="245" width="414" height="518"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <view key="tableHeaderView" contentMode="scaleToFill" id="SHE-Ce-TZO">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBg-T2-uCl">
-                                                    <rect key="frame" x="16" y="16" width="74.5" height="17"/>
-                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <inset key="imageEdgeInsets" minX="-4" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="거리순" image="arrow.up.arrow.down" catalog="system">
-                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="tableViewSortingButtonTouchUp:" destination="V9G-Fe-OSJ" eventType="touchUpInside" id="HJv-pc-N2N"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="jBg-T2-uCl" firstAttribute="top" secondItem="SHE-Ce-TZO" secondAttribute="top" constant="16" id="Vde-HJ-HAk"/>
-                                                <constraint firstAttribute="bottom" secondItem="jBg-T2-uCl" secondAttribute="bottom" constant="17" id="W2x-ot-ntp"/>
-                                                <constraint firstItem="jBg-T2-uCl" firstAttribute="leading" secondItem="SHE-Ce-TZO" secondAttribute="leading" constant="16" id="eFy-96-APP"/>
-                                            </constraints>
-                                        </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoticeTableViewCell" rowHeight="158" id="x83-q5-DUZ" customClass="NoticeTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="94.5" width="414" height="158"/>
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="158"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x83-q5-DUZ" id="MLl-ae-ZqP">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="158"/>
@@ -593,7 +569,6 @@
                         <outlet property="resetButtonView" destination="NU8-Dp-hy1" id="nBF-0H-7TW"/>
                         <outlet property="selectedLineCenterConstraint" destination="mvr-4R-FTb" id="VaU-jO-oPi"/>
                         <outlet property="selectedLineWidthConstraint" destination="qFA-sb-wcw" id="Ryo-gZ-1EM"/>
-                        <outlet property="tableViewFilterButton" destination="jBg-T2-uCl" id="arU-uF-l9n"/>
                         <outlet property="tagCollectionViewConstraint" destination="7JU-Qq-8W7" id="Dh5-X6-ECM"/>
                         <outlet property="teamMatchButton" destination="U8t-kY-EHS" id="555-Df-ej9"/>
                         <outlet property="teamRecruitmentButton" destination="gfl-Dd-Rhy" id="yO7-DM-vEv"/>
@@ -635,7 +610,6 @@
     </designables>
     <resources>
         <image name="ArrowsClockwise" width="22" height="22"/>
-        <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="circle" width="210" height="156"/>
         <image name="cloth.fill" width="24" height="19"/>

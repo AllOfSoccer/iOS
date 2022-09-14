@@ -21,28 +21,19 @@ enum CollecionviewType: String {
 
 enum FilterType: CaseIterable {
     case location
-    case time
     case game
-    case cost
-    case level
 
     var tagTitle: String {
         switch self {
         case .location: return "장소"
-        case .time: return "시간대"
-        case .game: return "경기"
-        case .cost: return "참가비"
-        case .level: return "실력"
+        case .game: return "경기 종류"
         }
     }
 
     var filterList: [String] {
         switch self {
         case .location: return ["서울", "경기-북부", "경기-남부", "인천/부천", "기타지역"]
-        case .time: return ["10:00", "11:00", "12:00"]
-        case .game: return ["11"]
-        case .cost: return ["12312312312", "ㅁㄴㅇㅁㄴㅇㅁㅇㄴ"]
-        case .level: return ["상", "중", "하"]
+        case .game: return ["11 vs 11", "풋살"]
         }
     }
 }
