@@ -52,7 +52,7 @@ class GameMatchingViewController: UIViewController {
     var gameMatchingModel = GameMatchingViewModel()
     var horizontalCalendarViewModel = HorizonralCalendarViewModel()
 
-    private var matchingList: [GameMatchListViewModel] = [GameMatchListViewModel.mockData, GameMatchListViewModel.mockData1, GameMatchListViewModel.mockData2]
+    private var matchingList: [GameMatchListViewModel] = [GameMatchListViewModel.mockData, GameMatchListViewModel.mockData1, GameMatchListViewModel.mockData2, GameMatchListViewModel.mockData, GameMatchListViewModel.mockData1, GameMatchListViewModel.mockData2]
 
     // MARK: - MatchingModeButton Variable
     @IBOutlet private weak var teamMatchButton: IBSelectTableButton!
@@ -579,7 +579,7 @@ extension GameMatchingViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoticeTableViewCell", for: indexPath) as? NoticeTableViewCell else { return UITableViewCell() }
 
         cell.update(viewModel: self.matchingList[indexPath.row])
-        
+
         return cell
     }
 }
