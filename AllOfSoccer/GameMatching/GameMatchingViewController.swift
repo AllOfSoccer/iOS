@@ -60,8 +60,6 @@ class GameMatchingViewController: UIViewController {
     private lazy var filterDetailBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-        let tapGeture = UITapGestureRecognizer(target: self, action: #selector(filterDetailBackgroundTapped))
-        view.addGestureRecognizer(tapGeture)
         return view
     }()
 
@@ -437,7 +435,7 @@ class GameMatchingViewController: UIViewController {
     }
 
     @objc private func filterDetailBackgroundTapped() {
-        self.cancelButtonDidSelected(self.filterDetailView)
+
     }
 }
 
@@ -497,16 +495,6 @@ extension GameMatchingViewController: UICollectionViewDelegate {
         }
     }
 
-//    private func appendDate(date: Date) {
-//        self.selectedDate.append(date)
-//        self.setOKButtonTitle()
-//    }
-//
-//    private func deleteDate(date: Date) {
-//        guard let indexOfDate = selectedDate.firstIndex(of: date) else { return }
-//        self.selectedDate.remove(at: indexOfDate)
-//        self.setOKButtonTitle()
-//    }
 }
 
 // MARK: - CollectionViewDataSource
@@ -609,10 +597,11 @@ extension GameMatchingViewController: TableViewFilterViewDelegate {
 
 // MARK: - FilterDetailViewDelegate
 extension GameMatchingViewController: FilterDetailViewDelegate {
-    func finishButtonDidSelected(_ detailView: FilterDetailView) {
-        UIView.animate(withDuration: 0.5) { [weak self] in
+
+    func finishButtonDidSelected(_ detailView: FilterDetailView, selectedList: [String]) {
+        UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
-            self.filterDetailView.frame = CGRect(x: 0, y: 1000, width: self.filterDetailView.frame.width, height: self.filterDetailView.frame.height)
+            self.filterDetailView.frame = CGRect(x: 0, y: self.view.frame.maxY, width: self.filterDetailView.frame.width, height: self.filterDetailView.frame.height)
             self.tabBarController?.view.layoutIfNeeded()
         } completion: { _ in
             self.filterDetailBackgroundView.isHidden = true
@@ -632,8 +621,8 @@ extension GameMatchingViewController: FilterDetailViewDelegate {
         }
     }
 
-    func cancelButtonDidSelected(_ detailView: FilterDetailView) {
-        UIView.animate(withDuration: 0.5) { [weak self] in
+    func cancelButtonDidSelected(_ detailView: FilterDetailView, selectedList: [String]) {
+        UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
             self.filterDetailView.frame = CGRect(x: 0, y: 1000, width: self.filterDetailView.frame.width, height: self.filterDetailView.frame.height)
             self.tabBarController?.view.layoutIfNeeded()

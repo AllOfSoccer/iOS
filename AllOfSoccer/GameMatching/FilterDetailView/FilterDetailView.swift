@@ -8,8 +8,8 @@
 import UIKit
 
 protocol FilterDetailViewDelegate: AnyObject {
-    func finishButtonDidSelected(_ detailView: FilterDetailView)
-    func cancelButtonDidSelected(_ detailView: FilterDetailView)
+    func finishButtonDidSelected(_ detailView: FilterDetailView, selectedList: [String])
+    func cancelButtonDidSelected(_ detailView: FilterDetailView, selectedList: [String])
 }
 
 class FilterDetailView: UIView {
@@ -138,11 +138,11 @@ class FilterDetailView: UIView {
     }
 
     @objc private func finishButtonTouchUp(sender: UIButton) {
-        self.delegate?.finishButtonDidSelected(self)
+        self.delegate?.finishButtonDidSelected(self, selectedList: self.didSelectedFilterList.map { $0.key })
     }
 
     @objc private func cancelButtonTouchUp(sender: UIButton) {
-        self.delegate?.cancelButtonDidSelected(self)
+        self.delegate?.cancelButtonDidSelected(self, selectedList: self.didSelectedFilterList.map { $0.key })
     }
 }
 
@@ -152,7 +152,7 @@ extension FilterDetailView: UICollectionViewDelegate {
         guard let filterType = self.filterType else { return }
         guard let tagLabelTitle = filterType.filterList[safe: indexPath.item] else { return }
         self.didSelectedFilterList[tagLabelTitle] = filterType
-        let finishButtonTitle = self.didSelectedFilterList.isEmpty ? "선택해주세요." : "필터적용하기 (데이터필요)"
+        let finishButtonTitle = self.didSelectedFilterList.isEmpty ? "선택해주세요." : "선택 완료"
         self.finishButton.setTitle(finishButtonTitle, for: .normal)
     }
 
