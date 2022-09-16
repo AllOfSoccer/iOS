@@ -60,6 +60,8 @@ class GameMatchingViewController: UIViewController {
     private lazy var filterDetailBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        let tapGeture = UITapGestureRecognizer(target: self, action: #selector(filterDetailBackgroundTapped))
+        view.addGestureRecognizer(tapGeture)
         return view
     }()
 
@@ -433,6 +435,10 @@ class GameMatchingViewController: UIViewController {
         self.manRecruitmentButtonLabel.isHidden = true
         self.teamRecruitmentButtonLabel.isHidden = true
     }
+
+    @objc private func filterDetailBackgroundTapped() {
+        self.cancelButtonDidSelected(self.filterDetailView)
+    }
 }
 
 // MARK: - CollectionViewDelegate
@@ -472,7 +478,7 @@ extension GameMatchingViewController: UICollectionViewDelegate {
         self.teamRecruitmentButton.isHidden = true
 
         self.tabBarController?.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.5) { [weak self] in
+        UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
             guard let tabbar = self.tabBarController else { return }
             self.filterDetailView.frame = CGRect(x: 0, y: tabbar.view.frame.height - 244, width: self.filterDetailView.frame.width, height: self.filterDetailView.frame.height)
