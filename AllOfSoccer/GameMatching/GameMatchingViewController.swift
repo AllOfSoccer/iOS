@@ -611,14 +611,31 @@ extension GameMatchingViewController: FilterDetailViewDelegate {
             self.teamRecruitmentButton.isHidden = false
 
             self.didSelectedFilterList = detailView.didSelectedFilterList
+
             if self.didSelectedFilterList.isEmpty {
                 self.tagCollectionViewCellIsNotSelectedViewSetting()
-                self.filterTagCollectionView.reloadData()
             } else {
                 self.tagCollectionViewCellIsSelectedViewSetting()
-                self.filterTagCollectionView.reloadData()
+                self.refresh()
             }
         }
+    }
+
+    private func refresh() {
+        guard let filterType = self.didSelectedFilterList.first?.value else {
+            return
+        }
+
+        switch filterType {
+        case .location:
+            print("중현: 선택된 location filter \(self.didSelectedFilterList.map { $0.key })")
+        case .game:
+            print("중현: 선택된 game filter \(self.didSelectedFilterList.map { $0.key })")
+        }
+
+        print("중현: 해당 filter 들로 request 요청한다.")
+
+        self.filterTagCollectionView.reloadData()
     }
 
     func cancelButtonDidSelected(_ detailView: FilterDetailView, selectedList: [String]) {
