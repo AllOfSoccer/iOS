@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n5E-P7-dhY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n5E-P7-dhY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -647,6 +647,7 @@
                         <outlet property="mixMatchButton" destination="gMm-6I-6qg" id="5AD-DS-SML"/>
                         <outlet property="sixMatchButton" destination="F3M-Au-6ws" id="MFs-xP-YId"/>
                         <outlet property="soccerShoesButton" destination="FUB-0h-EHA" id="QXq-sw-ERk"/>
+                        <outlet property="timeLabel" destination="R4a-o1-cEb" id="5tz-nn-tzL"/>
                         <outlet property="womanMatchButton" destination="b90-cH-IrE" id="q4x-km-mta"/>
                     </connections>
                 </viewController>

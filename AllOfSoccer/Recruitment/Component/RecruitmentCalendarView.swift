@@ -10,14 +10,14 @@ import FSCalendar
 
 protocol RecruitmentCalendarViewDelegate: AnyObject {
     func cancelButtonDidSelected(_ view: RecruitmentCalendarView)
-    func okButtonDidSelected(_ view: RecruitmentCalendarView, selectedDate: [String])
+    func okButtonDidSelected(_ view: RecruitmentCalendarView, selectedDate: String)
 }
 
 class RecruitmentCalendarView: UIView {
 
     weak var delegate: RecruitmentCalendarViewDelegate?
 
-    private var selectedDate: [String] = []
+    private var selectedDate: String?
     private var currentPage: Date?
 
     private var baseView: UIView = {
@@ -49,14 +49,14 @@ class RecruitmentCalendarView: UIView {
         calendar.calendarWeekdayView.weekdayLabels[5].text = "금"
         calendar.calendarWeekdayView.weekdayLabels[6].text = "토"
 
-        calendar.allowsMultipleSelection = true
+        calendar.allowsMultipleSelection = false
 
         return calendar
     }()
 
     private var timeDatePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
-        datePicker.preferredDatePickerStyle = .compact
+        datePicker.preferredDatePickerStyle = .automatic
         datePicker.datePickerMode = .time
         datePicker.locale = Locale(identifier: "ko-KR")
         datePicker.timeZone = .autoupdatingCurrent
@@ -205,7 +205,9 @@ class RecruitmentCalendarView: UIView {
     }
 
     @objc private func okButtonTouchUp(sender: UIButton) {
-        self.delegate?.okButtonDidSelected(self, selectedDate: self.selectedDate)
+        self.selectedDate.map {
+            self.delegate?.okButtonDidSelected(self, selectedDate: $0)
+        }
     }
 
     @objc private func monthPrevButtonTouchUp(_ sender: UIButton) {
@@ -217,7 +219,13 @@ class RecruitmentCalendarView: UIView {
     }
 
     @objc private func handleDatePicker(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = " hh시 mm분"
+        let time = dateFormatter.string(from: sender.date)
 
+        self.selectedDate.map {
+            self.selectedDate = $0 + time
+        }
     }
 
     private func moveCurrentPage(moveUp: Bool) {
@@ -235,12 +243,12 @@ class RecruitmentCalendarView: UIView {
 extension RecruitmentCalendarView: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
 
-        appendDate(date: date)
+        self.appendDate(date: date)
     }
 
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
 
-        deleteDate(date: date)
+        self.appendDate(date: date)
     }
 
     func minimumDate(for calendar: FSCalendar) -> Date {
@@ -249,22 +257,23 @@ extension RecruitmentCalendarView: FSCalendarDelegate {
 
     private func appendDate(date: Date) {
         let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM월 dd일"
         let stringDate = dateFormatter.string(from: date)
-        self.selectedDate.append(stringDate)
-        let countOfSeletedDate = self.selectedDate.count
-        let buttonTitle = self.selectedDate.isEmpty ? "선택" : "선택 (\(countOfSeletedDate)건)"
+        self.selectedDate = stringDate
+
+        let buttonTitle = self.selectedDate == nil ? "선택" : "\(stringDate) 선택"
         self.okButton.setTitle(buttonTitle, for: .normal)
     }
 
-    private func deleteDate(date: Date) {
-        let dateFormatter = DateFormatter()
-        let stringDate = dateFormatter.string(from: date)
-        guard let indexOfStringDate = selectedDate.firstIndex(of: stringDate) else { return }
-        self.selectedDate.remove(at: indexOfStringDate)
-        let countOfSeletedDate = self.selectedDate.count
-        let buttonTitle = self.selectedDate.isEmpty ? "선택" : "선택 (\(countOfSeletedDate)건)"
-        self.okButton.setTitle(buttonTitle, for: .normal)
-    }
+//    private func deleteDate(date: Date) {
+//        let dateFormatter = DateFormatter()
+//        let stringDate = dateFormatter.string(from: date)
+//        guard let indexOfStringDate = selectedDate.firstIndex(of: stringDate) else { return }
+//        self.selectedDate.remove(at: indexOfStringDate)
+//        let countOfSeletedDate = self.selectedDate.count
+//        let buttonTitle = self.selectedDate.isEmpty ? "선택" : "선택 (\(countOfSeletedDate)건)"
+//        self.okButton.setTitle(buttonTitle, for: .normal)
+//    }
 }
 
 // MARK: - FSCollectionViewDataSource

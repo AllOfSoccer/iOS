@@ -107,7 +107,7 @@ extension FirstManRecruitmentViewController:
         view.removeFromSuperview()
     }
 
-    func okButtonDidSelected(_ view: RecruitmentCalendarView, selectedDate: [String]) {
+    func okButtonDidSelected(_ view: RecruitmentCalendarView, selectedDate: String) {
         view.removeFromSuperview()
     }
 }
