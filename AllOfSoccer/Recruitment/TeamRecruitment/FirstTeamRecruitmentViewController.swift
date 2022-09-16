@@ -18,6 +18,12 @@ class FirstTeamRecruitmentViewController: UIViewController {
     @IBOutlet weak var soccerShoesButton: IBSelectTableButton!
 
     @IBOutlet private weak var timeLabel: UILabel?
+    @IBOutlet private weak var priceTextField: UITextField? {
+        didSet {
+            self.priceTextField?.keyboardType = .numberPad
+            self.priceTextField?.delegate = self
+        }
+    }
 
     @IBAction private func calendarButtonTouchUp(_ sender: UIButton) {
         let recruitmentCalendarView = RecruitmentCalendarView()
@@ -49,6 +55,7 @@ class FirstTeamRecruitmentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.dismissKeyboard()
         setMatchButton()
     }
 
@@ -103,5 +110,31 @@ extension FirstTeamRecruitmentViewController: CallPreviusMatchingInformationView
     }
     func OKButtonDidSelected(_ view: CallPreviusMatchingInformationView) {
         view.removeFromSuperview()
+    }
+}
+
+extension FirstTeamRecruitmentViewController: UITextFieldDelegate {
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        self.keyboardWillAppear()
+        return true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+extension FirstTeamRecruitmentViewController {
+
+    func dismissKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:    #selector(dismissKeyboardTouchOutside))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc private func dismissKeyboardTouchOutside() {
+        view.endEditing(true)
     }
 }

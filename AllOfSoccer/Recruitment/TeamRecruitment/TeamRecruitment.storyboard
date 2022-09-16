@@ -645,6 +645,7 @@
                         <outlet property="futsalShoesButton" destination="Jym-es-rUU" id="tvn-5R-A28"/>
                         <outlet property="manMatchButton" destination="wXi-Q0-4Jj" id="3Pz-ig-4LS"/>
                         <outlet property="mixMatchButton" destination="gMm-6I-6qg" id="5AD-DS-SML"/>
+                        <outlet property="priceTextField" destination="5ZA-cO-vzj" id="C8z-Qe-qvl"/>
                         <outlet property="sixMatchButton" destination="F3M-Au-6ws" id="MFs-xP-YId"/>
                         <outlet property="soccerShoesButton" destination="FUB-0h-EHA" id="QXq-sw-ERk"/>
                         <outlet property="timeLabel" destination="R4a-o1-cEb" id="5tz-nn-tzL"/>
