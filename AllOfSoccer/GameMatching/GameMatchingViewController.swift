@@ -564,7 +564,9 @@ extension GameMatchingViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoticeTableViewCell", for: indexPath) as? NoticeTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NoticeTableViewCell.defaultIdentifier, for: indexPath) as? NoticeTableViewCell else {
+            return UITableViewCell()
+        }
 
         cell.update(viewModel: self.gameMatchingModel.fetchViewModel(indexPath: indexPath))
 

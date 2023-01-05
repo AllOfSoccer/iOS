@@ -70,3 +70,10 @@ extension UIView {
         self.layer.borderColor = color.cgColor
     }
 }
+
+extension UITableViewCell {
+
+    internal static var defaultIdentifier: String {
+        String(describing: self)
+    }
+}
