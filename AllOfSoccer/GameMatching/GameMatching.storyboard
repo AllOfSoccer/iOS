@@ -319,33 +319,33 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoticeTableViewCell" rowHeight="158" id="x83-q5-DUZ" customClass="NoticeTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="50" width="414" height="158"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoticeTableViewCell" rowHeight="130" id="x83-q5-DUZ" customClass="NoticeTableViewCell" customModule="AllOfSoccer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="50" width="414" height="130"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x83-q5-DUZ" id="MLl-ae-ZqP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="158"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06.08 월" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FS-uj-ZNa">
-                                                            <rect key="frame" x="38" y="54" width="54" height="17"/>
+                                                            <rect key="frame" x="38" y="44" width="54" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용산 아이파크몰" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQ4-q6-vVF">
-                                                            <rect key="frame" x="123" y="31" width="114" height="21.5"/>
+                                                            <rect key="frame" x="123" y="21" width="114" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ow-FV-N4F">
-                                                            <rect key="frame" x="37.5" y="73" width="55" height="24"/>
+                                                            <rect key="frame" x="37.5" y="63" width="55" height="24"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Z4o-oW-E14">
-                                                            <rect key="frame" x="123" y="102.5" width="86.5" height="16"/>
+                                                            <rect key="frame" x="123" y="83.5" width="86.5" height="16"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="jaw-ZR-yzO">
                                                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -366,7 +366,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sw-rp-8jL">
-                                                            <rect key="frame" x="356" y="31" width="22" height="22"/>
+                                                            <rect key="frame" x="356" y="21" width="22" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="22" id="QIr-yx-OWb"/>
                                                                 <constraint firstAttribute="height" constant="22" id="UQa-c1-CmE"/>
@@ -403,7 +403,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 vs 6∙남성매치∙실력 하∙7,000원" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4y-OG-XbT">
-                                                            <rect key="frame" x="123" y="54.5" width="205" height="17"/>
+                                                            <rect key="frame" x="123" y="44.5" width="205" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="205" id="Ivx-cC-jrA"/>
                                                             </constraints>
@@ -412,7 +412,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모집중" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dll-mf-eLJ">
-                                                            <rect key="frame" x="336" y="109.5" width="42" height="19.5"/>
+                                                            <rect key="frame" x="336" y="81.5" width="42" height="19.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.30196078431372547" green="0.59607843137254901" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -420,18 +420,17 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="3Ow-FV-N4F" firstAttribute="top" secondItem="0FS-uj-ZNa" secondAttribute="bottom" constant="2" id="97y-zj-tEH"/>
-                                                        <constraint firstItem="0FS-uj-ZNa" firstAttribute="top" secondItem="MLl-ae-ZqP" secondAttribute="topMargin" constant="43" id="Icn-Wa-ewi"/>
-                                                        <constraint firstItem="eQ4-q6-vVF" firstAttribute="top" secondItem="MLl-ae-ZqP" secondAttribute="topMargin" constant="20" id="J23-qa-Rkr"/>
+                                                        <constraint firstItem="0FS-uj-ZNa" firstAttribute="top" secondItem="MLl-ae-ZqP" secondAttribute="topMargin" constant="33" id="Icn-Wa-ewi"/>
+                                                        <constraint firstItem="eQ4-q6-vVF" firstAttribute="top" secondItem="MLl-ae-ZqP" secondAttribute="topMargin" constant="10" id="J23-qa-Rkr"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="Dll-mf-eLJ" secondAttribute="trailing" constant="16" id="S8A-Rm-FR7"/>
                                                         <constraint firstItem="0FS-uj-ZNa" firstAttribute="leading" secondItem="MLl-ae-ZqP" secondAttribute="leadingMargin" constant="18" id="To1-dF-gJQ"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="3Ow-FV-N4F" secondAttribute="bottom" constant="50" id="Unf-cI-7hq"/>
                                                         <constraint firstItem="Z4o-oW-E14" firstAttribute="leading" secondItem="eQ4-q6-vVF" secondAttribute="leading" id="aZD-Np-Dy1"/>
                                                         <constraint firstItem="3Ow-FV-N4F" firstAttribute="centerX" secondItem="0FS-uj-ZNa" secondAttribute="centerX" id="cIP-cA-ldK"/>
                                                         <constraint firstItem="L4y-OG-XbT" firstAttribute="top" secondItem="eQ4-q6-vVF" secondAttribute="bottom" constant="2" id="iSM-2V-rIC"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="3sw-rp-8jL" secondAttribute="trailing" constant="16" id="lt1-af-B3E"/>
-                                                        <constraint firstItem="Z4o-oW-E14" firstAttribute="top" secondItem="L4y-OG-XbT" secondAttribute="bottom" constant="31" id="nVg-z8-0ba"/>
                                                         <constraint firstItem="eQ4-q6-vVF" firstAttribute="leading" secondItem="0FS-uj-ZNa" secondAttribute="trailing" constant="31" id="oRH-Am-38m"/>
                                                         <constraint firstItem="L4y-OG-XbT" firstAttribute="leading" secondItem="eQ4-q6-vVF" secondAttribute="leading" id="sva-k0-ho4"/>
+                                                        <constraint firstItem="Z4o-oW-E14" firstAttribute="centerY" secondItem="Dll-mf-eLJ" secondAttribute="centerY" id="uOm-N0-Yrb"/>
                                                         <constraint firstItem="3sw-rp-8jL" firstAttribute="top" secondItem="eQ4-q6-vVF" secondAttribute="top" id="xo6-BN-eMV"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="Dll-mf-eLJ" secondAttribute="bottom" constant="18" id="z7W-GB-1jB"/>
                                                     </constraints>
