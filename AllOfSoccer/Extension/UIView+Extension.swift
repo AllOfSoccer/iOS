@@ -64,4 +64,9 @@ extension UIView {
             self.addSubview($0)
         }
     }
+
+    func showDebugBorder(width: CGFloat = 1.0, color: UIColor = .red) {
+        self.layer.borderWidth = width
+        self.layer.borderColor = color.cgColor
+    }
 }

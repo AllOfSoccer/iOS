@@ -138,3 +138,14 @@ extension FirstTeamRecruitmentViewController {
         view.endEditing(true)
     }
 }
+
+extension FirstTeamRecruitmentViewController {
+
+    private func keyboardWillAppear() {
+
+    }
+
+    private func keyboardWillDisapper() {
+
+    }
+}
