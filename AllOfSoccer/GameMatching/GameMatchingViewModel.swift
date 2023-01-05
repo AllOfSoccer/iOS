@@ -7,14 +7,60 @@
 
 import Foundation
 
+enum MatchingMode {
+    case teamMatching
+    case manMatching
+}
+
+enum CollecionviewType: String {
+    case HorizontalCalendarView
+    case FilterTagCollectionView
+}
+
+enum FilterType: CaseIterable {
+    case location
+    case game
+
+    var tagTitle: String {
+        switch self {
+        case .location: return "장소"
+        case .game: return "경기 종류"
+        }
+    }
+
+    var filterList: [String] {
+        switch self {
+        case .location: return ["서울", "경기-북부", "경기-남부", "인천/부천", "기타지역"]
+        case .game: return ["11 vs 11", "풋살"]
+        }
+    }
+}
+
+protocol GameMatchingPresenter: AnyObject {
+    func reloadMatchingList()
+    func showErrorMessage()
+}
+
 class GameMatchingViewModel {
+
+    internal weak var presenter: GameMatchingPresenter?
 
     //중현: 생성하는 시점에 viewModel을 fetch
     init() {
-        self.fetchMatchingList()
+        Task { [weak self] in
+            guard let self = self else {
+                return
+            }
+            do {
+                try await self.fetchMatchingList()
+                self.presenter?.reloadMatchingList()
+            } catch {
+                self.presenter?.showErrorMessage()
+            }
+        }
     }
 
-    private func fetchMatchingList() {
+    private func fetchMatchingList() async throws {
         self.matchingListViewModel = [GameMatchListViewModel.mockData,
                                       GameMatchListViewModel.mockData1,
                                       GameMatchListViewModel.mockData2]

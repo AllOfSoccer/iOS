@@ -9,38 +9,9 @@ import UIKit
 import FSCalendar
 import SnapKit
 
-enum MatchingMode {
-    case teamMatching
-    case manMatching
-}
-
-enum CollecionviewType: String {
-    case HorizontalCalendarView
-    case FilterTagCollectionView
-}
-
-enum FilterType: CaseIterable {
-    case location
-    case game
-
-    var tagTitle: String {
-        switch self {
-        case .location: return "장소"
-        case .game: return "경기 종류"
-        }
-    }
-
-    var filterList: [String] {
-        switch self {
-        case .location: return ["서울", "경기-북부", "경기-남부", "인천/부천", "기타지역"]
-        case .game: return ["11 vs 11", "풋살"]
-        }
-    }
-}
-
 class GameMatchingViewController: UIViewController {
     // MARK: - ViewModel
-    private var gameMatchingModel = GameMatchingViewModel()
+    private var gameMatchingModel: GameMatchingViewModel = GameMatchingViewModel()
     var horizontalCalendarViewModel = HorizonralCalendarViewModel()
 
     // MARK: - MatchingModeButton Variable
@@ -188,6 +159,8 @@ class GameMatchingViewController: UIViewController {
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.gameMatchingModel.presenter = self
 
         self.setupModeButtonUnderLine()
         self.setupHorizontalCalendarView()
@@ -659,3 +632,13 @@ extension GameMatchingViewController: FilterDetailViewDelegate {
     }
 }
 
+extension GameMatchingViewController: GameMatchingPresenter {
+
+    internal func reloadMatchingList() {
+        self.noticeTableView.reloadData()
+    }
+
+    internal func showErrorMessage() {
+        print("네트워크 상태가 불안정 합니다.")
+    }
+}
