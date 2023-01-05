@@ -40,10 +40,8 @@ enum FilterType: CaseIterable {
 
 class GameMatchingViewController: UIViewController {
     // MARK: - ViewModel
-    var gameMatchingModel = GameMatchingViewModel()
+    private var gameMatchingModel = GameMatchingViewModel()
     var horizontalCalendarViewModel = HorizonralCalendarViewModel()
-
-    private var matchingList: [GameMatchListViewModel] = [GameMatchListViewModel.mockData, GameMatchListViewModel.mockData1, GameMatchListViewModel.mockData2, GameMatchListViewModel.mockData, GameMatchListViewModel.mockData1, GameMatchListViewModel.mockData2]
 
     // MARK: - MatchingModeButton Variable
     @IBOutlet private weak var teamMatchButton: IBSelectTableButton!
@@ -560,14 +558,15 @@ extension GameMatchingViewController: UITableViewDelegate {
 
 // MARK: - TableViewDatasource
 extension GameMatchingViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.matchingList.count
+        return self.gameMatchingModel.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoticeTableViewCell", for: indexPath) as? NoticeTableViewCell else { return UITableViewCell() }
 
-        cell.update(viewModel: self.matchingList[indexPath.row])
+        cell.update(viewModel: self.gameMatchingModel.fetchViewModel(indexPath: indexPath))
 
         return cell
     }

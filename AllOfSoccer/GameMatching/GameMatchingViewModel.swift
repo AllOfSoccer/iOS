@@ -9,8 +9,29 @@ import Foundation
 
 class GameMatchingViewModel {
 
+    //중현: 생성하는 시점에 viewModel을 fetch
+    init() {
+        self.fetchMatchingList()
+    }
+
+    private func fetchMatchingList() {
+        self.matchingListViewModel = [GameMatchListViewModel.mockData,
+                                      GameMatchListViewModel.mockData1,
+                                      GameMatchListViewModel.mockData2]
+    }
+
     // MARK: - Properties
     internal private(set) var selectedDate: [Date] = []
+
+    internal var count: Int {
+        self.matchingListViewModel.count
+    }
+
+    internal func fetchViewModel(indexPath: IndexPath) -> GameMatchListViewModel {
+        self.matchingListViewModel[indexPath.row]
+    }
+
+    private var matchingListViewModel: [GameMatchListViewModel] = []
 
     internal var formalStrSelectedDate: [String] {
         let strSelectedDate = self.selectedDate.map { self.changeDateToString($0) }
